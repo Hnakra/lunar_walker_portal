@@ -3,6 +3,7 @@
         <p class="u-text u-text-default u-text-1">Выберите платформу для участия в соревновании</p>
     </div>
 </section>
+
 @if( Auth::user()->id_role == 1)
     <section class="u-clearfix" >
 {{--
@@ -17,9 +18,9 @@
             <div class="u-repeater u-repeater-1">
                 @foreach($places as $place)
                 <!--product_item-->
-                <div class="u-align-center u-container-style u-products-item u-repeater-item u-white u-repeater-item-2" data-href="#">
+                <div class="u-align-center u-container-style u-products-item u-repeater-item u-white u-repeater-item-2" data-href="/places/{{$place->id}}">
                     <div class="u-container-layout u-similar-container u-container-layout-2"><!--product_image-->
-                        <img alt="" class="u-image u-image-default u-product-control u-image-2" src="files/places/{{$place->id}}/index.jpg" data-image-width="288" data-image-height="283"><!--/product_image-->
+                        <img alt="" class="u-image u-image-default u-product-control u-image-2" src="storage/places/{{$place->id}}/{{$place->img}}" data-image-width="288" data-image-height="283"><!--/product_image-->
                         <p class="u-text u-text-default u-text-2"> {{$place->name}} </p>
                     </div>
                 </div><!--/product_item-->
