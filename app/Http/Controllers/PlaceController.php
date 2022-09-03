@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Place;
+use App\Models\Robot;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -13,9 +14,11 @@ class PlaceController extends Controller
         $organizator = User::addSelect([
             'id' => Place::select('id_organizator')->where('id_organizator', 'users.id')
         ])->get()->first();
+        $robots = Robot::where('id_place', $place->id)->get();
         return view('pages.place',[
             'place' => $place,
-            'organizator' => $organizator
+            'organizator' => $organizator,
+            'robots'=>$robots
         ]);
 
     }
