@@ -10,9 +10,9 @@
             </div>
             <div class="u-custom-menu u-nav-container">
                 <ul class="u-nav u-spacing-2 u-unstyled u-nav-1">
-                    <li class="u-nav-item"><a class="u-active-palette-3-base u-button-style u-hover-palette-3-base u-nav-link u-text-active-grey-5 u-text-grey-90 u-text-hover-white" href="../" style="padding: 10px 6px;">О нас</a>
+                    <li class="u-nav-item"><a class="u-active-palette-3-base u-button-style u-hover-palette-3-base u-nav-link u-text-active-grey-5 u-text-grey-90 u-text-hover-white" href="/" style="padding: 10px 6px;">О нас</a>
                     </li>
-                    <li class="u-nav-item"><a class="u-active-palette-3-base u-button-style u-hover-palette-3-base u-nav-link u-text-active-grey-5 u-text-grey-90 u-text-hover-white" href="../places" style="padding: 10px 6px;">Площадки</a>
+                    <li class="u-nav-item"><a class="u-active-palette-3-base u-button-style u-hover-palette-3-base u-nav-link u-text-active-grey-5 u-text-grey-90 u-text-hover-white" href="/places" style="padding: 10px 6px;">Площадки</a>
                     </li>
                     <li class="u-nav-item">
                         @include('layouts.user_icon.user_icon_bigscreen')
@@ -25,7 +25,7 @@
                     <div class="u-inner-container-layout u-sidenav-overflow">
                         <div class="u-menu-close"></div>
                         <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" style="padding: 10px 20px;">О нас</a>
-                            </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../places" style="padding: 10px 20px;">Площадки</a></li>
+                            </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/places" style="padding: 10px 20px;">Площадки</a></li>
 
 
 

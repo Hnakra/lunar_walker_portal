@@ -1,0 +1,61 @@
+.main{
+    text-align: center;
+}
+.title{
+    font-size: 28px;
+}
+.plus{
+    background-color: #4d535c;
+    color: white;
+    padding: 0 10px 0 10px;
+    border-radius: 5px;
+}
+.plus:hover{
+    background-color: #8a8a8a;
+}
+.minus{
+    background-color: #bb0707;
+    color: white;
+    padding: 0 10px 0 10px;
+    border-radius: 5px;
+}
+.minus:hover{
+    background-color: #c24141;
+}
+.list-teams{
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.team{
+    width: 100%;
+}
+.team td{
+    vertical-align: top;
+    text-align: left;
+    padding-right: 10px;
+    padding-left: 10px;
+    width: 33%;
+}
+.with-hr{
+    border-style: solid;
+    border-width: 1px 0 0 0;
+    border-color: #4d535c;
+}
+
+.remove-team{
+    min-width: 50px;
+    min-height: 35px;
+    margin-left: 10px;
+    background-color: darkred;
+    color: white;
+    padding: 0 10px 0 10px;
+    border-radius: 5px;
+    border-color: black;
+    border-width: 2px;
+}
+.remove-team:hover{
+    background-color: gray;
+}

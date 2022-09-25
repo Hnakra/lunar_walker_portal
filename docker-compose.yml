@@ -43,6 +43,6 @@ services:
         ports:
             - 81:80
         environment:
-            - UPLOAD_LIMIT = 100000000
+            - UPLOAD_LIMIT=100000000
             - PMA_ARBITRARY=1
 
