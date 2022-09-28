@@ -9,7 +9,15 @@
     <title>Spectral by HTML5 UP</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/maket_styes.css" />
+    <!--Стили макета -->
+    <link rel="stylesheet" href="assets/css/maket_styles.css" />
+    <!-- Стиль данной страницы -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!-- Стиль всех наших страниц сайта -->
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <!--  Подключение стилей для иконок font awersome  -->
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
 <body class="landing is-preload">
@@ -19,8 +27,51 @@
 
     <!-- Header -->
     <header id="header" class="alt">
-        <h1><a href="index.html">Spectral</a></h1>
-        <nav id="nav">
+        <div class = "navabar">
+            <a href="#menu" class="menuToggle"><i class="fa fa-bars"></i></a>
+            <h3><a href="#">РОБОФУТБОЛ</a></h3>
+<!--
+            Меню мобильной версии
+-->
+            <div id="menu">
+                    <ul >
+                        <li><a href="#">Роботы</a></li>
+                        <li><a href="#">Площадки</a></li>
+                        <li><a href="#">Команды</a></li>
+                        <li><a href="#">Игры </a> </li>
+                        <div class = "submenu">
+                            <li><a href="#">Мои игры</a></li>
+                            <li><a href="#">Статистика</a></li>
+                        </div>
+
+                        <li><a href="#">О нас</a></li>
+                    </ul>
+            </div>
+<!--
+            Меню компьютерной версии
+-->
+              <div class="menu">
+                      <ul id="navbar">
+                          <li><a href="#">Роботы</a></li>
+                          <li><a href="#">Площадки</a></li>
+                          <li><a href="#">Команды</a></li>
+                          <li><a href="#">Игры <i class="fas fa-angle-down"></i> </a>
+                              <div class="submenu-wrapper">
+                                  <ul>
+                                      <li><a href="#">Мои игры</a></li>
+                                      <li><a href="#">Статистика</a></li>
+                                  </ul>
+                              </div>
+                          </li>
+                          <li><a href="#">О нас</a></li>
+
+                      </ul>
+                  <a href="#"><img src="images/avatar.jpg"></a>
+
+              </div>
+        </div>
+
+<!--        <nav id="nav">
             <ul>
                 <li class="special">
                     <a href="#menu" class="menuToggle"><span>Menu</span></a>
@@ -35,7 +86,7 @@
                     </div>
                 </li>
             </ul>
-        </nav>
+        </nav>-->
     </header>
 
 
@@ -47,7 +98,7 @@
                 site template freebie<br />
                 crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
             <ul class="actions special">
-                <li><a href="#" class="button primary">ПРИНЯТЬ УЧАСТИЕ</a></li>
+                <li><a href="#" class="button big-button">ПРИНЯТЬ УЧАСТИЕ</a></li>
             </ul>
         </div>
         <a href="#one" class="more scrolly">Learn More</a>
