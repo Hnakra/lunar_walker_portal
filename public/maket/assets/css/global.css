@@ -107,7 +107,9 @@ body h3{
         text-decoration: none;
         text-align: center;
     }
-    #navbar li:hover { background-color: #ffa800; }
+    #navbar li:hover {
+        background: rgba(0, 0, 0, 0.1);
+    }
 
 
     /*стили выпадающего меню*/
