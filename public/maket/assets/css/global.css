@@ -147,8 +147,8 @@ body h3{
         border-bottom: 20px solid;
     }
     #navbar ul li { float: none; }
-    #navbar ul li:hover { background-color: #ffa800; }
-    .submenu-wrapper li:hover{
+    #navbar ul li:hover { background-color: rgba(0, 0, 0, 0.1); }
+    submenu-wrapper li:hover{
         border-radius: 10px;
     }
 }
