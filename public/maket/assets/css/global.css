@@ -56,6 +56,14 @@ body h3{
     color: var(--dark-color);
     text-decoration: none;
 }
+
+@media screen and (min-width: 1024px) {
+    .menuToggle{
+        visibility: hidden;
+        display: none;
+    }
+}
+
 #menu{
     background-color: var(--dark-color);
     opacity: 0.9;
