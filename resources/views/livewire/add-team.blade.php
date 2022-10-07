@@ -63,7 +63,7 @@
                     {{ __('Редактировать команду') }}
                 </x-jet-button>
                 @if($current_team != 0)
-                    @livewire('remove-team',["id_place" => $id_place, "current_team" => $current_team])
+                    @livewire('remove-team',["current_team" => $current_team])
                 @endif
             @endif
         </x-slot>

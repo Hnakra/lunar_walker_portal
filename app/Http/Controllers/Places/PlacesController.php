@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Places;
+use App\Http\Controllers\Controller;
 use App\Models\Place;
-use App\Models\Robot;
-use Illuminate\Http\Request;
 
 class PlacesController extends Controller
 {

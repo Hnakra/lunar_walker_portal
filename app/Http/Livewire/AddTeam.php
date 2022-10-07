@@ -14,7 +14,7 @@ class AddTeam extends Component
 {
     public $current_team = 0;
     public $modalFormVisible = false;
-    public $name, $id_place, $userForm="";
+    public $name, $userForm="";
     public $idUserForm0 = 0, $idUserForm1 = 0, $idUserForm2 = 0, $idUserForm3 = 0, $idUserForm4 = 0;
     public $idSelectedRobot0 = 0, $idSelectedRobot1 = 0, $idSelectedRobot2 = 0, $idSelectedRobot3 = 0, $idSelectedRobot4 = 0;
     public $counterUserForms = 0, $maxNumForms = 5;
@@ -55,7 +55,7 @@ class AddTeam extends Component
                 ]);
             }
             $this->modalFormVisible = false;
-            redirect("/places/$this->id_place/teams", [\App\Http\Controllers\TeamsController::class, 'index']);
+            redirect("/teams", [\App\Http\Controllers\Teams\TeamsController::class, 'index']);
         }
         else {
             $this->errorOutput .= 'Сделайте окончательный выбор игроков и роботов!';
@@ -122,7 +122,7 @@ class AddTeam extends Component
         if($this->validateForms()) {
             $id_team = DB::table('teams')->insertGetId([
                 'name' => $this->name,
-                'id_place' => $this->id_place,
+                'id_place' => /*$this->id_place*/0,
                 'created_at' => date("Y-m-d H:i:s", strtotime('now')),
                 'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
             ]);
@@ -136,7 +136,7 @@ class AddTeam extends Component
                 ]);
             }
             $this->modalFormVisible = false;
-            redirect("/places/$this->id_place/teams", [\App\Http\Controllers\TeamsController::class, 'index']);
+            redirect("/teams", [\App\Http\Controllers\Teams\TeamsController::class, 'index']);
         }
         else {
             $this->errorOutput .= 'Сделайте окончательный выбор игроков и роботов!';

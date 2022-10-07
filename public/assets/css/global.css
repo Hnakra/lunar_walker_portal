@@ -1,0 +1,191 @@
+/*css переменные*/
+body{
+    --main-color: #E4CA40;
+    --white-color: #ffffff;
+    --dark-color: #000000;
+    font-family: 'Open Sans', serif;
+    font-weight: 400 ;
+    font-size: 16px ;
+    letter-spacing: 2.88px;
+    line-height: 40px;
+}
+body h2{
+    font-weight: 400;
+    font-size: 32px;
+}
+body h3{
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--dark-color);
+}
+
+/*стили кнопки*/
+.button{
+    text-decoration: none !important;
+    padding: 10px 30px 10px 30px;
+    border-radius: 4px;
+}
+.big-button{
+    box-shadow: none;
+    background-color: var(--main-color);
+    color: var(--dark-color);
+    opacity: 0.8;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+}
+.big-button:hover{
+    opacity: 1;
+    color: var(--white-color);
+}
+
+/*стили шапки*/
+.menu{
+    float: right;
+    display: inline;
+}
+.navabar{
+    padding-left: 50px;
+    padding-right: 50px;
+    position: sticky;
+    color: var(--main-color);
+    background-color: var(--main-color);
+}
+
+/*стили меню*/
+.menuToggle{
+    color: var(--dark-color);
+    text-decoration: none;
+}
+
+@media screen and (min-width: 1150px) {
+    .menuToggle{
+        visibility: hidden;
+        display: none;
+    }
+}
+
+#menu{
+    background-color: var(--dark-color);
+    opacity: 0.9;
+}
+#menu a{
+    font-family: 'Open Sans', serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+.submenu li{
+    margin-left: 10px;
+}
+.submenu a{
+    color: var(--white-color);
+    text-transform: uppercase;
+    text-decoration: none;
+}
+@media screen and (max-width: 1150px) {
+    #navbar{
+        visibility: hidden;
+        display: none;
+    }
+}
+@media screen and (min-width: 1150px) {
+
+    #navbar li:hover ul { display: block; }
+    #navbar, #navbar ul{
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+    #navbar {
+        display: inline;
+        background-color: var(--main-color);
+        min-width: 470px;
+    }
+    #navbar li {
+        float: left;
+        position: relative;
+        height: 100%;
+    }
+    #navbar li a {
+        letter-spacing: 3.5px;
+        display: block;
+        padding: 0px 10px 0px 10px;
+        color: var(--dark-color);
+        text-transform: uppercase;
+
+        text-decoration: none;
+        text-align: center;
+    }
+    #navbar li:hover {
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+
+    /*стили выпадающего меню*/
+    li ul{
+        margin-right: auto;
+        margin-left: auto;
+        display: none;
+        background-color: var(--main-color);
+        position: absolute;
+        top: 150%;
+        left: -17%;
+        border-radius: 10px;
+    }
+    li ul:before {
+        width: 100%;
+        content: "";
+        border: 20px solid transparent;
+        position: absolute;
+        top: -40px;
+    }
+    #navbar li:hover .submenu-wrapper:before{
+        left: 30%;
+        top: 67%;
+        position: absolute;
+        content: "";
+        border: 20px solid transparent;
+        border-bottom: 20px solid;
+    }
+    #navbar ul li { float: none; }
+    #navbar ul li:hover { background-color: rgba(0, 0, 0, 0.1); }
+    submenu-wrapper li:hover{
+        border-radius: 10px;
+    }
+    .submenu-wrapper a {
+        line-height: 26px !important;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 7px;
+        margin-right: 10px;
+
+        letter-spacing: 1.2px !important;
+        text-transform: lowercase !important;
+    }
+}
+
+/*Стиль лого*/
+.navabar h3{
+    display: inline;
+}
+
+/*Стиль картинки профиля*/
+.navabar img{
+    margin-top: 6px;
+    margin-bottom: 6px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+}
+@media screen and (min-width: 1150px) {
+    .mobile-profile{
+        visibility: hidden;
+        display: none;
+    }
+}
+
+
+    /*расширение стиля для модальных окон*/
+div[x-show='show']{
+    padding-top: 70px;
+    color: var(--dark-color);
+}

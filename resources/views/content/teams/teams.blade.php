@@ -30,7 +30,7 @@
                     </ol>
                 </td>
                 <td>
-                    @livewire('add-team',["id_place" => $id_place, "current_team" => $team['team']->id])
+                    @livewire('add-team',["current_team" => $team['team']->id])
                 </td>
             </tr>
         @endforeach
@@ -38,6 +38,6 @@
     </table>
 
     <br>
-    @livewire('add-team',["id_place" => $id_place])
+    @livewire('add-team')
     <br>
 </div>

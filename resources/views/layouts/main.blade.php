@@ -2,46 +2,53 @@
 @yield('title') - название страницы
 @yield('content') - содержимое страницы
 @yield('style') - название стиля страницы
+@yield('fa') - подключение стиля font awersome
 --}}
-
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="font-size: 16px;">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <meta charset="utf-8">
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="/css/nicepage.css" media="screen">
-    <link rel="stylesheet" href="/css/@yield('style')" media="screen">
-    <link rel="stylesheet" href="/css/@yield('fa')" media="screen">
-    <script class="u-script" type="text/javascript" src="/js/jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="/js/nicepage.js" defer=""></script>
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--Стили макета -->
+    <link rel="stylesheet" href="/assets/css/maket_styles.css" />
+    <!-- Стиль данной страницы -->
+    <link rel="stylesheet" href="/assets/css/@yield('style')" />
+    <!-- Стиль всех наших страниц сайта -->
+    <link rel="stylesheet" href="/assets/css/global.css" />
+    <!--  Подключение стилей для иконок font awersome  -->
+    <link rel="stylesheet" href="/assets/css/fontawesome/all.min.css" />
 
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="/assets/css/app.css" />
     @livewireStyles
-    <script src="{{ mix('js/app.js') }}" defer></script>
 
-
-
-    <script type="application/ld+json">{
-		"@context": "http://schema.org",
-		"@type": "Organization",
-		"name": ""
-}</script>
-    <meta name="theme-color" content="#f41818">
-    <meta property="og:title" content="О нас">
-    <meta property="og:type" content="website">
+    <noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
 </head>
+<body class="landing is-preload">
+
+<!-- Page Wrapper -->
+<div id="page-wrapper">
+
+    @include('layouts.navbar')
+
+    @yield('content')
+
+    @include('layouts.footer')
 
 
-<body {{--data-home-page="О-нас.html"--}} data-home-page-title="@yield('title')" class="u-body">
-@include('layouts.navbar')
-
-@yield('content')
-
-@include('layouts.footer')
-@livewireScripts
+</div>
 </body>
+<!-- Scripts -->
+@livewireScripts
+<script src="/assets/js/app.js" defer></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery.scrollex.min.js"></script>
+<script src="/assets/js/jquery.scrolly.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script>
+
 </html>
+
+

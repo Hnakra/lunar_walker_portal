@@ -2,5 +2,5 @@
 @section('title', 'Площадки')
 @section('style', 'places.css')
 @section('content')
-    @include('content.places.place')
+    @include('content.places.place.place')
 @endsection
