@@ -1,18 +1,28 @@
 .block{
     background: #FFFBE9;
     color: #2E3842;
-    /*text-align: center;*/
-    padding: 40px 40px 40px 50px;
+    padding: 50px 40px 50px 50px;
 
 }
 .block h1{
+    font-size: 20px;
     color: #2E3842;
 }
 .image{
     width: 270px;
     height: 270px;
 }
-.image-wrapper{
-    margin-left: 20px;
-    float: right;
+
+.leftimg{
+    width: 25%;
+    height: 25%;
+    float: left;
+    margin: 15px 15px 15px 0;
 }
+.rightimg{
+    width: 25%;
+    height: 25%;
+    float: right;
+    margin: 15px 0 15px 15px;
+}
+
