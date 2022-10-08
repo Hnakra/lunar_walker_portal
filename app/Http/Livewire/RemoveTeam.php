@@ -18,7 +18,7 @@ class RemoveTeam extends Component
         Team::where("id", $this->current_team)->delete();
         Player::where("id_team", $this->current_team)->delete();
         $this->modalFormVisible = false;
-        redirect("/places/$this->id_place/teams", [\App\Http\Controllers\TeamsController::class, 'index']);
+        redirect("/places/$this->id_place/teams", [\App\Http\Controllers\Teams\TeamsController::class, 'index']);
     }
 
     public function render()

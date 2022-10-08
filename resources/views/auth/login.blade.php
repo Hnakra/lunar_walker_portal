@@ -29,10 +29,13 @@
             </div>
 
             <div class="block mt-4">
+                {{--Очень важный чекбокс--}}
+                {{--
                 <label for="remember_me" class="flex items-center">
+
                     <x-jet-checkbox id="remember_me" name="remember" />
                     <span class="ml-2 text-sm text-gray-600">{{ __('Запомнить меня') }}</span>
-                </label>
+                </label>--}}
             </div>
 
             <div class="flex items-center justify-end mt-4">
@@ -49,5 +52,4 @@
         </form>
         <div align="center"> <br>Ещё нет аккаунта? <br><a class="underline text-sm text-gray-600 hover:text-gray-900" href = "../register">Зарегистрируйтесь</a></div>
     </x-jet-authentication-card>
-@include('layouts.footer')
 </x-guest-layout>

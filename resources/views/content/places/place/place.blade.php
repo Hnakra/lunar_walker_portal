@@ -18,11 +18,6 @@
                 <p class="u-text u-text-default u-text-2"> Телефон площадки: {{$place->phone_urid_org}} </p>
                 <p class="u-text u-text-default u-text-2"> ИНН организации: {{$place->INN_urid_org}} </p>
 
-{{--                ---Список команд -----}}
-                <a href="/places/{{$place->id}}/teams">
-                    <x-jet-button>Список команд</x-jet-button>
-
-                </a>
 {{--                -----}}
                 @livewire('add-robot',["placeId" => $place->id])
 

@@ -12,7 +12,15 @@
         @livewire('add-place')
     </section>
 @endif
-<section class="u-align-center u-clearfix u-section-2" id="sec-655c">
+@foreach($places as $place)
+    <div>
+        <a href="/places/{{$place->id}}">
+            <img alt="" class="u-image u-image-default u-product-control u-image-2" src="storage/places/{{$place->id}}/{{$place->img}}" width="288" height="283">
+            <p class="u-text u-text-default u-text-2"> {{$place->name}} </p>
+        </a>
+    </div>
+@endforeach
+{{--<section class="u-align-center u-clearfix u-section-2" id="sec-655c">
     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1"><!--products--><!--products_options_json--><!--{"type":"Recent","source":"","tags":"","count":""}--><!--/products_options_json-->
         <div class="u-expanded-width u-products u-products-1">
             <div class="u-repeater u-repeater-1">
@@ -28,7 +36,7 @@
             </div>
         </div><!--/products-->
     </div>
-</section>
+</section>--}}
 
 
 

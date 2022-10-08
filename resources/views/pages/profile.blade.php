@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('title', 'Профиль')
-@section('style', 'profiles.css')
+@section('style', 'profile.css')
 @section('content')
-    @include('content.profile.profile')
+    <h2>@yield('title')</h2>
+    {{ $slot }}
 @endsection

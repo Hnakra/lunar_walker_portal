@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Places\Place;
+use App\Http\Controllers\Controller;
 use App\Models\Place;
 use App\Models\Robot;
 use App\Models\User;

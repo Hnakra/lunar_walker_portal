@@ -1,8 +1,8 @@
 @if(Auth::guest())
-    <a class="u-active-palette-3-base u-button-style u-hover-palette-3-base u-nav-link u-text-active-grey-5 u-text-grey-90 u-text-hover-white" href="../login" style="padding: 10px 6px;">Вход</a>
+    <a class="login" href="../login" >Вход</a>
 @else
 
-    <div class="ml-3 relative">
+    <div>
         <x-jet-dropdown align="right" width="48">
             <x-slot name="trigger">
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
