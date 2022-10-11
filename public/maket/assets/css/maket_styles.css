@@ -2758,17 +2758,13 @@ input, select, textarea {
 
 		@media screen and (max-width: 980px) {
 
-			.spotlight {
-				display: block;
-			}
+
 
 				.spotlight br {
 					display: none;
 				}
 
-				.spotlight .image {
-					width: 100%;
-				}
+
 
 				.spotlight .content {
 					padding: 4em 3em 2em 3em ;
