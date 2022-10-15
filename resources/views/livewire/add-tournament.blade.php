@@ -8,7 +8,7 @@
             {{ __('Добавление турнира') }}
         </x-slot>
         <x-slot name="content">
-        {{ __('Введите информацию о турнире.') }}
+        <div class="center-text">{{ __('Введите информацию о турнире') }}</div>
             <x-jet-input type="text" class="mt-1 block w-3/4"
                          placeholder="{{ __('Название') }}"
                          x-ref="name"
@@ -21,7 +21,6 @@
                     @endforeach
 
             </select>
-            </br>
             <x-jet-input type="text" class="mt-1 block w-3/4"
                          placeholder="{{ __('Описание') }}"
                          x-ref="name"
@@ -30,8 +29,8 @@
 
             <input type="date" wire:model.defer="date" "/>
             <input type="time" wire:model.defer="time" "/>
-            <span>{{__('Команды')}}</span>
-            <button wire:click.prevent="addTeam" class="fa fa-plus"></button>
+            <div class="text-on-form">{{__('Команды')}}
+            <button wire:click.prevent="addTeam" class="fa fa-plus"></button></div>
 
             @foreach($selected_teams_id as $index => $team_id)
                 <select class="child-form" wire:model="selected_teams_id.{{$index}}">
@@ -44,11 +43,11 @@
             @endforeach
         </x-slot>
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
+            <x-jet-secondary-button class="button-secondary" wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
                 {{ __('Отмена') }}
             </x-jet-secondary-button>
 
-            <x-jet-button class="ml-3" wire:click="submitShowModal" wire:loading.attr="disabled">
+            <x-jet-button class="ml-3 button-main" wire:click="submitShowModal" wire:loading.attr="disabled">
                 {{ __('Добавить турнир') }}
             </x-jet-button>
         </x-slot>

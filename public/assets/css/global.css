@@ -4,6 +4,7 @@ body{
     --white-color: #ffffff;
     --dark-color: #000000;
     --modal-color: #FFFBE9;
+    --text-color: #2E3842;
     font-family: 'Open Sans', serif;
     font-weight: 400 ;
     font-size: 16px ;
@@ -11,7 +12,9 @@ body{
     line-height: 40px;
 }
 .bg-modal{
+    padding-top: 40px !important;
     background-color: var(--modal-color);
+    border-radius: 5px !important;
 }
 body h2{
     font-weight: 400;
@@ -191,9 +194,51 @@ body h3{
     /*расширение стиля для модальных окон*/
 div[x-show='show']{
     padding-top: 70px;
-    color: var(--dark-color);
+    color: var(--text-color);
 }
 .child-form{
     width: 90%;
     display: inline;
+}
+
+.input-text, select, input[type="date"], input[type="time"]{
+    padding-left: 30px !important;
+    padding-bottom: 0px !important;
+    margin-top: 30px !important;
+    color: #4E485280;
+}
+
+input[type="date"], input[type="time"]{
+    width: 49%;
+    display: inline;
+
+}
+input::-webkit-calendar-picker-indicator {
+    color: red !important;
+    opacity: 1 !important;
+}
+
+
+.center-text{
+    text-align: center;
+}
+
+.button-main{
+    background-color: rgba(228, 202, 64, 0.7) !important;
+    border-radius: 3px !important;
+    color: rgb(55 65 81 / var(--tw-text-opacity)) !important;
+    --tw-border-opacity: 1 !important;
+    border-color: rgb(209 213 219 / var(--tw-border-opacity)) !important;
+}
+
+.button-secondary{
+    background: linear-gradient(180deg, #FFF8F8 99.99%, rgba(255, 255, 255, 0) 100%) !important;
+    border-radius: 3px !important;
+
+}
+
+.text-on-form{
+    padding-left: 30px;
+    padding-top: 15px !important;
+
 }
