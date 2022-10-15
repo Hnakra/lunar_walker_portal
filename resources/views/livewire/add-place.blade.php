@@ -11,7 +11,7 @@
                 </x-slot>
 
                 <x-slot name="content">
-                    {{ __('Введите информацию о площадке.') }}
+                    <div class="center-text"> {{ __('Введите информацию о площадке') }}</div>
                     <x-jet-input type="text" class="mt-1 block w-3/4"
                                  placeholder="{{ __('Название') }}"
                                  x-ref="name"
@@ -66,11 +66,11 @@
 
 
                 <x-slot name="footer">
-                    <x-jet-secondary-button wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
+                    <x-jet-secondary-button class="button-secondary" wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
                         {{ __('Отмена') }}
                     </x-jet-secondary-button>
 
-                    <x-jet-button class="ml-3" wire:click="addingPlace" wire:loading.attr="disabled">
+                    <x-jet-button class="ml-3 button-main" wire:click="addingPlace" wire:loading.attr="disabled">
                         {{ __('Добавить площадку') }}
                     </x-jet-button>
                 </x-slot>
