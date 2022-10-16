@@ -2744,17 +2744,7 @@ input, select, textarea {
 			background-color: rgba(0, 0, 0, 0.75);
 		}
 
-		@media screen and (max-width: 1280px) {
 
-			.spotlight .image {
-				width: 45%;
-			}
-
-			.spotlight .content {
-				width: 55%;
-			}
-
-		}
 
 		@media screen and (max-width: 980px) {
 

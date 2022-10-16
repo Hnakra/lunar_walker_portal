@@ -1,6 +1,6 @@
 .spotlight{
     box-sizing: border-box;
-    position: absolute;
+    /*position: absolute;*/
     background: #FFFBE9 !important;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     padding-left: 20px;
@@ -46,6 +46,23 @@
 .button-more:hover{
     color: white;
 }
+
+.image img{
+    max-width: 270px;
+}
+
+.spotlight:nth-child(odd) .image img{
+    margin-left: auto;
+}
+
+.spotlight:nth-child(even) .image img{
+    margin-right: auto;
+}
+
+.content{
+    text-align: left !important;
+}
+
 
 
 
