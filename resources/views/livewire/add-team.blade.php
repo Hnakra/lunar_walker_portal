@@ -32,21 +32,22 @@
 
             @error('name') <span class="error" style="color: orangered">{{ __('Длина имени не должна быть менее, чем 3 символа!')  }}</span><br> @enderror
 
-            @php
-             echo $userForm;
-            @endphp
+            <span>{{__('Игроки')}}</span>
+            @if(count($selected_users_id) < $MAX_SELECTED_USERS)
+                <button wire:click.prevent="addUser" class="fa fa-plus"></button>
+            @endif
+
+            @foreach($selected_users_id as $index => $user_id)
+                <select class="child-form" wire:model="selected_users_id.{{$index}}">
+                    <option value ="0" selected>Выберите игрока</option>
+                    @foreach($users as $user)
+                        <option value="{{$user->id}}">{{$user->name}}</option>
+                    @endforeach
+                </select>
+                <button wire:click.prevent="removeUser({{$index}})" class="fa fa-minus"></button>
+            @endforeach
             <span class="error" style="color: orangered">{{ $errorOutput }}</span>
             <br>
-            @if($counterUserForms < 5)
-                <button class = "plus" wire:click="createUserForm">
-                    {{ __('Добавить место в командe') }}
-                </button>
-            @endif
-            @if($counterUserForms != 0)
-                <button class = "minus" wire:click="removeUserForm">
-                    {{ __('Убрать место из команды') }}
-                </button>
-            @endif
 
         </x-slot>
 

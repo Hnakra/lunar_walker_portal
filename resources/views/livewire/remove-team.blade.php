@@ -1,7 +1,7 @@
 
 <div style="text-align: left !important;">
     <button class="remove-team" wire:click="confirmRemove">
-        <i class="fas fa-trash" style="color: white"></i>
+        <i class="fas fa-trash" style="color: red"></i>
     </button>
 
     <x-jet-dialog-modal wire:model="modalFormVisible" >

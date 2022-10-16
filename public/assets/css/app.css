@@ -382,7 +382,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: none;
 }
 
-[type='text'],[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],[type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea,select {
+[type='text'],[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],[type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea{
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -399,7 +399,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-shadow: 0 0 #0000;
 }
 
-[type='text']:focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus {
+[type='text']:focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus{
   outline: 2px solid transparent;
   outline-offset: 2px;
   --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
@@ -988,7 +988,15 @@ select {
   margin-top: 0.5rem;
 }
 .mt-4 {
-  margin-top: 1rem;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: left;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-color);
+
+
 }
 .mt-1 {
   margin-top: 0.25rem;
@@ -1331,7 +1339,7 @@ select {
 }
 .bg-gray-100 {
   --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+
 }
 .bg-indigo-500 {
   --tw-bg-opacity: 1;
@@ -1508,8 +1516,14 @@ select {
   line-height: 1rem;
 }
 .text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+    font-size: 25px;
+    line-height: 24px;
+    letter-spacing: 3.6px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 400;
+    color:var(--text-color);
+
 }
 .text-base {
   font-size: 1rem;
