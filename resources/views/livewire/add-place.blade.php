@@ -32,7 +32,8 @@
                                  x-ref="id_organizator"
                                  wire:model.defer="id_organizator"
                                  wire:keydown.enter="" />--}}
-                    <div wire:loading wire:target="photo">Uploading...</div>
+                    <div wire:loading wire:target="photo">Загрузка...</div>
+                    {{$s}}
                     <input type="file" wire:model="photo">
                     @error('photo') <span class="error" style="color: orangered">{{ $message }}</span> @enderror
 
@@ -62,8 +63,6 @@
                                  wire:model.defer="INN_urid_org"
                                  wire:keydown.enter="" />
                 </x-slot>
-
-
 
                 <x-slot name="footer">
                     <x-jet-secondary-button class="button-secondary" wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">

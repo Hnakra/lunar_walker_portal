@@ -1827,6 +1827,8 @@ input, select, textarea {
 	}
 
 	input[type="text"],
+    input[type="date"],
+    input[type="time"],
 	input[type="password"],
 	input[type="email"],
 	select,
@@ -1835,7 +1837,7 @@ input, select, textarea {
 		-webkit-appearance: none;
 		-ms-appearance: none;
 		appearance: none;
-		background-color: rgba(144, 144, 144, 0.25);
+		background-color: #0000000A;
 		border-radius: 3px;
 		border: none;
 		color: inherit;
@@ -1847,6 +1849,8 @@ input, select, textarea {
 	}
 
 		input[type="text"]:invalid,
+        input[type="date"]:invalid,
+        input[type="time"]:invalid,
 		input[type="password"]:invalid,
 		input[type="email"]:invalid,
 		select:invalid,
@@ -1855,6 +1859,8 @@ input, select, textarea {
 		}
 
 		input[type="text"]:focus,
+        input[type="date"]:focus,
+        input[type="time"]:focus,
 		input[type="password"]:focus,
 		input[type="email"]:focus,
 		select:focus,
@@ -1882,6 +1888,8 @@ input, select, textarea {
 	input[type="text"],
 	input[type="password"],
 	input[type="email"],
+    input[type="date"],
+    input[type="time"],
 	select {
 		height: 2.75em;
 	}
@@ -1968,22 +1976,22 @@ input, select, textarea {
 	}
 
 	::-webkit-input-placeholder {
-		color: rgba(255, 255, 255, 0.5) !important;
+		color: #4E485280 !important;
 		opacity: 1.0;
 	}
 
 	:-moz-placeholder {
-		color: rgba(255, 255, 255, 0.5) !important;
+		color: #4E485280 !important;
 		opacity: 1.0;
 	}
 
 	::-moz-placeholder {
-		color: rgba(255, 255, 255, 0.5) !important;
+		color: #4E485280 !important;
 		opacity: 1.0;
 	}
 
 	:-ms-input-placeholder {
-		color: rgba(255, 255, 255, 0.5) !important;
+		color: #4E485280 !important;
 		opacity: 1.0;
 	}
 
@@ -2151,9 +2159,9 @@ input, select, textarea {
 		padding-left: 1em;
 	}
 
-		ul li {
+/*		ul li {
 			padding-left: 0.5em;
-		}
+		}*/
 
 		ul.alt {
 			list-style: none;
@@ -2744,17 +2752,31 @@ input, select, textarea {
 			background-color: rgba(0, 0, 0, 0.75);
 		}
 
+		@media screen and (max-width: 1280px) {
 
+			.spotlight .image {
+				width: 45%;
+			}
+
+			.spotlight .content {
+				width: 55%;
+			}
+
+		}
 
 		@media screen and (max-width: 980px) {
 
-
+			.spotlight {
+				display: block;
+			}
 
 				.spotlight br {
 					display: none;
 				}
 
-
+				.spotlight .image {
+					width: 100%;
+				}
 
 				.spotlight .content {
 					padding: 4em 3em 2em 3em ;

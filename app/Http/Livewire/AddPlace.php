@@ -11,9 +11,8 @@ class AddPlace extends Component
 {
     use WithFileUploads;
 
-
     public $modalFormVisible = false;
-    public $listUsers = [];
+    public $listUsers = [], $s = "kek";
     public $name, $address, $id_organizator, $photo, $addr_org, $name_urid_org, $site_urid_org, $phone_urid_org, $INN_urid_org;
 
     public function createShowModal()
@@ -45,11 +44,13 @@ class AddPlace extends Component
             'phone_urid_org' => $this->phone_urid_org,
             'INN_urid_org' => $this->INN_urid_org
         ]);
+        $this->s = $this->photo->temporaryUrl();
         $this->photo->storeAs('public/places/'.$id, $name);
 
         $this->modalFormVisible = false;
 
     }
+
     /**
      * Get the view / contents that represent the component.
      *

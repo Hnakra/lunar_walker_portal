@@ -33,10 +33,8 @@
 
     @yield('content')
 
-    @include('layouts.footer')
-
-
 </div>
+@include('layouts.footer')
 </body>
 <!-- Scripts -->
 @livewireScripts

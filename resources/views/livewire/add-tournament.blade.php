@@ -27,8 +27,8 @@
                          wire:model.defer="description"
                          wire:keydown.enter="" />
 
-            <input type="date" wire:model.defer="date" "/>
-            <input type="time" wire:model.defer="time" "/>
+            <input type="date" wire:model.defer="date"/>
+            <input type="time" wire:model.defer="time"/>
             <div class="text-on-form">{{__('Команды')}}
             <button wire:click.prevent="addTeam" class="fa fa-plus"></button></div>
 
