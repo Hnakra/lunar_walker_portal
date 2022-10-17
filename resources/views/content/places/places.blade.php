@@ -1,42 +1,34 @@
-<section class="u-clearfix u-section-1" id="sec-47b4">
-    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <p class="u-text u-text-default u-text-1">Выберите платформу для участия в соревновании</p>
+<!-- Banner -->
+<section id="banner">
+    <div class="inner">
+        <h2>ПЛОЩАДКИ</h2>
+        <!--<p>Another fine responsive<br />
+            site template freebie<br />
+            crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
+        @if( Auth::user()->id_role == 1)
+            @livewire('add-place')
+        @endif
     </div>
+    <a href="#one" class="more scrolly">Читать далее</a>
 </section>
 
-@if( Auth::user()->id_role == 1)
-    <section class="u-clearfix" >
-{{--
-        @include('for_different_roles.admin.add_place')
---}}
-        @livewire('add-place')
-    </section>
-@endif
-@foreach($places as $place)
-    <div>
-        <a href="/places/{{$place->id}}">
-            <img alt="" class="u-image u-image-default u-product-control u-image-2" src="storage/places/{{$place->id}}/{{$place->img}}" width="288" height="283">
-            <p class="u-text u-text-default u-text-2"> {{$place->name}} </p>
-        </a>
-    </div>
-@endforeach
-{{--<section class="u-align-center u-clearfix u-section-2" id="sec-655c">
-    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1"><!--products--><!--products_options_json--><!--{"type":"Recent","source":"","tags":"","count":""}--><!--/products_options_json-->
-        <div class="u-expanded-width u-products u-products-1">
-            <div class="u-repeater u-repeater-1">
-                @foreach($places as $place)
-                <!--product_item-->
-                <div class="u-align-center u-container-style u-products-item u-repeater-item u-white u-repeater-item-2" data-href="/places/{{$place->id}}">
-                    <div class="u-container-layout u-similar-container u-container-layout-2"><!--product_image-->
-                        <img alt="" class="u-image u-image-default u-product-control u-image-2" src="storage/places/{{$place->id}}/{{$place->img}}" data-image-width="288" data-image-height="283"><!--/product_image-->
-                        <p class="u-text u-text-default u-text-2"> {{$place->name}} </p>
-                    </div>
-                </div><!--/product_item-->
-                    @endforeach
+<!-- Places -->
+<section id="one" class="wrapper alt style2">
+    @foreach($places as $place)
+         <section class="spotlight">
+            <div class="image"><img src="storage/places/{{$place->id}}/{{$place->img}}" alt="" /></div>
+            <div class="content">
+                <h2>{{$place->name}}</h2>
+{{--                <p>{{print_r($place)}}</p>--}}
+                <p>{{$place->address}}</p>
+                <a href="/places/{{$place->id}}" class="button-more">ПОДРОБНЕЕ</a>
             </div>
-        </div><!--/products-->
-    </div>
-</section>--}}
+        </section>
+
+    @endforeach
+</section>
+
+
 
 
 

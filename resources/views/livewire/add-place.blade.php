@@ -1,8 +1,7 @@
 <div class="p-6" >
-    <x-jet-button  wire:click="createShowModal">
-        {{ __('Добавить площадку') }}
-    </x-jet-button>
-
+    <ul class="actions special">
+        <li><a wire:click="createShowModal" href="#" class="button big-button">ДОБАВИТЬ ПЛОЩАДКУ</a></li>
+    </ul>
 
     <x-jet-dialog-modal wire:model="modalFormVisible">
 
