@@ -1,7 +1,7 @@
 <div>
-    <x-jet-button  wire:click="createShowModal">
-        {{ __('Добавить турнир') }}
-    </x-jet-button>
+    <a  href="#" class="button big-button" wire:click="createShowModal">
+        {{ __('СОЗДАТЬ ТУРНИР') }}
+    </a>
 
     <x-jet-dialog-modal wire:model="modalFormVisible">
         <x-slot name="title">

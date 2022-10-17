@@ -1,0 +1,38 @@
+.wrapper.style5 {
+    background-color: #FFFBE9;
+    color: #4E4852;
+
+}
+
+/* Table */
+
+.table-wrapper {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+}
+
+/* Wrapper */
+.wrapper > .inner {
+    width: 60em;
+    margin: 0 auto;
+}
+
+.tournament h4, h5{
+    color: #2E3842;
+    font-weight: 400;
+    margin-bottom: 2px;
+}
+
+.tournament {
+    padding-bottom: 40px;
+}
+
+.big-button{
+    background-color: rgba(228, 202, 64, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.51);
+    border-radius: 3px;
+
+
+
+}
+
