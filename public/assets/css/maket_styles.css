@@ -3261,7 +3261,6 @@ input, select, textarea {
 			.wrapper.style5 input[type="button"],
 			.wrapper.style5 button,
 			.wrapper.style5 .button {
-				box-shadow: inset 0 0 0 2px #dfdfdf;
 				color: #2E3842;
 			}
 

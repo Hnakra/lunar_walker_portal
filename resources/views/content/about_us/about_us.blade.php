@@ -20,7 +20,7 @@
                     <textarea name="demo-message" id="demo-message" placeholder="Задайте вопрос" rows="6"></textarea>
                 </div>
                 <div class="col-12">
-                    <input type="submit" value="Отправить" class="send-form" />
+                    <input type="submit" value="ОТПРАВИТЬ" class="button big-button" />
                 </div>
             </div>
         </form>

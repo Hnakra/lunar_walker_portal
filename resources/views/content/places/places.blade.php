@@ -21,7 +21,7 @@
                 <h2>{{$place->name}}</h2>
 {{--                <p>{{print_r($place)}}</p>--}}
                 <p>{{$place->address}}</p>
-                <a href="/places/{{$place->id}}" class="button-more">ПОДРОБНЕЕ</a>
+                <a href="/places/{{$place->id}}" class="button big-button">ПОДРОБНЕЕ</a>
             </div>
         </section>
 
