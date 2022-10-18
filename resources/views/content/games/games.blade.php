@@ -35,16 +35,19 @@
                         <td>9:10</td>
                         <td>Старкит VS Космос</td>
                         <td>0:0</td>
+                        <td><a href="#" title="информация об игре" class="points">...</a></td>
                     </tr>
                     <tr>
                         <td>9:50</td>
                         <td>Космос VS Вперед</td>
                         <td>0:0</td>
+                        <td><a href="#" title="информация об игре" class="points">...</a></td>
                     </tr>
                     <tr>
                         <td>10:30</td>
                         <td> Вперед VS Старкит</td>
                         <td>0:0</td>
+                        <td><a href="#" title="информация об игре" class="points">...</a></td>
                     </tr>
                     </tbody>
                 </table>
