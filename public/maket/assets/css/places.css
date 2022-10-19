@@ -33,19 +33,19 @@
 
 }
 
-.button-more{
-    text-decoration: none;
-    color: black;
-    background: var(--main-color);
-    padding: 15px 20px 15px 20px;
-    border-radius: 5px;
-    text-align: left !important;
-
-}
-
-.button-more:hover{
-    color: white;
-}
+/*.button-more{*/
+/*    text-decoration: none;*/
+/*    color: black;*/
+/*    background: var(--main-color);*/
+/*    padding: 15px 20px 15px 20px;*/
+/*    border-radius: 5px;*/
+/*    text-align: left !important;*/
+/**/
+/*}*/
+/**/
+/*.button-more:hover{*/
+/*    color: white;*/
+/*}*/
 
 .image img{
     max-width: 270px;

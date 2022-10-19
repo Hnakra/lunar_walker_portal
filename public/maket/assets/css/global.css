@@ -79,7 +79,7 @@ body h3{
     text-decoration: none;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1150px) {
     .menuToggle{
         visibility: hidden;
         display: none;
@@ -103,13 +103,13 @@ body h3{
     text-transform: uppercase;
     text-decoration: none;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1150px) {
     #navbar{
         visibility: hidden;
         display: none;
     }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1150px) {
 
     #navbar li:hover ul { display: block; }
     #navbar, #navbar ul{
@@ -188,8 +188,8 @@ body h3{
 /*Стиль лого*/
 .navabar h3{
     display: inline;
-
 }
+
 /*Стиль картинки профиля*/
 .navabar img{
     margin-top: 6px;
