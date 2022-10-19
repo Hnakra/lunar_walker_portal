@@ -260,3 +260,6 @@ input::-webkit-calendar-picker-indicator {
     padding-top: 15px !important;
 
 }
+.fa{
+    background-color: transparent;
+}
