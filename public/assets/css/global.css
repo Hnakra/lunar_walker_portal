@@ -204,6 +204,9 @@ body h3{
         display: none;
     }
 }
+.navabar button{
+    background-color: transparent;
+}
 
 
     /*расширение стиля для модальных окон*/
