@@ -4,19 +4,6 @@
 
 }
 
-/* Table */
-
-.table-wrapper {
-    -webkit-overflow-scrolling: touch;
-    overflow-x: auto;
-}
-
-/* Wrapper */
-.wrapper > .inner {
-    width: 60em;
-    margin: 0 auto;
-}
-
 .tournament h4, h5{
     color: #2E3842;
     font-weight: 400;
