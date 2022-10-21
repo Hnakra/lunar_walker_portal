@@ -263,3 +263,7 @@ input::-webkit-calendar-picker-indicator {
 .fa{
     background-color: transparent;
 }
+.error{
+    color: orangered;
+    margin-left: 30px;
+}
