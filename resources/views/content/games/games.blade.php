@@ -31,30 +31,21 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>9:10</td>
-                        <td>Старкит VS Космос</td>
-                        <td>0:0</td>
-                        <td><a href="#" title="информация об игре" class="points">...</a></td>
-                    </tr>
-                    <tr>
-                        <td>9:50</td>
-                        <td>Космос VS Вперед</td>
-                        <td>0:0</td>
-                        <td><a href="#" title="информация об игре" class="points">...</a></td>
-                    </tr>
-                    <tr>
-                        <td>10:30</td>
-                        <td> Вперед VS Старкит</td>
-                        <td>0:0</td>
-                        <td><a href="#" title="информация об игре" class="points">...</a></td>
-                    </tr>
+                    @foreach($tournament->games as $game)
+                        <tr>
+                            <td>{{$game->date_time}}</td>
+                            <td>{{$game->name_team_1}} VS {{$game->name_team_2}}</td>
+                            <td>{{$game->count_team_1}}:{{$game->count_team_2}}</td>
+                            <td><a href="/game/{{$game->id}}" title="информация об игре" class="points">...</a></td>
+                        </tr>
+                    @endforeach
+
                     </tbody>
                 </table>
             </div>
             <ul class="actions special">
                 <li>
-                    @livewire('add-game', ['id_tournament' => $tournament->id])
+                    @livewire('add-game', ['id_tournament' => $tournament->id, 'last_datetime' => $tournament->date_time])
                 </li>
             </ul>
             <!--ЗДЕСЬ БУДЕТ ЛИНИЯ -->
