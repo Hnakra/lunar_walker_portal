@@ -15,6 +15,22 @@ class AddGame extends Component
     public $id_tournament, $id_team_1, $id_team_2, $date, $time;
     // Переменные отображения
     public $last_datetime, $teams = [];
+    // Настройка правил валидации для нашей формы
+    protected $rules = [
+        'date' => 'required|date_format:Y-m-d',
+        'time' => 'required|date_format:H:i',
+        'id_team_1' => 'required|not_in:0',
+        'id_team_2' => 'required|not_in:0|different:id_team_1'
+    ];
+    // Настройка правил сообщений для нашей формы
+    protected $messages = [
+        'date.required' => 'Введите дату', 'date.date_format' => "Введите дату в формате Y-m-d",
+        'time.required' => 'Введите время', 'time.date_format' => "Введите время в формате hh:mm",
+        'id_team_1.required' => 'Выберите команду 1', 'id_team_1.not_in' => 'Выберите команду 1',
+        'id_team_2.required' => 'Выберите команду 2', 'id_team_2.not_in' => 'Выберите команду 2',
+        'id_team_2.different' => 'Одна и та же команда не может играть против себя же!'
+    ];
+
     public function createShowModal(){
         // возьмем команды данного турнира.
         // для этого, сделаем сложный запрос, состоящий из where и leftJoin
@@ -26,6 +42,10 @@ class AddGame extends Component
         $this->modalFormVisible = true;
     }
     public function submitShowModal(){
+        // из за неопознанного бага обновления переменной, обновляем ее содержимое
+        $this->teams = Team::where('teams_in_tournaments.id_tournament', $this->id_tournament)->leftJoin('teams_in_tournaments','teams_in_tournaments.id_team', '=','teams.id')->get();
+        // валидация всех значений, указанных в $rules
+        $this->validate();
         // добавляем новую запись в games
         // открываем базу данных и последовательно заполняем каждый элемент таблицы, кроме id
         DB::table('games')->insert([

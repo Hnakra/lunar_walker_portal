@@ -10,18 +10,23 @@
         <x-slot name="content">
             <input type="date" wire:model.defer="date"/>
             <input type="time" wire:model.defer="time"/>
+            @error('date') <span class="error">{{ $message }}</span> @enderror
+            @error('time') <span class="error">{{ $message }}</span> @enderror
+
             <select wire:model.defer="id_team_1">
                 <option value ="0" selected>1 команда</option>
                 @foreach($teams as $team)
                     <option value="{{$team->id_team}}">{{$team->name}}</option>
                 @endforeach
             </select>
+            @error('id_team_1') <span class="error">{{ $message }}</span> @enderror
             <select wire:model.defer="id_team_2">
                 <option value ="0" selected>2 команда</option>
                 @foreach($teams as $team)
                     <option value="{{$team->id_team}}">{{$team->name}}</option>
                 @endforeach
             </select>
+            @error('id_team_2') <span class="error">{{ $message }}</span> @enderror
         </x-slot>
         <x-slot name="footer">
             <x-jet-secondary-button class="button-secondary" wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
