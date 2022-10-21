@@ -8,7 +8,20 @@
             {{ __('Добавление игры') }}
         </x-slot>
         <x-slot name="content">
-             {{print_r($id_tournament)}}
+            <input type="date" wire:model.defer="date"/>
+            <input type="time" wire:model.defer="time"/>
+            <select wire:model.defer="id_team_1">
+                <option value ="0" selected>1 команда</option>
+                @foreach($teams as $team)
+                    <option value="{{$team->id_team}}">{{$team->name}}</option>
+                @endforeach
+            </select>
+            <select wire:model.defer="id_team_2">
+                <option value ="0" selected>2 команда</option>
+                @foreach($teams as $team)
+                    <option value="{{$team->id_team}}">{{$team->name}}</option>
+                @endforeach
+            </select>
         </x-slot>
         <x-slot name="footer">
             <x-jet-secondary-button class="button-secondary" wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
