@@ -20,6 +20,7 @@ Route::get('/users', [\App\Http\Controllers\Users\UsersController::class, 'index
 Route::get('/robots', [\App\Http\Controllers\Robots\RobotsController::class, 'index']);
 Route::get('/teams', [\App\Http\Controllers\Teams\TeamsController::class, 'index']);
 Route::get('/games', [\App\Http\Controllers\Games\GamesController::class, 'index']);
+Route::get('/game/{id_game}', [\App\Http\Controllers\Games\Game\GameController::class, 'index']);
 Route::get('/tournaments', [\App\Http\Controllers\Games\MyTournaments\MyTournamentsController::class, 'index']);
 Route::get('/statistic', [\App\Http\Controllers\Games\Statistics\StatisticsController::class, 'index']);
 
