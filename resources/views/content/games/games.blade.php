@@ -53,7 +53,9 @@
                 </table>
             </div>
             <ul class="actions special">
-                <li><a href="#" class="button big-button">ДОБАВИТЬ ИГРУ</a></li>
+                <li>
+                    @livewire('add-game', ['id_tournament' => $tournament->id])
+                </li>
             </ul>
             <!--ЗДЕСЬ БУДЕТ ЛИНИЯ -->
         </section>
