@@ -1,5 +1,5 @@
 <div>
-    <a  href="#" class="button big-button" wire:click="createShowModal">
+    <a  href="##" class="button big-button" wire:click="createShowModal">
         {{ __('СОЗДАТЬ ТУРНИР') }}
     </a>
 
