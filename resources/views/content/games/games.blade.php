@@ -45,7 +45,7 @@
             </div>
             <ul class="actions special">
                 <li>
-                    @livewire('add-game', ['id_tournament' => $tournament->id, 'last_datetime' => $tournament->games[count($tournament->games)-1]->date_time])
+                    @livewire('add-game', ['id_tournament' => $tournament->id, 'last_datetime' => $tournament->date_time])
                 </li>
             </ul>
             <!--ЗДЕСЬ БУДЕТ ЛИНИЯ -->
