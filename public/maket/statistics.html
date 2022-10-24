@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Spectral by HTML5 UP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--Стили макета -->
+    <link rel="stylesheet" href="assets/css/maket_styles.css" />
+    <link rel="stylesheet" href="assets/css/app.css" />
+    <!-- Стиль данной страницы -->
+    <link rel="stylesheet" href="assets/css/games.css" />
+    <!-- Стиль всех наших страниц сайта -->
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <!--  Подключение стилей для иконок font awersome  -->
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="landing is-preload">
+
+<!-- Page Wrapper -->
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <header id="header" class="alt">
+        <div class = "navabar">
+            <a href="#menu" class="menuToggle"><i class="fa fa-bars"></i></a>
+            <h3><a href="#">РОБОФУТБОЛ</a></h3>
+            <!--
+                        Меню мобильной версии
+            -->
+            <div id="menu">
+                <ul >
+                    <li><a href="#">Роботы</a></li>
+                    <li><a href="#">Площадки</a></li>
+                    <li><a href="#">Команды</a></li>
+                    <li><a href="#">Игры </a> </li>
+                    <div class = "submenu">
+                        <li><a href="#">Мои игры</a></li>
+                        <li><a href="#">Статистика</a></li>
+                    </div>
+
+                    <li><a href="#">О нас</a></li>
+                </ul>
+            </div>
+            <!--
+                        Меню компьютерной версии
+            -->
+            <div class="menu">
+                <ul id="navbar">
+                    <li><a href="#">Роботы</a></li>
+                    <li><a href="#">Площадки</a></li>
+                    <li><a href="#">Команды</a></li>
+                    <li><a href="#">Игры <i class="fas fa-angle-down"></i> </a>
+                        <div class="submenu-wrapper">
+                            <ul>
+                                <li><a href="#">Мои игры</a></li>
+                                <li><a href="#">Статистика</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="#">О нас</a></li>
+
+                </ul>
+                <a href="#"><img src="images/avatar.jpg"></a>
+
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Banner -->
+    <section id="banner">
+        <div class="inner">
+            <h2>статистика игр</h2>
+            <!--<p>Another fine responsive<br />
+                site template freebie<br />
+                crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
+        </div>
+        <a href="#one" class="more scrolly"></a>
+    </section>
+
+    <section id="one" class="wrapper style5">
+        <div class="inner">
+            <section class="tournament">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Дата</th>
+                            <th>Время</th>
+                            <th>Турнир</th>
+                            <th>Команды</th>
+                            <th>Счет</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>24.10.22</td>
+                            <td>14:50</td>
+                            <td>Робоармия-2022</td>
+                            <td>Старкит VS Космос</td>
+                            <td>2:5</td>
+                            <td><a href="/game/{{$game->id}}" title="информация об игре" class="points">...</a></td>
+                        </tr>
+                        <tr>
+                            <td>24.10.22</td>
+                            <td>15:30</td>
+                            <td>Робоармия-2022</td>
+                            <td>Космос VS Вперед</td>
+                            <td>3:2</td>
+                            <td><a href="/game/{{$game->id}}" title="информация об игре" class="points">...</a></td>
+                        </tr>
+                        <tr>
+                            <td>25.10.22</td>
+                            <td>12:30</td>
+                            <td>Робоармия-2022</td>
+                            <td>Космос VS Гречка</td>
+                            <td>2:2</td>
+                            <td><a href="/game/{{$game->id}}" title="информация об игре" class="points">...</a></td>
+                        </tr>
+                        <tr>
+                            <td>24.10.22</td>
+                            <td>16:10</td>
+                            <td>Робоармия-2022</td>
+                            <td>Старкит VS Вперед</td>
+                            <td>2:1</td>
+                            <td><a href="/game/{{$game->id}}" title="информация об игре" class="points">...</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </section>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

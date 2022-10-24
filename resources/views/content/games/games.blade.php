@@ -10,7 +10,7 @@
 {{--            <li><a href="#" class="button big-button">СОЗДАТЬ ТУРНИР</a></li>--}}
         </ul>
     </div>
-    <a href="#one" class="more scrolly">Читать далее</a>
+    <a href="#one" class="more scrolly"></a>
 </section>
 
 <section id="one" class="wrapper style5">
@@ -48,7 +48,6 @@
                     @livewire('add-game', ['id_tournament' => $tournament->id, 'last_datetime' => $tournament->date_time])
                 </li>
             </ul>
-            <!--ЗДЕСЬ БУДЕТ ЛИНИЯ -->
         </section>
         @endforeach
     </div>
