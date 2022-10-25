@@ -272,3 +272,7 @@ input::-webkit-calendar-picker-indicator {
     text-transform: uppercase;
     color: var(--dark-color);
 }
+.manage-account{
+    background-color: var(--modal-color) !important;
+    text-align: center;
+}
