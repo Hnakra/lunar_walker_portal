@@ -1837,13 +1837,13 @@ input, select, textarea {
 		-webkit-appearance: none;
 		-ms-appearance: none;
 		appearance: none;
-		background-color: #0000000A;
-		border-radius: 3px;
+		background-color: #0000000A !important;
+		border-radius: 3px !important;
 		border: none;
 		color: inherit;
 		display: block;
 		outline: 0;
-		padding: 0 1em;
+		padding: 0 1em !important;
 		text-decoration: none;
 		width: 100%;
 	}
@@ -1941,7 +1941,7 @@ input, select, textarea {
 
 			input[type="checkbox"] + label:before,
 			input[type="radio"] + label:before {
-				background: rgba(144, 144, 144, 0.25);
+				background: #0000000A;
 				border-radius: 3px;
 				content: '';
 				display: inline-block;
@@ -1951,13 +1951,13 @@ input, select, textarea {
 				line-height: 2.0625em;
 				position: absolute;
 				text-align: center;
-				top: 0;
+				top: 8px;
 				width: 2.0625em;
 			}
 
 		input[type="checkbox"]:checked + label:before,
 		input[type="radio"]:checked + label:before {
-			background: #2e3842;
+			background: var(--main-color);
 			color: #fff;
 			content: '\f00c';
 		}

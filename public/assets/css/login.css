@@ -1,0 +1,36 @@
+
+.auth-card{
+    background-color: transparent;
+}
+.title{
+    font-size: 20px;
+    padding-top: 20px;
+}
+.background-login{
+    background-image:  url("../../images/banner.jpg");
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.login-card{
+    background-color: var(--modal-color) !important;
+    color: var(--dark-color);
+}
+.label{
+    padding-top: 20px;
+}
+.link{
+    padding-right: 10px;
+}
+.remember_me{
+    margin-top: 20px;
+}
+input[type="checkbox"]{
+    display: none;
+}
+.remember_me_span{
+    margin-top: 60px;
+    position: relative;
+}
