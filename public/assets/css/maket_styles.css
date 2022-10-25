@@ -3646,7 +3646,7 @@ input, select, textarea {
 			transform: translateY(0);
 			border: none;
 			bottom: 0;
-			color: inherit;
+			color: white;
 			font-size: 0.8em;
 			height: 8.5em;
 			left: 50%;
