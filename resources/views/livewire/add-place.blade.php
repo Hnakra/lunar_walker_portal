@@ -32,10 +32,14 @@
                                  wire:model.defer="id_organizator"
                                  wire:keydown.enter="" />--}}
                     <div wire:loading wire:target="photo">Загрузка...</div>
-                    {{$s}}
                     <input type="file" wire:model="photo">
                     @error('photo') <span class="error" style="color: orangered">{{ $message }}</span> @enderror
 
+                    <x-jet-input type="text" class="mt-1 block w-3/4"
+                                 placeholder="{{ __('Описание площадки') }}"
+                                 x-ref="description"
+                                 wire:model.defer="description"
+                                 wire:keydown.enter="" />
                     <x-jet-input type="text" class="mt-1 block w-3/4"
                                  placeholder="{{ __('Адрес организации') }}"
                                  x-ref="addr_org"
