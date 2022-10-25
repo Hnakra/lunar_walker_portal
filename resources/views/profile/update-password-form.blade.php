@@ -32,7 +32,7 @@
             {{ __('Сохранено.') }}
         </x-jet-action-message>
 
-        <x-jet-button>
+        <x-jet-button class="button button-main">
             {{ __('Сохранить') }}
         </x-jet-button>
     </x-slot>

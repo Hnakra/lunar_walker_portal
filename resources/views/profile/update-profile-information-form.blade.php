@@ -1,4 +1,6 @@
-<x-jet-form-section submit="updateProfileInformation">
+<section><x-jet-form-section submit="updateProfileInformation">
+
+
     <x-slot name="title">
         {{ __('Информация профиля') }}
     </x-slot>
@@ -44,7 +46,7 @@
 
                 @if ($this->user->profile_photo_path)
                     <x-jet-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
-                        {{ __('Remove Photo') }}
+                        {{ __('Удалить фото') }}
                     </x-jet-secondary-button>
                 @endif
 
@@ -55,14 +57,14 @@
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="name" value="{{ __('ФИО') }}" />
-            <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
+            <input id="name" type="text" wire:model.defer="state.name" autocomplete="name" />
             <x-jet-input-error for="name" class="mt-2" />
         </div>
 
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="email" value="{{ __('Email') }}" />
-            <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
+            <input id="email" type="email"  wire:model.defer="state.email" />
             <x-jet-input-error for="email" class="mt-2" />
         </div>
     </x-slot>
@@ -72,8 +74,9 @@
             {{ __('Сохранено.') }}
         </x-jet-action-message>
 
-        <x-jet-button wire:loading.attr="disabled" wire:target="photo">
+        <x-jet-button class="button big-button" wire:loading.attr="disabled" wire:target="photo">
             {{ __('Сохранить') }}
         </x-jet-button>
     </x-slot>
 </x-jet-form-section>
+</section>
