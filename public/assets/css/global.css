@@ -267,3 +267,8 @@ input::-webkit-calendar-picker-indicator {
     color: orangered;
     margin-left: 30px;
 }
+.login{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--dark-color);
+}
