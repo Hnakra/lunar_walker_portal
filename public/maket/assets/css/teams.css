@@ -1,0 +1,60 @@
+/* Wrapper */
+.wrapper.style5 {
+    background-color: #FFFBE9;
+    color: #2E3842;
+}
+
+.wrapper > .inner {
+    width: 100em;
+    margin: 0 auto;
+}
+
+.tournament {
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.tournament h6{
+    font-style: normal ;
+    font-size: 40px ;
+    line-height: 40px ;
+    text-align: center;
+    letter-spacing: 15px ;
+    text-transform: uppercase ;
+}
+
+.tournament h5{
+    position: absolute;
+    font-size: 25px;
+    display: flex;
+    letter-spacing: 15px;
+}
+
+.avatar{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.block{
+    background: var(--modal-color);
+    padding: 100px 50px 100px;
+    display: flex;
+
+}
+
+.column{
+    color: #2E3842;
+    width: 50%;
+    margin: 2px;
+    text-align: left;
+    padding: 50px 0px 50px 0px;
+}
+
+.line img{
+    display: inline;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+}
