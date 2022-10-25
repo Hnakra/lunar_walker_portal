@@ -34,3 +34,6 @@ input[type="checkbox"]{
     margin-top: 60px;
     position: relative;
 }
+.buttons{
+    padding-top: 10px;
+}
