@@ -41,10 +41,6 @@ body h3{
 
 }
 
-.fa{
-    font-weight: 400 !important;
-}
-
 #banner .big-button:hover {
     opacity: 1;
     color: var(--white-color) !important;
@@ -292,4 +288,13 @@ input::-webkit-calendar-picker-indicator {
     text-decoration-line: underline;
 
     color: #2E3842;
+}
+
+.fa{
+    font-weight: 400 !important;
+}
+
+.button-edit{
+    color: var(--text-color);
+
 }
