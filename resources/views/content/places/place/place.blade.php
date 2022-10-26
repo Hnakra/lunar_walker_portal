@@ -1,45 +1,38 @@
-<section class="u-clearfix u-section-1" id="sec-47b4">
-    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <p class="u-text u-text-default u-text-1">{{$place->name}}</p>
+<!-- Banner -->
+<section id="banner">
+    <div class="inner">
+        <h2>ПЛОЩАДКа {{$place->name}}</h2>
+        <!--<p>Another fine responsive<br />
+            site template freebie<br />
+            crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
+        @if( Auth::check() && !Auth::user()->isUser())
+            <p>тут будет кнопка редактирования площадки...</p>
 
+            {{--@livewire('add-place')--}}
+        @endif
+    </div>
+    <a href="#one" class="more scrolly">Читать далее</a>
+</section>
 
-
-        <div class="u-align-center u-container-style u-products-item u-repeater-item u-white u-repeater-item-2" >
-            <div class="u-align-center u-container-layout u-similar-container u-container-layout-2"><!--product_image-->
-                <img alt="" class="u-image u-image-default u-product-control u-image-2" src="../storage/places/{{$place->id}}/{{$place->img}}" style="height: 20rem;"><!--/product_image-->
-                <p class="u-text u-text-default u-text-2"> Адрес: {{$place->address}} </p>
-                <p class="u-text u-text-default u-text-2"> <strong>Данные организатора портала</strong> </p>
-                <img src="../storage/{{$organizator->profile_photo_path}}"  style="border-radius: 9999px;width: 5rem;height: 5rem;">
-                <p class="u-text u-text-default u-text-2"> Имя: {{$organizator->name}} </p>
-                <p class="u-text u-text-default u-text-2"> Электронная почта организатора: {{$organizator->name}} </p>
-                <p class="u-text u-text-default u-text-2"> Адрес организации: {{$place->addr_org}} </p>
-                <p class="u-text u-text-default u-text-2"> Наименование юридического лица организатора: {{$place->name_urid_org}} </p>
-                <p class="u-text u-text-default u-text-2"> Сайт площадки: <a href="{{$place->site_urid_org}}">{{$place->site_urid_org}}</a> </p>
-                <p class="u-text u-text-default u-text-2"> Телефон площадки: {{$place->phone_urid_org}} </p>
-                <p class="u-text u-text-default u-text-2"> ИНН организации: {{$place->INN_urid_org}} </p>
-
-{{--                -----}}
-                @livewire('add-robot',["placeId" => $place->id])
-
-                <strong> Список роботов: </strong>
-                @foreach($robots as $robot)
-                    <div>
-                        <img src="../storage/robots/{{$robot->id}}/{{$robot->img}}"  style="margin-left: auto;margin-right: auto; border-radius: 9999px;width: 5rem;height: 5rem;">
-                        Имя робота: {{$robot->name}} <br>
-                        Добавлен: {{$robot->created_at}} <br>
-                        Последнее обновление: {{$robot->updated_at}} <br>
-                        Дополнительно: {{$robot->notation}} <br>
-                        ID владельца: {{$robot->id_master}} <br>
-                        Состояние: @if($robot->is_working)
-                            <p style="color: green"> Работает </p>
-                        @else
-                            <p style="color: red"> Не работает </p>
-                        @endif
-
-                    </div>
-
-                @endforeach
-            </div>
+<!-- Places -->
+<section id="one" >
+    <div class="block">
+        <div>
+            <img alt="" class="" src="../storage/places/{{$place->id}}/{{$place->img}}" style="height: 20rem;"><!--/product_image-->
+        </div>
+        <div class="description">
+            {{$place->description}}
         </div>
     </div>
+
+    <div class="info">
+        <p><span>Адрес: </span>{{$place->address}}</p>
+        <p><span>Организатор: </span> <a class="user" href="#">{{$organizator->name}}</a></p>
+        <p><span>Адрес организации: </span>{{$place->addr_org}}</p>
+        <p><span>Наименование юридического лица организатора: </span>{{$place->name_urid_org}}</p>
+        <p><span>Сайт площадки: </span><a class="user" href="{{$place->site_urid_org}}">{{$place->site_urid_org}}</a></p>
+        <p><span>Телефон площадки: </span>{{$place->phone_urid_org}}</p>
+        <p><span>ИНН организации: </span>{{$place->INN_urid_org}}</p>
+    </div>
+
 </section>

@@ -62,4 +62,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function isAdmin(){
+        return $this->id_role == 1;
+    }
+    public function isOrganizer(){
+        return $this->id_role == 2;
+    }
+    public function isUser(){
+        return $this->id_role == 3;
+    }
 }

@@ -1,0 +1,51 @@
+#one{
+    background-color: var(--modal-color);
+    padding: 20px 5%;
+}
+.inner p{
+    color:white;
+}
+.block{
+    display: inline;
+}
+
+.block div{
+    vertical-align: top;
+    display: inline-block;
+    width: 48%;
+}
+.description{
+    margin-left: 10px;
+}
+.description,.info p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 1.2px;
+    color: #2E3842;
+    text-align: justify;
+}
+p span{
+    font-size: 13px;
+    line-height: 19px;
+    letter-spacing: 2.88px;
+    text-transform: uppercase;
+}
+@media screen and (max-width: 736px) {
+    .block div{
+        width: 100%;
+    }
+    .description{
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+}
+.block img{
+    object-fit: cover;
+    width: 100%;
+}
+.info{
+    padding-top: 20px;
+}
+
+

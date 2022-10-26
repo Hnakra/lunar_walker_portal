@@ -13,7 +13,7 @@ body{
 }
 .bg-modal{
     padding-top: 40px !important;
-    background-color: var(--modal-color);
+    background-color: var(--modal-color) !important;
     border-radius: 5px !important;
 }
 body h2{
@@ -276,4 +276,15 @@ input::-webkit-calendar-picker-indicator {
 .manage-account{
     background-color: var(--modal-color) !important;
     text-align: center;
+}
+.user{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    /* identical to box height, or 165% */
+
+    letter-spacing: 1.2px;
+    text-decoration-line: underline;
+
+    color: #2E3842;
 }
