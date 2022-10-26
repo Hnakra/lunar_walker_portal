@@ -4,8 +4,29 @@
     color: #2E3842;
 }
 
-.wrapper > .inner {
-    width: 60em;
+#one{
+    text-align: center;
+    padding-right: 10%;
+    padding-left: 10%;
+}
+
+@media screen and (min-width: 1320px) {
+    #one{
+        padding-right: 20%;
+        padding-left: 20%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #one{
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+
+    .right-column{
+        padding-left: 0 !important;
+    }
+
 }
 
 .tournament {
@@ -39,6 +60,9 @@
 }
 
 .block{
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
     background-color: #FFFBE9;
     color: #2E3842;
     display: flex;
@@ -51,6 +75,12 @@
     padding: 50px 0px 50px 0px;
 }
 
+.right-column{
+    text-align: start;
+    /*padding-left: 30%;*/
+
+}
+
 .line img{
     display: inline;
 }
@@ -58,3 +88,4 @@
 .block-icon{
     position: relative;
 }
+
