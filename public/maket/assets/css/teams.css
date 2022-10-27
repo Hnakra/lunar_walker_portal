@@ -40,9 +40,13 @@
     text-align: center;
 }
 
+.tournament:nth-last-child(1){
+    border-bottom: none;
+}
+
 .title1 {
     color: #2E3842;
-    font-size: 40px ;
+    font-size: 35px ;
     letter-spacing: 15px;
     margin: 0;
 }
@@ -74,7 +78,7 @@
 }
 
 .column{
-    width: 250px;
+    width: 300px;
     margin: 2px;
     text-align: left;
     padding: 10px 0px 50px 0px;
