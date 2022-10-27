@@ -298,3 +298,7 @@ input::-webkit-calendar-picker-indicator {
     color: var(--text-color);
 
 }
+
+.button-edit:hover{
+    color: var(--main-color);
+}
