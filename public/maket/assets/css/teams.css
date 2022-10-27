@@ -22,12 +22,16 @@
         padding-right: 5%;
         padding-left: 5%;
     }
-
     .right-column{
         padding-left: 0 !important;
     }
-
 }
+@media screen and (max-width: 736px) {
+    .title2{
+        font-size: 20px;
+    }
+}
+
 
 .tournament {
     padding-bottom: 40px;
@@ -40,6 +44,7 @@
     color: #2E3842;
     font-size: 40px ;
     letter-spacing: 15px;
+    margin: 0;
 }
 
 .title2 {
@@ -69,20 +74,22 @@
 }
 
 .column{
-    width: 50%;
+    width: 250px;
     margin: 2px;
     text-align: left;
-    padding: 50px 0px 50px 0px;
+    padding: 10px 0px 50px 0px;
 }
 
 .right-column{
-    text-align: start;
-    /*padding-left: 30%;*/
-
+    margin-left: auto;
 }
 
 .line img{
     display: inline;
+}
+
+.edit-wrapper{
+    text-align: right;
 }
 
 .block-icon{
