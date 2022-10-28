@@ -265,6 +265,9 @@ input::-webkit-calendar-picker-indicator {
 .fa{
     background-color: transparent;
 }
+.button-edit i{
+    font-weight: 400 !important;
+}
 .error{
     color: orangered;
     margin-left: 30px;
@@ -288,10 +291,6 @@ input::-webkit-calendar-picker-indicator {
     text-decoration-line: underline;
 
     color: #2E3842;
-}
-
-.fa{
-    font-weight: 400 !important;
 }
 
 .button-edit{

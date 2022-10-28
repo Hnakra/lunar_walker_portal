@@ -25,7 +25,7 @@
                 @livewire('add-team',["current_team" => $team['team']->id])
             </div>
 
-            <div class="block">
+            <div class="team-wrapper">
                 <div class="column">
                     <h5 class="title2"><div>Игроки</div></h5>
                     @foreach($team["listUsers"] as $user)
