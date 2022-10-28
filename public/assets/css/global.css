@@ -288,3 +288,92 @@ input::-webkit-calendar-picker-indicator {
 
     color: #2E3842;
 }
+.round{
+    border-radius: 100px;
+}
+
+div.square {
+    width: 150px; /* ширина картинки */
+    height: 150px; /* высота картинки */
+    background-size: cover;
+    background-position: center center;
+}
+
+.title-modal{
+    font-size: 32px;
+    letter-spacing: 20px;
+    color: var(--text-color);
+}
+.block{
+    display: inline;
+}
+
+.block div{
+    vertical-align: top;
+    display: inline-block;
+    /*width: 48%;*/
+}
+.info{
+    margin-left: 10px;
+}
+.info p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 1.2px;
+    color: #2E3842;
+    text-align: justify;
+    margin-bottom: 10px !important;
+}
+p span{
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 2.88px;
+    text-transform: uppercase;
+}
+@media screen and (max-width: 736px) {
+    .block div{
+        width: 100%;
+    }
+    .info{
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    div.square {
+        width: 150px;
+        height: 150px;
+        background-size: cover;
+        background-position: center center;
+        margin-left: 20px;
+    }
+    .btn-edit{
+        width: 25px;
+        height: 25px;
+        color: var(--text-color);
+        background-color: transparent;
+        padding-right: 10%;
+    }
+}
+.btn-edit{
+    width: 25px;
+    height: 25px;
+    color: var(--text-color);
+    background-color: transparent;
+    float: right;
+}
+.btn-edit i{
+   font-size: 30px;
+}
+.definition-title{
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 2.88px;
+    text-transform: uppercase;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+.definition-text{
+    padding-left: 20px;
+    font-size: 16px;
+    text-transform: none;
+}
