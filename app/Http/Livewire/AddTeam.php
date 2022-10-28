@@ -39,7 +39,8 @@ class AddTeam extends Component
         $this->modalFormVisible = true;
     }
     public function addUser(){
-        array_push($this->selected_users_id, 0);
+        $this->selected_users_id->add(0);
+/*        array_push($this->selected_users_id, 0);*/
     }
     public function removeUser($index){
         unset($this->selected_users_id[$index]);

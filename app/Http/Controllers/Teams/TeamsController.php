@@ -22,7 +22,7 @@ class TeamsController extends Controller
             $listRobots = [];
             foreach ($players as $player){
                 array_push($listUsers, User::where('id', $player->id_user)->get());
-                array_push($listRobots, Robot::where('id', $player->id_robot)->get());
+                array_push($listRobots, Robot::where('id_master', $player->id_user)->get());
             }
             array_push($teamsWithPlayers, ["team" => $team, "listUsers"=>$listUsers, "listRobots"=>$listRobots]);
         }

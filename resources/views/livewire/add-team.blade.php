@@ -1,13 +1,9 @@
 <div>
 
     @if($current_team == 0)
-        <x-jet-button  wire:click="createShowModal">
-            {{ __('Добавить команду') }}
-        </x-jet-button>
+        <a href="#!" wire:click="createShowModal" class="button big-button">ДОБАВИТЬ КОМАНДУ</a>
     @else
-        <x-jet-button  wire:click="editShowModal">
-            <i class="fas fa-pen" style="color: white"></i>
-        </x-jet-button>
+        <a href="#!"  wire:click="editShowModal" class="button-edit" title="редактировать команду"><i class="fa fa-edit" style="font-size:30px"></i></a>
     @endif
 
     <x-jet-dialog-modal wire:model="modalFormVisible">
@@ -23,7 +19,7 @@
         @endif
 
         <x-slot name="content">
-            {{ __('Введите информацию о команде.') }}
+            {{ __('Введите информацию о команде') }}
             <x-jet-input type="text" class="mt-1 block w-3/4"
                          placeholder="{{ __('Название команды') }}"
                          x-ref="name"
@@ -52,15 +48,15 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
+            <x-jet-secondary-button class="button-secondary" wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
                 {{ __('Отмена') }}
             </x-jet-secondary-button>
             @if($current_team == 0)
-            <x-jet-button class="ml-3" wire:click="adding" wire:loading.attr="disabled">
+            <x-jet-button class="ml-3 button-main" wire:click="adding" wire:loading.attr="disabled">
                 {{ __('Создать команду') }}
             </x-jet-button>
             @else
-                <x-jet-button class="ml-3" wire:click="modification" wire:loading.attr="disabled">
+                <x-jet-button class="ml-3 button-main" wire:click="modification" wire:loading.attr="disabled">
                     {{ __('Редактировать команду') }}
                 </x-jet-button>
                 @if($current_team != 0)
