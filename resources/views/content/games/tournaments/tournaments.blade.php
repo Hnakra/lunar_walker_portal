@@ -18,7 +18,7 @@
             <h5>27.01.2022 12:23:00</h5>
             <p>Ваша команда Старкит участвует в турнире Робоармия-2022, на площадке Парк Партиот, дата-время: 27.01.2022 12:00. Подтвердите свое участие.</p>
 
-            <div class="table-wrapper">
+            <div>
                 <table>
                     <thead>
                     <tr>
@@ -38,7 +38,7 @@
                     </tbody>
                 </table>
                 <div class="footer-wrapper">
-                    <button class="button big-button">ПОДТВЕРДИТЬ УЧАСТИЕ</button>
+                    <a href="#" class="button big-button">ПОДТВЕРДИТЬ УЧАСТИЕ</a>
                 </div>
 
             </div>
