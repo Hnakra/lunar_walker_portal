@@ -34,13 +34,12 @@ class AddTeam extends Component
     public function editShowModal(){
         $this->users = User::all();
         $team = Team::where("id", $this->current_team)->get()->first();
-        $this->selected_users_id = Player::where("id_team", $team->id)->pluck('id_user');
+        $this->selected_users_id = Player::where("id_team", $team->id)->pluck('id_user')->toArray();
         $this->name = $team->name;
         $this->modalFormVisible = true;
     }
     public function addUser(){
-        $this->selected_users_id->add(0);
-/*        array_push($this->selected_users_id, 0);*/
+        array_push($this->selected_users_id, 0);
     }
     public function removeUser($index){
         unset($this->selected_users_id[$index]);
