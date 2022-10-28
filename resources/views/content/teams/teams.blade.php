@@ -36,9 +36,10 @@
                 <div class="column right-column">
                     <div>
                         <div><h5 class="title2">Роботы</h5></div>
-                        @foreach($team["listRobots"] as $robot)
-                        <div class="line"><img class="avatar" src="images/banner.jpg" alt="аватарка" /><span> </span><span class="text"> {{($robot->first()->name)}} </span></div>
-{{--                            {{$robot->name}}--}}
+                        @foreach($team["listRobots"] as $robots)
+                            @foreach($robots as $robot)
+                                <div class="line"><img class="avatar" src="../storage/robots/{{$robot->id}}/{{$robot->img}}" alt="аватарка" /><span> </span><span class="text"> {{($robot->name)}} </span></div>
+                            @endforeach
                         @endforeach
                     </div>
                 </div>
