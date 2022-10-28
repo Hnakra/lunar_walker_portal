@@ -2530,18 +2530,6 @@ input, select, textarea {
 			opacity: 0.25;
 		}
 
-		@media screen and (max-width: 736px) {
-
-			input[type="submit"],
-			input[type="reset"],
-			input[type="button"],
-			button,
-			.button {
-				height: 3.75em;
-				line-height: 3.75em;
-			}
-
-		}
 
 /* Features */
 

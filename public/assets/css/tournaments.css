@@ -1,0 +1,42 @@
+#one{
+    background-color: var(--modal-color);
+    color: #4E4852;
+}
+.inner p{
+    color: var(--white-color);
+}
+.not-found{
+    text-align: center;
+    color: #ED4933;
+    text-transform: uppercase;
+}
+
+.tournament h4, h5{
+    color: #2E3842;
+    font-weight: 400;
+    margin-bottom: 2px;
+}
+.tournament p{
+    color: var(--text-color);
+}
+.tournament .fa-times{
+    color: #ED4933;
+}
+td, th{
+    text-align: center !important;
+}
+.tournament {
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    margin-bottom: 40px;
+}
+.footer-wrapper{
+    text-align: center;
+}
+.tournament:nth-last-child(1){
+    border-bottom: none;
+}
+
+.points{
+    text-decoration: none;
+}
