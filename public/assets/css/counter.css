@@ -1,0 +1,17 @@
+#one{
+    background-color: var(--modal-color);
+}
+.head-button{
+    text-align: left;
+}
+.head-button i{
+    color:var(--text-color);
+    font-size: 26px;
+}
+.counter-content{
+    text-align: center;
+}
+.counter-content .fa{
+    margin: 20px;
+    color: var(--text-color);
+}
