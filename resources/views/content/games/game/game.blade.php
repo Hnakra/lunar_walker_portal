@@ -24,7 +24,7 @@
     <div class="block-game">
 
         <div id="block1">
-            <div class="rectangle3">{{$game->count_team_1}}</div>
+            <div class="rectangle3">@livewire('show-count', ["game" => $game, "number_team" => 1])</div>
             <div class="heading">{{$team_1->name}}<hr class="hr-line1"></div>
             <div class="subtitle">Состав команды</div>
             @foreach($users_team1 as $user)
@@ -39,7 +39,7 @@
 
         </div>
         <div id="block2">
-            <div class="rectangle4">{{$game->count_team_2}}</div>
+            <div class="rectangle4">@livewire('show-count', ["game" => $game, "number_team" => 2])</div>
             <div class="heading">{{$team_2->name}}<hr class="hr-line2"></div>
             <div class="subtitle">Состав команды</div>
             @foreach($users_team2 as $user)
