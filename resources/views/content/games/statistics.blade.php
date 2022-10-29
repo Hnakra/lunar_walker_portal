@@ -8,7 +8,6 @@
     </div>
     <a href="#one" class="more scrolly"></a>
 </section>
-
 <section id="one" class="wrapper style5">
     <div class="inner">
         <section class="tournament">
@@ -24,34 +23,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>24.10.22</td>
-                        <td>14:50</td>
-                        <td>Робоармия-2022</td>
-                        <td>Старкит VS Космос</td>
-                        <td>2:5</td>
-                    </tr>
-                    <tr>
-                        <td>24.10.22</td>
-                        <td>15:30</td>
-                        <td>Робоармия-2022</td>
-                        <td>Космос VS Вперед</td>
-                        <td>3:2</td>
-                    </tr>
-                    <tr>
-                        <td>25.10.22</td>
-                        <td>12:30</td>
-                        <td>Робоармия-2022</td>
-                        <td>Космос VS Гречка</td>
-                        <td>2:2</td>
-                    </tr>
-                    <tr>
-                        <td>24.10.22</td>
-                        <td>16:10</td>
-                        <td>Робоармия-2022</td>
-                        <td>Старкит VS Вперед</td>
-                        <td>2:1</td>
-                    </tr>
+                    @foreach($games as $game)
+                        <tr>
+                            <td>{{$game->date}}</td>
+                            <td>{{$game->time}}</td>
+                            <td>{{$game->tournamentName}}</td>
+                            <td>{{$game->t1_name}} VS {{$game->t2_name}}</td>
+                            <td>@livewire('show-count', ["game" => $game, "number_team" => 1]):@livewire('show-count', ["game" => $game, "number_team" => 2])</td>
+                        </tr>
+                    @endforeach
+
                     </tbody>
                 </table>
             </div>
