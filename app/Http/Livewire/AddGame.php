@@ -62,6 +62,7 @@ class AddGame extends Component
         // редирект на страницу, чтобы перерисовать ее с новыми изменениями
         redirect("/games", [\App\Http\Controllers\Games\GamesController::class, 'index']);
     }
+
     public function render()
     {
         return view('livewire.add-game');
