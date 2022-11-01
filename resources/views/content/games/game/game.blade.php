@@ -14,10 +14,10 @@
 
 </div>
 <section>
-    <div class="block-icon">
-
-        <button class="btn"><i class="fa fa-edit" style="font-size:30px"></i></button>
-    </div>
+    @if(Auth::check() && !Auth::user()->isUser())
+        {{--кнопка, при нажатии которой появляется модальное окно редактирования игры--}}
+        @livewire('add-game', ['current_game' => $game->id])
+    @endif
 </section>
 <section>
 

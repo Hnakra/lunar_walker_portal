@@ -3,7 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Models\Game;
+use App\Models\Player;
 use App\Models\Team;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
@@ -15,6 +17,7 @@ class AddGame extends Component
     public $id_tournament, $id_team_1, $id_team_2, $date, $time;
     // Переменные отображения
     public $last_datetime, $teams = [];
+    public $current_game = 0;
     // Настройка правил валидации для нашей формы
     protected $rules = [
         'date' => 'required|date_format:Y-m-d',
@@ -61,6 +64,29 @@ class AddGame extends Component
         $this->modalFormVisible = false;
         // редирект на страницу, чтобы перерисовать ее с новыми изменениями
         redirect("/games", [\App\Http\Controllers\Games\GamesController::class, 'index']);
+    }
+    public function editShowModal(){
+        $game = Game::find($this->current_game);
+        $this->id_tournament = $game->id_tournament;
+        $this->id_team_1 = $game->id_team_1;
+        $this->id_team_2 = $game->id_team_2;
+        $this->date = $game->date;
+        $this->time = $game->time;
+        $this->last_datetime = $game->last_datetime;
+        $this->teams =Team::where('teams_in_tournaments.id_tournament', $this->id_tournament)->leftJoin('teams_in_tournaments','teams_in_tournaments.id_team', '=','teams.id')->get();;
+        $this->modalFormVisible = true;
+        list($this->date, $this->time) = explode(" ", $game->date_time);
+    }
+    public function modifyShowModal(){
+        DB::table('games')->update([
+            'id_tournament' => $this->id_tournament,
+            'id_team_1' => $this->id_team_1,
+            'id_team_2' => $this->id_team_2,
+            'date_time' => $this->date." ".$this->time,
+            'created_at' => date("Y-m-d H:i:s", strtotime('now')),
+            'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
+        ]);
+        redirect( "/game/".$this->current_game, [\App\Http\Controllers\Games\Game\GameCobtroller::class, 'index']);
     }
 
     public function render()
