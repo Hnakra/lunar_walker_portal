@@ -1,7 +1,7 @@
 <div class="p-6">
-    <x-jet-button  wire:click="createShowModal">
-        {{ __('Добавить своего робота') }}
-    </x-jet-button>
+    <a href="#!" class="button big-button"  wire:click="createShowModal">
+        {{ __('ДОБАВИТЬ РОБОТА') }}
+    </a>
     <x-jet-dialog-modal wire:model="modalFormVisible">
 
         <x-slot name="title">

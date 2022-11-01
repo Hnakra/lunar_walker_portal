@@ -1,6 +1,6 @@
 <div>
-    <a href="#!" class="button big-button" wire:click="createShowModal">
-        {{ $robot->name }}
+    <a href="#!" class="" wire:click="createShowModal">
+        <b>{{ $robot->name }}</b>
     </a>
 
     <x-jet-dialog-modal wire:model="modalFormVisible">

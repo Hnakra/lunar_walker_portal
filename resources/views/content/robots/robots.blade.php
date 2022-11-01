@@ -1,7 +1,28 @@
-<br><br><br><br>
-@livewire('add-robot')
-@foreach($robots as $robot)
-    <div style="padding: 10px">
-        @livewire('show-robot', ['robot' => $robot])
+{{--<br><br><br><br>--}}
+<!-- Banner -->
+<section id="banner">
+    <div class="inner">
+        <h2>Роботы</h2>
+        <!--<p>Another fine responsive<br />
+            site template freebie<br />
+            crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
+        <ul class="actions special">
+{{--            <li><a href="#" class="button big-button">ДОБАВИТЬ РОБОТА</a></li>--}}
+            <li>@livewire('add-robot')</li>
+        </ul>
     </div>
-@endforeach
+    <a href="#one" class="more scrolly">Читать далее</a>
+</section>
+
+    <section class="cards wrapper style5">
+        @foreach($robots as $robot)
+        <div class="card">
+            <div class="round-image" style="background-image: url('../storage/robots/{{$robot->id}}/{{$robot->img}}')"></div>
+            @livewire("show-robot", ['robot' => $robot])
+            <p>{{$robot->user->name}}</p>
+            <p><small>Владелец</small></p>
+        </div>
+        @endforeach
+    </section>
+
+
