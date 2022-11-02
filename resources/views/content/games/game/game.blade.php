@@ -28,12 +28,12 @@
             <div class="heading">{{$team_1->name}}<hr class="hr-line1"></div>
             <div class="subtitle">Состав команды</div>
             @foreach($users_team1 as $user)
-            <div class="rectangle1"><a href="#" class="link-name1">{{$user->name}}</a></div>
+            <div class="rectangle1 text-in-rectangle"><a href="#" class="link-name1">{{$user->name}}</a></div>
             @endforeach
             <div class="subtitle">Роботы</div>
             @foreach($list1Robots as $robots)
                 @foreach($robots as $robot)
-                    <div class="rectangle1"><a href="#" class="link-name1"> {{($robot->name)}}</a></div>
+                    <div class="rectangle1-1 text-in-rectangle"><a href="#" class="link-name1"> {{($robot->name)}}</a></div>
                 @endforeach
             @endforeach
 
@@ -43,12 +43,12 @@
             <div class="heading">{{$team_2->name}}<hr class="hr-line2"></div>
             <div class="subtitle">Состав команды</div>
             @foreach($users_team2 as $user)
-                <div class="rectangle2"><a href="#" class="link-name2">{{$user->name}}</a></div>
+                <div class="rectangle2 text-in-rectangle"><a href="#" class="link-name2">{{$user->name}}</a></div>
             @endforeach
             <div class="subtitle">Роботы</div>
             @foreach($list2Robots as $robots)
                 @foreach($robots as $robot)
-                    <div class="rectangle2"><a href="#" class="link-name2"> {{$robot->name}}</a></div>
+                    <div class="rectangle2-2 text-in-rectangle"><a href="#" class="link-name2"> {{$robot->name}}</a></div>
                 @endforeach
             @endforeach
 
