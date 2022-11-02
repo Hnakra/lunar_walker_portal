@@ -83,10 +83,9 @@ class AddGame extends Component
             'id_team_1' => $this->id_team_1,
             'id_team_2' => $this->id_team_2,
             'date_time' => $this->date." ".$this->time,
-            'created_at' => date("Y-m-d H:i:s", strtotime('now')),
             'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
         ]);
-        redirect( "/game/".$this->current_game, [\App\Http\Controllers\Games\Game\GameCobtroller::class, 'index']);
+        redirect( "/game/".$this->current_game, [\App\Http\Controllers\Games\Game\GameController::class, 'index']);
     }
 
     public function render()
