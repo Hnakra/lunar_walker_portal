@@ -78,7 +78,7 @@ class AddGame extends Component
         list($this->date, $this->time) = explode(" ", $game->date_time);
     }
     public function modifyShowModal(){
-        DB::table('games')->update([
+        DB::table('games')->where('id', $this->current_game)->update([
             'id_tournament' => $this->id_tournament,
             'id_team_1' => $this->id_team_1,
             'id_team_2' => $this->id_team_2,
