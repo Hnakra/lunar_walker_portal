@@ -280,5 +280,10 @@ input::-webkit-calendar-picker-indicator {
     text-align: center;
 }
 
+.button-edit{
+    color: var(--text-color);
+
+}
+
 
 

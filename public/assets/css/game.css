@@ -79,6 +79,15 @@
     border-radius: 5px;
     background: rgba(0, 0, 0, 0.04);
     margin: 10px auto auto;
+    padding: 10px;
+}
+
+.rectangle1-1:nth-child(odd){
+    width: 80%;
+    height: 50px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.04);
+    margin: 10px auto auto;
 }
 
 .link-name1{
@@ -88,6 +97,14 @@
 }
 
 .rectangle2:nth-child(even){
+    width: 80%;
+    height: 50px;
+    border-radius: 5px;
+    background: #797C7F;
+    margin: 10px auto auto;
+}
+
+.rectangle2-2:nth-child(odd){
     width: 80%;
     height: 50px;
     border-radius: 5px;
@@ -141,8 +158,8 @@
     position: absolute;
     top: 30px;
     right: 5%;
-    height: 65px !important;
-    line-height: 50px !important;
+    height: 60px !important;
+    line-height: 45px !important;
 
 }
 
@@ -173,4 +190,7 @@ td {
 }
 table, tr, td {
     border: none !important;
+}
+.text-in-rectangle{
+    padding: 10px;
 }
