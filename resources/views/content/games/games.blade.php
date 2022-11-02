@@ -48,6 +48,11 @@
                     @livewire('add-game', ['id_tournament' => $tournament->id, 'last_datetime' => $tournament->date_time])
                 </li>
             </ul>
+
+            <div class="edit-wrapper">
+                <a href="#"  class="button-edit" title="редактировать турнир"><i class="fa fa-edit" style="font-size:30px"></i></a>
+            </div>
+
         </section>
         @endforeach
     </div>
