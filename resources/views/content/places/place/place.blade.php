@@ -8,7 +8,7 @@
         @if( Auth::check() && !Auth::user()->isUser())
             <p>тут будет кнопка редактирования площадки...</p>
 
-            {{--@livewire('add-place')--}}
+            @livewire('add-place', ['current_place' => $place->id])
         @endif
     </div>
     <a href="#one" class="more scrolly">Читать далее</a>
@@ -16,6 +16,9 @@
 
 <!-- Places -->
 <section id="one" >
+{{--
+    @livewire('edit-place', ['place' => $place])
+--}}
     <div class="block">
         <div>
             <img alt="" class="" src="../storage/places/{{$place->id}}/{{$place->img}}" style="height: 20rem;"><!--/product_image-->
