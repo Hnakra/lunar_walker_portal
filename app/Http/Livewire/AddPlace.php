@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Place;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -12,6 +13,7 @@ class AddPlace extends Component
     use WithFileUploads;
 
     public $modalFormVisible = false;
+    public $current_place = 0;
     public $listUsers = [];
     public $name, $address, $id_organizator, $photo, $description, $addr_org, $name_urid_org, $site_urid_org, $phone_urid_org, $INN_urid_org;
 
@@ -51,6 +53,31 @@ class AddPlace extends Component
 
     }
 
+    public function editShowModal(){
+        $place = Place::find($this->current_place);
+        $this-> name = $place->name;
+        $this-> id_organizator = $place->id_organizator;
+        $this-> photo = $place->photo;
+        $this-> description = $place->description;
+        $this-> addr_org = $place->addr_org;
+        $this-> name_urid_org = $place->name_urid_org;
+        $this-> site_urid_org = $place->site_urid_org;
+        $this-> phone_urid_org = $place->phone_urid_org;
+        $this-> INN_urid_org = $place->INN_urid_org;
+/*        $this->users = User::all();
+        $team = Team::where("id", $this->current_team)->get()->first();
+        $this->selected_users_id = Player::where("id_team", $team->id)->pluck('id_user')->toArray();
+        $this->name = $team->name;*/
+        $this->modalFormVisible = true;
+    }
+    public function modifyPlace(){
+        DB::table('places')->where("id", $this->current_place)->update([
+            'name' => $this->name,
+
+        ]);
+        redirect("/places/".$this->current_place, [\App\Http\Controllers\Teams\TeamsController::class, 'index']);
+
+    }
     /**
      * Get the view / contents that represent the component.
      *

@@ -1,14 +1,25 @@
 <div class="p-6" >
-    <ul class="actions special">
-        <li><a wire:click="createShowModal" href="#" class="button big-button">ДОБАВИТЬ ПЛОЩАДКУ</a></li>
-    </ul>
+
+    @if($current_place == 0)
+        <ul class="actions special">
+            <li><a wire:click="createShowModal" href="#" class="button big-button">ДОБАВИТЬ ПЛОЩАДКУ</a></li>
+        </ul>
+    @else
+        <ul class="actions special">
+            <li><a wire:click="editShowModal" href="#" class="button big-button">Изменить ПЛОЩАДКУ</a></li>
+        </ul>
+    @endif
 
     <x-jet-dialog-modal wire:model="modalFormVisible">
-
+        @if($current_place == 0)
                 <x-slot name="title">
                     {{ __('Добавление площадки') }}
                 </x-slot>
-
+            @else
+            <x-slot name="title">
+                {{ __('Изменение площадки') }}
+            </x-slot>
+        @endif
                 <x-slot name="content">
                     <div class="center-text"> {{ __('Введите информацию о площадке') }}</div>
                     <x-jet-input type="text" class="mt-1 block w-3/4"
@@ -71,10 +82,15 @@
                     <x-jet-secondary-button class="button-secondary" wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
                         {{ __('Отмена') }}
                     </x-jet-secondary-button>
-
+                    @if($current_place == 0)
                     <x-jet-button class="ml-3 button-main" wire:click="addingPlace" wire:loading.attr="disabled">
                         {{ __('Добавить площадку') }}
                     </x-jet-button>
+                    @else
+                        <x-jet-button class="ml-3 button-main" wire:click="modifyPlace" wire:loading.attr="disabled">
+                            {{ __('Изменить площадку') }}
+                        </x-jet-button>
+                    @endif
                 </x-slot>
     </x-jet-dialog-modal>
 </div>
