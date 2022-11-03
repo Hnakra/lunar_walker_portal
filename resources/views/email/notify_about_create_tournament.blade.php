@@ -15,12 +15,13 @@
         border-radius: 4px;
     }
 </style>
-<p>
+{{$data}}
+{{--<p>
     Дорогой {{$data->userName}}!
 </p>
 <p>
     Ваша команда "{{$data->teamName}}" участвует в турнире {{$data->tournamentName}}, на площадке {{$data->placeName}}, дата-время: {{$data->date_time}}. Подтвердите свое участие.</p>
-</p>
+</p>--}}
 
 <div style="text-align: center;">
     <a href="moon.rfbl.ru/tournaments" class="button big-button">ПОДТВЕРДИТЬ УЧАСТИЕ В ТУРНИРЕ</a>
