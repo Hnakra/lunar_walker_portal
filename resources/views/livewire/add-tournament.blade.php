@@ -29,9 +29,10 @@
 
             <input type="date" wire:model.defer="date"/>
             <input type="time" wire:model.defer="time"/>
+            @error('date') <span class="error">{{ $message }}</span> @enderror
+            @error('time') <span class="error">{{ $message }}</span> @enderror
             <div class="text-on-form">{{__('Команды')}}
             <button wire:click.prevent="addTeam" class="fa fa-plus"></button></div>
-
             @foreach($selected_teams_id as $index => $team_id)
                 <select class="child-form" wire:model="selected_teams_id.{{$index}}">
                     <option value ="0" selected>Выберите команду</option>
@@ -41,6 +42,10 @@
                 </select>
                 <button wire:click.prevent="removeTeam({{$index}})" class="fa fa-minus"></button>
             @endforeach
+            @error('selected_teams_id.*') <span class="error">{{ $message }}</span> @enderror
+            @error('users.*') <span class="error">{{ $message }}</span> @enderror
+
+
         </x-slot>
         <x-slot name="footer">
             <x-jet-secondary-button class="button-secondary" wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
