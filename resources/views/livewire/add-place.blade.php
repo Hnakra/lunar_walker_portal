@@ -6,7 +6,7 @@
         </ul>
     @else
         <ul class="actions special">
-            <li><a wire:click="editShowModal" href="#" class="button big-button">Изменить ПЛОЩАДКУ</a></li>
+            <li><a wire:click="editShowModal" href="#" class="button big-button">ИЗМЕНИТЬ ПЛОЩАДКУ</a></li>
         </ul>
     @endif
 
@@ -33,9 +33,11 @@
                                  wire:model.defer="address"
                                  wire:keydown.enter="" />
                     <select wire:model="id_organizator">
-                        @php
-                        echo implode($listUsers);
-                        @endphp
+                        <option value ="0" selected>Выберите организатора</option>
+                        @foreach($listUsers as $user)
+                            <option value="{{$user->id}}">{{$user->name}}</option>
+
+                        @endforeach
                     </select></br>
 {{--                    <x-jet-input type="email" class="mt-1 block w-3/4"
                                  placeholder="{{ __('ID организатора (Пока так)') }}"

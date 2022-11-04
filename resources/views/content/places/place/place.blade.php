@@ -6,7 +6,7 @@
             site template freebie<br />
             crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
         @if( Auth::check() && !Auth::user()->isUser())
-            <p>тут будет кнопка редактирования площадки...</p>
+            {{--<p>тут будет кнопка редактирования площадки...</p>--}}
 
             @livewire('add-place', ['current_place' => $place->id])
         @endif
