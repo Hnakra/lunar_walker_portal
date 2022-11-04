@@ -13,12 +13,9 @@ use Illuminate\Support\Facades\DB;
 class MyTournamentsController extends Controller
 {
     public function index(){
-        if(Auth::user()->isUser()) {
-            // узнаем, в каких турнирах и в числе каких команд участвует пользователь
-            $tournaments_with_user = DB::table('submit_tournaments')->where("id_user", Auth::user()->id)->get();
-        } else {
-            $tournaments_with_user = DB::table('submit_tournaments')->get();
-        }
+        // узнаем, в каких турнирах и в числе каких команд участвует пользователь
+        $tournaments_with_user = DB::table('submit_tournaments')->where("id_user", Auth::user()->id)->get();
+
         $tournaments = [];
         $i = 0;
         foreach ($tournaments_with_user as $t) {

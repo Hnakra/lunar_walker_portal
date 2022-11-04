@@ -45,22 +45,22 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            @if(Auth::user()->isUser())
-                                @if($t['is_submit'])
-                                    <div class="footer-wrapper">
-                                        УЧАСТИЕ ПОДТВЕРЖДЕНО!
-                                    </div>
-                                @else
-                                    <div class="footer-wrapper">
-                                        <a href="/tournaments/submit" class="button big-button">ПОДТВЕРДИТЬ УЧАСТИЕ</a>
-                                    </div>
+                            @if($t['is_submit'])
+                                <div class="footer-wrapper">
+                                    УЧАСТИЕ ПОДТВЕРЖДЕНО!
+                                </div>
+                            @else
+                                <div class="footer-wrapper">
+                                    <a href="/tournaments/submit" class="button big-button">ПОДТВЕРДИТЬ УЧАСТИЕ</a>
+                                </div>
 
-                                @endif
                             @endif
+
                         </div>
                     </section>
             @endforeach
         @endif
+
 
     </div>
 </section>
