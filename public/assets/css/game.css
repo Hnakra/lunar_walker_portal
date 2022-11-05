@@ -5,6 +5,12 @@
 
 }
 
+@media screen and (max-width: 400px){
+    .block-game{
+        padding: 100px 5px 100px;
+    }
+}
+
 .block-second{
     background: #F5F5F5;
     padding: 0px 50px 100px;
@@ -21,6 +27,12 @@
     padding: 50px 0px 50px 0px;
 }
 
+@media screen and (max-width: 400px){
+    #block1 {
+        width: 50%;
+    }
+}
+
 #block2 {
     background: rgba(29, 36, 42, 0.9);
     color: #FFFFFF;
@@ -29,6 +41,12 @@
     margin: 2px;
     text-align: center;
     padding: 50px 0px 50px 0px;
+}
+
+@media screen and (max-width: 400px){
+    #block2 {
+        width: 50%;
+    }
 }
 
 .hr-line1{
@@ -59,18 +77,30 @@
 }
 
 .heading{
-
     font-size: 24px;
     text-align: center;
     letter-spacing: 15px;
     text-transform: uppercase;
 }
 
-.subtitle{
+@media screen and (max-width: 400px){
+    .heading{
+        font-size: 16px !important;
+        letter-spacing: 5px !important;
+    }
+}
 
+.subtitle{
     letter-spacing: 15px;
     text-transform: uppercase;
     padding-top: 15px;
+}
+
+@media screen and (max-width: 400px){
+    .subtitle{
+        font-size: 13px !important;
+        letter-spacing: 3px !important;
+    }
 }
 
 .rectangle1:nth-child(even){
@@ -82,6 +112,12 @@
     padding: 10px;
 }
 
+@media screen and (max-width: 400px){
+    .rectangle1:nth-child(even){
+        width: 90%;
+    }
+}
+
 .rectangle1-1:nth-child(odd){
     width: 80%;
     height: 50px;
@@ -90,10 +126,24 @@
     margin: 10px auto auto;
 }
 
+@media screen and (max-width: 400px){
+    .rectangle1-1:nth-child(odd){
+        width: 90%;
+    }
+}
+
+
 .link-name1{
     color: #2E3842;
     font-size: 14px;
     letter-spacing: 5px;
+}
+
+@media screen and (max-width: 400px){
+    .link-name1{
+        font-size: 12px !important;
+        letter-spacing: 3px !important;
+    }
 }
 
 .rectangle2:nth-child(even){
@@ -104,6 +154,12 @@
     margin: 10px auto auto;
 }
 
+@media screen and (max-width: 400px){
+    .rectangle2:nth-child(even){
+        width: 90%;
+    }
+}
+
 .rectangle2-2:nth-child(odd){
     width: 80%;
     height: 50px;
@@ -112,12 +168,18 @@
     margin: 10px auto auto;
 }
 
+@media screen and (max-width: 400px){
+    .rectangle2-2:nth-child(odd){
+        width: 90%;
+    }
+}
+
 .rectangle3{
 
     width: 100px;
     height: 50px;
     background: rgba(29, 36, 42, 0.9);
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 5px 0px 0px 5px;
     font-size: 40px;
     text-transform: uppercase;
     color: #FFFFFF;
@@ -126,6 +188,14 @@
     padding-top: 0px;
     padding-bottom: 2px;
 
+}
+
+@media screen and (max-width: 400px){
+    .rectangle3 {
+        width: 50px;
+        height: 35px !important;
+        font-size: 25px !important;
+    }
 }
 
 .rectangle4{
@@ -142,10 +212,25 @@
     padding-bottom: 2px;
 }
 
+@media screen and (max-width: 400px){
+    .rectangle4 {
+        width: 50px;
+        height: 35px !important;
+        font-size: 25px !important;
+    }
+}
+
 .link-name2{
     color: #FFFFFF;
     font-size: 14px;
     letter-spacing: 5px;
+}
+
+@media screen and (max-width: 400px){
+    .link-name2{
+        font-size: 12px !important;
+        letter-spacing: 3px !important;
+    }
 }
 
 .btn {
@@ -185,6 +270,14 @@
     color: #2E3842;
     margin: auto;
 }
+
+@media screen and (max-width: 400px){
+    .table{
+        margin: 0px;
+        width: 0px;
+    }
+}
+
 td {
     background: #F5F5F5;
 }
@@ -193,4 +286,10 @@ table, tr, td {
 }
 .text-in-rectangle{
     padding: 10px;
+}
+
+@media screen and (max-width: 400px){
+    .text-in-rectangle{
+        padding: 7px !important;
+    }
 }
