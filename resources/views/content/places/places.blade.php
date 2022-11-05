@@ -5,7 +5,7 @@
         <!--<p>Another fine responsive<br />
             site template freebie<br />
             crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
-        @if( Auth::user()->id_role == 1)
+        @if(Auth::check() && !Auth::user()->isUser())
             @livewire('add-place')
         @endif
     </div>
