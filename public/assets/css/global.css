@@ -265,6 +265,9 @@ input::-webkit-calendar-picker-indicator {
 .fa{
     background-color: transparent;
 }
+.fa fa-check{
+    background-color: transparent;
+}
 .button-edit i{
     font-weight: 400 !important;
 }

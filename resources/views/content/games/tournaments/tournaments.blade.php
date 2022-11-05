@@ -39,7 +39,7 @@
                                             <td><i class="fa fa-check"></i></td>
 
                                         @else
-                                            <td><i class="fa fa-times"></i></td>
+                                            <td><i class="fa fa-question"></i></td>
                                         @endif
                                     </tr>
                                 @endforeach

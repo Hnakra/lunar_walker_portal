@@ -19,8 +19,8 @@
 .tournament p{
     color: var(--text-color);
 }
-.tournament .fa-times{
-    color: #ED4933;
+.tournament .fa-check{
+    color: #34b434;
 }
 td, th{
     text-align: center !important;
