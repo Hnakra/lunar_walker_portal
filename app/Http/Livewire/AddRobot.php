@@ -31,7 +31,6 @@ class AddRobot extends Component
             'name'=> $this->name,
             'is_working'=> $is_working,
             'id_master'=> $id_master,
-            'id_place'=> $this->placeId,
             'key'=> $this->key,
             'notation'=> $this->notation,
             'created_at' => date("Y-m-d H:i:s", strtotime('now')),
