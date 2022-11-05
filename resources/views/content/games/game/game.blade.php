@@ -7,7 +7,9 @@
             site template freebie<br />
             crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
         <ul class="actions special">
+            @if(Auth::check() && !Auth::user()->isUser())
             <li><a href="/game/{{$game->id}}/counter" class="button big-button">ВЕСТИ СЧЁТ</a></li>
+            @endif
         </ul>
     </div>
 </section>

@@ -6,7 +6,9 @@
             site template freebie<br />
             crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
         <ul class="actions special">
-            <li>@livewire('add-tournament')</li>
+            @if(Auth::check() && !Auth::user()->isUser())
+                <li>@livewire('add-tournament')</li>
+            @endif
 {{--            <li><a href="#" class="button big-button">СОЗДАТЬ ТУРНИР</a></li>--}}
         </ul>
     </div>
@@ -45,12 +47,16 @@
             </div>
             <ul class="actions special">
                 <li>
-                    @livewire('add-game', ['id_tournament' => $tournament->id, 'last_datetime' => $tournament->date_time])
+                    @if(Auth::check() && !Auth::user()->isUser())
+                        @livewire('add-game', ['id_tournament' => $tournament->id, 'last_datetime' => $tournament->date_time])
+                    @endif
                 </li>
             </ul>
 
             <div class="edit-wrapper">
+                @if(Auth::check() && !Auth::user()->isUser())
                 <a href="#"  class="button-edit" title="редактировать турнир"><i class="fa fa-edit" style="font-size:30px"></i></a>
+                @endif
             </div>
 
         </section>
