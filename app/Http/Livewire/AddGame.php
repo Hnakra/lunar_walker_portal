@@ -78,6 +78,11 @@ class AddGame extends Component
         list($this->date, $this->time) = explode(" ", $game->date_time);
     }
     public function modifyShowModal(){
+        // из за неопознанного бага обновления переменной, обновляем ее содержимое
+        $this->teams = Team::where('teams_in_tournaments.id_tournament', $this->id_tournament)->leftJoin('teams_in_tournaments','teams_in_tournaments.id_team', '=','teams.id')->get();
+
+        // валидация всех значений, указанных в $rules
+        $this->validate();
         DB::table('games')->where('id', $this->current_game)->update([
             'id_tournament' => $this->id_tournament,
             'id_team_1' => $this->id_team_1,
