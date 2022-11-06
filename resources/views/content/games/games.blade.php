@@ -54,8 +54,9 @@
             </ul>
 
             <div class="edit-wrapper">
+                {{--кнопка, при нажатии которой появляется модальное окно редактирования турнира--}}
                 @if(Auth::check() && !Auth::user()->isUser())
-                <a href="#"  class="button-edit" title="редактировать турнир"><i class="fa fa-edit" style="font-size:30px"></i></a>
+                    @livewire('add-game', ['current_tournament' => $tournament->id])
                 @endif
             </div>
 

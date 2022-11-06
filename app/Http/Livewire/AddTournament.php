@@ -6,6 +6,7 @@ use App\Mail\NotifyAboutCreateTournament;
 use App\Models\Place;
 use App\Models\Player;
 use App\Models\Team;
+use App\Models\Tournament;
 use App\Models\User;
 use App\Rules\UsersInTournamentUnique;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +25,9 @@ class AddTournament extends Component
     public $users = [];
 //    Переменные отображения
     public $places = [], $teams = [];
+
+    public $current_tournament = 0;
+
     // Настройка правил валидации для нашей формы
     protected $rules = [
         'date' => 'required|date_format:Y-m-d',
@@ -102,6 +106,32 @@ class AddTournament extends Component
     }
     public function removeTeam($index){
         unset($this->selected_teams_id[$index]);
+    }
+
+    public function editShowModal(){
+        $tournament = Tournament::find($this->current_tournament);
+
+//        $game = Game::find($this->current_game);
+//        $this->id_tournament = $game->id_tournament;
+//        $this->id_team_1 = $game->id_team_1;
+//        $this->id_team_2 = $game->id_team_2;
+//        $this->date = $game->date;
+//        $this->time = $game->time;
+//        $this->last_datetime = $game->last_datetime;
+//        $this->teams =Team::where('teams_in_tournaments.id_tournament', $this->id_tournament)->leftJoin('teams_in_tournaments','teams_in_tournaments.id_team', '=','teams.id')->get();;
+//        $this->modalFormVisible = true;
+//        list($this->date, $this->time) = explode(" ", $game->date_time);
+    }
+    public function modifyShowModal(){
+        DB::table('games')->update([
+            'id_tournament' => $this->id_tournament,
+            'id_team_1' => $this->id_team_1,
+            'id_team_2' => $this->id_team_2,
+            'date_time' => $this->date." ".$this->time,
+            'created_at' => date("Y-m-d H:i:s", strtotime('now')),
+            'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
+        ]);
+        redirect( "/game/".$this->current_game, [\App\Http\Controllers\Games\Game\GameCobtroller::class, 'index']);
     }
     public function render()
     {
