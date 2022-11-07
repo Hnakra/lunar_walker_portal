@@ -56,7 +56,7 @@
             <div class="edit-wrapper">
                 {{--кнопка, при нажатии которой появляется модальное окно редактирования турнира--}}
                 @if(Auth::check() && !Auth::user()->isUser())
-                    @livewire('add-game', ['current_tournament' => $tournament->id])
+                    @livewire('add-tournament', ['current_tournament' => $tournament->id])
                 @endif
             </div>
 

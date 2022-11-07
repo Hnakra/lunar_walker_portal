@@ -110,28 +110,27 @@ class AddTournament extends Component
 
     public function editShowModal(){
         $tournament = Tournament::find($this->current_tournament);
-
-//        $game = Game::find($this->current_game);
-//        $this->id_tournament = $game->id_tournament;
-//        $this->id_team_1 = $game->id_team_1;
-//        $this->id_team_2 = $game->id_team_2;
-//        $this->date = $game->date;
-//        $this->time = $game->time;
-//        $this->last_datetime = $game->last_datetime;
-//        $this->teams =Team::where('teams_in_tournaments.id_tournament', $this->id_tournament)->leftJoin('teams_in_tournaments','teams_in_tournaments.id_team', '=','teams.id')->get();;
-//        $this->modalFormVisible = true;
-//        list($this->date, $this->time) = explode(" ", $game->date_time);
+        $this->name = $tournament->name;
+        $this->id_place = $tournament->id_place;
+        $this->description = $tournament->description;
+        list($this->date, $this->time) = explode(" ", $tournament->date_time);
+        $this->selected_teams_id = DB::table("teams_in_tournaments")
+            ->where("id_tournament", $this->current_tournament)
+            ->get()->pluck("id_team")->toArray();
+        $this->places = Place::all();
+        $this->teams = Team::all();
+        $this->modalFormVisible = true;
     }
     public function modifyShowModal(){
-        DB::table('games')->update([
-            'id_tournament' => $this->id_tournament,
-            'id_team_1' => $this->id_team_1,
-            'id_team_2' => $this->id_team_2,
-            'date_time' => $this->date." ".$this->time,
-            'created_at' => date("Y-m-d H:i:s", strtotime('now')),
-            'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
-        ]);
-        redirect( "/game/".$this->current_game, [\App\Http\Controllers\Games\Game\GameCobtroller::class, 'index']);
+        DB::table('tournaments')->where("id", $this->current_tournament)
+            -> update([
+                'id_place' => $this->id_place,
+                'created_at' => date("Y-m-d H:i:s", strtotime('now')),
+                'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
+                'name' => $this->name,
+                'description' => $this->description,
+            ]);
+        redirect( "/game", [\App\Http\Controllers\Games\GamesController::class, 'index']);
     }
     public function render()
     {

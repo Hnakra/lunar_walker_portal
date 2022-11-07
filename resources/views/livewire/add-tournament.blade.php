@@ -1,17 +1,17 @@
 <div>
 
-    @if($current_tournament = 0)
-        <a  href="##" class="button big-button" wire:click="createShowModal">
+    @if($current_tournament == 0)
+        <a  href="#!" class="button big-button" wire:click="createShowModal">
             {{ __('СОЗДАТЬ ТУРНИР') }}
         </a>
     @else
         <div class="edit-wrapper">
-            <a href="#"  class="button-edit" title="редактировать турнир"><i class="fa fa-edit" style="font-size:30px"></i></a>
+            <a href="#!"  class="button-edit" title="редактировать турнир" wire:click="editShowModal"><i class="fa fa-edit" style="font-size:30px"></i></a>
         </div>
     @endif
 
     <x-jet-dialog-modal wire:model="modalFormVisible">
-        @if($current_tournament = 0)
+        @if($current_tournament == 0)
         <x-slot name="title">
             {{ __('Добавление турнира') }}
         </x-slot>
@@ -66,14 +66,14 @@
                 {{ __('Отмена') }}
             </x-jet-secondary-button>
 
-            @if($current_tournament = 0)
+            @if($current_tournament == 0)
             <x-jet-button class="ml-3 button-main" wire:click="submitShowModal" wire:loading.attr="disabled">
                 {{ __('Добавить турнир') }}
             </x-jet-button>
             @else
-                <x-jet-button class="ml-3 button-main" wire:click="submitShowModal" wire:loading.attr="disabled">
+                <x-jet-button class="ml-3 button-main" wire:click="modifyShowModal" wire:loading.attr="disabled">
                     {{ __('Редактировать турнир') }}
-                </x-jet-button>м
+                </x-jet-button>
             @endif
         </x-slot>
     </x-jet-dialog-modal>
