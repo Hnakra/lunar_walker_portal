@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 
 class AddPlace extends Component
@@ -77,12 +78,12 @@ class AddPlace extends Component
 
     public function editShowModal(){
         $this->listUsers = User::all();
-
         $place = Place::find($this->current_place);
         $this-> name = $place->name;
         $this-> address = $place->address;
         $this-> id_organizator = $place->id_organizator;
-        $this-> photo = $place->img;
+        copy("storage/places/$place->id/$place->img", "storage/livewire-tmp/kek-meta".base64_encode($place->img)."-.jpg");
+        $this-> photo = TemporaryUploadedFile::createFromLivewire("storage/livewire-tmp/kek-meta".base64_encode($place->img)."-.jpg");
         $this-> description = $place->description;
         $this-> addr_org = $place->addr_org;
         $this-> name_urid_org = $place->name_urid_org;
@@ -95,7 +96,6 @@ class AddPlace extends Component
     public function modifyPlace(){
 
         $this->validate();
-        $name = $this->photo->getClientOriginalName();
         DB::table('places')->where("id", $this->current_place)->update([
             'name' => $this->name,
             'address'=> $this->address,
@@ -109,7 +109,7 @@ class AddPlace extends Component
             'INN_urid_org' => $this->INN_urid_org,
             'description' => $this->description
         ]);
-        $this->photo->storeAs('public/places/'.$this->current_place, $name);
+        $this->photo->storeAs('public/places/' . $this->current_place, $this->photo->getClientOriginalName());
 
         redirect("/places/".$this->current_place, [\App\Http\Controllers\Teams\TeamsController::class, 'index']);
 
