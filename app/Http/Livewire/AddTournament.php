@@ -130,7 +130,7 @@ class AddTournament extends Component
                 'name' => $this->name,
                 'description' => $this->description,
             ]);
-        redirect( "/game", [\App\Http\Controllers\Games\GamesController::class, 'index']);
+        redirect( "/games", [\App\Http\Controllers\Games\GamesController::class, 'index']);
     }
     public function render()
     {
