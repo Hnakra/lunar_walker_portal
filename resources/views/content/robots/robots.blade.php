@@ -19,7 +19,7 @@
     <section class="cards wrapper style5">
         @foreach($robots as $robot)
         <div class="card">
-            <div class="round-image" style="background-image: url('../storage/robots/{{$robot->id}}/{{$robot->img}}')"></div>
+            <div class="round-image" style="background-image: url('{{$robot->photo}}')"></div>
             @livewire("show-robot", ['robot' => $robot])
             <p>{{$robot->user->name}}</p>
             <p><small>Владелец</small></p>

@@ -13,7 +13,8 @@
 <section class="cards wrapper style5">
     @foreach($users as $user)
         <div class="card">
-            <div class="round-image" style='background-image: url("../storage/{{$user->profile_photo_path}}")'></div>
+
+            <div class="round-image" style="background-image: url('{{$user->photo}}')"></div>
             <div><a href="/users/{{$user->id}}"><b>{{$user->name}}</b></a></div>
             @if($user->teams->count() == 1)
                 <p><small>Команда "{{$user->teams->first()->name}}"</small></p>

@@ -15,6 +15,8 @@ class UsersController extends Controller
         $items = User::all();
         foreach ($items as $user){
             $user->teams = Player::where('id_user', $user->id)->leftJoin('teams', 'teams.id', '=', 'players.id_team')->get();
+            $user->photo = is_readable("storage/$user->profile_photo_path") ? "../storage/$user->profile_photo_path" : "https://ui-avatars.com/api/?name=".$user->name."&color=7F9CF5&background=EBF4FF";
+
         }
 
         return view('pages.users',[
