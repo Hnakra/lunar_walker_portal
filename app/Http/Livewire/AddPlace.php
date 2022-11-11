@@ -16,8 +16,31 @@ class AddPlace extends Component
     public $modalFormVisible = false;
     public $current_place = 0;
     public $listUsers = [];
-    public $name, $address, $id_organizator, $photo, $description, $addr_org, $name_urid_org, $site_urid_org, $phone_urid_org, $INN_urid_org;
+    public $name, $address, $id_organizator, $photo, $description = "", $addr_org, $name_urid_org, $site_urid_org, $phone_urid_org, $INN_urid_org;
+    public $rules = [
+        'name' => 'required|min:2',
+        'address' => 'required',
+        'id_organizator' => 'required',
+        'description' => 'nullable',
+        'photo' => 'image|max:1024',
+        'addr_org' => 'required',
+        'name_urid_org' => 'required',
+        'site_urid_org' => 'required|active_url',
+        'phone_urid_org' => 'required|digits:11',
+        'INN_urid_org' => 'required|digits:10'
 
+    ];
+    public $messages = [
+        'name.required' => "Введите название площадки", 'name.min' => "Название слишком маленькое",
+        'address.required' => "Введите адрес",
+        'id_organizator.required' => "Нужно выбрать организатора",
+        'addr_org.required' => "Введите адрес организации",
+        'name_urid_org.required' => "Введите наименование юридического лица",
+        'site_urid_org.required' => "Введите сайт площадки", 'site_urid_org.active_url' => "Введите существующий сайт",
+        'phone_urid_org.required' => "Введите телефон площадки", 'phone_urid_org.digits' => "Введите номер телефона в формате 8xxxxxxxxxx",
+        'INN_urid_org.required' => "Введите ИНН организации", 'INN_urid_org.digits' => "ИНН должен содержать 10 цифр"
+
+    ];
     public function createShowModal()
     {
         $this->listUsers = User::all();
@@ -30,9 +53,7 @@ class AddPlace extends Component
     }
     public function addingPlace()
     {
-        $this->validate([
-            'photo' => 'image|max:1024', // 1MB Max
-        ]);
+        $this->validate();
         $name = $this->photo->getClientOriginalName();
         $id = DB::table('places')->insertGetId([
             'name'=> $this->name,
@@ -72,9 +93,8 @@ class AddPlace extends Component
         $this->modalFormVisible = true;
     }
     public function modifyPlace(){
-        $this->validate([
-            'photo' => 'image|max:1024', // 1MB Max
-        ]);
+
+        $this->validate();
         $name = $this->photo->getClientOriginalName();
         DB::table('places')->where("id", $this->current_place)->update([
             'name' => $this->name,
