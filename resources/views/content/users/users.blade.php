@@ -15,7 +15,8 @@
         <div class="card">
 
             <div class="round-image" style="background-image: url('{{$user->photo}}')"></div>
-            <div><a href="/users/{{$user->id}}"><b>{{$user->name}}</b></a></div>
+            @livewire('show-user', ['user' => $user])
+
             @if($user->teams->count() == 1)
                 <p><small>Команда "{{$user->teams->first()->name}}"</small></p>
             @endif
