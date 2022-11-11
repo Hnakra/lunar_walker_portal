@@ -21,8 +21,14 @@
                          wire:model.defer="key"
                          wire:keydown.enter="" />
 
-            <div wire:loading wire:target="photo">Uploading...</div>
-            <input type="file" wire:model="photo">
+            <label class="input-file">
+                <div class = "wait-load-file" wire:loading wire:target="photo">Uploading...</div>
+                <div>
+                    <input type="file" name="file" wire:model="photo">
+                    <span class="button big-button input-file-btn">Выберите фото</span>
+                    <span class="input-file-text" type="text">{{isset($photo) ? $photo->getClientOriginalName() :"Название фото"}}</span>
+                </div>
+            </label>
             @error('photo') <span class="error" style="color: orangered">{{ $message }}</span> @enderror
             <x-jet-input type="text" class="mt-1 block w-3/4"
                          placeholder="{{ __('Прочее') }}"
@@ -39,7 +45,7 @@
                 {{ __('Отмена') }}
             </x-jet-secondary-button>
 
-            <x-jet-button class="ml-3" wire:click="addingRobot" wire:loading.attr="disabled">
+            <x-jet-button class="ml-3 button-main" wire:click="addingRobot" wire:loading.attr="disabled">
                 {{ __('Добавить робота') }}
             </x-jet-button>
         </x-slot>

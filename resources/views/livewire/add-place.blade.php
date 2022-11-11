@@ -21,6 +21,8 @@
             </x-slot>
         @endif
                 <x-slot name="content">
+                    {{print_r($photo)}}
+
                     <div class="center-text"> {{ __('Введите информацию о площадке') }}</div>
                     <x-jet-input type="text" class="mt-1 block w-3/4"
                                  placeholder="{{ __('Название') }}"
@@ -47,8 +49,14 @@
                                  x-ref="id_organizator"
                                  wire:model.defer="id_organizator"
                                  wire:keydown.enter="" />--}}
-                    <div wire:loading wire:target="photo">Загрузка...</div>
-                    <input type="file" wire:model="photo">
+                    <label class="input-file">
+                        <div class = "wait-load-file" wire:loading wire:target="photo">Uploading...</div>
+                        <div>
+                            <input type="file" name="file" wire:model="photo">
+                            <span class="button big-button input-file-btn">Выберите фото</span>
+                            <span class="input-file-text" type="text">{{isset($photo) ? $photo->getClientOriginalName() :"Название фото"}}</span>
+                        </div>
+                    </label>
                     @error('photo') <span class="error" style="color: orangered">{{ $message }}</span> @enderror
 
                     <x-jet-input type="text" class="mt-1 block w-3/4"
