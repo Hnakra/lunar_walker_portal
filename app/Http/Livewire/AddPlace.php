@@ -26,7 +26,7 @@ class AddPlace extends Component
         'photo' => 'image|max:1024',
         'addr_org' => 'required',
         'name_urid_org' => 'required',
-        'site_urid_org' => 'required|active_url',
+        'site_urid_org' => 'required',
         'phone_urid_org' => 'required|digits:11',
         'INN_urid_org' => 'required|digits:10'
 
@@ -37,7 +37,7 @@ class AddPlace extends Component
         'id_organizator.required' => "Нужно выбрать организатора",
         'addr_org.required' => "Введите адрес организации",
         'name_urid_org.required' => "Введите наименование юридического лица",
-        'site_urid_org.required' => "Введите сайт площадки", 'site_urid_org.active_url' => "Введите существующий сайт",
+        'site_urid_org.required' => "Введите сайт площадки",
         'phone_urid_org.required' => "Введите телефон площадки", 'phone_urid_org.digits' => "Введите номер телефона в формате 8xxxxxxxxxx",
         'INN_urid_org.required' => "Введите ИНН организации", 'INN_urid_org.digits' => "ИНН должен содержать 10 цифр"
 
