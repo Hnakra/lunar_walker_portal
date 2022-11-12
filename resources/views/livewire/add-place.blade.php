@@ -21,7 +21,6 @@
             </x-slot>
         @endif
                 <x-slot name="content">
-                    {{print_r($photo)}}
 
                     <div class="center-text"> {{ __('Введите информацию о площадке') }}</div>
                     <x-jet-input type="text" class="mt-1 block w-3/4"
