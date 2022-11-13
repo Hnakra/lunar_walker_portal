@@ -31,7 +31,7 @@ class AddGame extends Component
         'time.required' => 'Введите время', 'time.date_format' => "Введите время в формате hh:mm",
         'id_team_1.required' => 'Выберите команду 1', 'id_team_1.not_in' => 'Выберите команду 1',
         'id_team_2.required' => 'Выберите команду 2', 'id_team_2.not_in' => 'Выберите команду 2',
-        'id_team_2.different' => 'Одна и та же команда не может играть против себя же!'
+        'id_team_2.different' => 'Одна и та же команда не может играть против себя!'
     ];
 
     public function createShowModal(){

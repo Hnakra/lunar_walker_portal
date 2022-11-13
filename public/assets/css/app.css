@@ -392,7 +392,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 0.75rem;
   padding-bottom: 0.5rem;
   padding-left: 0.75rem;
-  font-size: 1rem;
+
   line-height: 1.5rem;
   --tw-shadow: 0 0 #0000;
 }
@@ -532,19 +532,7 @@ select {
   background-color: currentColor;
 }
 
-[type='file'] {
-  background: unset;
-  border-color: inherit;
-  border-width: 0;
-  border-radius: 0;
-  padding: 0;
-  font-size: unset;
-  line-height: inherit;
-}
 
-[type='file']:focus {
-  outline: 1px auto -webkit-focus-ring-color;
-}
 
 *, ::before, ::after {
   --tw-translate-x: 0;
