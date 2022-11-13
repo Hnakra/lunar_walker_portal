@@ -28,23 +28,29 @@
                          x-ref="name"
                          wire:model.defer="name"
                          wire:keydown.enter="" />
+            @error('name') <span class="error">{{ $message }}</span> @enderror
+
+
             <select wire:model="id_place">
                 <option value ="0" selected>Выберите площадку</option>
                     @foreach($places as $place)
                         <option value="{{$place->id}}">{{$place->name}}</option>
                     @endforeach
-
             </select>
+            @error('id_place') <span class="error">{{ $message }}</span> @enderror
+
             <x-jet-input type="text" class="mt-1 block w-3/4"
                          placeholder="{{ __('Описание') }}"
                          x-ref="name"
                          wire:model.defer="description"
                          wire:keydown.enter="" />
+            @error('name') <span class="error">{{ $message }}</span> @enderror
 
             <input type="date" wire:model.defer="date"/>
             <input type="time" wire:model.defer="time"/>
             @error('date') <span class="error">{{ $message }}</span> @enderror
             @error('time') <span class="error">{{ $message }}</span> @enderror
+
             <div class="text-on-form">{{__('Команды')}}
             <button wire:click.prevent="addTeam" class="fa fa-plus"></button></div>
             @foreach($selected_teams_id as $index => $team_id)

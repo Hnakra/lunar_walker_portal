@@ -30,13 +30,20 @@ class AddTournament extends Component
 
     // Настройка правил валидации для нашей формы
     protected $rules = [
+        'name' => 'required|min:3',
+        "id_place" => "required",
+        "description" => "required",
         'date' => 'required|date_format:Y-m-d',
         'time' => 'required|date_format:H:i',
         'selected_teams_id.*' => 'distinct|not_in:0',
-        'users.*' => 'distinct'
+        'users.*' => 'distinct',
     ];
     // Настройка правил сообщений для нашей формы
     protected $messages = [
+        'name.required' => "Поле не должно быть пустым!",
+        "name.min" => "Название должно содержать не менее 3 букв",
+        "id_place.required" => "Поле не должно быть пустым!",
+        "description.required" => "Поле не должно быть пустым!",
         'date.required' => 'Введите дату', 'date.date_format' => "Введите дату в формате Y-m-d",
         'time.required' => 'Введите время', 'time.date_format' => "Введите время в формате hh:mm",
         'selected_teams_id.*.distinct' => 'Нужно выбрать разные команды',
@@ -58,6 +65,7 @@ class AddTournament extends Component
         $this->validate();
         $id_tournament = DB::table('tournaments')->insertGetId([
             'name'=> $this->name,
+            "id_place" => $this->id_place,
             'description' => $this->description,
             'date_time' => "$this->date $this->time",
             'id_place' => $this->id_place,
@@ -122,6 +130,7 @@ class AddTournament extends Component
         $this->modalFormVisible = true;
     }
     public function modifyShowModal(){
+        $this->validate();
         DB::table('tournaments')->where("id", $this->current_tournament)
             -> update([
                 'id_place' => $this->id_place,
