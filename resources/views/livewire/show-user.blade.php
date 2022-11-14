@@ -13,24 +13,29 @@
                 <div class="info">
                     <p><span>Имя пользователя: </span>{{$user->name}}</p>
                     <p><span>Дата регистрации: </span>{{$user->created_at}}</p>
-                    @isset($team)
-                        <p><span>Команды: </span>{{$team->name}}</p>
+                    @isset($teams)
+                        <p><span>Команды: </span><br/>
+                        @foreach($teams as $team)
+                        "{{$team->name}}" <br/>
+                        @endforeach
+                        </p>
                     @endisset
-                    @isset($robot)
-                        <p><span>Роботы: </span>{{$robot->name}}</p>
-                        <p><small><span>Дата регистрации: </span>{{$robot->created_at}}</small></p>
+                    @isset($robots)
+                        <p><span>Роботы: </span><br/>
+                            @foreach($robots as $robot)
+                                {{$robot->name}} <br/>
+                            @endforeach
+                        </p>
                     @endisset()
                 </div>
             </div>
-{{--            <div class="definition-title">{{ __('Роботы') }}</div>--}}
-{{--            <div class="definition-text">{{$robot->notation}}</div>--}}
-{{--                       {{$user}}--}}
         </x-slot>
+
         <x-slot name="footer">
             <x-jet-secondary-button class="button-secondary" wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
                 {{ __('НАЗАД') }}
             </x-jet-secondary-button>
-
         </x-slot>
+
     </x-jet-dialog-modal>
 </div>
