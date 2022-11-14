@@ -16,7 +16,7 @@
                     @isset($user)
                     <p><span>Владелец: </span> <a class="user" href="#">{{$user->name}}</a></p>
                     @endisset()
-                    <p><span>Дата регистраци: </span>{{$robot->created_at}}</p>
+                    <p><span>Дата регистрации: </span>{{$robot->created_at}}</p>
                     <button class="btn-edit"><i class="fa fa-edit" ></i></button>
 
                 </div>
