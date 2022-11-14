@@ -17,7 +17,11 @@
                     <p><span>Владелец: </span> <a class="user" href="#">{{$user->name}}</a></p>
                     @endisset()
                     <p><span>Дата регистрации: </span>{{$robot->created_at}}</p>
-                    <button class="btn-edit"><i class="fa fa-edit" ></i></button>
+
+                    @if(Auth::check() && !Auth::user()->isUser())
+                        @livewire('add-robot', ['current_robot' => $robot->id])
+                    @endif
+
 
                 </div>
             </div>
