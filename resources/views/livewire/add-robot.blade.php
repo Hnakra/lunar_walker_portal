@@ -21,8 +21,8 @@
 
         <x-slot name="content">
             {{ __('Введите информацию о роботе.') }}
-            <x-jet-input type="text" class="mt-1 block w-3/4"
-                         placeholder="{{ __('Имя робота') }}"
+            <x-jet-input type="text" class="mt-1 block w-3/4 required"
+                         placeholder="{{ __('Имя робота*') }}"
                          x-ref="name"
                          wire:model.defer="name"
                          wire:keydown.enter="" />

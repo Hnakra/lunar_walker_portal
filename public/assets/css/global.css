@@ -315,6 +315,14 @@ div.square {
     display: inline;
 }
 
+input.required::-webkit-input-placeholder{
+    color: orangered !important;
+}
+input.required::-moz-placeholder {
+    color: orangered !important;
+}
+
+
 .block div{
     vertical-align: top;
     display: inline-block;
