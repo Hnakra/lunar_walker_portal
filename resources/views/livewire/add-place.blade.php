@@ -23,20 +23,20 @@
                 <x-slot name="content">
 
                     <div class="center-text"> {{ __('Введите информацию о площадке') }}</div>
-                    <x-jet-input type="text" class="mt-1 block w-3/4"
+                    <x-jet-input type="text" class="mt-1 block w-3/4" required
                                  placeholder="{{ __('Название') }}"
                                  x-ref="name"
                                  wire:model.defer="name"
                                  wire:keydown.enter="" />
                     @error('name') <span class="error">{{ $message }}</span> @enderror
-                    <x-jet-input type="email" class="mt-1 block w-3/4"
+                    <x-jet-input type="text" class="mt-1 block w-3/4" required
                                  placeholder="{{ __('Адрес') }}"
                                  x-ref="address"
                                  wire:model.defer="address"
                                  wire:keydown.enter="" />
                     @error('address') <span class="error">{{ $message }}</span> @enderror
-                    <select wire:model="id_organizator">
-                        <option value ="0" selected>Выберите организатора</option>
+                    <select required wire:model="id_organizator">
+                        <option value ="" selected>Выберите организатора</option>
                         @foreach($listUsers as $user)
                             <option value="{{$user->id}}">{{$user->name}}</option>
 
@@ -53,42 +53,48 @@
                         <div>
                             <input type="file" name="file" wire:model="photo">
                             <span class="button big-button input-file-btn">Выберите фото</span>
-                            <span class="input-file-text" type="text">{{isset($photo) ? $photo->getClientOriginalName() :"Название фото"}}</span>
+                            <span class="input-file-text" type="text">
+                                @if(isset($photo))
+                                    {{$photo->getClientOriginalName()}}
+                                @else
+                                    <span class="error">Название фото</span>
+                                @endif
+                            </span>
                         </div>
                     </label>
                     @error('photo') <span class="error" style="color: orangered">{{ $message }}</span> @enderror
 
-                    <x-jet-input type="text" class="mt-1 block w-3/4"
+                    <x-jet-input type="text" class="mt-1 block w-3/4" required
                                  placeholder="{{ __('Описание площадки') }}"
                                  x-ref="description"
                                  wire:model.defer="description"
                                  wire:keydown.enter="" />
                     @error('description') <span class="error">{{ $message }}</span> @enderror
-                    <x-jet-input type="text" class="mt-1 block w-3/4"
+                    <x-jet-input type="text" class="mt-1 block w-3/4" required
                                  placeholder="{{ __('Адрес организации') }}"
                                  x-ref="addr_org"
                                  wire:model.defer="addr_org"
                                  wire:keydown.enter="" />
                     @error('addr_org') <span class="error">{{ $message }}</span> @enderror
-                    <x-jet-input type="text" class="mt-1 block w-3/4"
+                    <x-jet-input type="text" class="mt-1 block w-3/4" required
                                  placeholder="{{ __('Наименование юридического лица организатора') }}"
                                  x-ref="name_urid_org"
                                  wire:model.defer="name_urid_org"
                                  wire:keydown.enter="" />
                     @error('name_urid_org') <span class="error">{{ $message }}</span> @enderror
-                    <x-jet-input type="text" class="mt-1 block w-3/4"
+                    <x-jet-input type="text" class="mt-1 block w-3/4" required
                                  placeholder="{{ __('Сайт площадки') }}"
                                  x-ref="site_urid_org"
                                  wire:model.defer="site_urid_org"
                                  wire:keydown.enter="" />
                     @error('site_urid_org') <span class="error">{{ $message }}</span> @enderror
-                    <x-jet-input type="text" class="mt-1 block w-3/4"
+                    <x-jet-input type="text" class="mt-1 block w-3/4" required
                                  placeholder="{{ __('Телефон площадки') }}"
                                  x-ref="phone_urid_org"
                                  wire:model.defer="phone_urid_org"
                                  wire:keydown.enter="" />
                     @error('phone_urid_org') <span class="error">{{ $message }}</span> @enderror
-                    <x-jet-input type="text" class="mt-1 block w-3/4"
+                    <x-jet-input type="text" class="mt-1 block w-3/4" required
                                  placeholder="{{ __('ИНН организации') }}"
                                  x-ref="INN_urid_org"
                                  wire:model.defer="INN_urid_org"

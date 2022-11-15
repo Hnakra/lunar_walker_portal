@@ -20,7 +20,7 @@ class AddTournament extends Component
 //    Переменная открытия-закрытия формы
     public $modalFormVisible = false;
 //    Переменные формы
-    public $name, $id_place, $description, $date, $time, $selected_teams_id = [];
+    public $name, $id_place, $description="", $date, $time, $selected_teams_id = [];
     // Переменная для валидации, чтобы в выбранных командах не повторялись пользователи
     public $users = [];
 //    Переменные отображения
@@ -32,7 +32,6 @@ class AddTournament extends Component
     protected $rules = [
         'name' => 'required|min:3',
         "id_place" => "required",
-        "description" => "required",
         'date' => 'required|date_format:Y-m-d',
         'time' => 'required|date_format:H:i',
         'selected_teams_id.*' => 'distinct|not_in:0',
@@ -43,7 +42,6 @@ class AddTournament extends Component
         'name.required' => "Поле не должно быть пустым!",
         "name.min" => "Название должно содержать не менее 3 букв",
         "id_place.required" => "Поле не должно быть пустым!",
-        "description.required" => "Поле не должно быть пустым!",
         'date.required' => 'Введите дату', 'date.date_format' => "Введите дату в формате Y-m-d",
         'time.required' => 'Введите время', 'time.date_format' => "Введите время в формате hh:mm",
         'selected_teams_id.*.distinct' => 'Нужно выбрать разные команды',

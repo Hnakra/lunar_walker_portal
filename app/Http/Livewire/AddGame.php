@@ -28,7 +28,7 @@ class AddGame extends Component
     // Настройка правил сообщений для нашей формы
     protected $messages = [
         'date.required' => 'Введите дату', 'date.date_format' => "Введите дату в формате Y-m-d",
-        'time.required' => 'Введите время', 'time.date_format' => "Введите время в формате hh:mm",
+        'time.required' => 'Введите время', 'time.date_format' => "Введите время в формате Часы:Минуты",
         'id_team_1.required' => 'Выберите команду 1', 'id_team_1.not_in' => 'Выберите команду 1',
         'id_team_2.required' => 'Выберите команду 2', 'id_team_2.not_in' => 'Выберите команду 2',
         'id_team_2.different' => 'Одна и та же команда не может играть против себя!'

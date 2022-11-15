@@ -20,8 +20,8 @@
 
         <x-slot name="content">
             {{ __('Введите информацию о команде') }}
-            <x-jet-input type="text" class="mt-1 block w-3/4"
-                         placeholder="{{ __('Название команды') }}"
+            <x-jet-input type="text" class="mt-1 block w-3/4 " required
+                         placeholder="{{ __('Название команды*') }}"
                          x-ref="name"
                          wire:model.defer="name"
                          wire:keydown.enter="" />
@@ -34,8 +34,8 @@
             @endif
 
             @foreach($selected_users_id as $index => $user_id)
-                <select class="child-form" wire:model="selected_users_id.{{$index}}">
-                    <option value ="0" selected>Выберите игрока</option>
+                <select required class="child-form" wire:model="selected_users_id.{{$index}}">
+                    <option value ="" selected>Выберите игрока</option>
                     @foreach($users as $user)
                         <option value="{{$user->id}}">{{$user->name}}</option>
                     @endforeach

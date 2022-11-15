@@ -315,11 +315,17 @@ div.square {
     display: inline;
 }
 
-input.required::-webkit-input-placeholder{
-    color: orangered !important;
+input[required]:valid {
+    border: none;
 }
-input.required::-moz-placeholder {
-    color: orangered !important;
+input[required]{
+    border: 1px solid orangered;
+}
+select {
+    border: 1px solid orangered;
+}
+select:valid {
+    border: none;
 }
 
 

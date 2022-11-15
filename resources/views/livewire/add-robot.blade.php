@@ -21,8 +21,8 @@
 
         <x-slot name="content">
             {{ __('Введите информацию о роботе.') }}
-            <x-jet-input type="text" class="mt-1 block w-3/4 required"
-                         placeholder="{{ __('Имя робота*') }}"
+            <x-jet-input type="text" class="mt-1 block w-3/4" required
+                         placeholder="{{ __('Имя робота') }}"
                          x-ref="name"
                          wire:model.defer="name"
                          wire:keydown.enter="" />
@@ -37,7 +37,13 @@
                 <div>
                     <input type="file" name="file" wire:model="photo">
                     <span class="button big-button input-file-btn">Выберите фото</span>
-                    <span class="input-file-text" type="text">{{isset($photo) ? $photo->getClientOriginalName() :"Название фото"}}</span>
+                    <span class="input-file-text" type="text">
+                        @if(isset($photo))
+                            {{$photo->getClientOriginalName()}}
+                        @else
+                            <span class="error">Название фото</span>
+                        @endif
+                    </span>
                 </div>
             </label>
             @error('photo') <span class="error" style="color: orangered">{{ $message }}</span> @enderror

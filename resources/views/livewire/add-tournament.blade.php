@@ -23,7 +23,7 @@
 
         <x-slot name="content">
         <div class="center-text">{{ __('Введите информацию о турнире') }}</div>
-            <x-jet-input type="text" class="mt-1 block w-3/4"
+            <x-jet-input type="text" required class="mt-1 block w-3/4"
                          placeholder="{{ __('Название') }}"
                          x-ref="name"
                          wire:model.defer="name"
@@ -31,8 +31,8 @@
             @error('name') <span class="error">{{ $message }}</span> @enderror
 
 
-            <select wire:model="id_place">
-                <option value ="0" selected>Выберите площадку</option>
+            <select required wire:model="id_place">
+                <option value="">Выберите площадку</option>
                     @foreach($places as $place)
                         <option value="{{$place->id}}">{{$place->name}}</option>
                     @endforeach
@@ -44,18 +44,17 @@
                          x-ref="name"
                          wire:model.defer="description"
                          wire:keydown.enter="" />
-            @error('name') <span class="error">{{ $message }}</span> @enderror
 
-            <input type="date" wire:model.defer="date"/>
-            <input type="time" wire:model.defer="time"/>
+            <input type="date"  wire:model.defer="date"  required/>
+            <input type="time" wire:model.defer="time" required/>
             @error('date') <span class="error">{{ $message }}</span> @enderror
             @error('time') <span class="error">{{ $message }}</span> @enderror
 
             <div class="text-on-form">{{__('Команды')}}
             <button wire:click.prevent="addTeam" class="fa fa-plus"></button></div>
             @foreach($selected_teams_id as $index => $team_id)
-                <select class="child-form" wire:model="selected_teams_id.{{$index}}">
-                    <option value ="0" selected>Выберите команду</option>
+                <select required class="child-form" wire:model="selected_teams_id.{{$index}}">
+                    <option value="">Выберите команду</option>
                     @foreach($teams as $team)
                         <option value="{{$team->id}}">{{$team->name}}</option>
                     @endforeach
