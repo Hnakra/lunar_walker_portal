@@ -15,8 +15,8 @@ class ShowRobot extends Component
 
     public function createShowModal(){
         $this->user = User::find($this->robot->id_master);
-//        $user = User::where('id', $this->robot->id_master)->get()->first();
-//        $user = DB::table('users')->where('id', $this->robot->id_master)->get()->first();
+        $this->robot->photo = is_readable("storage/robots/$this->robot->id/$this->robot->img") ? "../storage/robots/$this->robot->id/$this->robot->img" : "https://ui-avatars.com/api/?name=".$this->robot->name."&color=7F9CF5&background=EBF4FF";
+
         $this->modalFormVisible = true;
     }
 

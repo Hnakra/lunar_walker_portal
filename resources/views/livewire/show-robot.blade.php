@@ -9,8 +9,8 @@
 
         </x-slot>
         <x-slot name="content">
-            <div class="block">
-                <div class="square round" style="background-image: url('../storage/robots/{{$robot->id}}/{{$robot->img}}');"></div>
+            <div class="">
+                <div class="square round" style="background-image: url('{{$robot->photo}}');"></div>
                 <div class="info">
                     <p><span>Название: </span>{{$robot->name}}</p>
                     @isset($user)

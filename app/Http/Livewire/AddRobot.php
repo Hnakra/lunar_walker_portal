@@ -52,9 +52,10 @@ class AddRobot extends Component
         $this->name = $robot->name;
         $this->key = $robot->key;
         $this->notation = $robot->notation;
-/*        copy("storage/robots/$robot->id/$robot->img", "storage/livewire-tmp/kek-meta".base64_encode($robot->img)."-.jpg");
-        $this->photo = TemporaryUploadedFile::createFromLivewire("storage/livewire-tmp/kek-meta".base64_encode($robot->img)."-.jpg");*/
-
+        if(is_readable("storage/robots/$robot->id/$robot->img")) {
+            copy("storage/robots/$robot->id/$robot->img", "storage/livewire-tmp/kek-meta" . base64_encode($robot->img) . "-.jpg");
+            $this->photo = TemporaryUploadedFile::createFromLivewire("storage/livewire-tmp/kek-meta" . base64_encode($robot->img) . "-.jpg");
+        }
         $this->modalFormVisible = true;
     }
     public function modifyShowModal(){
