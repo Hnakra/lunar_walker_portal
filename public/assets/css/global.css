@@ -424,6 +424,19 @@ p span{
     background-position: center center;
 }
 
+.container{
+    width: 40%; /* Ширина области */
+    height: 350px; /* Высота области */
+    margin: 0; /* Обнуляем отступы */
+    overflow: hidden; /* Прячем всё за пределами */
+    min-width: 400px; /* Минимальная ширина */
+    min-height: 200px;
+}
+container img {
+    width: 100%; /* Ширина изображений */
+    margin: -10% 0 0 0; /* Сдвигаем вверх */
+}
+
 .card{
     width: 200px;
     color: black;
