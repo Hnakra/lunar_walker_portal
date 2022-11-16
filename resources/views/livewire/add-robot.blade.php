@@ -58,6 +58,12 @@
 
 
         <x-slot name="footer">
+            <div class="remove-button">
+                @if($current_robot != 0)
+                    @livewire('remove-robot',['current_robot' => $current_robot])
+                @endif
+            </div>
+
             <x-jet-secondary-button wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
                 {{ __('Отмена') }}
             </x-jet-secondary-button>

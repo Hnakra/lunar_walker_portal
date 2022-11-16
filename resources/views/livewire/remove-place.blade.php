@@ -4,14 +4,15 @@
     </button>
     <x-jet-dialog-modal wire:model="modalFormVisible" >
         <x-slot name="title">
-            {{ __('Удаление команды') }}
+            {{ __('Удаление площадки') }}
         </x-slot>
 
         <x-slot name="content">
-            {{ __('Подтвердите удаление команды.') }}
+            {{ __('Подтвердите удаление площадки.') }}
             <div class="error">
                 {{$errorMessage}}
             </div>
+
         </x-slot>
 
         <x-slot name="footer">
@@ -19,7 +20,7 @@
                 {{ __('Отмена') }}
             </x-jet-secondary-button>
             <x-jet-button class="ml-3 button-main remove" wire:click="remove" wire:loading.attr="disabled">
-                {{ __('Удалить команду') }}
+                {{ __('Удалить площадку') }}
             </x-jet-button>
 
 

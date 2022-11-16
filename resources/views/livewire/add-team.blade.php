@@ -48,6 +48,12 @@
         </x-slot>
 
         <x-slot name="footer">
+            <div class="remove-button">
+                @if($current_team != 0)
+                    @livewire('remove-team',["current_team" => $current_team])
+                @endif
+            </div>
+
             <x-jet-secondary-button class="button-secondary" wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
                 {{ __('Отмена') }}
             </x-jet-secondary-button>
@@ -59,9 +65,7 @@
                 <x-jet-button class="ml-3 button-main" wire:click="modification" wire:loading.attr="disabled">
                     {{ __('Редактировать команду') }}
                 </x-jet-button>
-                @if($current_team != 0)
-                    @livewire('remove-team',["current_team" => $current_team])
-                @endif
+
             @endif
         </x-slot>
     </x-jet-dialog-modal>

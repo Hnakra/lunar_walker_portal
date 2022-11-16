@@ -327,12 +327,20 @@ select {
 select:valid {
     border: none;
 }
-
+.remove-button{
+    margin-right: auto;
+}
+.rm{
+    background-color: transparent;
+}
+.remove{
+    background-color: orangered !important;
+    color: var(--white-color) !important;
+}
 
 .block div{
     vertical-align: top;
     display: inline-block;
-    /*width: 48%;*/
 }
 .info{
     margin-left: 10px;

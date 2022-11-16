@@ -42,6 +42,14 @@
             @error('id_team_2') <span class="error">{{ $message }}</span> @enderror
         </x-slot>
         <x-slot name="footer">
+
+            <div class="remove-button">
+                @if($current_game != 0)
+                    @livewire('remove-game',["current_game" => $current_game])
+                @endif
+            </div>
+
+
             <x-jet-secondary-button class="button-secondary" wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
                 {{ __('Отмена') }}
             </x-jet-secondary-button>
