@@ -13,9 +13,25 @@ use Illuminate\Support\Facades\DB;
 class MyTournamentsController extends Controller
 {
     public function index(){
-        // узнаем, в каких турнирах и в числе каких команд участвует пользователь
-        $tournaments_with_user = DB::table('submit_tournaments')->where("id_user", Auth::user()->id)->get();
+        $tournaments = [];
+        if(Auth::user()->isUser()){
+            $tournaments = $this->getUserData();
+        }
+        if(Auth::user()->isAdmin()){
+            $tournaments = $this->getAdminData();
+        }
 
+        return view('pages.tournaments',[
+            'tournaments' => $tournaments
+        ]);
+    }
+    public function submit(){
+        DB::table('submit_tournaments')->where("id_user", Auth::user()->id)->update(['is_submit' => true]);
+        return redirect('/tournaments');
+    }
+    // узнаем, в каких турнирах и в числе каких команд участвует пользователь
+    private function getUserData(){
+        $tournaments_with_user = DB::table('submit_tournaments')->where("id_user", Auth::user()->id)->get();
         $tournaments = [];
         $i = 0;
         foreach ($tournaments_with_user as $t) {
@@ -32,13 +48,30 @@ class MyTournamentsController extends Controller
             $tournaments[$i]['is_submit'] = $t->is_submit;
             $i++;
         }
+        return $tournaments;
+    }
 
-        return view('pages.tournaments',[
-            'tournaments' => $tournaments
-        ]);
+    private function getAdminData(){
+        $tournaments = Tournament::select(DB::raw("tournaments.*, places.name as placeName"))
+            ->leftJoin('places', "places.id", '=', 'tournaments.id_place')
+            ->get();
+        $i=0;
+        foreach($tournaments as $t){
+            $tournaments[$i]['teams'] = DB::table('teams_in_tournaments')
+                ->where('id_tournament', $t->id)
+                ->leftJoin('teams', "teams_in_tournaments.id_team", '=', 'teams.id')
+                ->get();
+            foreach ($tournaments[$i]['teams'] as $team){
+                $team->players = Player::select(DB::raw("users.*, submit_tournaments.is_submit as is_submit"))
+                    ->where('players.id_team', $team->id)
+                    ->where('submit_tournaments.id_tournament', $t->id)
+                    ->leftJoin('users', 'players.id_user', '=', 'users.id')
+                    ->leftJoin('submit_tournaments', 'submit_tournaments.id_user', '=', 'users.id')
+                    ->get();
+            }
+            $i++;
+        }
+        return $tournaments;
     }
-    public function submit(){
-        DB::table('submit_tournaments')->where("id_user", Auth::user()->id)->update(['is_submit' => true]);
-        return redirect('/tournaments');
-    }
+
 }
