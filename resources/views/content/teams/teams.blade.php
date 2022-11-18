@@ -14,7 +14,7 @@
 {{--                <li><a href="#" class="button big-button">ДОБАВИТЬ КОМАНДУ</a></li>--}}
             </ul>
         </div>
-        <a href="#one" class="more scrolly"></a>
+        <a href="#one" class="more scrolly">Читать далее</a>
     </section>
 
     <section id="one" class="wrapper style5">
