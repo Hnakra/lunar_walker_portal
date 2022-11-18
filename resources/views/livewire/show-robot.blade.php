@@ -18,7 +18,7 @@
                     @endisset()
                     <p><span>Дата регистрации: </span>{{$robot->created_at}}</p>
 
-                    @if(Auth::check() && !Auth::user()->isUser())
+                    @if(Auth::check() && Auth::user()->isOwnerOrAdmin($robot->id_master))
                         @livewire('add-robot', ['current_robot' => $robot->id])
                     @endif
 

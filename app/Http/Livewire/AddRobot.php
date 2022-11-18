@@ -45,6 +45,8 @@ class AddRobot extends Component
         $this->photo->storeAs('public/robots/'.$id, $photoName);
 
         $this->modalFormVisible = false;
+        redirect( "/robots/", [\App\Http\Controllers\Robots\RobotsController::class, 'index']);
+
     }
 
     public function editShowModal(){
@@ -57,6 +59,7 @@ class AddRobot extends Component
             $this->photo = TemporaryUploadedFile::createFromLivewire("storage/livewire-tmp/kek-meta" . base64_encode($robot->img) . "-.jpg");
         }
         $this->modalFormVisible = true;
+
     }
     public function modifyShowModal(){
         $robot = Robot::find($this->current_robot);
