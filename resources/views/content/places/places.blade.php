@@ -16,7 +16,7 @@
 <section id="one" class="wrapper alt style2">
     @foreach($places as $place)
          <section class="spotlight">
-            <div class="container"><img src="storage/places/{{$place->id}}/{{$place->img}}" alt="" /></div>
+             <div class="container" style="background-image: url('storage/places/{{$place->id}}/{{$place->img}}')"></div>
             <div class="content">
                 <h2>{{$place->name}}</h2>
 {{--                <p>{{print_r($place)}}</p>--}}

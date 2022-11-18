@@ -134,8 +134,8 @@
 
 
 .link-name1{
-    color: #2E3842;
-    font-size: 14px;
+    color: #2E3842 !important;
+    font-size: 14px !important;
     letter-spacing: 5px;
 }
 
@@ -221,8 +221,8 @@
 }
 
 .link-name2{
-    color: #FFFFFF;
-    font-size: 14px;
+    color: #FFFFFF !important;
+    font-size: 14px !important;
     letter-spacing: 5px;
 }
 
@@ -292,4 +292,11 @@ table, tr, td {
     .text-in-rectangle{
         padding: 7px !important;
     }
+}
+.link-name1.show-modal{
+    color: black !important;
+
+}
+.link-name2.show-modal{
+    color: #FFFFFF !important;
 }

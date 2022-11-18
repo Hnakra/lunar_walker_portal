@@ -423,20 +423,21 @@ p span{
     background-size: cover;
     background-position: center center;
 }
-
+@media screen and (min-width: 1000px) {
+    .container{
+        height: 350px !important;
+    }
+}
 .container{
-    width: 40%; /* Ширина области */
-    height: 350px; /* Высота области */
-    margin: 0; /* Обнуляем отступы */
-    overflow: hidden; /* Прячем всё за пределами */
-    min-width: 400px; /* Минимальная ширина */
-    min-height: 200px;
+    height: 200px;
+    width: 40%;
+    background-size: cover;
+    background-position: center center;
 }
 container img {
     width: 100%; /* Ширина изображений */
     margin: -10% 0 0 0; /* Сдвигаем вверх */
 }
-
 .card{
     width: 200px;
     color: black;
@@ -535,4 +536,7 @@ container img {
     margin-top: 0 !important;
     color: black;
 }
-
+.show-modal{
+    text-decoration-line: underline;
+    cursor: pointer;
+}

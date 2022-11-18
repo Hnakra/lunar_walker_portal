@@ -1,5 +1,5 @@
 <div>
-    <a wire:click="createShowModal" href = "#!"><b>{{$user->name}}</b></a>
+    <a wire:click="createShowModal" class="show-modal">{{$user->name}}</a>
 
     <x-jet-dialog-modal wire:model="modalFormVisible">
         <x-slot name="title">
