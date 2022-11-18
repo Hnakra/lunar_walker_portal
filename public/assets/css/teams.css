@@ -46,17 +46,29 @@
 
 .title1 {
     color: #2E3842;
-    font-size: 35px ;
+    font-size: 28px;
     letter-spacing: 15px;
     margin: 0;
 }
 
 .title2 {
     color: #2E3842;
-    font-size: 25px;
+    font-size: 24px;
     letter-spacing: 15px;
 }
-
+@media screen and (max-width: 400px) {
+    .title1 {
+        font-size: 18px !important;
+        letter-spacing: 10px !important;
+    }
+    .title2 {
+        font-size: 16px !important;
+        etter-spacing: 10px !important;
+    }
+    .text {
+        font-size: 14px !important;
+    }
+}
 .text{
     font-size: 18px;
     text-decoration-line: underline;
