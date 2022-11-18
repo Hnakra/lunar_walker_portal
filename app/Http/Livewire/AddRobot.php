@@ -20,8 +20,7 @@ class AddRobot extends Component
     public $name, $key="", $photo, $notation="";
     protected $rules = [
         'photo' => 'image|max:1024', // 1MB Max
-        'name' => 'required|min:2',
-        'key' => 'required|min:3'
+        'name' => 'required|min:2'
     ];
     public $messages = [
         'name.required' => "Введите имя робота!", 'name.min' => "Имя робота слишком маленькое!"
@@ -66,6 +65,7 @@ class AddRobot extends Component
 
     }
     public function modifyShowModal(){
+        $this->validate();
         $robot = Robot::find($this->current_robot);
         $photoName = $this->photo->getClientOriginalName();
         $is_working = $robot->is_working;

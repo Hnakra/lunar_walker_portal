@@ -47,7 +47,7 @@
                     </span>
                 </div>
             </label>
-{{--            @error('photo') <span class="error" style="color: orangered">{{ $message }}</span> @enderror--}}
+            @error('photo') <span class="error" style="color: orangered">{{ $message }}</span> @enderror
             <x-jet-input type="text" class="mt-1 block w-3/4"
                          placeholder="{{ __('Прочее') }}"
                          x-ref="notation"
