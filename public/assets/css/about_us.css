@@ -18,7 +18,9 @@
     width: 270px;
     height: 270px;
 }
-
+.block-about-us{
+    font-size: 18px;
+}
 input::-webkit-input-placeholder { color: rgba(78, 72, 82, 0.5) !important;}
 input::-moz-placeholder { color: rgba(78, 72, 82, 0.5) !important;}
 textarea::-webkit-input-placeholder { color: rgba(78, 72, 82, 0.5) !important;}
@@ -69,6 +71,7 @@ textarea{
 .footer-form{
     padding-top: 10px;
 }
+
 @media screen and (max-width: 736px) {
     .send-form{
         padding: 0px 15px 5px 15px !important;

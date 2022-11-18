@@ -6,7 +6,7 @@
             site template freebie<br />
             crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
     </div>
-    <a href="#one" class="more scrolly"></a>
+    <a href="#one" class="more scrolly">Читать далее</a>
 </section>
 <section id="one" class="wrapper style5">
     <div class="inner">
