@@ -1,4 +1,4 @@
-<div>
+<div class="component">
     <a wire:click="createShowModal" class="show-modal">{{$user->name}}</a>
 
     <x-jet-dialog-modal wire:model="modalFormVisible">

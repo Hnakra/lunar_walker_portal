@@ -100,4 +100,6 @@
 .block-icon{
     position: relative;
 }
-
+.component{
+    display: inline;
+}

@@ -30,7 +30,9 @@
 
     <div class="info">
         <p><span>Адрес: </span>{{$place->address}}</p>
-        <p><span>Организатор: </span> <a class="user" href="#">{{$organizator->name}}</a></p>
+        <p><span>Организатор: </span>
+            @livewire('show-user', ['user' => $organizator])
+        </p>
         <p><span>Адрес организации: </span>{{$place->addr_org}}</p>
         <p><span>Наименование юридического лица организатора: </span>{{$place->name_urid_org}}</p>
         <p><span>Сайт площадки: </span><a class="user" href="{{$place->site_urid_org}}">{{$place->site_urid_org}}</a></p>

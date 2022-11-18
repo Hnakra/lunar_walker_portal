@@ -1,4 +1,4 @@
-<div>
+<div class="component">
     <a class="show-modal" wire:click="createShowModal">
         {{ $robot->name }}
     </a>
@@ -14,7 +14,7 @@
                 <div class="info">
                     <p><span>Название: </span>{{$robot->name}}</p>
                     @isset($user)
-                    <p><span>Владелец: </span> <a class="user" href="#">{{$user->name}}</a></p>
+                    <p><span>Владелец: </span>{{$user->name}}</p>
                     @endisset()
                     <p><span>Дата регистрации: </span>{{$robot->created_at}}</p>
 

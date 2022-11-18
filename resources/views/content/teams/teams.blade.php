@@ -33,7 +33,9 @@
                 <div class="column">
                     <h5 class="title2"><div>Игроки</div></h5>
                     @foreach($team["listUsers"] as $user)
-                    <div class="line"><img class="avatar" src="{{$user -> first() -> profile_photo_url}}" alt="аватарка" /><span> </span><span class="text">{{ $user->first()->name }}</span></div>
+                        <div class="line"><img class="avatar" src="{{$user ->photo}}" alt="аватарка" />
+                            <span class="text"> @livewire('show-user', ['user' => $user])</span>
+                        </div>
                     @endforeach
                 </div>
 {{--                {{print_r($team["listRobots"])}}--}}
@@ -42,7 +44,9 @@
                         <div><h5 class="title2">Роботы</h5></div>
                         @foreach($team["listRobots"] as $robots)
                             @foreach($robots as $robot)
-                                <div class="line"><img class="avatar" src="../storage/robots/{{$robot->id}}/{{$robot->img}}" alt="аватарка" /><span> </span><span class="text"> {{($robot->name)}} </span></div>
+                                <div class="line"><img class="avatar" src="{{$robot->photo}}" alt="аватарка" />
+                                    <span class="text"> @livewire("show-robot", ['robot' => $robot]) </span>
+                                </div>
                             @endforeach
                         @endforeach
                     </div>
