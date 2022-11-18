@@ -3,15 +3,19 @@
 
     <x-jet-dialog-modal wire:model="modalFormVisible">
         <x-slot name="title">
-            <h2 class="title-modal">{{ __('ПОЛЬЗОВАТЕЛЬ') }}</h2>
+            @isset($user->initials)
+            @foreach ($user->initials as $initial)
+                <div class="title-modal-user">{{$initial}}</div>
+            @endforeach
+            @endisset
 
         </x-slot>
         <x-slot name="content">
-            <div class="block">
+            <div class="block-show-user">
 {{--                <div class="square round" style="background-image: url('../storage/users/{{$user->id}}/{{$user->img}}');"></div>--}}
                 <div class="round-image" style="background-image: url('{{$user->photo}}')"></div>
                 <div class="info">
-                    <p><span>Имя пользователя: </span>{{$user->name}}</p>
+{{--                    <p><span>Имя пользователя: </span>{{$user->name}}</p>--}}
                     <p><span>Дата регистрации: </span>{{$user->created_at}}</p>
                     @isset($teams)
                         <p><span>Команды: </span><br/>

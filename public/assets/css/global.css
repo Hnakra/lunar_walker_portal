@@ -311,8 +311,19 @@ div.square {
     letter-spacing: 20px;
     color: var(--text-color);
 }
+.title-modal-user{
+    font-size: 28px;
+    letter-spacing: 20px;
+    color: var(--text-color);
+    text-transform: uppercase;
+    padding-bottom: 15px;
+}
 .block{
     display: inline;
+}
+.block-show-user{
+    display: inline;
+    padding-top: 35px;
 }
 
 input[required]:valid {

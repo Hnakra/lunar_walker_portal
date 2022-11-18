@@ -22,6 +22,7 @@ class ShowUser extends Component
             ->where("players.id_user",$this->user->id)
             ->leftJoin('teams', 'teams.id', '=', 'players.id_team')
             ->get();
+        $this->user->initials = explode(" ", $this->user->name);
         $this->modalFormVisible = true;
     }
     public function closeModal(){
