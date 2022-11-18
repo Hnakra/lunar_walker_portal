@@ -77,3 +77,8 @@ textarea{
         padding: 0px 15px 5px 15px !important;
     }
 }
+@media screen and (max-width: 400px) {
+    #one {
+        padding: 100px 10px 50px 10px !important;
+    }
+}
