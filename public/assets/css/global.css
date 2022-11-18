@@ -41,6 +41,14 @@ body h3{
 
 }
 
+@media screen and (max-width: 480px){
+    #banner .big-button{
+        padding: 5px 2px;
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+}
+
 #banner .big-button:hover {
     opacity: 1;
     color: var(--white-color) !important;
