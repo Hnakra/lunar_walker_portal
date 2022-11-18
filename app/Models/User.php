@@ -72,4 +72,7 @@ class User extends Authenticatable
     public function isUser(){
         return $this->id_role == 3;
     }
+    public function isOwnerOrAdmin($id_compare){
+        return !Auth::user()->isUser() || Auth::user()->id == $id_compare;
+    }
 }
