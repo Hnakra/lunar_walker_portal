@@ -85,7 +85,7 @@
             </tr>
             <tr>
                 <td class="subtitle">Организатор</td>
-                <td align="right"><a href="#" class="link-name1">{{$organizer->name}}</a></td>
+                <td align="right"><div class="link-name1">@livewire('show-user', ['user' => $organizer])</div></td>
             </tr>
 
         </table>
