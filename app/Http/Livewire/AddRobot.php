@@ -17,10 +17,14 @@ class AddRobot extends Component
 
     public $current_robot = 0;
     public $modalFormVisible = false;
-    public $name, $key, $photo, $notation;
+    public $name, $key="", $photo, $notation="";
     protected $rules = [
         'photo' => 'image|max:1024', // 1MB Max
-
+        'name' => 'required|min:2',
+        'key' => 'required|min:3'
+    ];
+    public $messages = [
+        'name.required' => "Введите имя робота!", 'name.min' => "Имя робота слишком маленькое!"
     ];
 
     public function createShowModal(){

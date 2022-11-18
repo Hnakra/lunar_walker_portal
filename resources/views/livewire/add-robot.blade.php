@@ -26,12 +26,13 @@
                          x-ref="name"
                          wire:model.defer="name"
                          wire:keydown.enter="" />
+            @error('name') <span class="error" style="color: orangered">{{ $message }}</span> @enderror
             <x-jet-input type="text" class="mt-1 block w-3/4"
                          placeholder="{{ __('Уникальный ключ робота') }}"
                          x-ref="key"
                          wire:model.defer="key"
                          wire:keydown.enter="" />
-
+{{--            @error('key') <span class="error" style="color: orangered">{{ $message }}</span> @enderror--}}
             <label class="input-file">
                 <div class = "wait-load-file" wire:loading wire:target="photo">Uploading...</div>
                 <div>
@@ -46,7 +47,7 @@
                     </span>
                 </div>
             </label>
-            @error('photo') <span class="error" style="color: orangered">{{ $message }}</span> @enderror
+{{--            @error('photo') <span class="error" style="color: orangered">{{ $message }}</span> @enderror--}}
             <x-jet-input type="text" class="mt-1 block w-3/4"
                          placeholder="{{ __('Прочее') }}"
                          x-ref="notation"
