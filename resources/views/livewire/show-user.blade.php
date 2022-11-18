@@ -32,7 +32,7 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-jet-secondary-button class="button-secondary" wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
+            <x-jet-secondary-button class="button-secondary" wire:click="closeModal" wire:loading.attr="disabled">
                 {{ __('НАЗАД') }}
             </x-jet-secondary-button>
         </x-slot>

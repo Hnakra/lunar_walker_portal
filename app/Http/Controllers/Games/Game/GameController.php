@@ -28,12 +28,18 @@ class GameController extends Controller
         $users_robots1 = Player::where('id_team', $game->id_team_1)->get();
 
         $list1Robots = [];
+        $list1Users = [];
+
         foreach ($users_team1 as $user){
+            array_push($list1Users, User::find( $user->id_user));
             array_push($list1Robots, Robot::where('id_master', $user->id_user)->get());
         }
 
         $list2Robots = [];
+        $list2Users = [];
+
         foreach ($users_team2 as $user){
+            array_push($list2Users, User::find( $user->id_user));
             array_push($list2Robots, Robot::where('id_master', $user->id_user)->get());
         }
 
@@ -41,8 +47,8 @@ class GameController extends Controller
             'game' => $game,
             'team_1' => $information_team1,
             'team_2' => $information_team2,
-            'users_team1' => $users_team1,
-            'users_team2' => $users_team2,
+            'users_team1' =>  $list1Users,
+            'users_team2' =>  $list2Users,
             'list1Robots' => $list1Robots,
             'list2Robots' => $list2Robots,
             'tournament' => $tournament,

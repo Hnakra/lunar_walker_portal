@@ -11,9 +11,10 @@ class PlaceController extends Controller
 {
     public function index($id){
         $place = Place::where('id', $id)->get()->first();
-        $organizator = User::addSelect([
-            'id' => Place::select('id_organizator')->where('id_organizator', 'users.id')
-        ])->get()->first();
+//        $organizator = User::addSelect([
+//            'id' => Place::select('id_organizator')->where('id_organizator', 'users.id')
+//        ])->get()->first();
+        $organizator = User::find($place->id_organizator);
         return view('pages.place',[
             'place' => $place,
             'organizator' => $organizator,

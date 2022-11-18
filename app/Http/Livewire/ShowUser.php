@@ -24,6 +24,11 @@ class ShowUser extends Component
             ->get();
         $this->modalFormVisible = true;
     }
+    public function closeModal(){
+        $this->teams = [];
+        $this->modalFormVisible = false;
+
+    }
 
     public function render()
     {
