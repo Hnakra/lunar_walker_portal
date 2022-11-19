@@ -71,7 +71,7 @@ class AddPlace extends Component
             'INN_urid_org' => $this->INN_urid_org,
             'description' => $this->description
         ]);
-        $this->photo->storeAs('public/places/'.$id, $name);
+        $this->photo->storeAs('places/'.$id, $name);
 
         $this->modalFormVisible = false;
 
@@ -85,7 +85,7 @@ class AddPlace extends Component
         $this-> id_organizator = $place->id_organizator;
         $hash = str()->random(30);
         copy("storage/places/$place->id/$place->img", "storage/livewire-tmp/$hash-meta".base64_encode($place->img)."-.jpg");
-        $this-> photo = TemporaryUploadedFile::createFromLivewire("storage/livewire-tmp/$hash-meta".base64_encode($place->img)."-.jpg");
+        $this-> photo = TemporaryUploadedFile::createFromLivewire("public/livewire-tmp/$hash-meta".base64_encode($place->img)."-.jpg");
         $this-> description = $place->description;
         $this-> addr_org = $place->addr_org;
         $this-> name_urid_org = $place->name_urid_org;
@@ -111,7 +111,7 @@ class AddPlace extends Component
             'INN_urid_org' => $this->INN_urid_org,
             'description' => $this->description
         ]);
-        $this->photo->storeAs('public/places/' . $this->current_place, $this->photo->getClientOriginalName());
+        $this->photo->storeAs('places/' . $this->current_place, $this->photo->getClientOriginalName());
 
         redirect("/places/".$this->current_place, [\App\Http\Controllers\Teams\TeamsController::class, 'index']);
 
