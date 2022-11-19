@@ -71,7 +71,7 @@ class AddPlace extends Component
             'INN_urid_org' => $this->INN_urid_org,
             'description' => $this->description
         ]);
-        $this->photo->storeAs('places/'.$id, $name);
+        $this->photo->storeAs('public/places/'.$id, $name);
 
         $this->modalFormVisible = false;
 
@@ -111,7 +111,7 @@ class AddPlace extends Component
             'INN_urid_org' => $this->INN_urid_org,
             'description' => $this->description
         ]);
-        $this->photo->storeAs('places/' . $this->current_place, $this->photo->getClientOriginalName());
+        $this->photo->storeAs('public/places/' . $this->current_place, $this->photo->getClientOriginalName());
 
         redirect("/places/".$this->current_place, [\App\Http\Controllers\Teams\TeamsController::class, 'index']);
 

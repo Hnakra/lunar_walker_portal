@@ -47,7 +47,7 @@ class AddRobot extends Component
             'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
             'img' => $photoName,
         ]);
-        $this->photo->storeAs('robots/'.$id, $photoName);
+        $this->photo->storeAs('public/robots/'.$id, $photoName);
 
         $this->modalFormVisible = false;
         redirect( "/robots/", [\App\Http\Controllers\Robots\RobotsController::class, 'index']);
@@ -83,7 +83,7 @@ class AddRobot extends Component
                 'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
                 'img' => $photoName,
         ]);
-        $this->photo->storeAs('robots/'.$this->current_robot, $photoName);
+        $this->photo->storeAs('public/robots/'.$this->current_robot, $photoName);
 
         redirect( "/robots/", [\App\Http\Controllers\Robots\RobotsController::class, 'index']);
     }
