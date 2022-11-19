@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 use Livewire\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
+use function Livewire\str;
 
 class AddRobot extends Component
 {
@@ -45,7 +46,7 @@ class AddRobot extends Component
             'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
             'img' => $photoName,
         ]);
-        $this->photo->storeAs('public/robots/'.$id, $photoName);
+        $this->photo->storeAs('robots/'.$id, $photoName);
 
         $this->modalFormVisible = false;
         redirect( "/robots/", [\App\Http\Controllers\Robots\RobotsController::class, 'index']);
@@ -58,8 +59,9 @@ class AddRobot extends Component
         $this->key = $robot->key;
         $this->notation = $robot->notation;
         if(is_readable("storage/robots/$robot->id/$robot->img")) {
-            copy("storage/robots/$robot->id/$robot->img", "storage/livewire-tmp/kek-meta" . base64_encode($robot->img) . "-.jpg");
-            $this->photo = TemporaryUploadedFile::createFromLivewire("storage/livewire-tmp/kek-meta" . base64_encode($robot->img) . "-.jpg");
+            $hash = str()->random(30);
+            copy("storage/robots/$robot->id/$robot->img", "storage/livewire-tmp/$hash-meta" . base64_encode($robot->img) . "-.jpg");
+            $this->photo = TemporaryUploadedFile::createFromLivewire("storage/livewire-tmp/$hash-meta" . base64_encode($robot->img) . "-.jpg");
         }
         $this->modalFormVisible = true;
 
@@ -80,7 +82,7 @@ class AddRobot extends Component
                 'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
                 'img' => $photoName,
         ]);
-        $this->photo->storeAs('public/robots/'.$this->current_robot, $photoName);
+        $this->photo->storeAs('robots/'.$this->current_robot, $photoName);
 
         redirect( "/robots/", [\App\Http\Controllers\Robots\RobotsController::class, 'index']);
     }
