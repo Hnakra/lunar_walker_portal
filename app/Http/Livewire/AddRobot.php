@@ -24,7 +24,8 @@ class AddRobot extends Component
         'name' => 'required|min:2'
     ];
     public $messages = [
-        'name.required' => "Введите имя робота!", 'name.min' => "Имя робота слишком маленькое!"
+        'name.required' => "Введите имя робота!", 'name.min' => "Имя робота должно быть не меньше 2-х символов!",
+        'photo.image' => "Добавьте фото робота!", 'photo.max' => "Размер фото большой! Добавьте фото меньшего размера!"
     ];
 
     public function createShowModal(){

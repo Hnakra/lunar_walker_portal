@@ -75,7 +75,7 @@
                 </x-jet-button>
             @else
                 <x-jet-button class="ml-3 button-main" wire:click="modifyShowModal" wire:loading.attr="disabled">
-                {{ __('Изменить робота') }}
+                {{ __('Сохранить изменения') }}
                 </x-jet-button>
             @endif
         </x-slot>
