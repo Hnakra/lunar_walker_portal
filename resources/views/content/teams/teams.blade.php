@@ -25,6 +25,8 @@
             <h4 class="title1">команда "{{$team['team']->name}}"</h4>
             <div class="edit-wrapper">
                 @if(Auth::check() && !Auth::user()->isUser())
+                    @livewire('remove-team',["current_team" => $team['team']->id])
+
                     @livewire('add-team',["current_team" => $team['team']->id])
                 @endif
             </div>

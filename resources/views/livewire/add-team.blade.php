@@ -1,4 +1,4 @@
-<div>
+<div class="edit-wrapper">
 
     @if($current_team == 0)
         <a href="#!" wire:click="createShowModal" class="button big-button">ДОБАВИТЬ КОМАНДУ</a>
@@ -48,11 +48,6 @@
         </x-slot>
 
         <x-slot name="footer">
-            <div class="remove-button">
-                @if($current_team != 0)
-                    @livewire('remove-team',["current_team" => $current_team])
-                @endif
-            </div>
 
             <x-jet-secondary-button class="button-secondary" wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
                 {{ __('Отмена') }}

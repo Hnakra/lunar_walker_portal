@@ -1,18 +1,27 @@
 .block-game{
-    background: #F5F5F5;
-    padding: 100px 50px 100px;
+    background: var(--modal-color);
+    padding: 30px 50px 100px;
     display: flex;
 
 }
+.edit-bar{
+    padding: 30px 50px 0 0 ;
+    text-align: right;
+    background-color: var(--modal-color);
+}
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 700px){
     .block-game{
         padding: 100px 5px 100px;
+    }
+    .edit-bar{
+        padding: 30px 5px 0 0 ;
+
     }
 }
 
 .block-second{
-    background: #F5F5F5;
+    background: var(--modal-color);
     padding: 0px 50px 100px;
 
 }
@@ -22,12 +31,11 @@
     color: #2E3842;
     float: left;
     width: 49%;
-    margin: 2px;
     text-align: center;
     padding: 50px 0px 50px 0px;
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 700px){
     #block1 {
         width: 50%;
     }
@@ -38,12 +46,11 @@
     color: #FFFFFF;
     float: right;
     width: 49%;
-    margin: 2px;
     text-align: center;
     padding: 50px 0px 50px 0px;
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 700px){
     #block2 {
         width: 50%;
     }
@@ -83,7 +90,7 @@
     text-transform: uppercase;
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 700px){
     .heading{
         font-size: 16px !important;
         letter-spacing: 5px !important;
@@ -96,7 +103,7 @@
     padding-top: 15px;
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 700px){
     .subtitle{
         font-size: 13px !important;
         letter-spacing: 3px !important;
@@ -112,7 +119,7 @@
     padding: 10px;
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 700px){
     .rectangle1:nth-child(even){
         width: 90%;
     }
@@ -126,7 +133,7 @@
     margin: 10px auto auto;
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 700px){
     .rectangle1-1:nth-child(odd){
         width: 90%;
     }
@@ -139,7 +146,7 @@
     letter-spacing: 5px;
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 700px){
     .link-name1{
         font-size: 12px !important;
         letter-spacing: 3px !important;
@@ -154,7 +161,7 @@
     margin: 10px auto auto;
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 700px){
     .rectangle2:nth-child(even){
         width: 90%;
     }
@@ -168,7 +175,7 @@
     margin: 10px auto auto;
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 700px){
     .rectangle2-2:nth-child(odd){
         width: 90%;
     }
@@ -190,7 +197,7 @@
 
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 700px){
     .rectangle3 {
         width: 50px;
         height: 35px !important;
@@ -212,7 +219,7 @@
     padding-bottom: 2px;
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 700px){
     .rectangle4 {
         width: 50px;
         height: 35px !important;
@@ -226,7 +233,7 @@
     letter-spacing: 5px;
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 700px){
     .link-name2{
         font-size: 12px !important;
         letter-spacing: 3px !important;
@@ -263,15 +270,17 @@
     position: relative;
     padding-bottom: 20px;
 }
-
+td{
+    background: var(--modal-color) !important;
+}
 .table{
-    background: #F5F5F5;
+    background: var(--modal-color);
     width: 65%;
     color: #2E3842;
     margin: auto;
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 700px){
     .table{
         margin: 0px;
         width: 0px;
@@ -288,7 +297,7 @@ table, tr, td {
     padding: 10px;
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 700px){
     .text-in-rectangle{
         padding: 7px !important;
     }

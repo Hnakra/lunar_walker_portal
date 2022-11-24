@@ -1,7 +1,10 @@
-<div>
-    <button class="rm" wire:click="confirmRemove">
-        <i class="fas fa-trash" ></i>
-    </button>
+<div class="remove-button">
+    <div class="delete-wrapper">
+        <a href="#!" wire:click="confirmRemove" class="button-delete" title="удалить игру">
+            <i class="fas fa-trash-alt" style="font-size:30px"></i>
+        </a>
+    </div>
+
     <x-jet-dialog-modal wire:model="modalFormVisible" >
         <x-slot name="title">
             {{ __('Удаление робота') }}

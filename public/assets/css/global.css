@@ -276,8 +276,23 @@ input::-webkit-calendar-picker-indicator {
 .fa fa-check{
     background-color: transparent;
 }
+
+.edit-wrapper{
+    display: inline;
+    float: right;
+}
+.delete-wrapper{
+    display: inline;
+}
 .button-edit i{
+    margin-left: 20px;
     font-weight: 400 !important;
+}
+.button-delete i{
+    color: var(--text-color);
+}
+.button-delete i:hover{
+    color: var(--main-color);
 }
 .error{
     color: orangered;
@@ -353,7 +368,7 @@ select:valid {
     border: none;
 }
 .remove-button{
-    margin-right: auto;
+    display: inline;
 }
 .rm{
     background-color: transparent;

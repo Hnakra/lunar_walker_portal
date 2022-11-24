@@ -1,10 +1,10 @@
-<div class="p-6">
+<div class="edit-wrapper">
     @if($current_robot == 0)
     <a href="#!" class="button big-button"  wire:click="createShowModal">
         {{ __('ДОБАВИТЬ РОБОТА') }}
     </a>
     @else
-    <button class="btn-edit"><i class="fa fa-edit" wire:click="editShowModal"></i></button>
+        <a href ="#!" class="button-edit"><i class="fa fa-edit" style="font-size:30px" wire:click="editShowModal"></i></a>
     @endif
 
     <x-jet-dialog-modal wire:model="modalFormVisible">
@@ -59,11 +59,6 @@
 
 
         <x-slot name="footer">
-            <div class="remove-button">
-                @if($current_robot != 0)
-                    @livewire('remove-robot',['current_robot' => $current_robot])
-                @endif
-            </div>
 
             <x-jet-secondary-button wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
                 {{ __('Отмена') }}

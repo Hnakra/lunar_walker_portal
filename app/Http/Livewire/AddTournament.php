@@ -62,7 +62,6 @@ class AddTournament extends Component
         $this->validate();
         $id_tournament = DB::table('tournaments')->insertGetId([
             'name'=> $this->name,
-            "id_place" => $this->id_place,
             'description' => $this->description,
             'date_time' => "$this->date $this->time",
             'id_place' => $this->id_place,
@@ -99,7 +98,7 @@ class AddTournament extends Component
 
                 ];
                 // Позже, ВКЛЮЧИТЬ ОБРАТНО
-                // Mail::to(User::find($player->id_user)->email)->send(new NotifyAboutCreateTournament($data));
+                Mail::to(User::find($player->id_user)->email)->send(new NotifyAboutCreateTournament($data));
             }
         }
         $this->modalFormVisible = true;
@@ -136,6 +135,40 @@ class AddTournament extends Component
                 'name' => $this->name,
                 'description' => $this->description,
             ]);
+
+        DB::table('teams_in_tournaments')->where('id_tournament', $this->current_tournament)->delete();
+        foreach ($this->selected_teams_id as $team_id){
+            DB::table('teams_in_tournaments')->insert([
+                'id_tournament' => $this->current_tournament,
+                'id_team' => $team_id,
+                'created_at' => date("Y-m-d H:i:s", strtotime('now')),
+                'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
+            ]);
+            // обрати внимание: новые субмиты не создаются!
+           /* $players = Player::select(DB::raw("players.*, users.name, teams.name as teamName"))->where('id_team', $team_id)
+                ->leftJoin('users', 'players.id_user', '=', 'users.id')
+                ->leftJoin('teams', 'players.id_team', '=', 'teams.id')
+                ->get();
+            foreach ($players as $player) {
+                DB::table('submit_tournaments')->insert([
+                    'id_tournament' => $id_tournament,
+                    'id_team' => $team_id,
+                    'id_user' => $player->id_user,
+                    'is_submit' => false,
+                    'created_at' => date("Y-m-d H:i:s", strtotime('now')),
+                    'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
+                ]);
+                $data = [
+                    "userName" => $player->name,
+                    "teamName" => $player->teamName,
+                    "tournamentName" => $this->name,
+                    "placeName" => Place::find($this->id_place)->name,
+                    "date_time" => "$this->date $this->time"
+
+                ];
+            }*/
+        }
+
         redirect( "/games", [\App\Http\Controllers\Games\GamesController::class, 'index']);
     }
     public function render()
