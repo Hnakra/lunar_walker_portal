@@ -6,8 +6,13 @@ use App\Models\Game;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
+/**
+ * Class EditCount, выводит форму для счета игры судьей
+ * @package App\Http\Livewire
+ */
 class EditCount extends Component
 {
+    // переменные данных игры и истории счета
     public $game, $log;
 
     public function render()
@@ -16,6 +21,10 @@ class EditCount extends Component
         return view('livewire.edit-count');
     }
 
+    /**
+     * добавление команде +1 балл
+     * @param $num_team
+     */
     public function plus($num_team)
     {
         if ($num_team == 1) {
@@ -29,6 +38,10 @@ class EditCount extends Component
         $this->refresh();
     }
 
+    /**
+     * снятие 1 балла команде
+     * @param $num_team
+     */
     public function minus($num_team)
     {
         if ($this->game->count_team_1 != 0 && $num_team == 1 || $this->game->count_team_2 != 0 && $num_team == 2) {
@@ -44,6 +57,11 @@ class EditCount extends Component
         }
     }
 
+    /**
+     * добавление сообщения в историю изменения счета
+     * @param $id_team
+     * @param $difference - сообщение в логе
+     */
     private function push_in_log($id_team, $difference)
     {
         DB::table('counter_log')->insert([
@@ -55,6 +73,9 @@ class EditCount extends Component
         ]);
     }
 
+    /**
+     * обновление данных на форме
+     */
     private function refresh()
     {
         $this->game = Game::select(DB::raw('games.* , T1.name as t1_name, T2.name as t2_name'))

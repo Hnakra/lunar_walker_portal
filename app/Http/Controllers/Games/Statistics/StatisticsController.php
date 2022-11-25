@@ -7,6 +7,10 @@ use App\Models\Game;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class StatisticsController, получает данные и выводит их на странице Статистика
+ * @package App\Http\Controllers\Games\Statistics
+ */
 class StatisticsController extends Controller
 {
     public function index(){

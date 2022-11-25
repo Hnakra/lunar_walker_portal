@@ -12,6 +12,10 @@ use App\Models\Tournament;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+/**
+ * Class GameController , получает данные и выводит их на странице Игра
+ * @package App\Http\Controllers\Games\Game
+ */
 class GameController extends Controller
 {
     public function index($id_game){

@@ -14,6 +14,10 @@ use Mail;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
+/**
+ * Class AddTournament, выводит модальное окно создания и редактирования сущности, сохраняет изменения
+ * @package App\Http\Livewire
+ */
 class AddTournament extends Component
 {
 //    Переменная открытия-закрытия формы
@@ -24,10 +28,10 @@ class AddTournament extends Component
     public $users = [];
 //    Переменные отображения
     public $places = [], $teams = [];
-
+    // Переменная состояния, редактируется ли сущность (а также id сущности)
     public $current_tournament = 0;
 
-    // Настройка правил валидации для нашей формы
+    // Настройка правил валидации для формы
     protected $rules = [
         'name' => 'required|min:3',
         "id_place" => "required",
@@ -36,7 +40,7 @@ class AddTournament extends Component
         'selected_teams_id.*' => 'distinct|not_in:0',
         'users.*' => 'distinct',
     ];
-    // Настройка правил сообщений для нашей формы
+    // Настройка правил сообщений для формы
     protected $messages = [
         'name.required' => "Поле не должно быть пустым!",
         "name.min" => "Название должно содержать не менее 3 букв",
@@ -47,11 +51,13 @@ class AddTournament extends Component
         'selected_teams_id.*.not_in' => 'Нужно выбрать команды',
         'users.*.distinct' => 'Пользователи в командах не должны повторяться!',
     ];
+    // метод вызова модельного окна для создания сущности
     public function createShowModal(){
         $this->places = $this->getPlaces();
         $this->teams = Team::all();
         $this->modalFormVisible = true;
     }
+    // метод сохранения новой сущности, редирект
     public function submitShowModal(){
         $this->users = [];
         foreach($this->selected_teams_id as $team_id){
@@ -105,12 +111,15 @@ class AddTournament extends Component
         redirect("/games", [\App\Http\Controllers\Games\GamesController::class, 'index']);
 
     }
+    // метод добавления команды на форму
     public function addTeam(){
         array_push($this->selected_teams_id, 0);
     }
+    // метод удаление команды с формы
     public function removeTeam($index){
         unset($this->selected_teams_id[$index]);
     }
+    // метод вызова модельного окна для изменения сущности
 
     public function editShowModal(){
         $tournament = Tournament::find($this->current_tournament);
@@ -125,6 +134,8 @@ class AddTournament extends Component
         $this->teams = Team::all();
         $this->modalFormVisible = true;
     }
+    // метод изменения сущности, редирект
+
     public function modifyShowModal(){
         $this->validate();
         DB::table('tournaments')->where("id", $this->current_tournament)
@@ -176,6 +187,10 @@ class AddTournament extends Component
         return view('livewire.add-tournament');
     }
 
+    /**
+     * Получение списка всех площадок, если ты админ, или получение лишь твоих площадок, если ты оргнаизатор
+     * @return Place[]|\Illuminate\Database\Eloquent\Collection|\LaravelIdea\Helper\App\Models\_IH_Place_C
+     */
     private function getPlaces()
     {
         return Auth::user()->isAdmin() ?

@@ -7,6 +7,10 @@ use App\Models\Game;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class CounterController, получает данные и выводит их на странице Счетчика
+ * @package App\Http\Controllers\Games\Game
+ */
 class CounterController extends Controller
 {
     public function index($id_game){

@@ -7,6 +7,10 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
+/**
+ * Class SendFeedback, класс отправки администратору по email обратной связи
+ * @package App\Mail
+ */
 class SendFeedback extends Mailable
 {
     use Queueable, SerializesModels;

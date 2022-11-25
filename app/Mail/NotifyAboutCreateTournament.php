@@ -7,6 +7,10 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
+/**
+ * Class NotifyAboutCreateTournament, класс уведомления игрока по email о созданном турнире
+ * @package App\Mail
+ */
 class NotifyAboutCreateTournament extends Mailable
 {
     use Queueable, SerializesModels;

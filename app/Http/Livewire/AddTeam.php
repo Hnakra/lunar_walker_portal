@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
+/**
+ * Class AddTeam, выводит модальное окно создания и редактирования сущности, сохраняет изменения
+ * @package App\Http\Livewire
+ */
 class AddTeam extends Component
 {
     //    Переменная открытия-закрытия формы
@@ -18,19 +22,23 @@ class AddTeam extends Component
     public $name, $selected_users_id = [];
     //    Переменные отображения
     public $users = [], $MAX_SELECTED_USERS = 5;
-
+    // Переменная состояния, редактируется ли сущность (а также id сущности)
     public $current_team = 0;
+    // Переменные отображения
 
     public $errorOutput;
-
+    // Настройка правил валидации для формы
     protected $rules = [
        'name' => 'required|min:2',
        // 'name' => 'required|null'
         ];
+    // метод вызова модельного окна для создания сущности
+
     public function createShowModal(){
         $this->users = User::all();
         $this->modalFormVisible = true;
     }
+    // метод вызова модельного окна для изменения сущности
     public function editShowModal(){
         $this->users = User::all();
         $team = Team::where("id", $this->current_team)->get()->first();
@@ -38,12 +46,15 @@ class AddTeam extends Component
         $this->name = $team->name;
         $this->modalFormVisible = true;
     }
+    // метод добавления пользователя на форму
     public function addUser(){
         array_push($this->selected_users_id, 0);
     }
+    // метод удаления пользователя с формы
     public function removeUser($index){
         unset($this->selected_users_id[$index]);
     }
+    // метод сохранения новой сущности, редирект
 
     public function adding(){
         $this->validate();
@@ -68,6 +79,8 @@ class AddTeam extends Component
             $this->errorOutput .= 'Сделайте окончательный выбор игроков и роботов!';
         }
     }
+    // метод изменения сущности, редирект
+
     public function modification(){
         $this->validate();
         if(true/*$this->validateForms()*/) {

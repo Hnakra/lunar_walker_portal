@@ -7,6 +7,10 @@ use App\Models\Robot;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+/**
+ * Class RobotsController, получает данные и выводит их на странице Роботы
+ * @package App\Http\Controllers\Robots
+ */
 class RobotsController extends Controller
 {
     public function index(){

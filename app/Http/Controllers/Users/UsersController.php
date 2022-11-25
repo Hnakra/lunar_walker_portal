@@ -9,6 +9,10 @@ use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+/**
+ * Class UsersController, получает данные и выводит их на странице Пользовтаели
+ * @package App\Http\Controllers\Users
+ */
 class UsersController extends Controller
 {
     public function index(){

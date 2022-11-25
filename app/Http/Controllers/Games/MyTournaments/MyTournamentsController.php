@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class MyTournamentsController, получает данные и выводит их на странице Мои игры
+ * @package App\Http\Controllers\Games\MyTournaments
+ */
 class MyTournamentsController extends Controller
 {
     public function index(){
@@ -25,11 +29,19 @@ class MyTournamentsController extends Controller
             'tournaments' => $tournaments
         ]);
     }
+
+    /**
+     * Метод, срабатывающий, когда пользователь подтверждает участие в турнире
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function submit(){
         DB::table('submit_tournaments')->where("id_user", Auth::user()->id)->update(['is_submit' => true]);
         return redirect('/tournaments');
     }
-    // узнаем, в каких турнирах и в числе каких команд участвует пользователь
+    /**
+     * Метод, возвращающий данные о том, в каких турнирах и в числе каких команд участвует пользователь для подтверждения своего участия
+     * @return array
+     */
     private function getUserData(){
         $tournaments_with_user = DB::table('submit_tournaments')->where("id_user", Auth::user()->id)->get();
         $tournaments = [];
@@ -51,6 +63,10 @@ class MyTournamentsController extends Controller
         return $tournaments;
     }
 
+    /**
+     * Метод, возвращающие данные о том, какие турниры и какие команды есть в системе для подтверждения своего участия
+     * @return Tournament[]|\LaravelIdea\Helper\App\Models\_IH_Tournament_C
+     */
     private function getAdminData(){
         $tournaments = Tournament::select(DB::raw("tournaments.*, places.name as placeName"))
             ->leftJoin('places', "places.id", '=', 'tournaments.id_place')

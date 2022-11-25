@@ -8,13 +8,19 @@ use Livewire\Component;
 
 class RemovePlace extends Component
 {
+    // Переменная открытия-закрытия формы
     public $modalFormVisible = false;
+    // Переменная id площадки, которую требуется удалить
     public $current_place;
+    // переменная отображения ошибки на случай, если удаление невозможно
     public $errorMessage = "";
+    // метод открытия модального окна
 
     public function confirmRemove(){
         $this->modalFormVisible = true;
     }
+    // метод удаления сущности, редирект
+
     public function remove(){
         if (Tournament::where("id_place", $this->current_place)->get()->isEmpty()){
             Place::where("id", $this->current_place)->delete();

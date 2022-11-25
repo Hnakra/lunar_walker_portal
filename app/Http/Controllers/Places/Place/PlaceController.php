@@ -7,6 +7,10 @@ use App\Models\Robot;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+/**
+ * Class PlaceController, , получает данные и выводит их на странице Площадка
+ * @package App\Http\Controllers\Places\Place
+ */
 class PlaceController extends Controller
 {
     public function index($id){

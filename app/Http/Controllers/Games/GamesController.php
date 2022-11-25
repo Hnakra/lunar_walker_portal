@@ -9,6 +9,10 @@ use App\Models\Team;
 use App\Models\Tournament;
 use Illuminate\Http\Request;
 
+/**
+ * Class GamesController, , получает данные и выводит их на странице Игры
+ * @package App\Http\Controllers\Games
+ */
 class GamesController extends Controller
 {
     public function index(){
@@ -23,6 +27,11 @@ class GamesController extends Controller
         ]);
     }
 
+    /**
+     * Метод, возвращающий игры турнира
+     * @param $id_tournament
+     * @return Game[]|\LaravelIdea\Helper\App\Models\_IH_Game_C
+     */
     private function getGames($id_tournament)
     {
         $games = Game::where('id_tournament', $id_tournament)->get();

@@ -8,13 +8,17 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
+/**
+ * Class ShowUser, класс отображения модального окна с данными пользователя
+ * @package App\Http\Livewire
+ */
 class ShowUser extends Component
 {
     // Переменная открытия-закрытия формы
     public $modalFormVisible = false;
     //    Переменные формы
     public $robots = [], $user, $teams = [], $team;
-
+    // метод получения данных и вызов модального окна
     public function createShowModal(){
         $this->user->photo = ($this->user->profile_photo_path != null && is_readable("storage/{$this->user->profile_photo_path}")  ) ? "../storage/{$this->user->profile_photo_path}" : "https://ui-avatars.com/api/?name=".$this->user->name."&color=7F9CF5&background=EBF4FF";
         $this->robots = Robot::where("id_master",$this->user->id)->get();

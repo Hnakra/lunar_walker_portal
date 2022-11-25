@@ -11,14 +11,26 @@ use Livewire\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 use function Livewire\str;
 
+/**
+ * Class AddPlace, выводит модальное окно создания и редактирования сущности, сохраняет изменения
+ * @package App\Http\Livewire
+ */
 class AddPlace extends Component
 {
     use WithFileUploads;
+    // Переменная открытия-закрытия формы
 
     public $modalFormVisible = false;
+    // Переменная состояния, редактируется ли сущность (а также id сущности)
+
     public $current_place = 0;
+    // Переменные отображения
+
     public $listUsers = [];
+    // Переменные формы
+
     public $name, $address, $id_organizator, $photo, $description = "", $addr_org, $name_urid_org, $site_urid_org, $phone_urid_org, $INN_urid_org;
+    // Настройка правил валидации для формы
     public $rules = [
         'name' => 'required|min:2',
         'address' => 'required',
@@ -32,6 +44,7 @@ class AddPlace extends Component
         'INN_urid_org' => 'required|digits:10'
 
     ];
+    // Настройка правил сообщений для формы
     public $messages = [
         'name.required' => "Введите название площадки", 'name.min' => "Название слишком маленькое",
         'address.required' => "Введите адрес",
@@ -43,12 +56,16 @@ class AddPlace extends Component
         'INN_urid_org.required' => "Введите ИНН организации", 'INN_urid_org.digits' => "ИНН должен содержать 10 цифр"
 
     ];
+    // метод вызова модельного окна для создания сущности
+
     public function createShowModal()
     {
         $this->listUsers = User::where("id_role", 3)->get();
 
         $this->modalFormVisible = true;
     }
+    // метод сохранения новой сущности, редирект
+
     public function addingPlace()
     {
         $this->validate();
@@ -76,6 +93,7 @@ class AddPlace extends Component
         $this->modalFormVisible = false;
 
     }
+    // метод вызова модельного окна для изменения сущности
 
     public function editShowModal(){
         $this->listUsers = User::where("id_role", 3)->get();
@@ -95,6 +113,8 @@ class AddPlace extends Component
 
         $this->modalFormVisible = true;
     }
+    // метод изменения сущности, редирект
+
     public function modifyPlace(){
 
         $this->validate();

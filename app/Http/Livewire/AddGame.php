@@ -9,6 +9,10 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
+/**
+ * Class AddGame, выводит модальное окно создания и редактирования сущности, сохраняет изменения
+ * @package App\Http\Livewire
+ */
 class AddGame extends Component
 {
     // Переменная открытия-закрытия формы
@@ -17,15 +21,16 @@ class AddGame extends Component
     public $id_tournament, $id_team_1, $id_team_2, $date, $time;
     // Переменные отображения
     public $last_datetime, $teams = [];
+    // Переменная состояния, редактируется ли сущность (а также id сущности)
     public $current_game = 0;
-    // Настройка правил валидации для нашей формы
+    // Настройка правил валидации для формы
     protected $rules = [
         'date' => 'required|date_format:Y-m-d',
         'time' => 'required|date_format:H:i',
         'id_team_1' => 'required|not_in:0',
         'id_team_2' => 'required|not_in:0|different:id_team_1'
     ];
-    // Настройка правил сообщений для нашей формы
+    // Настройка правил сообщений для формы
     protected $messages = [
         'date.required' => 'Введите дату', 'date.date_format' => "Введите дату в формате Y-m-d",
         'time.required' => 'Введите время', 'time.date_format' => "Введите время в формате Часы:Минуты",
@@ -33,6 +38,7 @@ class AddGame extends Component
         'id_team_2.required' => 'Выберите команду 2', 'id_team_2.not_in' => 'Выберите команду 2',
         'id_team_2.different' => 'Одна и та же команда не может играть против себя!'
     ];
+    // метод вызова модельного окна для создания сущности
 
     public function createShowModal(){
         // возьмем команды данного турнира.
@@ -44,6 +50,7 @@ class AddGame extends Component
         list($this->date, $this->time) = explode(" ", $this->last_datetime);
         $this->modalFormVisible = true;
     }
+    // метод сохранения новой сущности, редирект
     public function submitShowModal(){
         // из за неопознанного бага обновления переменной, обновляем ее содержимое
         $this->teams = Team::where('teams_in_tournaments.id_tournament', $this->id_tournament)->leftJoin('teams_in_tournaments','teams_in_tournaments.id_team', '=','teams.id')->get();
@@ -65,6 +72,8 @@ class AddGame extends Component
         // редирект на страницу, чтобы перерисовать ее с новыми изменениями
         redirect("/games", [\App\Http\Controllers\Games\GamesController::class, 'index']);
     }
+    // метод вызова модельного окна для изменения сущности
+
     public function editShowModal(){
         $game = Game::find($this->current_game);
         $this->id_tournament = $game->id_tournament;
@@ -77,6 +86,7 @@ class AddGame extends Component
         $this->modalFormVisible = true;
         list($this->date, $this->time) = explode(" ", $game->date_time);
     }
+    // метод изменения сущности, редирект
     public function modifyShowModal(){
         // из за неопознанного бага обновления переменной, обновляем ее содержимое
         $this->teams = Team::where('teams_in_tournaments.id_tournament', $this->id_tournament)->leftJoin('teams_in_tournaments','teams_in_tournaments.id_team', '=','teams.id')->get();

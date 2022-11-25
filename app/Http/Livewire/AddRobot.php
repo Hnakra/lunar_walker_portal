@@ -12,25 +12,35 @@ use Livewire\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 use function Livewire\str;
 
+/**
+ * Class AddRobot, выводит модальное окно создания и редактирования сущности, сохраняет изменения
+ * @package App\Http\Livewire
+ */
 class AddRobot extends Component
 {
     use WithFileUploads;
-
+    // Переменная состояния, редактируется ли сущность (а также id сущности)
     public $current_robot = 0;
+    // Переменная открытия-закрытия формы
     public $modalFormVisible = false;
+    // Переменные формы
     public $name, $key="", $photo, $notation="";
+    // Настройка правил валидации для формы
     protected $rules = [
         'photo' => 'image|max:1024', // 1MB Max
         'name' => 'required|min:2'
     ];
+    // Настройка правил сообщений для формы
     public $messages = [
         'name.required' => "Введите имя робота!", 'name.min' => "Имя робота должно быть не меньше 2-х символов!",
         'photo.image' => "Добавьте фото робота!", 'photo.max' => "Размер фото большой! Добавьте фото меньшего размера!"
     ];
+    // метод вызова модельного окна для создания сущности
 
     public function createShowModal(){
         $this->modalFormVisible = true;
     }
+    // метод сохранения новой сущности, редирект
 
     public function addingRobot(){
         $this->validate();
@@ -53,6 +63,7 @@ class AddRobot extends Component
         redirect( "/robots/", [\App\Http\Controllers\Robots\RobotsController::class, 'index']);
 
     }
+    // метод вызова модельного окна для изменения сущности
 
     public function editShowModal(){
         $robot = Robot::find($this->current_robot);
@@ -67,6 +78,8 @@ class AddRobot extends Component
         $this->modalFormVisible = true;
 
     }
+    // метод изменения сущности, редирект
+
     public function modifyShowModal(){
         $this->validate();
         $robot = Robot::find($this->current_robot);

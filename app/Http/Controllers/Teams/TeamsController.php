@@ -9,6 +9,10 @@ use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+/**
+ * Class TeamsController, получает данные и выводит их на странице Команды
+ * @package App\Http\Controllers\Teams
+ */
 class TeamsController extends Controller
 {
 
