@@ -48,7 +48,7 @@ class AddTournament extends Component
         'users.*.distinct' => 'Пользователи в командах не должны повторяться!',
     ];
     public function createShowModal(){
-        $this->places = Place::all();
+        $this->places = $this->getPlaces();
         $this->teams = Team::all();
         $this->modalFormVisible = true;
     }
@@ -121,7 +121,7 @@ class AddTournament extends Component
         $this->selected_teams_id = DB::table("teams_in_tournaments")
             ->where("id_tournament", $this->current_tournament)
             ->get()->pluck("id_team")->toArray();
-        $this->places = Place::all();
+        $this->places = $this->getPlaces();
         $this->teams = Team::all();
         $this->modalFormVisible = true;
     }
@@ -174,5 +174,12 @@ class AddTournament extends Component
     public function render()
     {
         return view('livewire.add-tournament');
+    }
+
+    private function getPlaces()
+    {
+        return Auth::user()->isAdmin() ?
+            Place::all() :
+            Place::where('id_organizator', Auth::user()->id)->get();
     }
 }

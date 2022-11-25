@@ -7,26 +7,25 @@
             site template freebie<br />
             crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
         <ul class="actions special">
-            @if(Auth::check() && !Auth::user()->isUser())
+            @if(Auth::check() && Auth::user()->isOwnerOrAdmin($organizer->id))
             <li><a href="/game/{{$game->id}}/counter" class="button big-button">ВЕСТИ СЧЁТ</a></li>
             @endif
         </ul>
     </div>
 </section>
 
-</div>
+
 <section>
 
     <div>
         <div class = "edit-bar">
 
-            @if(Auth::check() && !Auth::user()->isUser())
+            @if(Auth::check() && Auth::user()->isOwnerOrAdmin($organizer->id))
                 @livewire('remove-game',["current_game" => $game->id])
-            @endif
-            @if(Auth::check() && !Auth::user()->isUser())
-                {{--кнопка, при нажатии которой появляется модальное окно редактирования игры--}}
                 @livewire('add-game', ['current_game' => $game->id])
+
             @endif
+
         </div>
         <div class="block-game">
 

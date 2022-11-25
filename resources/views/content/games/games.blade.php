@@ -47,7 +47,7 @@
             </div>
             <ul class="actions special">
                 <li>
-                    @if(Auth::check() && !Auth::user()->isUser())
+                    @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
                         @livewire('add-game', ['id_tournament' => $tournament->id, 'last_datetime' => $tournament->date_time])
                     @endif
                 </li>
@@ -56,13 +56,11 @@
 
             <div class="edit-wrapper">
 
-                @if(Auth::check() && !Auth::user()->isUser())
-                    @livewire('remove-tournament',["current_tournament" => $tournament->id])
-                @endif
 
                 {{--кнопка, при нажатии которой появляется модальное окно редактирования турнира--}}
-                @if(Auth::check() && !Auth::user()->isUser())
-                    @livewire('add-tournament', ['current_tournament' => $tournament->id])
+                @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
+                        @livewire('remove-tournament',["current_tournament" => $tournament->id])
+                        @livewire('add-tournament', ['current_tournament' => $tournament->id])
                 @endif
             </div>
 

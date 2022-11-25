@@ -8,7 +8,7 @@
                 site template freebie<br />
                 crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
             <ul class="actions special">
-                @if(Auth::check() && !Auth::user()->isUser())
+                @if(Auth::check() && Auth::user()->isAdmin())
                     <li>@livewire('add-team')</li>
                 @endif
 {{--                <li><a href="#" class="button big-button">ДОБАВИТЬ КОМАНДУ</a></li>--}}
@@ -24,7 +24,7 @@
 
             <h4 class="title1">команда "{{$team['team']->name}}"</h4>
             <div class="edit-wrapper">
-                @if(Auth::check() && !Auth::user()->isUser())
+                @if(Auth::check() && Auth::user()->isAdmin())
                     @livewire('remove-team',["current_team" => $team['team']->id])
 
                     @livewire('add-team',["current_team" => $team['team']->id])

@@ -45,12 +45,8 @@ class AddPlace extends Component
     ];
     public function createShowModal()
     {
-        $this->listUsers = User::all();
-/*        foreach($_listUsers as $user){
-            $elem = '<option value="'.$user->id.'" >'.$user->name.'</option>';
-            array_push($this->listUsers, $elem);
-        }
-        array_unshift($this->listUsers, '<option  selected>Выберите организатора</option>');*/
+        $this->listUsers = User::where("id_role", 3)->get();
+
         $this->modalFormVisible = true;
     }
     public function addingPlace()
@@ -71,14 +67,18 @@ class AddPlace extends Component
             'INN_urid_org' => $this->INN_urid_org,
             'description' => $this->description
         ]);
+        User::where('id', $this->id_organizator)->update([
+            "id_role" => 2
+        ]);
         $this->photo->storeAs('places/'.$id, $name);
+        redirect("/places/".$id, [\App\Http\Controllers\Places\Place\PlaceController::class, 'index']);
 
         $this->modalFormVisible = false;
 
     }
 
     public function editShowModal(){
-        $this->listUsers = User::all();
+        $this->listUsers = User::where("id_role", 3)->get();
         $place = Place::find($this->current_place);
         $this-> name = $place->name;
         $this-> address = $place->address;
@@ -98,6 +98,12 @@ class AddPlace extends Component
     public function modifyPlace(){
 
         $this->validate();
+
+        $old_id_organizator = Place::find($this->current_place)->id_organizator;
+        User::where('id', $old_id_organizator)->update([
+            "id_role" => 3
+        ]);
+
         DB::table('places')->where("id", $this->current_place)->update([
             'name' => $this->name,
             'address'=> $this->address,
@@ -111,9 +117,15 @@ class AddPlace extends Component
             'INN_urid_org' => $this->INN_urid_org,
             'description' => $this->description
         ]);
+
+
+        User::where('id', $this->id_organizator)->update([
+            "id_role" => 2
+        ]);
+
         $this->photo->storeAs('places/' . $this->current_place, $this->photo->getClientOriginalName());
 
-        redirect("/places/".$this->current_place, [\App\Http\Controllers\Teams\TeamsController::class, 'index']);
+        redirect("/places/".$this->current_place, [\App\Http\Controllers\Places\Place\PlaceController::class, 'index']);
 
     }
     /**
