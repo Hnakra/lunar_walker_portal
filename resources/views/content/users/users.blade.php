@@ -10,7 +10,7 @@
 </section>
 
 {{--<h1 style="padding-top: 100px">@yield('title')</h1>--}}
-<section class="cards wrapper style5">
+<section class="cards wrapper style5" id = "one">
     @foreach($users as $user)
         <div class="card">
 

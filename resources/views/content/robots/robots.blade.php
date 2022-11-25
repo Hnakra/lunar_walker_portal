@@ -16,7 +16,7 @@
     <a href="#one" class="more scrolly">Читать далее</a>
 </section>
 
-    <section class="cards wrapper style5">
+    <section class="cards wrapper style5" id = "one">
         @foreach($robots as $robot)
         <div class="card">
             <div class="round-image" style="background-image: url('{{$robot->photo}}')"></div>
