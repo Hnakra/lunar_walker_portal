@@ -2,8 +2,13 @@
 <section id="banner">
     <div class="inner">
         <h2>Мои Турниры</h2>
-        <p>Подтвердите участие в<br />
-            грядущих турнирах</p>
+        @if(Auth::user()->isAdmin())
+            <p>Ознакомьтесь, кто подтвердил<br /> участие в турнирах</p>
+        @else
+            <p>Подтвердите участие в<br />
+                грядущих турнирах</p>
+        @endif
+
     </div>
     <a href="#one" class="more scrolly">Читать далее</a>
 </section>
