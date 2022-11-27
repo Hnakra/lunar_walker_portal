@@ -31,6 +31,9 @@ class GameController extends Controller
         leftJoin('users','players.id_user', '=','users.id')->get();
         $users_robots1 = Player::where('id_team', $game->id_team_1)->get();
 
+        $trainer_1 = User::find($information_team1->id_trainer);
+        $trainer_2 = User::find($information_team2->id_trainer);
+
         $list1Robots = [];
         $list1Users = [];
 
@@ -38,6 +41,8 @@ class GameController extends Controller
             array_push($list1Users, User::find( $user->id_user));
             array_push($list1Robots, Robot::where('id_master', $user->id_user)->get());
         }
+        array_push($list1Robots, Robot::where('id_master', $trainer_1?$trainer_1->id:0)->get());
+
 
         $list2Robots = [];
         $list2Users = [];
@@ -46,11 +51,15 @@ class GameController extends Controller
             array_push($list2Users, User::find( $user->id_user));
             array_push($list2Robots, Robot::where('id_master', $user->id_user)->get());
         }
+        array_push($list2Robots, Robot::where('id_master', $trainer_1?$trainer_1->id:0)->get());
+
 
         return view('pages.game',[
             'game' => $game,
             'team_1' => $information_team1,
             'team_2' => $information_team2,
+            'trainer_1' => $trainer_1,
+            'trainer_2' => $trainer_2,
             'users_team1' =>  $list1Users,
             'users_team2' =>  $list2Users,
             'list1Robots' => $list1Robots,

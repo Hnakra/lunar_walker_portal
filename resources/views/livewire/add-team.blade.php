@@ -21,12 +21,22 @@
         <x-slot name="content">
             {{ __('Введите информацию о команде') }}
             <x-jet-input type="text" class="mt-1 block w-3/4 " required
-                         placeholder="{{ __('Название команды*') }}"
+                         placeholder="{{ __('Название команды') }}"
                          x-ref="name"
                          wire:model.defer="name"
                          wire:keydown.enter="" />
 
             @error('name') <span class="error" style="color: orangered">{{ __('Длина имени не должна быть менее, чем 3 символа!')  }}</span><br> @enderror
+            @if(Auth::user()->isAdmin())
+            <span>{{__('Тренер')}}</span>
+            {{$selected_trainer}}
+            <select class="child-form" wire:model="selected_trainer">
+                <option value ="0">Нет тренера</option>
+                @foreach($users as $user)
+                    <option value="{{$user->id}}">{{$user->name}}</option>
+                @endforeach
+            </select>
+            @endif
 
             <span>{{__('Игроки')}}</span>
             @if(count($selected_users_id) < $MAX_SELECTED_USERS)
@@ -42,7 +52,8 @@
                 </select>
                 <button wire:click.prevent="removeUser({{$index}})" class="fa fa-minus"></button>
             @endforeach
-            <span class="error" style="color: orangered">{{ $errorOutput }}</span>
+            @error('selected_users_id.*') <span class="error">{{ $message }}</span> @enderror
+
             <br>
 
         </x-slot>

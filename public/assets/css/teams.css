@@ -39,7 +39,12 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     text-align: center;
 }
-
+.trainer{
+    padding-top: 10px;
+    font-size: 18px;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+}
 .tournament:nth-last-child(1){
     border-bottom: none;
 }

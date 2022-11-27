@@ -23,10 +23,19 @@
         <section class="tournament">
 
             <h4 class="title1">команда "{{$team['team']->name}}"</h4>
+            @if($team['trainer'])
+                <div class = "trainer">
+                    Тренер:
+                    <span class="text"> @livewire('show-user', ['user' => $team['trainer']])</span>
+                </div>
+            @endif
+
             <div class="edit-wrapper">
                 @if(Auth::check() && Auth::user()->isAdmin())
                     @livewire('remove-team',["current_team" => $team['team']->id])
+                @endif
 
+                @if(Auth::check() && Auth::user()->isOwnerOrAdmin($team['trainer']?$team['trainer']->id:0))
                     @livewire('add-team',["current_team" => $team['team']->id])
                 @endif
             </div>
@@ -40,7 +49,6 @@
                         </div>
                     @endforeach
                 </div>
-{{--                {{print_r($team["listRobots"])}}--}}
                 <div class="column right-column">
                     <div>
                         <div><h5 class="title2">Роботы</h5></div>

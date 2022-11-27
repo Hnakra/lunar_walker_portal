@@ -16,7 +16,6 @@
 
 
 <section>
-
     <div>
         <div class = "edit-bar">
 
@@ -34,6 +33,7 @@
             <div id="block1">
                 <div class="rectangle3">@livewire('show-count', ["game" => $game, "number_team" => 1])</div>
                 <div class="heading">{{$team_1->name}}<hr class="hr-line1"></div>
+
                 <div class="subtitle">Состав команды</div>
                 @foreach($users_team1 as $user)
                     {{--                <div class="rectangle1 text-in-rectangle"><a href="#" class="link-name1">{{$user->name}}</a></div>--}}
@@ -41,6 +41,7 @@
                         @livewire('show-user', ['user' => $user])
                     </div>
                 @endforeach
+
                 <div class="subtitle">Роботы</div>
                 @foreach($list1Robots as $robots)
                     @foreach($robots as $robot)
@@ -50,6 +51,13 @@
                         </div>
                     @endforeach
                 @endforeach
+                @if($trainer_1)
+                    <div class="subtitle">Тренер</div>
+
+                    <div class="rectangle1 text-in-rectangle link-name1">
+                        @livewire('show-user', ['user' => $trainer_1])
+                    </div>
+                @endif
 
             </div>
             <div id="block2">
@@ -62,6 +70,7 @@
                         @livewire('show-user', ['user' => $user])
                     </div>
                 @endforeach
+
                 <div class="subtitle">Роботы</div>
                 @foreach($list2Robots as $robots)
                     @foreach($robots as $robot)
@@ -72,6 +81,12 @@
 
                     @endforeach
                 @endforeach
+                @if($trainer_2)
+                    <div class="subtitle">Тренер</div>
+                    <div class="rectangle2 text-in-rectangle link-name2">
+                        @livewire('show-user', ['user' => $trainer_2])
+                    </div>
+                @endif
 
             </div>
 

@@ -34,7 +34,15 @@ class TeamsController extends Controller
                 }
                 array_push($listRobots, $robots);
             }
-            array_push($teamsWithPlayers, ["team" => $team, "listUsers"=>$listUsers, "listRobots"=>$listRobots]);
+            $trainer = User::find($team->id_trainer);
+            if($trainer){
+                $robots = Robot::where('id_master', $trainer->id)->get();
+                foreach ($robots as $robot) {
+                    $robot->photo = is_readable("storage/robots/$robot->id/$robot->img") ? "../storage/robots/$robot->id/$robot->img" : "https://ui-avatars.com/api/?name=".$robot->name."&color=7F9CF5&background=EBF4FF";
+                }
+                array_push($listRobots, $robots);
+            }
+            array_push($teamsWithPlayers, ["trainer" => $trainer, "team" => $team, "listUsers"=>$listUsers, "listRobots"=>$listRobots]);
         }
 
         return view('pages.teams',[

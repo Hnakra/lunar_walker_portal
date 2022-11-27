@@ -19,7 +19,7 @@ class AddTeam extends Component
     //    Переменная открытия-закрытия формы
     public $modalFormVisible = false;
     //    Переменные формы
-    public $name, $selected_users_id = [];
+    public $name, $selected_users_id = [], $selected_trainer = 0;
     //    Переменные отображения
     public $users = [], $MAX_SELECTED_USERS = 5;
     // Переменная состояния, редактируется ли сущность (а также id сущности)
@@ -29,21 +29,27 @@ class AddTeam extends Component
     public $errorOutput;
     // Настройка правил валидации для формы
     protected $rules = [
-       'name' => 'required|min:2',
-       // 'name' => 'required|null'
-        ];
+        'name' => 'required|min:2',
+        'selected_users_id.*' => 'distinct|not_in:0',
+
+    ];
+    protected $messages = [
+        'selected_users_id.*.distinct' => 'Нужно выбрать разных игроков',
+        'selected_users_id.*.not_in' => 'Нужно выбрать игроков!',
+    ];
     // метод вызова модельного окна для создания сущности
 
     public function createShowModal(){
-        $this->users = User::all();
+        $this->users = $this->getUsers();
         $this->modalFormVisible = true;
     }
     // метод вызова модельного окна для изменения сущности
     public function editShowModal(){
-        $this->users = User::all();
         $team = Team::where("id", $this->current_team)->get()->first();
         $this->selected_users_id = Player::where("id_team", $team->id)->pluck('id_user')->toArray();
         $this->name = $team->name;
+        $this->selected_trainer = $team->id_trainer;
+        $this->users = $this->getUsers();
         $this->modalFormVisible = true;
     }
     // метод добавления пользователя на форму
@@ -58,72 +64,64 @@ class AddTeam extends Component
 
     public function adding(){
         $this->validate();
-        if(true/*$this->validateForms()*/) {
-            $id_team = DB::table('teams')->insertGetId([
-                'name' => $this->name,
+        $id_team = DB::table('teams')->insertGetId([
+            'name' => $this->name,
+            'id_trainer' => $this->selected_trainer,
+            'created_at' => date("Y-m-d H:i:s", strtotime('now')),
+            'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
+        ]);
+        foreach($this->selected_users_id as $users_id) {
+            DB::table('players')->insert([
+                'id_team' => $id_team,
+                'id_user' => $users_id,
                 'created_at' => date("Y-m-d H:i:s", strtotime('now')),
                 'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
             ]);
-            foreach($this->selected_users_id as $users_id) {
-                DB::table('players')->insert([
-                    'id_team' => $id_team,
-                    'id_user' => $users_id,
-                    'created_at' => date("Y-m-d H:i:s", strtotime('now')),
-                    'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
-                ]);
-            }
-            $this->modalFormVisible = false;
-            redirect("/teams", [\App\Http\Controllers\Teams\TeamsController::class, 'index']);
         }
-        else {
-            $this->errorOutput .= 'Сделайте окончательный выбор игроков и роботов!';
-        }
+        $this->modalFormVisible = false;
+        redirect("/teams", [\App\Http\Controllers\Teams\TeamsController::class, 'index']);
     }
     // метод изменения сущности, редирект
 
     public function modification(){
         $this->validate();
-        if(true/*$this->validateForms()*/) {
-            Team::where('id', $this->current_team)->update([
-                'name' => $this->name,
+
+        Team::where('id', $this->current_team)->update([
+            'name' => $this->name,
+            'id_trainer' => $this->selected_trainer,
+            'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
+        ]);
+        Player::where("id_team", $this->current_team)->delete();
+        foreach ($this->selected_users_id as $users_id){
+            DB::table('players')->insert([
+                'id_team' => $this->current_team,
+                'id_user' => $users_id,
+                'created_at' => date("Y-m-d H:i:s", strtotime('now')),
                 'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
             ]);
-            Player::where("id_team", $this->current_team)->delete();
-            foreach ($this->selected_users_id as $users_id){
-                DB::table('players')->insert([
-                    'id_team' => $this->current_team,
-                    'id_user' => $users_id,
-                    'created_at' => date("Y-m-d H:i:s", strtotime('now')),
-                    'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
-                ]);
-            }
+        }
 
-            $this->modalFormVisible = false;
-            redirect("/teams", [\App\Http\Controllers\Teams\TeamsController::class, 'index']);
-        }
-        else {
-            $this->errorOutput .= 'Сделайте окончательный выбор игроков и роботов!';
-        }
+        $this->modalFormVisible = false;
+        redirect("/teams", [\App\Http\Controllers\Teams\TeamsController::class, 'index']);
+
     }
 
     public function render()
     {
         return view('livewire.add-team');
     }
-
-/*    private function validateForms(): bool
+    // получить список пользователей без тренеров (но добавить текущего тренера)
+    private function getUsers()
     {
-        if($this->counterUserForms == 0)
-            return false;
-
-        for ($i = 0; $i < $this->counterUserForms; $i++) {
-            if ($this->{"idSelectedRobot" . $i} == 0 || $this->{"idUserForm" . $i} == 0) {
-                $this->errorOutput .= $this->{"idSelectedRobot" . $i}." ".$this->{"idUserForm" . $i};
-                return false;
+        $users = User::where('id_role', 3)->get();
+        foreach($users as $key => $user){
+            if (Team::where('id_trainer', $user->id)->get()->isNotEmpty() ){
+                unset($users[$key]);
             }
         }
-        return true;
-    }*/
-
-
+        if($this->current_team && $id_trainer = Team::find($this->current_team)->id_trainer){
+            $users->add(User::find($id_trainer));
+        }
+        return $users;
+    }
 }
