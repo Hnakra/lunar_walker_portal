@@ -29,7 +29,6 @@
             @error('name') <span class="error" style="color: orangered">{{ __('Длина имени не должна быть менее, чем 3 символа!')  }}</span><br> @enderror
             @if(Auth::user()->isAdmin())
             <span>{{__('Тренер')}}</span>
-            {{$selected_trainer}}
             <select class="child-form" wire:model="selected_trainer">
                 <option value ="0">Нет тренера</option>
                 @foreach($users as $user)

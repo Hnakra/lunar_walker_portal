@@ -5,10 +5,10 @@
     @foreach($tournaments as $t)
         {{--                {{($t['info'])}}--}}
         <section class="tournament">
-            <h4>{{$t['info']->name}}</h4>
-            <h5>{{$t['info']->placeName}}</h5>
-            <h5>{{$t['info']->date_time}}</h5>
-            <p>Ваша команда "{{$t['team']->first()['teamName']}}" участвует в турнире {{$t['info']->name}}, на площадке {{$t['info']->placeName}}, дата-время: {{$t['info']->date_time}}. Подтвердите свое участие.</p>
+            <h4>{{$t->tournamentName}}</h4>
+            <h5>{{$t->placeName}}</h5>
+            <h5>{{$t->date_time}}</h5>
+            <p>Ваша команда "{{$t->teamName}}" участвует в турнире {{$t->tournamentName}}, на площадке {{$t->placeName}}, дата-время: {{$t->date_time}}. Подтвердите свое участие.</p>
             <div>
                 <table>
                     <thead>
@@ -18,7 +18,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($t['team'] as $user)
+                    @foreach($t->players as $user)
                         <tr>
                             <td>{{$user->name}}</td>
                             @if($user->is_submit)
@@ -32,13 +32,13 @@
                     </tbody>
                 </table>
 
-                @if($t['is_submit'])
+                @if($t->is_submit)
                     <div class="footer-wrapper">
                         УЧАСТИЕ ПОДТВЕРЖДЕНО!
                     </div>
                 @else
                     <div class="footer-wrapper">
-                        <a href="/tournaments/submit" class="button big-button">ПОДТВЕРДИТЬ УЧАСТИЕ</a>
+                        <a href="/tournaments/submit/{{$t->tournamentId}}/{{$t->teamId}}" class="button big-button">ПОДТВЕРДИТЬ УЧАСТИЕ</a>
                     </div>
 
                 @endif

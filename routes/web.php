@@ -23,7 +23,7 @@ Route::get('/games', [\App\Http\Controllers\Games\GamesController::class, 'index
 Route::get('/game/{id_game}', [\App\Http\Controllers\Games\Game\GameController::class, 'index']);
 Route::get('/game/{id_game}/counter', [\App\Http\Controllers\Games\Game\CounterController::class, 'index']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/tournaments', [\App\Http\Controllers\Games\MyTournaments\MyTournamentsController::class, 'index']);
-Route::middleware(['auth:sanctum', 'verified'])->get('/tournaments/submit', [\App\Http\Controllers\Games\MyTournaments\MyTournamentsController::class, 'submit']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/tournaments/submit/{id_tournament}/{id_team}', [\App\Http\Controllers\Games\MyTournaments\MyTournamentsController::class, 'submit']);
 
 Route::get('/statistic', [\App\Http\Controllers\Games\Statistics\StatisticsController::class, 'index']);
 

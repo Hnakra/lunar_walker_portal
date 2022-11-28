@@ -72,6 +72,9 @@ class User extends Authenticatable
     public function isUser(){
         return $this->id_role == 3;
     }
+    public function isTrainer(){
+        return Team::where('id_trainer', Auth::user()->id)->get()->isNotEmpty();
+    }
     public function isOwnerOrAdmin($id_compare){
         return Auth::user()->isAdmin() || Auth::user()->id == $id_compare;
     }
