@@ -18,7 +18,7 @@ class AddGame extends Component
     // Переменная открытия-закрытия формы
     public $modalFormVisible = false;
     // Переменные формы
-    public $id_tournament, $id_team_1, $id_team_2, $date, $time;
+    public $id_tournament, $id_team_1, $id_team_2, $date, $time, $max_seconds_match;
     // Переменные отображения
     public $last_datetime, $teams = [];
     // Переменная состояния, редактируется ли сущность (а также id сущности)
@@ -68,7 +68,8 @@ class AddGame extends Component
             'created_at' => date("Y-m-d H:i:s", strtotime('now')),
             'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
             'id_state' => 1,
-            'datetime_state' => date("Y-m-d H:i:s", strtotime('now'))
+            'datetime_state' => date("Y-m-d H:i:s", strtotime('now')),
+            'max_seconds_match' => $this->max_seconds_match
         ]);
         $this->modalFormVisible = false;
         // редирект на страницу, чтобы перерисовать ее с новыми изменениями
@@ -83,6 +84,7 @@ class AddGame extends Component
         $this->id_team_2 = $game->id_team_2;
         $this->date = $game->date;
         $this->time = $game->time;
+        $this->max_seconds_match = $game->max_seconds_match;
         $this->last_datetime = $game->last_datetime;
         $this->teams =Team::where('teams_in_tournaments.id_tournament', $this->id_tournament)->leftJoin('teams_in_tournaments','teams_in_tournaments.id_team', '=','teams.id')->get();;
         $this->modalFormVisible = true;
@@ -100,6 +102,7 @@ class AddGame extends Component
             'id_team_1' => $this->id_team_1,
             'id_team_2' => $this->id_team_2,
             'date_time' => $this->date." ".$this->time,
+            'max_seconds_match' => $this->max_seconds_match,
             'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
         ]);
         redirect( "/game/".$this->current_game, [\App\Http\Controllers\Games\Game\GameController::class, 'index']);

@@ -111,6 +111,10 @@
                 <td class="subtitle">Организатор</td>
                 <td align="right"><div class="link-name1">@livewire('show-user', ['user' => $organizer])</div></td>
             </tr>
+            <tr>
+                <td class="subtitle">Длительность 1 тайма</td>
+                <td align="right">{{$game->max_seconds_match}} секунд</td>
+            </tr>
 
         </table>
     </div>
