@@ -25,3 +25,6 @@ a.disabled i{
 .state-change{
     margin-top: 20px;
 }
+.time-is-end{
+    color: orangered;
+}

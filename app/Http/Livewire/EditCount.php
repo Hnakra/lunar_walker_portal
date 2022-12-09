@@ -14,7 +14,7 @@ class EditCount extends Component
 {
     // переменные данных игры и истории счета
     public $game, $log;
-    protected $listeners = ['stateChanged' => 'refresh'];
+    protected $listeners = ['stateChanged' => 'refresh', 'is_sounded' => 'refresh'];
 
 
     public function isEditable(){
@@ -90,6 +90,9 @@ class EditCount extends Component
         foreach ($this->log as $log) {
             list($log->date, $log->time) = explode(" ", $log->created_at);
         }
+    }
+    public function time_is_end(){
+        return $this->game->max_seconds_match <= strtotime(date("Y-m-d H:i:s", strtotime('now')))-strtotime($this->game->datetime_state);
     }
     public function render()
     {

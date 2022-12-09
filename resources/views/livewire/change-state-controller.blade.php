@@ -15,6 +15,7 @@
                 let audio = document.getElementById("audioelement");
                 audio.play();
                 @this.set('is_sounded', true);
+                Livewire.emit('is_sounded');
                 if ('vibrate' in navigator) {
                     // Вибрация подерживается
                     navigator.vibrate([1000]);
