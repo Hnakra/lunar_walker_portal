@@ -67,6 +67,8 @@ class AddGame extends Component
             'date_time' => $this->date." ".$this->time,
             'created_at' => date("Y-m-d H:i:s", strtotime('now')),
             'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
+            'id_state' => 1,
+            'datetime_state' => date("Y-m-d H:i:s", strtotime('now'))
         ]);
         $this->modalFormVisible = false;
         // редирект на страницу, чтобы перерисовать ее с новыми изменениями

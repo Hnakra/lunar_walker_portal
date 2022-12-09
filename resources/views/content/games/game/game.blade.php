@@ -26,6 +26,7 @@
             @endif
 
         </div>
+        <div class = "state-game">@livewire('show-state-game', ['id_game' => $game->id])</div>
         <div class="block-game">
 
 

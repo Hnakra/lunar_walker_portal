@@ -20,6 +20,7 @@
                         <th>Турнир</th>
                         <th>Команды</th>
                         <th>Счет</th>
+                        <th>Состояние</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -30,6 +31,7 @@
                             <td>{{$game->tournamentName}}</td>
                             <td>{{$game->t1_name}} VS {{$game->t2_name}}</td>
                             <td>@livewire('show-count', ["game" => $game, "number_team" => 1]):@livewire('show-count', ["game" => $game, "number_team" => 2])</td>
+                            <td>@livewire('show-state-game', ['id_game' => $game->id])</td>
                         </tr>
                     @endforeach
 

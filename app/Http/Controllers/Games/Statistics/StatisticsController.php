@@ -18,7 +18,7 @@ class StatisticsController extends Controller
             leftJoin('tournaments', 'games.id_tournament', '=', 'tournaments.id')->
             leftJoin('teams as T1', 'games.id_team_1', '=', 'T1.id')->
             leftJoin('teams as T2', 'games.id_team_2', '=', 'T2.id')->
-            get();
+            get()->sortByDesc('updated_at');
         foreach ($games as $game){
             list($game->date, $game->time) = explode(" ", $game->date_time);
         }

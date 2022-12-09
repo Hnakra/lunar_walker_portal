@@ -14,11 +14,11 @@ class EditCount extends Component
 {
     // переменные данных игры и истории счета
     public $game, $log;
+    protected $listeners = ['stateChanged' => 'refresh'];
 
-    public function render()
-    {
-        $this->refresh();
-        return view('livewire.edit-count');
+
+    public function isEditable(){
+        return $this->game->id_state == 2;
     }
 
     /**
@@ -76,7 +76,7 @@ class EditCount extends Component
     /**
      * обновление данных на форме
      */
-    private function refresh()
+    public function refresh()
     {
         $this->game = Game::select(DB::raw('games.* , T1.name as t1_name, T2.name as t2_name'))
             ->where('games.id', $this->game->id)
@@ -90,5 +90,10 @@ class EditCount extends Component
         foreach ($this->log as $log) {
             list($log->date, $log->time) = explode(" ", $log->created_at);
         }
+    }
+    public function render()
+    {
+        $this->refresh();
+        return view('livewire.edit-count');
     }
 }
