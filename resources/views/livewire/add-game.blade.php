@@ -42,6 +42,7 @@
             @error('id_team_2') <span class="error">{{ $message }}</span> @enderror
             <select wire:model.defer="max_seconds_match">
                 <option value ="300" selected>Длительность тайма: 5 минут</option>
+                <option value ="240">Длительность тайма: 4 минуты</option>
                 <option value ="180">Длительность тайма: 3 минуты</option>
             </select>
         </x-slot>
