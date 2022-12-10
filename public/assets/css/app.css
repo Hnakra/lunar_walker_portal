@@ -381,9 +381,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 [type='text'],[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],[type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea{
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -webkit-appearance: initial;
+     -moz-appearance: initial;
+          appearance: initial;
   background-color: #fff;
   border-color: #6b7280;
   border-width: 1px;
