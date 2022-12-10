@@ -18,7 +18,7 @@ class AddGame extends Component
     // Переменная открытия-закрытия формы
     public $modalFormVisible = false;
     // Переменные формы
-    public $id_tournament, $id_team_1, $id_team_2, $date, $time, $max_seconds_match;
+    public $id_tournament, $id_team_1, $id_team_2, $date, $time, $max_seconds_match = 300;
     // Переменные отображения
     public $last_datetime, $teams = [];
     // Переменная состояния, редактируется ли сущность (а также id сущности)
