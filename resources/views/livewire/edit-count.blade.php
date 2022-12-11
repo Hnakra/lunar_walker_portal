@@ -34,7 +34,7 @@
             </td>
         </tr>
     </table>
-    <div class="table-wrapper" style=" height: 200px">
+    <div class="table-wrapper" style=" height: 80px">
         <table>
             @foreach($log as $l)
                 <tr>

@@ -1,8 +1,6 @@
 <div class = "state-change">
     <span wire:poll.1000ms="updateTime"></span>
-    <audio class="audio" loop style="visibility: hidden" controls id="audioelement">
-        <source src="/assets/audio/Beginning Of Fight.mp3" type="audio/mpeg"/>
-    </audio>
+
     @push('scripts')
     <script>
         function notify() {
@@ -87,4 +85,7 @@
         </div>
         @break
     @endswitch
+    <audio class="audio" loop style="visibility: hidden" controls id="audioelement">
+        <source src="/assets/audio/Beginning Of Fight.mp3" type="audio/mpeg"/>
+    </audio>
 </div>
