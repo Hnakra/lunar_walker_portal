@@ -19,11 +19,9 @@
                         <td>{{$game->date}}</td>
                         <td>{{$game->time}}</td>
                         <td>{{$game->t1_name}} VS {{$game->t2_name}}</td>
-                        <td>{{$game->t1_name}} VS {{$game->t2_name}}</td>
-                        <td>{{$game->count_team_1}}:{{$game->count_team_2}}</td>
-                        {{--<td>@livewire('show-count', ["game" => $game, "number_team" => 1], key("count-1-".$game->id))
+                        <td>@livewire('show-count', ["game" => $game, "number_team" => 1], key("count-1-".$game->id))
                             :@livewire('show-count', ["game" => $game, "number_team" => 2], key("count-2-".$game->id))</td>
-                        <td>@livewire('show-state-game', ['id_game' => $game->id], key("state-".$game->id))</td>--}}
+                        <td>@livewire('show-state-game', ['id_game' => $game->id], key("state-".$game->id))</td>
                     </tr>
                 @endforeach
 
