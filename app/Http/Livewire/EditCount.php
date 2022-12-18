@@ -92,6 +92,9 @@ class EditCount extends Component
         }
     }
     public function time_is_end(){
+        return $this->is_end() && $this->game->id_state == 2 ;
+    }
+    private function is_end(){
         return $this->game->max_seconds_match <= strtotime(date("Y-m-d H:i:s", strtotime('now')))-strtotime($this->game->datetime_state);
     }
     public function render()
