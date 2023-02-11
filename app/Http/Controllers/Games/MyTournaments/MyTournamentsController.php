@@ -27,7 +27,7 @@ class MyTournamentsController extends Controller
         }
 
         return view('pages.tournaments',[
-            'tournaments' => $tournaments
+            'tournaments' => $tournaments->sortByDesc('created_at')
         ]);
     }
 
@@ -50,7 +50,7 @@ class MyTournamentsController extends Controller
     }
     /**
      * Метод, возвращающий данные о том, в каких турнирах и в числе каких команд участвует пользователь для подтверждения своего участия
-     * @return array
+     * @return \Illuminate\Support\Collection
      */
 
     private function getUserData(){
