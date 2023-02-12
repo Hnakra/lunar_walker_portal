@@ -62,6 +62,14 @@
                 </tbody>
             </table>
         </div>
+
+        @if($batch == $games->count())
+        <ul class="actions special">
+            <li>
+                <a href="#!" class="button big-button" wire:click="load_more">Загрузить еще записи</a>
+            </li>
+        </ul>
+        @endif
     </section>
 
 </div>
