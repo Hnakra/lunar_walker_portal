@@ -87,14 +87,6 @@ class AddTournament extends Component
                 ->leftJoin('teams', 'players.id_team', '=', 'teams.id')
                 ->get();
             foreach ($players as $player) {
-                DB::table('submit_tournaments')->insert([
-                    'id_tournament' => $id_tournament,
-                    'id_team' => $team_id,
-                    'id_user' => $player->id_user,
-                    'is_submit' => false,
-                    'created_at' => date("Y-m-d H:i:s", strtotime('now')),
-                    'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
-                ]);
                 $data = [
                     "userName" => $player->name,
                     "teamName" => $player->teamName,
@@ -103,7 +95,6 @@ class AddTournament extends Component
                     "date_time" => "$this->date $this->time"
 
                 ];
-                // Позже, ВКЛЮЧИТЬ ОБРАТНО
                 Mail::to(User::find($player->id_user)->email)->send(new NotifyAboutCreateTournament($data));
             }
         }
@@ -155,29 +146,6 @@ class AddTournament extends Component
                 'created_at' => date("Y-m-d H:i:s", strtotime('now')),
                 'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
             ]);
-            // обрати внимание: новые субмиты не создаются!
-           /* $players = Player::select(DB::raw("players.*, users.name, teams.name as teamName"))->where('id_team', $team_id)
-                ->leftJoin('users', 'players.id_user', '=', 'users.id')
-                ->leftJoin('teams', 'players.id_team', '=', 'teams.id')
-                ->get();
-            foreach ($players as $player) {
-                DB::table('submit_tournaments')->insert([
-                    'id_tournament' => $id_tournament,
-                    'id_team' => $team_id,
-                    'id_user' => $player->id_user,
-                    'is_submit' => false,
-                    'created_at' => date("Y-m-d H:i:s", strtotime('now')),
-                    'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
-                ]);
-                $data = [
-                    "userName" => $player->name,
-                    "teamName" => $player->teamName,
-                    "tournamentName" => $this->name,
-                    "placeName" => Place::find($this->id_place)->name,
-                    "date_time" => "$this->date $this->time"
-
-                ];
-            }*/
         }
 
         redirect( "/games", [\App\Http\Controllers\Games\GamesController::class, 'index']);
