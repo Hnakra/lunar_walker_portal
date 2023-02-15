@@ -9,9 +9,18 @@ use Livewire\Component;
 class ShowStatistics extends Component
 {
     public $freshGames, $games;
-
+    public $selectedDropdowns = [];
     public $filter = ['date'=>[], 'tournament'=>[], 'team'=>[]];
     public $batch = 20, $step_batch = 20;
+
+    public function show_dropdown($dropdown_name){
+        if (!in_array($dropdown_name, $this->selectedDropdowns)){
+            array_push($this->selectedDropdowns, $dropdown_name);
+        }
+    }
+    public function close_dropdown($dropdown_name){
+        unset($this->selectedDropdowns[array_search($dropdown_name,$this->selectedDropdowns)]);
+    }
 
     public function load_more(){
         $this->batch += $this->step_batch;
@@ -37,14 +46,6 @@ class ShowStatistics extends Component
         foreach ($this->freshGames as $game){
             list($game->date, $game->time) = explode(" ", $game->date_time);
         }
-    }
-    public function reload(){
-        //return redirect()->to('/statistic');
-        return view('livewire.show-statistics');
-
-
-
-        //$this->redirect("/statistic");
     }
     public function render()
     {
