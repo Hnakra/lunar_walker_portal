@@ -29,6 +29,8 @@
 .filter-icon{
     margin-left: 4px;
     margin-top: 2px;
+    margin-bottom: 2px;
+
     position: relative;
     width: 16px;
 }
