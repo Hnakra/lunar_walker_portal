@@ -27,7 +27,8 @@
     text-align: center;
 }
 .filter-icon{
-    margin-left: 3px;
+    margin-left: 4px;
+    margin-top: 2px;
     position: relative;
     width: 16px;
 }
@@ -41,6 +42,9 @@
     position: absolute;
     background-color: white;
 }
-#dropdown li{
-    background-color: red;
+#dropdown ul{
+    margin-bottom: 0;
+}
+#dropdown label{
+    padding-top: 10px;
 }
