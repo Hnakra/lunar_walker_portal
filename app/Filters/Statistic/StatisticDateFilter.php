@@ -7,16 +7,10 @@
     class StatisticDateFilter implements Pipe{
         public function handle($content, Closure $next)
         {
-/*            if(request()->has('date_time')){
-                $content->where('date_time', request('date_time'));
+            $filters = array_filter($content->filters['date'], fn($v) => $v);
+            foreach($filters as $filter_key => $_){
+                $content->games = $content->games->where('date', $filter_key);
             }
-            next($content);*/
-
-
-         /*   if (! request()->has('active')) {
-                return $next($content);
-            }*/
-
-           return $next($content)->where('date', "2022-12-11");
+            return $next($content);
         }
     }

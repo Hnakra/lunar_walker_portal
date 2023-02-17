@@ -31,6 +31,7 @@ class ShowStatistics extends Component
     }
     public function update_checkbox($type, $value){
         $this->filter[$type][$value] = !$this->filter[$type][$value];
+        $this->refresh();
     }
     public function isFiltered($type): bool
     {
@@ -46,15 +47,9 @@ class ShowStatistics extends Component
         foreach ($this->games as $game) {
             list($game->date, $game->time) = explode(" ", $game->date_time);
         }
-
+        $this->prepareFilters();
         // $this->games = $this->games->where('date_time', "2022-12-11 11:30:00");
 
-//        $this->games = app(Pipeline::class)
-//            ->send($this->games)
-//            ->through([
-//                StatisticDateFilter::class
-//            ])
-//            ->thenReturn();
 
         $this->freshGames = Game::select(DB::raw('games.* , T1.name as t1_name, T2.name as t2_name, tournaments.name as tournamentName'))->
         where('id_state', '>', 0)->
@@ -76,6 +71,12 @@ class ShowStatistics extends Component
                     $this->getFilterValuesByKey($key);
             }
         }
+        $this->games = app(Pipeline::class)
+            ->send((object)['games'=>$this->games, 'filters' => $this->filter])
+            ->through([
+                StatisticDateFilter::class
+            ])
+            ->thenReturn()->games;
     }
     private function getFilterValuesByKey($key){
         $values = array_unique($this->games->pluck($key)->all());
@@ -84,7 +85,6 @@ class ShowStatistics extends Component
     public function render()
     {
         $this->refresh();
-        $this->prepareFilters();
         return view('livewire.show-statistics');
     }
 }
