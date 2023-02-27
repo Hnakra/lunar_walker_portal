@@ -6,7 +6,8 @@ use Illuminate\Pipeline\Pipeline;
 /**
  * Trait Filter
  * @package App\Traits
- * Трейт, подключаемый к классу для возможностей фильтрации коллекции $data
+ * Трейт, подключаемый к классу контроллера для возможностей фильтрации коллекции $data
+ * Единственное условие данного контроллера - наличие метода refresh():void, обновляющий данные в коллекции
  * Позволяет не только фильтровать данные, но и организует управление front-частью фильтра (всплывающие окна)
  * Фронт часть фильтра: resources/views/layouts/filter.blade.php
  * Пример использования фильтра в контроллере:
@@ -39,6 +40,13 @@ trait Filter{
             ->through($classList)
             ->thenReturn()->data;
     }
+    private function initFilter($params)
+    {
+        $this->filter = array_combine(array_keys($params), array_map(fn($item) => [], array_keys($params)));
+        foreach ($params as $k => $v) {
+            $this->filter[$k] = $v['data'];
+        }
+    }
 
     public function update_checkbox($type, $value){
         $this->filter[$type][$value] = !$this->filter[$type][$value];
@@ -65,11 +73,5 @@ trait Filter{
         unset($this->selectedDropdowns[array_search($dropdown_name,$this->selectedDropdowns)]);
     }
 
-    private function initFilter($params)
-    {
-        $this->filter = array_combine(array_keys($params), array_map(fn($item) => [], array_keys($params)));
-        foreach ($params as $k => $v) {
-            $this->filter[$k] = $v['data'];
-        }
-    }
+
 }
