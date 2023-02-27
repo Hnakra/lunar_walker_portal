@@ -8,17 +8,16 @@
     </div>
 </a>
 @if(in_array($type, $selectedDropdowns))
-    {{--класс drop - марка того, что при нажатии на данный элемент dropdown не будет закрыт--}}
-    <div id="dropdown" class = "drop">
-        <ul class = "drop">
-            <li class = "drop">
-                <input @if(!$this->isFiltered($type)) checked @endif class = "drop" type="checkbox" id="checkbox-all-{{$type}}" wire:change="update_checkbox_all('{{$type}}')">
-                <label class = "drop" for="checkbox-all-{{$type}}">(Выбрать все)</label>
+    <div id="dropdown">
+        <ul>
+            <li>
+                <input @if(!$this->isFiltered($type)) checked @endif type="checkbox" id="checkbox-all-{{$type}}" wire:change="update_checkbox_all('{{$type}}')">
+                <label for="checkbox-all-{{$type}}">(Выбрать все)</label>
             </li>
             @foreach($filter[$type] as $k => $v)
-                <li class = "drop">
-                    <input @if(!$v) checked @endif class = "drop" type="checkbox" id="checkbox-{{$k}}" wire:change="update_checkbox('{{$type}}', '{{$k}}')">
-                    <label class = "drop" for="checkbox-{{$k}}">{{$k}}</label>
+                <li>
+                    <input @if(!$v) checked @endif type="checkbox" id="checkbox-{{$k}}" wire:change="update_checkbox('{{$type}}', '{{$k}}')">
+                    <label for="checkbox-{{$k}}">{{$k}}</label>
                 </li>
             @endforeach
         </ul>
@@ -27,7 +26,7 @@
         closeDropdown('{{$type}}');
         function closeDropdown(dropdown){
             document.addEventListener('click', function(e) {
-                e.target.classList.contains('drop') ? closeDropdown(dropdown) : @this.close_dropdown(dropdown)
+                e.target.closest('#dropdown') ? closeDropdown(dropdown) : @this.close_dropdown(dropdown)
             } , {once : true});
         }
     </script>
