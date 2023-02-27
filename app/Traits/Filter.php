@@ -2,30 +2,42 @@
 namespace App\Traits;
 use App\Filters\Statistic\StatisticDateFilter;
 use Illuminate\Pipeline\Pipeline;
-use Illuminate\Support\Facades\Log;
 
+/**
+ * Trait Filter
+ * @package App\Traits
+ * Трейт, подключаемый к классу для возможностей фильтрации коллекции $data
+ * Позволяет не только фильтровать данные, но и организует управление front-частью фильтра (всплывающие окна)
+ * Фронт часть фильтра: resources/views/layouts/filter.blade.php
+ * Пример использования фильтра в контроллере:
+ *
+ *       $this->filter($фильтруемые_данные, [
+ *           'ключ_даты_записи' => [
+ *               'data' => [
+ *                   "2022-12-11" => false,
+ *                   "2022-06-11" => true
+ *               ]),
+ *               'class' => StatisticDateFilter::class
+ *       ]);
+ * Пример использования окна фильтрации в view:
+ *
+ *      @include("layouts.filter", ['type'=>'ключ_даты_записи'])
+ * Класс реализации для каждого фильтра необходимо прописать, используя интерфейс App\Filters\Pipe
+ */
 trait Filter{
-    //private $collection;
     public $selectedDropdowns = [];
     public $filter;
-    public $filterData = ['date', 'tournamentName', 'team'];
-/*    public function init_filter(&$collection){
-        $this->collection = $collection;
 
-    }*/
-
-
-    private function prepareFilters($name, $params)
+    private function filter(&$data, $params)
     {
         if(!isset($this->filter)){
             $this->initFilter($params);
         }
         $classList = array_map(fn($p) => $p['class'], $params);
-
-        $this->games = app(Pipeline::class)
-            ->send((object)['games'=>$this->games, 'filters' => $this->filter])
+        $data = app(Pipeline::class)
+            ->send((object)['data'=>$data, 'filters' => $this->filter])
             ->through($classList)
-            ->thenReturn()->games;
+            ->thenReturn()->data;
     }
 
     public function update_checkbox($type, $value){

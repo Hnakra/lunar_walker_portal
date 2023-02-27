@@ -7,10 +7,8 @@
     class StatisticDateFilter implements Pipe{
         public function handle($content, Closure $next)
         {
-            $filters = array_filter($content->filters['date'], fn($v) => $v);
-            foreach($filters as $filter_key => $_){
-                $content->games = $content->games->where('date', $filter_key);
-            }
+            $keys = array_keys(array_filter($content->filters['date'], fn($v) => $v));
+            $content->data = $content->data->whereNotIn('date', $keys);
             return $next($content);
         }
     }

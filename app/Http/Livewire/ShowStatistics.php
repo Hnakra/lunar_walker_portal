@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Filters\Statistic\StatisticDateFilter;
+use App\Filters\Statistic\StatisticTeamFilter;
+use App\Filters\Statistic\StatisticTournamentFilter;
 use App\Models\Game;
 use App\Traits\Filter;
 use Illuminate\Pipeline\Pipeline;
@@ -20,9 +22,10 @@ class ShowStatistics extends Component
         $this->batch += $this->step_batch;
         $this->refresh();
     }
-    private function getSelectValuesByKey($key, $state = false): array
+    private function getSelectValuesByKey($keys, $state = false): array
     {
-        $values = array_unique($this->games->pluck($key)->all());
+        $arrays = array_map(fn($k)=> $this->games->pluck($k)->all(),$keys);
+        $values = array_unique(array_merge(...$arrays));
         return array_combine($values, array_fill(0, count($values), $state));
     }
     public function refresh(){
@@ -36,19 +39,19 @@ class ShowStatistics extends Component
             list($game->date, $game->time) = explode(" ", $game->date_time);
         }
 
-        $this->prepareFilters('games', [
+        $this->filter($this->games, [
                 'date' => [
-                    'data' => $this->getSelectValuesByKey('date'),
+                    'data' => $this->getSelectValuesByKey(['date']),
                     'class' => StatisticDateFilter::class
                 ],
-              /*  'tournamentName' => [
-                    'data' => $this->getSelectValuesByKey('tournamentName'),
-                    'class' => ??
+                'tournamentName' => [
+                    'data' => $this->getSelectValuesByKey(['tournamentName']),
+                    'class' => StatisticTournamentFilter::class
                 ],
                 'team' => [
-                    'data' => array_merge($this->getFilterValuesByKey("t1_name"), $this->getFilterValuesByKey("t2_name")),
-                    'class' => ??
-                ]*/
+                    'data' => $this->getSelectValuesByKey(['t1_name', 't2_name']),
+                    'class' => StatisticTeamFilter::class
+                ]
             ]
         );
 

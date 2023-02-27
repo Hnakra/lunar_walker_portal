@@ -41,12 +41,10 @@
             <table>
                 <thead>
                 <tr>
-                    <th>Дата
-                    @include("layouts.filter", ['type'=>'date'])
-                    </th>
+                    <th>Дата @include("layouts.filter", ['type'=>'date']) </th>
                     <th>Время</th>
-                    <th>Турнир</th>
-                    <th>Команды</th>
+                    <th>Турнир @include("layouts.filter", ['type'=>'tournamentName'])</th>
+                    <th>Команды @include("layouts.filter", ['type'=>'team'])</th>
                     <th>Счет</th>
                 </tr>
                 </thead>
