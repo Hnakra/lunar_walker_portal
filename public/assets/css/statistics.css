@@ -50,3 +50,15 @@
 #dropdown label{
     padding-top: 10px;
 }
+.filter-search input{
+    height: 30px;
+    margin: 5px;
+    padding-left: 30px;
+    border-radius: 5px;
+}
+.filter-search i{
+    position: absolute;
+    left: 10px;
+    top: 13px;
+    color: gray;
+}

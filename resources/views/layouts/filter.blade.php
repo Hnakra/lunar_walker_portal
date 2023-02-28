@@ -9,13 +9,17 @@
 </a>
 @if(in_array($type, $selectedDropdowns))
     <div id="dropdown">
+        <div class="filter-search">
+            <input type="search" id="filter-search" wire:model="searchData.{{$type}}">
+            <i class="fa fa-search"></i>
+        </div>
         <ul>
             <li>
                 <input @if(!$this->isFiltered($type)) checked @endif type="checkbox" id="checkbox-all-{{$type}}" wire:change="update_checkbox_all('{{$type}}')">
                 <label for="checkbox-all-{{$type}}">(Выбрать все)</label>
             </li>
             @foreach($filter[$type] as $k => $v)
-                <li>
+                <li @if(!$visibleFilters[$type][$k]) style="display: none" @endif>
                     <input @if(!$v) checked @endif type="checkbox" id="checkbox-{{$k}}" wire:change="update_checkbox('{{$type}}', '{{$k}}')">
                     <label for="checkbox-{{$k}}">{{$k}}</label>
                 </li>

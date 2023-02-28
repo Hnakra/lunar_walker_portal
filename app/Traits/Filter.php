@@ -2,6 +2,8 @@
 namespace App\Traits;
 use App\Filters\Statistic\StatisticDateFilter;
 use Illuminate\Pipeline\Pipeline;
+use App\Traits\Searcher;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Trait Filter
@@ -26,7 +28,18 @@ use Illuminate\Pipeline\Pipeline;
  * Класс реализации для каждого фильтра необходимо прописать, используя интерфейс App\Filters\Pipe
  */
 trait Filter{
+    use Searcher;
     public $selectedDropdowns = [];
+
+    /**
+     * @var $filter
+     * массив фильтров
+     * структура данных:
+     * [
+     *  typeFilter:string => [
+     *   dataOfFilter:string => isSelected:bool
+     *  ]
+     */
     public $filter;
 
     private function filter(&$data, $params)
@@ -34,6 +47,7 @@ trait Filter{
         if(!isset($this->filter)){
             $this->initFilter($params);
         }
+        $this->filterBySearch($params);
         $classList = array_map(fn($p) => $p['class'], $params);
         $data = app(Pipeline::class)
             ->send((object)['data'=>$data, 'filters' => $this->filter])
