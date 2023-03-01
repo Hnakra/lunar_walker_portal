@@ -15,7 +15,7 @@ trait Searcher{
             else {
                 array_walk($this->visibleFilters[$key],
                     function (&$v, $k)use($searchText){
-                        $v = strripos($k, $searchText) !== false;
+                        $v = mb_strripos($k, $searchText) !== false;
                     }
                 );
             }

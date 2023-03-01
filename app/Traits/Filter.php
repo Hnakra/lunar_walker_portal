@@ -13,15 +13,22 @@ use Illuminate\Support\Facades\Log;
  * Позволяет не только фильтровать данные, но и организует управление front-частью фильтра (всплывающие окна)
  * Фронт часть фильтра: resources/views/layouts/filter.blade.php
  * Пример использования фильтра в контроллере:
+ *  1. Вызовите $this->initFilter($filter_params);
+ *      где $filter_params - следующая структура данных:
  *
- *       $this->filter($фильтруемые_данные, [
+ *       $filter_params = [
  *           'ключ_даты_записи' => [
  *               'data' => [
  *                   "2022-12-11" => false,
  *                   "2022-06-11" => true
  *               ]),
  *               'class' => StatisticDateFilter::class
- *       ]);
+ *           ]
+ *       ];
+ *  2. Используйте в QueryBulider следующую конструкцию:
+ *       ->where(function($query){
+ *           $this->filter($query);
+ *       })
  * Пример использования окна фильтрации в view:
  *
  *      @include("layouts.filter", ['type'=>'ключ_даты_записи'])

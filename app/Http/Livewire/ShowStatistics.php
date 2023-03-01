@@ -40,23 +40,6 @@ class ShowStatistics extends Component
         foreach ($this->games as $game) {
             list($game->date, $game->time) = explode(" ", $game->date_time);
         }
-/*
-        $filterParams = [
-            'date' => [
-                'data' => $this->getSelectValuesByKey(['date']),
-                'class' => StatisticDateFilter::class
-            ],
-            'tournamentName' => [
-                'data' => $this->getSelectValuesByKey(['tournamentName']),
-                'class' => StatisticTournamentFilter::class
-            ],
-            'team' => [
-                'data' => $this->getSelectValuesByKey(['t1_name', 't2_name']),
-                'class' => StatisticTeamFilter::class
-            ]
-        ];
-        $this->filter($this->games, $filterParams);
-*/
 
         $this->freshGames = Game::select(DB::raw('games.* , T1.name as t1_name, T2.name as t2_name, tournaments.name as tournamentName'))
             ->where('id_state', '>', 0)
