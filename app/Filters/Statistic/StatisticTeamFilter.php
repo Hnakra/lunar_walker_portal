@@ -11,9 +11,6 @@
             $content->query = $content->query->where(function ($query) use ($keys) {
                 $query->whereNotIn('T1.name', $keys)->orWhereNotIn('T2.name', $keys);
             });
-           // $content->query = $content->query->whereNotIn('T1.name', $keys)->whereNotIn('T2.name', $keys);
-            //whereNotIn('T1.name', $keys)->whereNotIn('T2.name', $keys);
-
             return $next($content);
         }
     }
