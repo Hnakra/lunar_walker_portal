@@ -8,7 +8,9 @@
         public function handle($content, Closure $next)
         {
             $keys = array_keys(array_filter($content->filters['date'], fn($v) => $v));
-            $content->data = $content->data->whereNotIn('date', $keys);
+            foreach($keys as $key){
+                $content->query = $content->query->whereDate('games.date_time', '!=', $key);
+            }
             return $next($content);
         }
     }

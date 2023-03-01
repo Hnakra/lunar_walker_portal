@@ -8,7 +8,7 @@
         public function handle($content, Closure $next)
         {
             $keys = array_keys(array_filter($content->filters['tournamentName'], fn($v) => $v));
-            $content->data = $content->data->whereNotIn('tournamentName', $keys);
+            $content->query = $content->query->whereNotIn('tournaments.name', $keys);
             return $next($content);
         }
     }

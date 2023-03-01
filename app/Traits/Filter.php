@@ -39,11 +39,21 @@ trait Filter{
      *  typeFilter:string => [
      *   dataOfFilter:string => isSelected:bool
      *  ]
+     * ]
      */
-    public $filter;
-
-    private function filter(&$data, $params)
+    public $filter, $classList;
+    private function isNotInitFilter(): bool
     {
+        return !isset($this->filter);
+    }
+    private function filter($query)
+    {
+        // Log::info(json_encode($this->filter));
+        app(Pipeline::class)
+            ->send((object)['query'=>$query, 'filters' => $this->filter])
+            ->through($this->classList)
+            ->thenReturn();
+/*
         if(!isset($this->filter)){
             $this->initFilter($params);
         }
@@ -52,14 +62,18 @@ trait Filter{
         $data = app(Pipeline::class)
             ->send((object)['data'=>$data, 'filters' => $this->filter])
             ->through($classList)
-            ->thenReturn()->data;
+            ->thenReturn()->data;*/
     }
     private function initFilter($params)
     {
-        $this->filter = array_combine(array_keys($params), array_map(fn($item) => [], array_keys($params)));
-        foreach ($params as $k => $v) {
-            $this->filter[$k] = $v['data'];
+        if(!isset($this->filter)) {
+            $this->classList = array_map(fn($p) => $p['class'], $params);;
+            $this->filter = array_combine(array_keys($params), array_map(fn($item) => [], array_keys($params)));
+            foreach ($params as $k => $v) {
+                $this->filter[$k] = $v['data'];
+            }
         }
+        $this->filterBySearch($params);
     }
 
     public function update_checkbox($type, $value){
