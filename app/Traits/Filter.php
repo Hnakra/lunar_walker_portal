@@ -1,9 +1,6 @@
 <?php
 namespace App\Traits;
-use App\Filters\Statistic\StatisticDateFilter;
 use Illuminate\Pipeline\Pipeline;
-use App\Traits\Searcher;
-use Illuminate\Support\Facades\Log;
 
 /**
  * Trait Filter

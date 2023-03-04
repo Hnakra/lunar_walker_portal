@@ -1,16 +1,27 @@
 <?php
 namespace App\Traits;
+use App\Filters\Statistic\StatisticDateFilter;
+use App\Filters\Statistic\StatisticTeamFilter;
+use App\Filters\Statistic\StatisticTournamentFilter;
 use App\Models\Game;
 use Illuminate\Support\Facades\DB;
 
 trait StatisticFilterLists{
+    private function getClassList(): array{
+        return [
+            StatisticDateFilter::class,
+            StatisticTournamentFilter::class,
+            StatisticTeamFilter::class
+        ];
+    }
     private function getListFiltersByDate(): array
     {
         return array_unique(
             array_map(fn($item) => explode(" ", $item)[0], Game::where('id_state', 0)->get()->pluck('date_time')->all())
         );
     }
-    private function getListFiltersByTournaments(){
+    private function getListFiltersByTournaments(): array
+    {
         return array_unique(
             Game::select(DB::raw('games.* , tournaments.name as tournamentName'))
                 ->where('id_state', 0)
@@ -18,7 +29,8 @@ trait StatisticFilterLists{
                 ->get()->pluck('tournamentName')->all()
         );
     }
-    private function getListFiltersByTeams(){
+    private function getListFiltersByTeams(): array
+    {
         return array_unique(array_merge(
             Game::select(DB::raw('games.* , T1.name as t1_name'))
                 ->where('id_state', 0)

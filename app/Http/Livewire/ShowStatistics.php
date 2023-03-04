@@ -2,15 +2,10 @@
 
 namespace App\Http\Livewire;
 
-use App\Filters\Statistic\StatisticDateFilter;
-use App\Filters\Statistic\StatisticTeamFilter;
-use App\Filters\Statistic\StatisticTournamentFilter;
 use App\Models\Game;
 use App\Traits\Filter;
 use App\Traits\StatisticFilterLists;
-use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class ShowStatistics extends Component
@@ -31,12 +26,7 @@ class ShowStatistics extends Component
             ->leftJoin('teams as T1', 'games.id_team_1', '=', 'T1.id')
             ->leftJoin('teams as T2', 'games.id_team_2', '=', 'T2.id')
             ->where(function($query){
-                $classlist = [
-                    StatisticDateFilter::class,
-                    StatisticTournamentFilter::class,
-                    StatisticTeamFilter::class
-                ];
-                $this->filter($query, $classlist, fn() => [
+                $this->filter($query, $this->getClassList(), fn() => [
                     'date' => $this->getListFiltersByDate(),
                     'tournamentName' => $this->getListFiltersByTournaments(),
                     'team' => $this->getListFiltersByTeams()
