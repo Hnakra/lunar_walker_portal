@@ -13,22 +13,14 @@ use Illuminate\Support\Facades\Log;
  * Позволяет не только фильтровать данные, но и организует управление front-частью фильтра (всплывающие окна)
  * Фронт часть фильтра: resources/views/layouts/filter.blade.php
  * Пример использования фильтра в контроллере:
- *  1. Вызовите $this->initFilter($filter_params);
- *      где $filter_params - следующая структура данных:
- *
- *       $filter_params = [
- *           'ключ_даты_записи' => [
- *               'data' => [
- *                   "2022-12-11" => false,
- *                   "2022-06-11" => true
- *               ]),
- *               'class' => StatisticDateFilter::class
- *           ]
- *       ];
- *  2. Используйте в QueryBulider следующую конструкцию:
+ *  Используйте в QueryBulider следующую конструкцию:
  *       ->where(function($query){
- *           $this->filter($query);
+ *           $this->filter($query, $classlist, $callable);
  *       })
+ *  где $classlist - список классов, в которых реализован фильтр
+ *    (пример: $classlist = [StatisticDateFilter::class, StatisticTournamentFilter::class]; )
+ *  где $callable - функция, возвращающая array, содержимое которого "ключ_фильтра" => "массив_возможных_значений_фильтра"
+ *    (пример: $callable = fn() => ['date' => ['2022-12-11', '2022-11-06']];
  * Пример использования окна фильтрации в view:
  *
  *      @include("layouts.filter", ['type'=>'ключ_даты_записи'])
@@ -53,36 +45,26 @@ trait Filter{
     {
         return !isset($this->filter);
     }
-    private function filter($query)
+    private function filter($query, $classList, $callableWithFilterLists)
     {
-        // Log::info(json_encode($this->filter));
+        if($this->isNotInitFilter()){
+            $this->initFilter($classList, $callableWithFilterLists);
+        }
+        $this->filterBySearch($this->filter);
         app(Pipeline::class)
             ->send((object)['query'=>$query, 'filters' => $this->filter])
             ->through($this->classList)
             ->thenReturn();
-/*
-        if(!isset($this->filter)){
-            $this->initFilter($params);
-        }
-        $this->filterBySearch($params);
-        $classList = array_map(fn($p) => $p['class'], $params);
-        $data = app(Pipeline::class)
-            ->send((object)['data'=>$data, 'filters' => $this->filter])
-            ->through($classList)
-            ->thenReturn()->data;*/
     }
-    private function initFilter($params)
+    private function initFilter($classList, $callableWithFilterLists)
     {
-        if(!isset($this->filter)) {
-            $this->classList = array_map(fn($p) => $p['class'], $params);;
-            $this->filter = array_combine(array_keys($params), array_map(fn($item) => [], array_keys($params)));
-            foreach ($params as $k => $v) {
-                $this->filter[$k] = $v['data'];
-            }
-        }
-        $this->filterBySearch($params);
+        $this->classList = $classList;
+        $this->filter = [];
+        $filterLists = $callableWithFilterLists();
+        array_walk($filterLists, function($values, $k){
+            $this->filter[$k] = array_combine($values, array_fill(0, count($values), false));
+        } );
     }
-
     public function update_checkbox($type, $value){
         $this->filter[$type][$value] = !$this->filter[$type][$value];
         $this->refresh();

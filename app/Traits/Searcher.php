@@ -21,12 +21,11 @@ trait Searcher{
             }
         }
     }
-
     private function initFilterBySearch($params)
     {
         $this->searchData = array_combine(array_keys($params), array_fill(0, count($params), ""));
         foreach($params as $key => $array){
-            $this->visibleFilters[$key] = array_combine(array_keys($array['data']), array_fill(0, count($array['data']), true));
+            $this->visibleFilters[$key] = array_combine(array_keys($array), array_fill(0, count($array), true));
         }
     }
 }
