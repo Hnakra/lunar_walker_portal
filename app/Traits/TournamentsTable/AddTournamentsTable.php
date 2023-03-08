@@ -58,21 +58,22 @@ trait AddTournamentsTable
         shuffle($games);
         foreach ($games as $k => $game){
 
-            $group = 1;
             // $group = $this->generateNumberOfGroup($k);
-            $tournament_date = Tournament::find($this->id_tournament)->date_time;
+            $tournament = Tournament::find($this->id_tournament);
+            $tournament->isGenerated = true;
+            $tournament->save();
+
             Game::create([
                 'id_tournament' => $this->id_tournament,
                 'id_team_1' => $game[0],
                 'id_team_2' => $game[1],
                 'count_team_1' => 0,
                 'count_team_2' => 0,
-                'date_time' => date("Y-m-d H:i:s", strtotime($tournament_date)+$this->interval*60*$k),
+                'date_time' => date("Y-m-d H:i:s", strtotime($tournament->date_time)+$this->interval*60*$k),
                 'max_seconds_match' => $this->max_seconds_match,
                 'datetime_state' => date("Y-m-d H:i:s", 0)
             ]);
         }
 
-        Log::info(strtotime('now'));
     }
 }

@@ -47,7 +47,7 @@
             </div>
             <ul class="actions special">
                 <li>
-                    @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
+                    @if(!$tournament->isGenerated && Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
                         @livewire('add-tournament-table', ['id_tournament' => $tournament->id])
                     @endif
                 </li>
