@@ -7,7 +7,7 @@
         </div>
 
         <div class="mt-4">
-            {{ $content }}
+            {{ $content ?? '' }}
         </div>
     </div>
 

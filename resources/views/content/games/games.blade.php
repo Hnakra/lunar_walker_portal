@@ -48,6 +48,13 @@
             <ul class="actions special">
                 <li>
                     @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
+                        @livewire('add-tournament-table', ['id_tournament' => $tournament->id])
+                    @endif
+                </li>
+            </ul>
+            <ul class="actions special">
+                <li>
+                    @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
                         @livewire('add-game', ['id_tournament' => $tournament->id, 'last_datetime' => $tournament->date_time])
                     @endif
                 </li>
