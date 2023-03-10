@@ -95,7 +95,7 @@ class AddTournament extends Component
                     "date_time" => "$this->date $this->time"
 
                 ];
-                Mail::to(User::find($player->id_user)->email)->send(new NotifyAboutCreateTournament($data));
+                Mail::to(User::find($player->id_user)->email)->queue(new NotifyAboutCreateTournament($data));
             }
         }
         $this->modalFormVisible = true;
