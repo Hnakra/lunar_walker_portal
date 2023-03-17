@@ -580,3 +580,15 @@ container img {
     text-decoration-line: underline;
     cursor: pointer;
 }
+.groupingTypeRadio{
+    padding-top: 20px;
+}
+.groupingTypeRadio label{
+    color: var(--text-color) !important;
+}
+.groupingTypeRadio table th{
+    padding-left: 18px;
+}
+.groupingTypeRadio table td label:before{
+    top:0px;
+}

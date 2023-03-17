@@ -21,6 +21,7 @@ trait AddTournamentsTable
 
     private function all_vs_all_generate($teams)
     {
+        $teams = $teams->values();
         $games = [];
         for ($i = 0; $i < $teams->count(); $i++) {
             for ($j = $i+1; $j < $teams->count(); $j++) {
