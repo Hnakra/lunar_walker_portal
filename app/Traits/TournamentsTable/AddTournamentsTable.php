@@ -8,51 +8,23 @@ use Illuminate\Support\Facades\Log;
 
 trait AddTournamentsTable
 {
-
-    private Collection $teams;
     //private int $interval, $max_seconds_match;
 
-    private function makeGames($selectedTable, $id_tournament)
+    private function makeGames($selectedTable, $teams)
     {
-        $this->teams = Team::where('teams_in_tournaments.id_tournament', $id_tournament)
-            ->leftJoin('teams_in_tournaments', 'teams_in_tournaments.id_team', '=', 'teams.id')
-            ->get();
         switch ($selectedTable) {
             case 'all_vs_all':
-                $this->all_vs_all_generate();
+                $this->all_vs_all_generate($teams);
                 break;
         }
     }
 
-    /**
-     * @param $numGroups - кол-во групп (кол-во полей)
-     * @param $k - порядковый номер игры
-     * @return int
-     * код для нахождения порядка игры в случаях, если на площадке больше 1го поля
-     * Пример в случае, если площадки 3, а игр 4:
-     *   Игра1 - играет первый на площадке 1
-     *   Игра2 - играет второй на площадке 2
-     *   Игра3 - играет третий на площадке 3
-     *   Игра4 - играет первый на площадке 1
-     *
-     * Принцип вычисления:
-     *   Находим $m - остаток от деления $k на $numGroups
-     *   После чего вычисляем разницу между $k и $m.
-     *   Получившееся число кратно $numGroups, потому на него надо и поделить
-     */
-
-    private function generateNumberOfGroup($k, $numGroups = 1): int
-    {
-        $m = $k%$numGroups;
-        return ($k-$m)/$numGroups+1;
-    }
-
-    private function all_vs_all_generate()
+    private function all_vs_all_generate($teams)
     {
         $games = [];
-        for ($i = 0; $i < $this->teams->count(); $i++) {
-            for ($j = $i+1; $j < $this->teams->count(); $j++) {
-                array_push($games, [$this->teams->get($i)->id_team, $this->teams->get($j)->id_team]);
+        for ($i = 0; $i < $teams->count(); $i++) {
+            for ($j = $i+1; $j < $teams->count(); $j++) {
+                array_push($games, [$teams->get($i)->id_team, $teams->get($j)->id_team]);
             }
         }
         shuffle($games);
