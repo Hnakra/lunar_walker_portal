@@ -51,10 +51,8 @@
                             @endforeach
                             </tbody>
                         </table>
-                        @if($errors->has('teamGroup'))
-                            <span>{{ $errors->first('teamGroup') }}</span>
-                        @endif
-                        @error('teamGroup.*') <span class="error">{{ __('Все команды должны состоять в группах!') }}</span> @enderror
+                        @error('teamGroup') <span class="error">{{$message}}</span> @enderror
+                        @error('teamGroup.*') <span class="error">{{$message}}</span> @enderror
 
                     @endif
                 </div>

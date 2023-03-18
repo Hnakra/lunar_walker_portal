@@ -37,12 +37,6 @@ class AddTournamentTable extends Component
                 ->leftJoin('teams_in_tournaments', 'teams_in_tournaments.id_team', '=', 'teams.id')
                 ->get();
             if ($this->groupingType == "manual"){
-/*                Validator::make(
-                    ['teamGroup' => $this->teamGroup],
-                    ['teamGroup.*' => 'required|not_in:0'],
-                    ['required' => 'кудах']
-                )->validate();*/
-
                 $this->validate([
                     'teamGroup.*' => 'required|not_in:0',
                     'teamGroup' =>
@@ -56,7 +50,7 @@ class AddTournamentTable extends Component
                                 }
                             }
                         }
-                ]);
+                ], ['teamGroup.*.not_in' => 'Все команды должны состоять в группах!']);
             } else {
                 $ids = new \Illuminate\Support\Collection($this->teams->pluck('id_team'));
                 $values = array_map(fn($item) => $item%$this->numGroups+1, range(0, $ids->count()-1));
@@ -70,8 +64,6 @@ class AddTournamentTable extends Component
                 $this->makeGames(
                     $this->selectedTable,
                     $this->teams->whereIn("id_team", $selectedTeamsIds));
-
-                // dd($selectedTeamsIds, $this->teams->whereIn("id_team", $selectedTeamsIds));
             }
 
         } else{
