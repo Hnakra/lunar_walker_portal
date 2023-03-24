@@ -1,64 +1,36 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Портал для проведения соревнований по робофутболу
 
-## About Laravel
+### Введение
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Данный проект разрабатывался [Морозом Иваном](https://github.com/Hnakra) совместно с [Соловьевой Дарьей](https://github.com/creasold), [Антиповской Ольгой](https://github.com/OlgaAntipovskaia) и [Мороз Ириной](https://github.com/irinamoroz789) в рамках группового проекта по дисциплине "Технологии разработки программного обеспечения" на 4 курсе ФИПМ ПСТГУ.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+После разработки проект был запущен для проведения реальных соревнований по робофутболу [Петренко Эдуардом](https://github.com/EduardPetrenko) на домене [moon.rfbl.ru](http://moon.rfbl.ru/). Данный open-source проект дорабатывается для проведения соревнований бóльшим количеством тренеров и судей.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Описание функционала
 
-## Learning Laravel
+Данный портал имеет следующие функции:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1.	Регистрация участников и формирование команд; 
+2.	Составление графика турниров и формирование плана игр(матчей), в ручном и автоматизированном виде; 
+3.	Ведение статистики игр и итогов турниров (списка прошедших матчей); 
+4.	Каталог площадок для игр; 
+5.	Личные кабинеты для разных типов пользователей (администратор, организатор, тренер, игрок);
+6.	Механизм нотификации игроков; 
+7.	Страницы площадок, пользователей и роботов;
+8.  Фильтрация статистики игр, а также поиск по фильтрам.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Стек технологий
 
-## Laravel Sponsors
+- php 8.1
+- laravel 8.83.27
+- livewire 2.10
+- jetstream 2.6
+- nginx
+- mysql 8.0
+- supervisord для автоматического запуска и бесперебойной работы очереди
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Проект запакован в несколько docker-контейнеров, с которыми можно ознакомиться в файле [docker-compose.yml](https://github.com/Hnakra/lunar_walker_portal/blob/main/docker-compose.yml)
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+По всем замечаниям и предложениям, пишите на почту [VanekMRZ@yandex.ru](mailto:VanekMRZ@yandex.ru)
