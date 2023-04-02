@@ -51,27 +51,30 @@
                     </tbody>
                 </table>
             </div>
-            <ul class="actions special">
-                <li>
-                    @if(!$tournament->isGenerated && Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
+            @if(!$tournament->isGenerated && Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
+                <ul class="actions special">
+                    <li>
                         @livewire('group-teams-in-tournament', ['id_tournament' => $tournament->id])
-                    @endif
-                </li>
-            </ul>
-            <ul class="actions special">
-                <li>
-                    @if(!$tournament->isGenerated && Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
+                    </li>
+                </ul>
+            @endif
+
+            @if(!$tournament->isGenerated && Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
+                <ul class="actions special">
+                    <li>
                         @livewire('add-tournament-table', ['id_tournament' => $tournament->id])
-                    @endif
-                </li>
-            </ul>
-            <ul class="actions special">
-                <li>
-                    @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
+                    </li>
+                </ul>
+            @endif
+
+
+            @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
+                <ul class="actions special">
+                    <li>
                         @livewire('add-game', ['id_tournament' => $tournament->id, 'last_datetime' => $tournament->date_time])
-                    @endif
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            @endif
 
 
             <div class="edit-wrapper">
