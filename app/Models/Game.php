@@ -19,6 +19,8 @@ class Game extends Model
     ];
     use HasFactory;
     public function groupName(){
-        return TeamsInTournament::find($this->id_team_1)->groupName();
+        return TeamsInTournament::where("id_team", $this->id_team_1)
+            ->where("id_tournament", $this->id_tournament)->get()->first()
+            ->groupName();
     }
 }

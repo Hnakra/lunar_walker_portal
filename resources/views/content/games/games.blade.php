@@ -27,6 +27,9 @@
                 <table>
                     <thead>
                     <tr>
+                        @if($tournament->isGrouped())
+                            <th>Группа</th>
+                        @endif
                         <th>Время</th>
                         <th>Команды</th>
                         <th>Счет</th>
@@ -35,6 +38,9 @@
                     <tbody>
                     @foreach($tournament->games as $game)
                         <tr>
+                            @if($tournament->isGrouped())
+                                <td>{{$game->groupName()}}</td>
+                            @endif
                             <td>{{$game->date_time}}</td>
                             <td>{{$game->name_team_1}} VS {{$game->name_team_2}}</td>
                             <td>{{$game->count_team_1}}:{{$game->count_team_2}}</td>

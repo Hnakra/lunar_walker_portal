@@ -28,9 +28,6 @@
         </div>
         <div class = "state-game">@livewire('show-state-game', ['id_game' => $game->id])</div>
         <div class="block-game">
-
-
-
             <div id="block1">
                 <div class="rectangle3">@livewire('show-count', ["game" => $game, "number_team" => 1])</div>
                 <div class="heading">{{$team_1->name}}<hr class="hr-line1"></div>
@@ -97,6 +94,12 @@
 
 </section>
 <div class="block-second">
+    @if($tournament->isGrouped())
+        <div class = "state-game">
+            Группа {{$game->groupName()}}
+        </div>
+        <br>
+    @endif
     <div class="table">
         <table>
             <tr>
