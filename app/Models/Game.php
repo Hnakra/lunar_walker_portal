@@ -18,4 +18,7 @@ class Game extends Model
         'datetime_state'
     ];
     use HasFactory;
+    public function groupName(){
+        return TeamsInTournament::find($this->id_team_1)->groupName();
+    }
 }
