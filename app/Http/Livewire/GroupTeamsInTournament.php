@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Team;
 use App\Models\TeamsInTournament;
+use App\Models\Tournament;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 
@@ -67,8 +68,16 @@ class GroupTeamsInTournament extends Component
             ->get();
         if (!isset($this->teamGroup)) {
             $ids = new \Illuminate\Support\Collection($this->teams->pluck('id_team'));
-            $zeros = array_fill(0, $ids->count(), 0);
-            $this->teamGroup = $ids->combine($zeros);
+            $tournament = Tournament::find($this->id_tournament);
+            if($tournament->isGrouped()){
+                $this->groupingType = "manual";
+                $this->numGroups = $tournament->numGroups();
+                $groups = $this->teams->pluck('group');
+            } else {
+                $groups = array_fill(0, $ids->count(), 0);
+            }
+
+            $this->teamGroup = $ids->combine($groups);
         }
 
         return view('livewire.group-teams-in-tournament');
