@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use App\Models\Game;
 use App\Models\Player;
 use App\Models\Team;
+use App\Models\TeamsInTournament;
+use App\Models\Tournament;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -21,7 +23,7 @@ class AddGame extends Component
     // Переменные формы
     public $id_tournament, $id_team_1, $id_team_2, $date, $time, $max_seconds_match = 300;
     // Переменные отображения
-    public $last_datetime;
+    public $last_datetime, $is_grouped;
     // Переменная состояния, редактируется ли сущность (а также id сущности)
     public $current_game = 0;
     // Настройка правил валидации для формы
@@ -41,11 +43,9 @@ class AddGame extends Component
     ];
 
     public function getTeamsProperty(){
-        // возьмем команды данного турнира.
-        // для этого, сделаем сложный запрос, состоящий из where и leftJoin
-        // с помощью where находим те команды в teams_in_tournaments, у которых тот id турнира, который нам нужен
-        // с помощью leftJoin присоеденим к получившейся выборке наши команды из teams, "скрепив" их id
-        return Team::where('teams_in_tournaments.id_tournament', $this->id_tournament)->leftJoin('teams_in_tournaments','teams_in_tournaments.id_team', '=','teams.id')->get();
+        return Team::where('teams_in_tournaments.id_tournament', $this->id_tournament)
+            ->leftJoin('teams_in_tournaments','teams_in_tournaments.id_team', '=','teams.id')
+            ->get();
     }
     // метод вызова модельного окна для создания сущности
     public function createShowModal(){
@@ -107,6 +107,7 @@ class AddGame extends Component
 
     public function render()
     {
+        $this->is_grouped = Tournament::find($this->id_tournament)->isGrouped();
         return view('livewire.add-game');
     }
 }

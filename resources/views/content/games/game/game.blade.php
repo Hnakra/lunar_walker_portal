@@ -21,7 +21,7 @@
 
             @if(Auth::check() && Auth::user()->isOwnerOrAdmin($organizer->id))
                 @livewire('remove-game',["current_game" => $game->id])
-                @livewire('add-game', ['current_game' => $game->id])
+                @livewire('add-game', ['id_tournament' => $tournament->id, 'current_game' => $game->id])
 
             @endif
 

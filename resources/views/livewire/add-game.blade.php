@@ -26,17 +26,17 @@
             @error('date') <span class="error">{{ $message }}</span> @enderror
             @error('time') <span class="error">{{ $message }}</span> @enderror
 
-            <select required wire:model.defer="id_team_1">
+            <select required wire:model="id_team_1">
                 <option value ="" selected>1 команда</option>
                 @foreach($this->getTeamsProperty() as $team)
-                    <option value="{{$team->id_team}}">{{$team->name}}</option>
+                    <option value="{{$team->id_team}}">{{$team->name}} @if($is_grouped) (Группа {{$team->groupName()}}) @endif</option>
                 @endforeach
             </select>
             @error('id_team_1') <span class="error">{{ $message }}</span> @enderror
-            <select required wire:model.defer="id_team_2">
+            <select required wire:model="id_team_2">
                 <option value ="" selected>2 команда</option>
                 @foreach($this->getTeamsProperty() as $team)
-                    <option value="{{$team->id_team}}">{{$team->name}}</option>
+                    <option value="{{$team->id_team}}">{{$team->name}} @if($is_grouped) (Группа {{$team->groupName()}}) @endif</option>
                 @endforeach
             </select>
             @error('id_team_2') <span class="error">{{ $message }}</span> @enderror
