@@ -28,14 +28,14 @@
 
             <select required wire:model.defer="id_team_1">
                 <option value ="" selected>1 команда</option>
-                @foreach($teams as $team)
+                @foreach($this->getTeamsProperty() as $team)
                     <option value="{{$team->id_team}}">{{$team->name}}</option>
                 @endforeach
             </select>
             @error('id_team_1') <span class="error">{{ $message }}</span> @enderror
             <select required wire:model.defer="id_team_2">
                 <option value ="" selected>2 команда</option>
-                @foreach($teams as $team)
+                @foreach($this->getTeamsProperty() as $team)
                     <option value="{{$team->id_team}}">{{$team->name}}</option>
                 @endforeach
             </select>
