@@ -20,20 +20,18 @@ class ShowStatistics extends Component
         $this->refresh();
     }
     public function refresh(){
-        $this->games = Game::select(DB::raw('games.* , T1.name as t1_name, T2.name as t2_name, tournaments.name as tournamentName'))
-            ->where('id_state', 0)
-            ->leftJoin('tournaments', 'games.id_tournament', '=', 'tournaments.id')
-            ->leftJoin('teams as T1', 'games.id_team_1', '=', 'T1.id')
-            ->leftJoin('teams as T2', 'games.id_team_2', '=', 'T2.id')
-            ->where(function($query){
-                $this->filter($query, $this->getClassList(), fn() => [
-                    'date' => $this->getListFiltersByDate(),
-                    'tournamentName' => $this->getListFiltersByTournaments(),
-                    'team' => $this->getListFiltersByTeams()
-                ]);
-            })
-            ->orderBy('date_time', 'desc')
-            ->limit($this->batch)->get();
+        $filter = function($query){
+            $this->filter($query, $this->getClassList(), fn() => [
+                'date' => $this->getListFiltersByDate(),
+                'tournamentName' => $this->getListFiltersByTournaments(),
+                'team' => $this->getListFiltersByTeams()
+            ]);
+        };
+        $condition = function ($query){
+            $query->where('id_state', 0);
+        };
+        $this->games = Game::getGamesWithTeams($condition, $filter)->limit($this->batch)->get();
+
         foreach ($this->games as $game) {
             list($game->date, $game->time) = explode(" ", $game->date_time);
         }
