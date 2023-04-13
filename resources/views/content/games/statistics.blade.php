@@ -10,6 +10,7 @@
 </section>
 <section id="one" class="wrapper style5">
     <div class="inner">
+        @livewire('show-fresh-games-statistic')
         @livewire('show-statistics')
     </div>
 </section>
