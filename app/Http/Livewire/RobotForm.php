@@ -13,10 +13,10 @@ use Livewire\WithFileUploads;
 use function Livewire\str;
 
 /**
- * Class AddRobot, выводит модальное окно создания и редактирования сущности, сохраняет изменения
+ * Class RobotForm, выводит модальное окно создания и редактирования сущности, сохраняет изменения
  * @package App\Http\Livewire
  */
-class AddRobot extends Component
+class RobotForm extends Component
 {
     use WithFileUploads;
     // Переменная состояния, редактируется ли сущность (а также id сущности)
@@ -103,7 +103,7 @@ class AddRobot extends Component
 
     public function render()
     {
-        return view('livewire.add-robot');
+        return view('livewire.robot-form');
     }
 
 }
