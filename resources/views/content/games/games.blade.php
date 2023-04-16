@@ -62,7 +62,7 @@
             @if(!$tournament->isGenerated && Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
                 <ul class="actions special">
                     <li>
-                        @livewire('add-tournament-table', ['id_tournament' => $tournament->id])
+                        @livewire('tournament-table-form', ['id_tournament' => $tournament->id])
                     </li>
                 </ul>
             @endif

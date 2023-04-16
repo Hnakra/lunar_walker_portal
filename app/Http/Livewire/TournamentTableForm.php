@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 
-class AddTournamentTable extends Component
+class TournamentTableForm extends Component
 {
     use AddTournamentsTable;
     // Переменная открытия-закрытия формы
@@ -52,6 +52,6 @@ class AddTournamentTable extends Component
             ->leftJoin('teams_in_tournaments', 'teams_in_tournaments.id_team', '=', 'teams.id')
             ->get();
 
-        return view('livewire.add-tournament-table');
+        return view('livewire.tournament-table-form');
     }
 }
