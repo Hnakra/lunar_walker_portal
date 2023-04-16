@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Removes;
 
 use App\Models\Player;
 use App\Models\Team;
@@ -36,6 +36,6 @@ class RemoveTeam extends Component
 
     public function render()
     {
-        return view('livewire.remove-team');
+        return view('livewire.removes.remove-team');
     }
 }

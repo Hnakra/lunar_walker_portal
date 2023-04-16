@@ -105,7 +105,7 @@
                 <x-slot name="footer">
                     <div class="remove-button">
                         @if($current_place != 0)
-                            @livewire('remove-place',["current_place" => $current_place])
+                            @livewire('removes.remove-place',["current_place" => $current_place])
                         @endif
                     </div>
 

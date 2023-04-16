@@ -82,7 +82,7 @@
 
                 {{--кнопка, при нажатии которой появляется модальное окно редактирования турнира--}}
                 @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
-                        @livewire('remove-tournament',["current_tournament" => $tournament->id])
+                        @livewire('removes.remove-tournament',["current_tournament" => $tournament->id])
                         @livewire('forms.tournament-form', ['current_tournament' => $tournament->id])
                 @endif
             </div>

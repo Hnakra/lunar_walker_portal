@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Removes;
 
 use App\Models\Robot;
 use Livewire\Component;
@@ -26,6 +26,6 @@ class RemoveRobot extends Component
     }
     public function render()
     {
-        return view('livewire.remove-robot');
+        return view('livewire.removes.remove-robot');
     }
 }

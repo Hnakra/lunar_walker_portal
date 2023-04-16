@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Removes;
 
 use App\Models\Game;
 use App\Models\Tournament;
@@ -31,6 +31,6 @@ class RemoveTournament extends Component
     }
     public function render()
     {
-        return view('livewire.remove-tournament');
+        return view('livewire.removes.remove-tournament');
     }
 }

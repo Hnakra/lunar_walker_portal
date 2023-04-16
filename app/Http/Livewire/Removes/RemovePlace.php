@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Removes;
 
 use App\Models\Place;
 use App\Models\Tournament;
@@ -33,6 +33,6 @@ class RemovePlace extends Component
     }
     public function render()
     {
-        return view('livewire.remove-place');
+        return view('livewire.removes.remove-place');
     }
 }

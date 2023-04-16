@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Removes;
 
 use App\Models\Game;
 use Livewire\Component;
@@ -27,6 +27,6 @@ class RemoveGame extends Component
     }
     public function render()
     {
-        return view('livewire.remove-game');
+        return view('livewire.removes.remove-game');
     }
 }

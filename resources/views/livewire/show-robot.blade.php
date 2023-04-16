@@ -20,7 +20,7 @@
 
                     <div class="edit-wrapper">
                         @if(Auth::check() && Auth::user()->isOwnerOrAdmin($robot->id_master))
-                            @livewire('remove-robot',['current_robot' => $robot->id])
+                            @livewire('removes.remove-robot',['current_robot' => $robot->id])
                             @livewire('forms.robot-form', ['current_robot' => $robot->id])
                         @endif
                     </div>

@@ -20,7 +20,7 @@
         <div class = "edit-bar">
 
             @if(Auth::check() && Auth::user()->isOwnerOrAdmin($organizer->id))
-                @livewire('remove-game',["current_game" => $game->id])
+                @livewire('removes.remove-game',["current_game" => $game->id])
                 @livewire('forms.game-form', ['id_tournament' => $tournament->id, 'current_game' => $game->id])
 
             @endif

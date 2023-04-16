@@ -32,7 +32,7 @@
 
             <div class="edit-wrapper">
                 @if(Auth::check() && Auth::user()->isAdmin())
-                    @livewire('remove-team',["current_team" => $team['team']->id])
+                    @livewire('removes.remove-team',["current_team" => $team['team']->id])
                 @endif
 
                 @if(Auth::check() && Auth::user()->isOwnerOrAdmin($team['trainer']?$team['trainer']->id:0))
