@@ -9,7 +9,7 @@
                 crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
             <ul class="actions special">
                 @if(Auth::check() && Auth::user()->isAdmin())
-                    <li>@livewire('add-team')</li>
+                    <li>@livewire('team-form')</li>
                 @endif
 {{--                <li><a href="#" class="button big-button">ДОБАВИТЬ КОМАНДУ</a></li>--}}
             </ul>
@@ -36,7 +36,7 @@
                 @endif
 
                 @if(Auth::check() && Auth::user()->isOwnerOrAdmin($team['trainer']?$team['trainer']->id:0))
-                    @livewire('add-team',["current_team" => $team['team']->id])
+                    @livewire('team-form',["current_team" => $team['team']->id])
                 @endif
             </div>
 

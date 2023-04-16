@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 /**
- * Class AddTeam, выводит модальное окно создания и редактирования сущности, сохраняет изменения
+ * Class TeamForm, выводит модальное окно создания и редактирования сущности, сохраняет изменения
  * @package App\Http\Livewire
  */
-class AddTeam extends Component
+class TeamForm extends Component
 {
     //    Переменная открытия-закрытия формы
     public $modalFormVisible = false;
@@ -108,7 +108,7 @@ class AddTeam extends Component
 
     public function render()
     {
-        return view('livewire.add-team');
+        return view('livewire.team-form');
     }
     // получить список пользователей без тренеров (но добавить текущего тренера)
     private function getUsers()
