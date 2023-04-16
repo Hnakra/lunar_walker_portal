@@ -8,7 +8,7 @@
         @if( Auth::check() && Auth::user()->isOwnerOrAdmin($organizator->id))
             {{--<p>тут будет кнопка редактирования площадки...</p>--}}
 
-            @livewire('place-form', ['current_place' => $place->id])
+            @livewire('forms.place-form', ['current_place' => $place->id])
         @endif
     </div>
     <a href="#one" class="more scrolly">Читать далее</a>

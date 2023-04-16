@@ -7,7 +7,7 @@
             crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
         <ul class="actions special">
             @if(Auth::check() && !Auth::user()->isUser())
-                <li>@livewire('tournament-form')</li>
+                <li>@livewire('forms.tournament-form')</li>
             @endif
 {{--            <li><a href="#" class="button big-button">СОЗДАТЬ ТУРНИР</a></li>--}}
         </ul>
@@ -62,7 +62,7 @@
             @if(!$tournament->isGenerated && Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
                 <ul class="actions special">
                     <li>
-                        @livewire('tournament-table-form', ['id_tournament' => $tournament->id])
+                        @livewire('forms.tournament-table-form', ['id_tournament' => $tournament->id])
                     </li>
                 </ul>
             @endif
@@ -71,7 +71,7 @@
             @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
                 <ul class="actions special">
                     <li>
-                        @livewire('game-form', ['id_tournament' => $tournament->id, 'last_datetime' => $tournament->date_time])
+                        @livewire('forms.games-form', ['id_tournament' => $tournament->id, 'last_datetime' => $tournament->date_time])
                     </li>
                 </ul>
             @endif
@@ -83,7 +83,7 @@
                 {{--кнопка, при нажатии которой появляется модальное окно редактирования турнира--}}
                 @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
                         @livewire('remove-tournament',["current_tournament" => $tournament->id])
-                        @livewire('tournament-form', ['current_tournament' => $tournament->id])
+                        @livewire('forms.tournament-form', ['current_tournament' => $tournament->id])
                 @endif
             </div>
 

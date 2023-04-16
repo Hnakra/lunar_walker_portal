@@ -9,7 +9,7 @@
         <ul class="actions special">
 {{--            <li><a href="#" class="button big-button">ДОБАВИТЬ РОБОТА</a></li>--}}
             @if(Auth::check())
-            <li>@livewire('robot-form')</li>
+            <li>@livewire('forms.robot-form')</li>
             @endif
         </ul>
     </div>
