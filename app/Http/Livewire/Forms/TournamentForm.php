@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Forms;
 
 use App\Mail\NotifyAboutCreateTournament;
 use App\Models\Place;
@@ -152,7 +152,7 @@ class TournamentForm extends Component
     }
     public function render()
     {
-        return view('livewire.tournament-form');
+        return view('livewire.forms.tournament-form');
     }
 
     /**

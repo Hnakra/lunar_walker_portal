@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Forms;
 
 use App\Models\Place;
 use App\Models\User;
@@ -155,6 +155,6 @@ class PlaceForm extends Component
      */
     public function render()
     {
-        return view('livewire.place-form');
+        return view('livewire.forms.place-form');
     }
 }

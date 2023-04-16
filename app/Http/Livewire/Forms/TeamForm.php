@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Forms;
 
 use App\Models\Player;
 use App\Models\Robot;
@@ -108,7 +108,7 @@ class TeamForm extends Component
 
     public function render()
     {
-        return view('livewire.team-form');
+        return view('livewire.forms.team-form');
     }
     // получить список пользователей без тренеров (но добавить текущего тренера)
     private function getUsers()

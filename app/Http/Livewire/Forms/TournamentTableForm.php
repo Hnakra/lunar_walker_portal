@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Forms;
 
 use App\Models\Team;
 use App\Models\TeamsInTournament;
@@ -52,6 +52,6 @@ class TournamentTableForm extends Component
             ->leftJoin('teams_in_tournaments', 'teams_in_tournaments.id_team', '=', 'teams.id')
             ->get();
 
-        return view('livewire.tournament-table-form');
+        return view('livewire.forms.tournament-table-form');
     }
 }

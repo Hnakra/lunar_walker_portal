@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Forms;
 
 use App\Models\Robot;
 use Illuminate\Support\Facades\Auth;
@@ -103,7 +103,7 @@ class RobotForm extends Component
 
     public function render()
     {
-        return view('livewire.robot-form');
+        return view('livewire.forms.robot-form');
     }
 
 }
