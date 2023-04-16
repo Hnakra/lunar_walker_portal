@@ -12,10 +12,10 @@ use Livewire\WithFileUploads;
 use function Livewire\str;
 
 /**
- * Class AddPlace, выводит модальное окно создания и редактирования сущности, сохраняет изменения
+ * Class PlaceForm, выводит модальное окно создания и редактирования сущности, сохраняет изменения
  * @package App\Http\Livewire
  */
-class AddPlace extends Component
+class PlaceForm extends Component
 {
     use WithFileUploads;
     // Переменная открытия-закрытия формы
@@ -155,6 +155,6 @@ class AddPlace extends Component
      */
     public function render()
     {
-        return view('livewire.add-place');
+        return view('livewire.place-form');
     }
 }

@@ -6,7 +6,7 @@
             site template freebie<br />
             crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
         @if(Auth::check() && !Auth::user()->isUser())
-            @livewire('add-place')
+            @livewire('place-form')
         @endif
     </div>
     <a href="#one" class="more scrolly">Читать далее</a>
