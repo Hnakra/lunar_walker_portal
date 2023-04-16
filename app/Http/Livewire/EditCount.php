@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\CounterLog;
 use App\Models\Game;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -83,13 +84,7 @@ class EditCount extends Component
             ->leftJoin('teams as T1', 'games.id_team_1', '=', 'T1.id')
             ->leftJoin('teams as T2', 'games.id_team_2', '=', 'T2.id')
             ->get()->first();
-        $this->log = DB::table('counter_log')->select(DB::raw('counter_log.* , teams.name'))
-            ->where("counter_log.id_game", $this->game->id)
-            ->leftJoin('teams', 'counter_log.id_team', '=', 'teams.id')
-            ->orderBy('counter_log.id', 'desc')->get();
-        foreach ($this->log as $log) {
-            list($log->date, $log->time) = explode(" ", $log->created_at);
-        }
+        $this->log = CounterLog::getByGameId($this->game->id);
     }
     public function time_is_end(){
         return $this->is_end() && $this->game->id_state == 2 ;
