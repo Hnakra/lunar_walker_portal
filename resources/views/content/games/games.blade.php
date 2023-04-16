@@ -7,7 +7,7 @@
             crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
         <ul class="actions special">
             @if(Auth::check() && !Auth::user()->isUser())
-                <li>@livewire('add-tournament')</li>
+                <li>@livewire('tournament-form')</li>
             @endif
 {{--            <li><a href="#" class="button big-button">СОЗДАТЬ ТУРНИР</a></li>--}}
         </ul>
@@ -83,7 +83,7 @@
                 {{--кнопка, при нажатии которой появляется модальное окно редактирования турнира--}}
                 @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
                         @livewire('remove-tournament',["current_tournament" => $tournament->id])
-                        @livewire('add-tournament', ['current_tournament' => $tournament->id])
+                        @livewire('tournament-form', ['current_tournament' => $tournament->id])
                 @endif
             </div>
 

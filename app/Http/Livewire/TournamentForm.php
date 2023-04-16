@@ -15,10 +15,10 @@ use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 /**
- * Class AddTournament, выводит модальное окно создания и редактирования сущности, сохраняет изменения
+ * Class TournamentForm, выводит модальное окно создания и редактирования сущности, сохраняет изменения
  * @package App\Http\Livewire
  */
-class AddTournament extends Component
+class TournamentForm extends Component
 {
 //    Переменная открытия-закрытия формы
     public $modalFormVisible = false;
@@ -152,7 +152,7 @@ class AddTournament extends Component
     }
     public function render()
     {
-        return view('livewire.add-tournament');
+        return view('livewire.tournament-form');
     }
 
     /**
