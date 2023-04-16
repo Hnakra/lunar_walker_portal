@@ -16,7 +16,7 @@ use Livewire\Component;
  * @package App\Http\Livewire
  * @property Illuminate\Database\Eloquent\Collection $team
  */
-class GamesForm extends Component
+class GameForm extends Component
 {
     // Переменная открытия-закрытия формы
     public $modalFormVisible = false;
@@ -108,6 +108,6 @@ class GamesForm extends Component
     public function render()
     {
         $this->is_grouped = Tournament::find($this->id_tournament)->isGrouped();
-        return view('livewire.forms.games-form');
+        return view('livewire.forms.game-form');
     }
 }
