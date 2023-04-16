@@ -12,11 +12,11 @@ use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 /**
- * Class AddGame, выводит модальное окно создания и редактирования сущности, сохраняет изменения
+ * Class GameForm, выводит модальное окно создания и редактирования сущности, сохраняет изменения
  * @package App\Http\Livewire
  * @property Illuminate\Database\Eloquent\Collection $team
  */
-class AddGame extends Component
+class GameForm extends Component
 {
     // Переменная открытия-закрытия формы
     public $modalFormVisible = false;
@@ -108,6 +108,6 @@ class AddGame extends Component
     public function render()
     {
         $this->is_grouped = Tournament::find($this->id_tournament)->isGrouped();
-        return view('livewire.add-game');
+        return view('livewire.game-form');
     }
 }

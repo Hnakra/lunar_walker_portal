@@ -71,7 +71,7 @@
             @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
                 <ul class="actions special">
                     <li>
-                        @livewire('add-game', ['id_tournament' => $tournament->id, 'last_datetime' => $tournament->date_time])
+                        @livewire('game-form', ['id_tournament' => $tournament->id, 'last_datetime' => $tournament->date_time])
                     </li>
                 </ul>
             @endif
