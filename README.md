@@ -22,7 +22,7 @@
 8.  Фильтрация статистики игр, а также поиск по фильтрам.
 
 ### Иные ссылки
-[Тестирование портала](https://github.com/Hnakra/lunar_walker_portal/tests/README.md)
+[Тестирование портала](https://github.com/Hnakra/lunar_walker_portal/blob/main/tests/README.md)
 
 
 ### Стек технологий
