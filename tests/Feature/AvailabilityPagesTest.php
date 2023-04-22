@@ -68,6 +68,11 @@ class AvailabilityPagesTest extends TestCase
         $this->actingAs(User::first())->get('/user/profile')->assertStatus(200);
     }
 
+    public function test_availability_page_profile_without_authorization()
+    {
+        $this->get('/user/profile')->assertStatus(302);
+    }
+
     public function test_availability_page_game()
     {
         $game = Game::first();
