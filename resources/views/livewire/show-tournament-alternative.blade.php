@@ -10,12 +10,14 @@
                 {{ __('SWAP') }}
             </x-jet-secondary-button>
             <section class="tournament">
-                <h5>Площадка: <a href="/places/{{$tournament->place->id}}" class="link-name1" >{{$tournament->place->name}}</a></h5>
+                <h5>Площадка: <a href="/places/{{$tournament->place->id}}"
+                                 class="link-name1">{{$tournament->place->name}}</a></h5>
                 <h5>Дата/время проведения:{{$tournament->date_time}}</h5>
 
                 @for($i = 1; $i <= $tournament->numGroups(); $i++)
                     @php
                         $teamsInGroup = $tournament->getTeamsByGroupId($i);
+                        $gamesInGroup = $tournament->getGamesByGroupId($i);
                     @endphp
                     <div>
                         <table>
@@ -37,6 +39,34 @@
                                         <td>
                                             @if($j+1 === $z)
                                                 XXX
+                                            @else
+                                                @if($j+1 < $z)
+                                                    {{--Верхнеуголь--}}
+                                                    @php
+                                                        $game = $gamesInGroup->where('id_team_1', $teamsInGroup[$j]->id)
+                                                        ->where('id_team_2', $teamsInGroup[$z-1]->id)
+                                                        ->first()
+                                                    @endphp
+
+                                                    @if($game->id_state === 1)
+                                                        -
+                                                    @else
+                                                        {{$game->count_team_1}}:{{ $game->count_team_2}}
+                                                    @endif
+
+                                                @else
+                                                    {{--Нижееуголь--}}
+                                                    @php
+                                                        $game = $gamesInGroup->where('id_team_2', $teamsInGroup[$j]->id)
+                                                            ->where('id_team_1', $teamsInGroup[$z-1]->id)
+                                                            ->first()
+                                                    @endphp
+                                                    @if($game->id_state === 1)
+                                                        -
+                                                    @else
+                                                        {{$game->count_team_2}}:{{ $game->count_team_1}}
+                                                    @endif
+                                                @endif
                                             @endif
                                         </td>
                                     @endfor

@@ -17,13 +17,19 @@ class Tournament extends Model
     public function numGroups()
     {
         return TeamsInTournament::where('id_tournament', $this->id)
-            ->distinct('group')->count('group');
+            ->distinct()->count('group');
     }
 
     public function getTeamsByGroupId($id_group)
     {
         return TeamsInTournament::where('id_tournament', $this->id)->where('group', $id_group)
             ->leftJoin('teams', 'teams_in_tournaments.id_team', '=', 'teams.id')->get();
+    }
+    public function getGamesByGroupId($id_group){
+        $teamsIDS = $this->getTeamsByGroupId($id_group)->pluck('id_team');
+        return Game::where('id_tournament', $this->id)->where(function ($query) use ($teamsIDS) {
+            $query->whereIn('id_team_1', $teamsIDS)->orWhereIn('id_team_2', $teamsIDS)->get();
+        })->get();
     }
 
     /**
