@@ -28,4 +28,10 @@ class TeamsInTournament extends Model
     public function groupName(){
         return range('A', 'Z')[$this->attributes['group']-1];
     }
+    public static function getGroupNameByIdGroup($group){
+        return range('A', 'Z')[$group-1];
+    }
+    public function teams(){
+        return $this->hasMany(Team::class, 'id_team');
+    }
 }

@@ -24,6 +24,13 @@ class Game extends Model
             ->where("id_tournament", $this->id_tournament)->get()->first()
             ->groupName();
     }
+
+    public function team_1(){
+        return $this->hasOne(Team::class,  'id', 'id_team_1');
+    }
+    public function team_2(){
+        return $this->hasOne(Team::class, 'id','id_team_2');
+    }
     public static function getGamesWithTeams($condition = null, $filterCallable = null){
         return Game::select(DB::raw('games.* , T1.name as t1_name, T2.name as t2_name, tournaments.name as tournamentName'))
             ->where($condition)

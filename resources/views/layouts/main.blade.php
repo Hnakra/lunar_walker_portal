@@ -43,6 +43,9 @@
     <link rel="stylesheet" href="/assets/css/maket_styles.css" />
     <!-- Стиль данной страницы -->
     <link rel="stylesheet" href="/assets/css/@yield('style')" />
+    @hasSection('additional_style_1')
+            <link rel="stylesheet" href="/assets/css/@yield('additional_style_1')" />
+    @endif
     <!-- Стиль всех наших страниц сайта -->
     <link rel="stylesheet" href="/assets/css/global.css" />
     <!--  Подключение стилей для иконок font awersome  -->

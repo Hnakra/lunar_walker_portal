@@ -27,3 +27,9 @@
 .block-icon{
     position: relative;
 }
+.link-name1{
+    color: #2E3842 !important;
+    font-size: 14px !important;
+    letter-spacing: 5px;
+    text-decoration: underline;
+}

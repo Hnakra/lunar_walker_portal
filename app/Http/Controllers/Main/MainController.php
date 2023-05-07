@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
+use App\Models\Tournament;
 use Illuminate\Http\Request;
 
 /**
@@ -11,7 +12,11 @@ use Illuminate\Http\Request;
  */
 class MainController extends Controller
 {
-    public function index(){
-        return view('pages.main');
+    public function index()
+    {
+        $tournaments = Tournament::orderBy('date_time', 'desc')->get();
+        return view('pages.main', [
+            'tournaments' => $tournaments
+        ]);
     }
 }
