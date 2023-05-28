@@ -25,11 +25,18 @@ class Tournament extends Model
         return TeamsInTournament::where('id_tournament', $this->id)->where('group', $id_group)
             ->leftJoin('teams', 'teams_in_tournaments.id_team', '=', 'teams.id')->get();
     }
-    public function getGamesByGroupId($id_group){
+
+    public function getGamesByGroupId($id_group)
+    {
         $teamsIDS = $this->getTeamsByGroupId($id_group)->pluck('id_team');
         return Game::where('id_tournament', $this->id)->where(function ($query) use ($teamsIDS) {
             $query->whereIn('id_team_1', $teamsIDS)->orWhereIn('id_team_2', $teamsIDS)->get();
         })->get();
+    }
+
+    public function get_date(): string
+    {
+        return explode(' ', $this->date_time)[0];
     }
 
     /**

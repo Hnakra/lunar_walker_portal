@@ -14,9 +14,6 @@ class MainController extends Controller
 {
     public function index()
     {
-        $tournaments = Tournament::orderBy('date_time', 'desc')->get();
-        return view('pages.main', [
-            'tournaments' => $tournaments
-        ]);
+        return view('pages.main');
     }
 }

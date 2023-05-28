@@ -12,7 +12,7 @@ class ShowStatistics extends Component
 {
     use Filter;
     use StatisticFilterLists;
-    public $freshGames, $games, $filterParams;
+    public $freshGames, $games;
     public $batch = 20, $step_batch = 20;
 
     public function load_more(){

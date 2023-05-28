@@ -1,6 +1,6 @@
 <?php
 namespace App\Traits;
-use App\Filters\Statistic\StatisticDateFilter;
+use App\Filters\Statistic\StatisticDateTournamentFilter;
 use App\Filters\Statistic\StatisticTeamFilter;
 use App\Filters\Statistic\StatisticTournamentFilter;
 use App\Models\Game;
@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 trait StatisticFilterLists{
     private function getClassList(): array{
         return [
-            StatisticDateFilter::class,
+            StatisticDateTournamentFilter::class,
             StatisticTournamentFilter::class,
             StatisticTeamFilter::class
         ];

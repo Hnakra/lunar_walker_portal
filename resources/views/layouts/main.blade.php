@@ -46,6 +46,9 @@
     @hasSection('additional_style_1')
             <link rel="stylesheet" href="/assets/css/@yield('additional_style_1')" />
     @endif
+    @hasSection('additional_style_2')
+        <link rel="stylesheet" href="/assets/css/@yield('additional_style_2')" />
+    @endif
     <!-- Стиль всех наших страниц сайта -->
     <link rel="stylesheet" href="/assets/css/global.css" />
     <!--  Подключение стилей для иконок font awersome  -->

@@ -11,12 +11,8 @@
     </div>
     <a href="#one" class="more scrolly">Читать далее</a>
 </section>
-<section id = "one">
+<section id = "one" class="wrapper style5">
     <h1>Добро пожаловать на сайт проведения соревнований по робофутболу</h1>
     <h3>Список турниров:</h3>
-    <div>
-        @foreach($tournaments as $t)
-            @livewire('show-tournament', ['tournament' => $t])
-        @endforeach
-    </div>
+    @livewire('show-tournament-list')
 </section>
