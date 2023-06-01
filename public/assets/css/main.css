@@ -25,4 +25,13 @@
     letter-spacing: 4.14px;
 }
 
-
+.tournament-table{
+    border-width: 1px !important;
+    border-color: black !important;
+}
+.tournament-table tr{
+    background-color: var(--modal-color) !important;
+}
+.tournament-table .x{
+    background-color: gray;
+}

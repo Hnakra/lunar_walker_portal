@@ -40,4 +40,7 @@ class Game extends Model
             ->where($filterCallable)
             ->orderBy('date_time', 'desc');
     }
+    public function getTime(){
+        return explode(' ', $this->date_time)[1];
+    }
 }

@@ -22,12 +22,7 @@ trait AddTournamentsTable
     private function all_vs_all_generate($teams)
     {
         $teams = $teams->values();
-        $games = [];
-        for ($i = 0; $i < $teams->count(); $i++) {
-            for ($j = $i+1; $j < $teams->count(); $j++) {
-                array_push($games, [$teams->get($i)->id_team, $teams->get($j)->id_team]);
-            }
-        }
+        $games = $this->get_all_vs_all_games($teams);
         shuffle($games);
         foreach ($games as $k => $game){
 
@@ -48,5 +43,15 @@ trait AddTournamentsTable
             ]);
         }
 
+    }
+
+    private function get_all_vs_all_games($teams){
+        $games = [];
+        for ($i = 0; $i < $teams->count(); $i++) {
+            for ($j = $i+1; $j < $teams->count(); $j++) {
+                array_push($games, [$teams->get($i)->id_team, $teams->get($j)->id_team]);
+            }
+        }
+        return $games;
     }
 }
