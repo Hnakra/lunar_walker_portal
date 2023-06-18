@@ -35,6 +35,9 @@
     @switch($game->id_state)
         @case(0)
             <p>Игра завершена</p>
+            <a href="#!" class="button big-button" wire:click="time_new">
+                {{ __("ПРОДОЛЖИТЬ ИГРУ С ".($game->num_periods+1)." ТАЙМА") }}
+            </a>
         @break
         @case(1)
             <a href="#!" class="button big-button" wire:click="game_start">
