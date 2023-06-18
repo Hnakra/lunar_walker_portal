@@ -8,6 +8,18 @@
         max-width: 400px;
         width: auto;
     }
+    #one{
+        padding: 50px 10px !important;
+        letter-spacing: 1.2px !important;
+
+    }
+    table{
+        font-size: 12px !important;
+    }
+    .px-6, .px-4{
+        padding-left:3px !important;
+        padding-right:3px !important;
+    }
 }
 #one{
     background: #FFFBE9;
@@ -26,12 +38,24 @@
 }
 
 .tournament-table{
-    border-width: 1px !important;
-    border-color: black !important;
+    border-width: 1px;
+    border-color: #dfdfdf;
+    border-style: solid;
 }
 .tournament-table tr{
     background-color: var(--modal-color) !important;
 }
 .tournament-table .x{
     background-color: gray;
+}
+.tournament-table td{
+    padding: 0;
+}
+
+.tournament-table .count {
+    border-left: 1px solid #dfdfdf;
+    border-right: 1px solid #dfdfdf;
+}
+.tapped{
+    background-color: #adadad !important;
 }

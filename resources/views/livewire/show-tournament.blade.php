@@ -6,9 +6,15 @@
             {{$tournament->name}}
         </x-slot>
         <x-slot name="content">
-            <x-jet-secondary-button class="button-secondary" wire:click="$toggle('alternativeVisible')">
-                {{ __('SWAP') }}
-            </x-jet-secondary-button>
+            <br>
+            @if($isExistsAlternativeVisible)
+                <x-jet-secondary-button class="button-swap tapped" wire:click="$set('alternativeVisible', false)">
+                    {{ __('Строчное представление') }}
+                </x-jet-secondary-button>
+                <x-jet-secondary-button class="button-swap" wire:click="$set('alternativeVisible', true)">
+                    {{ __('Табличное представление') }}
+                </x-jet-secondary-button>
+            @endif
             <section class="tournament">
                 <h5>Площадка: <a href="/places/{{$tournament->place->id}}" class="link-name1" >{{$tournament->place->name}}</a></h5>
                 <h5>Дата/время проведения:{{$tournament->date_time}}</h5>

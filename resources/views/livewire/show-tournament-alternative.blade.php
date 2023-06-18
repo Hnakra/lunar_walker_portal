@@ -6,10 +6,14 @@
             {{$tournament->name}}
         </x-slot>
         <x-slot name="content">
+            <br>
 
             @if($isExistsAlternativeVisible)
-                <x-jet-secondary-button class="button-secondary" wire:click="$toggle('alternativeVisible')">
-                    {{ __('SWAP') }}
+                <x-jet-secondary-button class="button-swap" wire:click="$set('alternativeVisible', false)">
+                    {{ __('Строчное представление') }}
+                </x-jet-secondary-button>
+                <x-jet-secondary-button class="button-swap tapped" wire:click="$set('alternativeVisible', true)">
+                    {{ __('Табличное представление') }}
                 </x-jet-secondary-button>
             @endif
             <section class="tournament">
@@ -39,21 +43,26 @@
                                 @endphp
 
                                 <tr>
-                                    <td title="Номер">{{$team['number']}}</td>
+                                    <td title="Номер" class="center-text">{{$team['number']}}</td>
                                     <td>{{$team['teamName']}}</td>
                                     @foreach($team['games'] as $z => $game)
                                         @if($game === 'X')
-                                            <td class="x"></td>
+                                            <td class="x count center-text"></td>
                                         @else
-                                            <td title="{{$team['gameDescription'][$z]}}">
+                                            <td class="count center-text" title="{{$team['gameDescription'][$z]}}">
                                                 {{$game}}
                                             </td>
                                         @endif
                                     @endforeach
 
-                                    <td title="{{$team['pointsDescription']}}">{{$team['points']}}</td>
-                                    <td title="{{$team['differentDescription']}}">{{$team['different']}}</td>
-                                    <td title="{{$team['placeDescription']}}">{{$team['place']}}</td>
+                                    <td class="center-text" title="{{$team['pointsDescription']}}">
+                                        {{$team['points']}}
+                                    </td>
+                                    <td class="center-text" title="{{$team['differentDescription']}}">
+                                        {{$team['different']}}</td>
+                                    <td title="{{$team['placeDescription']}}">
+                                        {{$team['place']}}
+                                    </td>
                                 </tr>
                             @endfor
 
@@ -62,154 +71,6 @@
                         </table>
                     </div>
                 @endforeach
-
-
-
-
-
-
-
-
-
-{{--
-
-
-                @php
-                    $score = [];
-                    $count_win = [];
-                    $count_lose = [];
-                @endphp
-
-                @for($i = 1; $i <= $tournament->numGroups(); $i++)
-                    @php
-                        $teamsInGroup = $tournament->getTeamsByGroupId($i);
-                        $gamesInGroup = $tournament->getGamesByGroupId($i);
-                        $score[$i] = [];
-                        $count_win[$i] = [];
-                        $count_lose[$i] = [];
-                    @endphp
-                    <div>
-                        <table class="tournament-table">
-                            <thead>
-                            <tr>
-                                <th>{{\App\Models\TeamsInTournament::getGroupNameByIdGroup($teamsInGroup->first()->group)}}</th>
-                                <th>Команда</th>
-                                @for($j = 1; $j <= $teamsInGroup->count(); $j++)
-                                    <th title="{{$teamsInGroup[$j-1]->name}}">{{$j}}</th>
-                                @endfor
-                                <th title="Очков добыто">O</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($teamsInGroup as $j => $team)
-                                <tr>
-                                    <td title="Номер">{{$j+1}}</td>
-                                    <td>{{$team->name}}</td>
-                                    @for($z = 1; $z <= $teamsInGroup->count(); $z++)
-
-                                        @if($j+1 === $z)
-                                            <td class="x"></td>
-                                        @else
-
-                                            @if($j+1 < $z)
-                                                --}}{{--Верхнеуголь--}}{{--
-                                                @php
-                                                    $game = $gamesInGroup->where('id_team_1', $teamsInGroup[$j]->id)
-                                                    ->where('id_team_2', $teamsInGroup[$z-1]->id)
-                                                    ->first()
-                                                @endphp
-
-                                                @if($game->id_state === 1)
-                                                    <td title="Идет игра">
-                                                        ...
-                                                    </td>
-                                                @else
-                                                    <td title="
-                                                    @php
-                                                        if($game->count_team_1 === $game->count_team_2){
-                                                            echo "Ничья";
-                                                        } else {
-                                                            if($game->count_team_1 > $game->count_team_2){
-                                                                echo "$team->name выиграла";
-                                                            } else {
-                                                                echo "$team->name проиграла";
-                                                            }
-                                                        }
-
-                                                    @endphp
-                                                        ">
-                                                        {{$game->count_team_1}}:{{ $game->count_team_2}}
-                                                    </td>
-                                                @endif
-
-                                            @else
-                                                --}}{{--Нижееуголь--}}{{--
-                                                @php
-                                                    $game = $gamesInGroup->where('id_team_2', $teamsInGroup[$j]->id)
-                                                        ->where('id_team_1', $teamsInGroup[$z-1]->id)
-                                                        ->first()
-                                                @endphp
-                                                @if($game->id_state === 1)
-                                                    <td title="Идет игра">
-                                                        ...
-                                                    </td>
-                                                @else
-                                                    <td title="
-                                                    @php
-                                                        if($game->count_team_2 === $game->count_team_1){
-                                                            echo "Ничья";
-                                                        } else {
-                                                            if($game->count_team_2 > $game->count_team_1){
-                                                                echo "$team->name выиграла";
-                                                            } else {
-                                                                echo "$team->name проиграла";
-                                                            }
-                                                        }
-
-                                                    @endphp
-                                                        ">
-                                                        {{$game->count_team_2}}:{{ $game->count_team_1}}
-                                                    </td>
-                                                @endif
-                                            @endif
-
-                                        @endif
-
-
-                                    @endfor
-                                    @php
-                                        $score[$i][$j] = 0;
-                                        $count_win[$i][$j] = 0;
-                                        $count_lose[$i][$j] = 0;
-                                        $gamesThisTeam1 = $gamesInGroup->where('id_team_1', $teamsInGroup[$j]->id);
-                                        foreach ($gamesThisTeam1 as $game){
-                                            if($game->count_team_1 > $game->count_team_2){
-                                                $score[$i][$j] += 2;
-                                            }
-                                            if($game->count_team_1 == $game->count_team_2){
-                                                $score[$i][$j] += 1;
-                                            }
-                                        }
-
-                                        $gamesThisTeam2 = $gamesInGroup->where('id_team_2', $teamsInGroup[$j]->id);
-                                        foreach ($gamesThisTeam2 as $game){
-                                            if($game->count_team_2 > $game->count_team_1){
-                                                $score[$i][$j] += 2;
-                                            }
-                                            if($game->count_team_2 == $game->count_team_1){
-                                                $score[$i][$j] += 1;
-                                            }
-                                        }
-                                    @endphp
-                                    <td>
-                                        {{$score[$i][$j]}}
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                @endfor--}}
 
             </section>
 
