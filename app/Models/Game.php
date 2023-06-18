@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -19,19 +20,26 @@ class Game extends Model
         'datetime_state'
     ];
     use HasFactory;
-    public function groupName(){
+
+    public function groupName()
+    {
         return TeamsInTournament::where("id_team", $this->id_team_1)
             ->where("id_tournament", $this->id_tournament)->get()->first()
             ->groupName();
     }
 
-    public function team_1(){
-        return $this->hasOne(Team::class,  'id', 'id_team_1');
+    public function team_1()
+    {
+        return $this->hasOne(Team::class, 'id', 'id_team_1');
     }
-    public function team_2(){
-        return $this->hasOne(Team::class, 'id','id_team_2');
+
+    public function team_2()
+    {
+        return $this->hasOne(Team::class, 'id', 'id_team_2');
     }
-    public static function getGamesWithTeams($condition = null, $filterCallable = null){
+
+    public static function getGamesWithTeams($condition = null, $filterCallable = null)
+    {
         return Game::select(DB::raw('games.* , T1.name as t1_name, T2.name as t2_name, tournaments.name as tournamentName'))
             ->where($condition)
             ->leftJoin('tournaments', 'games.id_tournament', '=', 'tournaments.id')
@@ -40,7 +48,16 @@ class Game extends Model
             ->where($filterCallable)
             ->orderBy('date_time', 'desc');
     }
-    public function getTime(){
-        return explode(' ', $this->date_time)[1];
+
+    public function getTime()
+    {
+        $time = explode(' ', $this->date_time)[1];
+        $timeParts = explode(':', $time);
+        return "$timeParts[0]:$timeParts[1]";
+    }
+
+    public function getDateTimeAttribute(): string
+    {
+        return (new DateTime($this->date))->format('Y-m-d H:i');
     }
 }

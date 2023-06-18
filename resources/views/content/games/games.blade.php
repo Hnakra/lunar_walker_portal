@@ -41,7 +41,7 @@
                             @if($tournament->isGrouped())
                                 <td>{{$game->groupName()}}</td>
                             @endif
-                            <td>{{$game->date_time}}</td>
+                            <td>{{$game->getTime()}}</td>
                             <td>{{$game->name_team_1}} VS {{$game->name_team_2}}</td>
                             <td>{{$game->count_team_1}}:{{$game->count_team_2}}</td>
                             <td><a href="/game/{{$game->id}}" title="информация об игре" class="points">...</a></td>

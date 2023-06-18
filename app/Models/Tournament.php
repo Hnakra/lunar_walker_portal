@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
 class Tournament extends Model
@@ -51,11 +53,9 @@ class Tournament extends Model
     {
         return $this->hasOne(Place::class, 'id', 'id_place');
     }
-    /*    public function teamsInTournaments(){
-            return $this->hasOne(TeamsInTournament::class, 'id_tournament');
-        }*/
 
-    /*    public function teams(){
-            return $this->belongsToMany(Team::class, 'teams_in_tournaments', 'id_tournament', 'id_team');
-        }*/
+    public function getDateTimeAttribute(): string
+    {
+        return (new DateTime($this->date))->format('Y-m-d H:i');
+    }
 }
