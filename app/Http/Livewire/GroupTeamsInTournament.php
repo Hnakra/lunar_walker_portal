@@ -29,7 +29,8 @@ class GroupTeamsInTournament extends Component
             if ($this->groupingType == "manual"){
                 $this->validate([
                     'teamGroup.*' => 'required|not_in:0',
-                    'teamGroup' =>
+                    // закомментированная валидация на то, чтобы команд в группе было больше 1
+                    /*'teamGroup' =>
                         function ($attribute, $value, $fail) {
                             $teamGroup = collect($value);
                             foreach ($teamGroup->unique()->values()->toArray() as $v){
@@ -39,8 +40,9 @@ class GroupTeamsInTournament extends Component
                                     $fail("Команда \"$teamName\" не может играть одна!");
                                 }
                             }
-                        }
-                ], ['teamGroup.*.not_in' => 'Все команды должны состоять в группах!']);
+                        }*/
+                ],
+                    ['teamGroup.*.not_in' => 'Все команды должны состоять в группах!']);
             } else {
                 $ids = new \Illuminate\Support\Collection($this->teams->pluck('id_team'));
                 $values = array_map(fn($item) => $item%$this->numGroups+1, range(0, $ids->count()-1));
