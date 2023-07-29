@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GoogleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,13 @@ Route::get('/statistic', [\App\Http\Controllers\Games\Statistics\StatisticsContr
 
 Route::get('/places', [\App\Http\Controllers\Places\PlacesController::class, 'index']);
 Route::get('places/{id_place}', [\App\Http\Controllers\Places\Place\PlaceController::class, 'index']);
+
+// Google URL
+Route::prefix('google')->name('google.')->group( function(){
+    Route::get('login', [GoogleController::class, 'loginWithGoogle'])->name('login');
+    Route::any('callback', [GoogleController::class, 'callbackFromGoogle'])->name('callback');
+});
+
 /*Route::get('/places/{id_place}/teams', [\App\Http\Controllers\Teams\TeamsController::class, 'index']);*/
 
 /*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

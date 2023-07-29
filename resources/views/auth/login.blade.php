@@ -36,6 +36,10 @@
                     </label>
                 </div>
 
+                <a href="{{ route('google.login') }}" class="btn btn-google btn-user btn-block">
+                    <i class="fab fa-google fa-fw"></i> Login with Google
+                </a>
+
                 <div class="flex items-center justify-end mt-4">
                     @if (Route::has('password.request'))
                         <a class="underline text-sm text-gray-600 hover:text-gray-900 link" href="{{ route('password.request') }}">
