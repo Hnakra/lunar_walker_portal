@@ -10,32 +10,19 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use function Livewire\str;
 
-class GoogleController extends Controller
+class YandexController extends Controller
 {
-
-    public function loginWithGoogle()
+    public function loginWithYandex()
     {
-        return Socialite::driver('google')/*->setScopes(['openid', 'email'])*//*->with(['state' => 'randomstate'])->with(['state' => 'randomstate'])*/ ->redirect();
+        return Socialite::driver('yandex')->redirect();
     }
 
-    /*    public function callbackFromGoogle()
-        {
-            \Log::info("kekos");
-            try {
-                dd('kek');
-                $user = Socialite::driver('google');
-                dd($user);
-            } catch (\Throwable $th) {
-                throw $th;
-            }
-        }*/
 
-
-    public function callbackFromGoogle()
+    public function callbackFromYandex()
     {
         try {
-            $user = Socialite::driver('google')->stateless()->user();
-            //dd($user);
+            $user = Socialite::driver('yandex')->user();
+
             // Check Users Email If Already There
             $is_user = User::where('email', $user->getEmail())->first();
             if (!$is_user) {
@@ -44,7 +31,7 @@ class GoogleController extends Controller
                 file_put_contents("storage/" . $imgName, file_get_contents($user->getAvatar()));
 
                 $saveUser = User::updateOrCreate([
-                    'google_id' => $user->getId(),
+                    'yandex_id' => $user->getId(),
                 ], [
                     'name' => $user->getName(),
                     'email' => $user->getEmail(),
@@ -54,15 +41,14 @@ class GoogleController extends Controller
                 ]);
             } else {
                 $saveUser = User::where('email', $user->getEmail())->update([
-                    'google_id' => $user->getId(),
+                    'yandex_id' => $user->getId(),
                 ]);
                 $saveUser = User::where('email', $user->getEmail())->first();
             }
 
 
             Auth::loginUsingId($saveUser->id);
-
-            return redirect('/main');
+            return redirect('/');
         } catch (\Throwable $th) {
             throw $th;
         }

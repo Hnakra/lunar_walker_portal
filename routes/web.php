@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\YandexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,12 @@ Route::get('places/{id_place}', [\App\Http\Controllers\Places\Place\PlaceControl
 Route::prefix('google')->name('google.')->group( function(){
     Route::get('login', [GoogleController::class, 'loginWithGoogle'])->name('login');
     Route::any('callback', [GoogleController::class, 'callbackFromGoogle'])->name('callback');
+});
+
+// Yandex URL
+Route::prefix('yandex')->name('yandex.')->group( function(){
+    Route::get('login', [YandexController::class, 'loginWithYandex'])->name('login');
+    Route::any('callback', [YandexController::class, 'callbackFromYandex'])->name('callback');
 });
 
 /*Route::get('/places/{id_place}/teams', [\App\Http\Controllers\Teams\TeamsController::class, 'index']);*/
