@@ -42,19 +42,24 @@ class GameForm extends Component
         'id_team_2.different' => 'Одна и та же команда не может играть против себя!'
     ];
 
-    public function getTeamsProperty(){
+    public function getTeamsProperty()
+    {
         return Team::where('teams_in_tournaments.id_tournament', $this->id_tournament)
-            ->leftJoin('teams_in_tournaments','teams_in_tournaments.id_team', '=','teams.id')
+            ->leftJoin('teams_in_tournaments', 'teams_in_tournaments.id_team', '=', 'teams.id')
             ->get();
     }
+
     // метод вызова модельного окна для создания сущности
-    public function createShowModal(){
+    public function createShowModal()
+    {
         // для отображения даты и времени раздельно, разъеденим их , так как сейчас они в формате "дд.мм.гггг H:M"
         list($this->date, $this->time) = explode(" ", $this->last_datetime);
         $this->modalFormVisible = true;
     }
+
     // метод сохранения новой сущности, редирект
-    public function submitShowModal(){
+    public function submitShowModal()
+    {
         // валидация всех значений, указанных в $rules
         $this->validate();
         // добавляем новую запись в games
@@ -65,7 +70,7 @@ class GameForm extends Component
             'id_team_2' => $this->id_team_2,
             'count_team_1' => 0,
             'count_team_2' => 0,
-            'date_time' => $this->date." ".$this->time,
+            'date_time' => $this->date . " " . $this->time,
             'created_at' => date("Y-m-d H:i:s", strtotime('now')),
             'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
             'id_state' => 1,
@@ -76,9 +81,11 @@ class GameForm extends Component
         // редирект на страницу, чтобы перерисовать ее с новыми изменениями
         redirect("/games", [\App\Http\Controllers\Games\GamesController::class, 'index']);
     }
+
     // метод вызова модельного окна для изменения сущности
 
-    public function editShowModal(){
+    public function editShowModal()
+    {
         $game = Game::find($this->current_game);
         $this->id_tournament = $game->id_tournament;
         $this->id_team_1 = $game->id_team_1;
@@ -90,19 +97,21 @@ class GameForm extends Component
         $this->modalFormVisible = true;
         list($this->date, $this->time) = explode(" ", $game->date_time);
     }
+
     // метод изменения сущности, редирект
-    public function modifyShowModal(){
+    public function modifyShowModal()
+    {
         // валидация всех значений, указанных в $rules
         $this->validate();
         DB::table('games')->where('id', $this->current_game)->update([
             'id_tournament' => $this->id_tournament,
             'id_team_1' => $this->id_team_1,
             'id_team_2' => $this->id_team_2,
-            'date_time' => $this->date." ".$this->time,
+            'date_time' => $this->date . " " . $this->time,
             'max_seconds_match' => $this->max_seconds_match,
             'updated_at' => date("Y-m-d H:i:s", strtotime('now')),
         ]);
-        redirect( "/game/".$this->current_game, [\App\Http\Controllers\Games\Game\GameController::class, 'index']);
+        redirect("/game/" . $this->current_game, [\App\Http\Controllers\Games\Game\GameController::class, 'index']);
     }
 
     public function render()

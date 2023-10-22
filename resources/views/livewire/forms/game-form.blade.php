@@ -6,15 +6,17 @@
     @else
 
         <div>
-            <a href ="#!" class="button-edit"><i class="fa fa-edit" style="font-size:30px" wire:click="editShowModal"></i></a>
+            <a href="#!" class="button-edit">
+                <i class="fa fa-edit" style="font-size:30px" wire:click="editShowModal"></i>
+            </a>
         </div>
     @endif
 
     <x-jet-dialog-modal wire:model="modalFormVisible">
         @if($current_game == 0)
-        <x-slot name="title">
-            {{ __('Добавление игры') }}
-        </x-slot>
+            <x-slot name="title">
+                {{ __('Добавление игры') }}
+            </x-slot>
         @else
             <x-slot name="title">
                 {{ __('Редактирование игры') }}
@@ -27,23 +29,41 @@
             @error('time') <span class="error">{{ $message }}</span> @enderror
 
             <select required wire:model="id_team_1">
-                <option value ="" selected>1 команда</option>
+                <option value="" selected>1 команда</option>
                 @foreach($this->getTeamsProperty() as $team)
-                    <option value="{{$team->id_team}}">{{$team->name}} @if($is_grouped) (Группа {{$team->groupName()}}) @endif</option>
+                    <option value="{{$team->id_team}}">
+                        @if(isset($team->alias))
+                            {{$team->alias}}
+                        @else
+                            {{$team->name}}
+                            @if($is_grouped)
+                                (Группа {{$team->groupName()}})
+                            @endif
+                        @endif
+                    </option>
                 @endforeach
             </select>
             @error('id_team_1') <span class="error">{{ $message }}</span> @enderror
             <select required wire:model="id_team_2">
-                <option value ="" selected>2 команда</option>
+                <option value="" selected>2 команда</option>
                 @foreach($this->getTeamsProperty() as $team)
-                    <option value="{{$team->id_team}}">{{$team->name}} @if($is_grouped) (Группа {{$team->groupName()}}) @endif</option>
+                    <option value="{{$team->id_team}}">
+                        @if(isset($team->alias))
+                            {{$team->alias}}
+                        @else
+                            {{$team->name}}
+                            @if($is_grouped)
+                                (Группа {{$team->groupName()}})
+                            @endif
+                        @endif
+                    </option>
                 @endforeach
             </select>
             @error('id_team_2') <span class="error">{{ $message }}</span> @enderror
             <select wire:model.defer="max_seconds_match">
-                <option value =300 selected>Длительность тайма: 5 минут</option>
-                <option value =240>Длительность тайма: 4 минуты</option>
-                <option value =180>Длительность тайма: 3 минуты</option>
+                <option value=300 selected>Длительность тайма: 5 минут</option>
+                <option value=240>Длительность тайма: 4 минуты</option>
+                <option value=180>Длительность тайма: 3 минуты</option>
             </select>
         </x-slot>
         <x-slot name="footer">

@@ -6,10 +6,12 @@ use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\TournamentsTable\AddTournamentsTable;
 
 class Tournament extends Model
 {
     use HasFactory;
+    use AddTournamentsTable;
 
     public function isGrouped(): bool
     {
@@ -57,5 +59,15 @@ class Tournament extends Model
     public function getDateTimeAttribute(): string
     {
         return (new DateTime($this->date))->format('Y-m-d H:i');
+    }
+
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class, 'teams_in_tournaments', 'id_tournament', 'id_team');
+    }
+
+    public function isDoneAllVsAll(): bool
+    {
+        return $this->games->every(fn($game) => $game->id_state === 0) && self::checkAllVSAll($this);
     }
 }

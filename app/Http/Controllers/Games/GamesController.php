@@ -21,7 +21,6 @@ class GamesController extends Controller
             $items[$i]['place_name'] = Place::where('id', $items[$i]->id_place)->get()->first()->name;
             $items[$i]['games'] = $this->getGames($items[$i]->id);
         }
-
         return view('pages.games',[
             'tournaments' => $items
         ]);

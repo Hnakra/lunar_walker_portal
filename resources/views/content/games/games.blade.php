@@ -67,6 +67,13 @@
                 </ul>
             @endif
 
+            @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator) && $tournament->isDoneAllVsAll())
+                <ul class="actions special">
+                    <li>
+                        @livewire('generate-playoff', ['id_tournament' => $tournament->id])
+                    </li>
+                </ul>
+            @endif
 
             @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
                 <ul class="actions special">
