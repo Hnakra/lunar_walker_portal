@@ -48,12 +48,14 @@ class GeneratePlayoff extends Component
                 if ($key !== 'head' && $key !== 'headDescription') {
                     array_push($this->teams, [
                         'id' => $value['teamId'],
+                        'place' => $value['place'],
                         'team' => $value['teamName'] . " (" . $value['place'] . " Место, Кол-во очков: " . $value['points'] . " , Группа: " . $group['head'][0] . ")",
                         'isChecked' => str_contains('1', $value['place'])
                     ]);
                 }
             }
         }
+        usort($this->teams, fn($a, $b) => $a['place'] <=> $b['place']);
 
         $this->modalFormVisible = true;
     }
