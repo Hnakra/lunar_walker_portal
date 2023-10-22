@@ -58,7 +58,7 @@ class Tournament extends Model
 
     public function getDateTimeAttribute(): string
     {
-        return (new DateTime($this->date))->format('Y-m-d H:i');
+        return (new DateTime($this->attributes['date_time']))->format('Y-m-d H:i') ;
     }
 
     public function teams()
