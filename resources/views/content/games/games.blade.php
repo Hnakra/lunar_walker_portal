@@ -27,6 +27,7 @@
                 <table>
                     <thead>
                     <tr>
+                        <th>Cтатус</th>
                         @if($tournament->isGrouped())
                             <th>Группа</th>
                         @endif
@@ -38,6 +39,25 @@
                     <tbody>
                     @foreach($tournament->games as $game)
                         <tr>
+                            <td>
+                                @switch($game->id_state)
+                                    @case(0)
+                                    <i class="fas fa-check" title="Игра завершена"></i>
+                                    @break
+                                    @case(1)
+                                    <i class="fas fa-stop-circle" title="Игра не началась"></i>
+                                    @break
+                                    @case(2)
+                                    <i class="fas fa-play" title="Идет {{$game->num_periods}} тайм"></i>
+                                    @break
+                                    @case(3)
+                                    <i class="fas fa-pause" title="Пауза {{$game->num_periods}} тайма"></i>
+                                    @break
+                                    @case(4)
+                                    <i class="fas fa-stopwatch" title="Завершен {{$game->num_periods}} тайм"></i>
+                                    @break
+                                @endswitch
+                            </td>
                             @if($tournament->isGrouped())
                                 <td>{{$game->groupName()}}</td>
                             @endif
