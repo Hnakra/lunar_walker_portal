@@ -58,7 +58,7 @@ class Tournament extends Model
 
     public function getDateTimeAttribute(): string
     {
-        return (new DateTime($this->attributes['date_time']))->format('Y-m-d H:i') ;
+        return (new DateTime($this->attributes['date_time']))->format('Y-m-d H:i');
     }
 
     public function teams()
@@ -69,5 +69,26 @@ class Tournament extends Model
     public function isDoneAllVsAll(): bool
     {
         return $this->games->every(fn($game) => $game->id_state === 0) && self::checkAllVSAll($this);
+    }
+
+    public function isFilledPlayoff(): bool
+    {
+        if(!$this->is_playoff){
+            return false;
+        }
+
+        foreach ($this->teams as $team) {
+
+            if (!$team->isPickedInPlayoff($this->id)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public function isDonePlayoff(): bool
+    {
+        return $this->isFilledPlayoff() && $this->games->every(fn($game) => $game->id_state === 0);
     }
 }

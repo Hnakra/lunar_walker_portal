@@ -75,7 +75,7 @@
                 </ul>
             @endif
 
-            @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
+            @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator) && !$tournament->isFilledPlayoff())
                 <ul class="actions special">
                     <li>
                         @livewire('forms.game-form', ['id_tournament' => $tournament->id, 'last_datetime' => $tournament->date_time])

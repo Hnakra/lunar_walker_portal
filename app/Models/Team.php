@@ -21,7 +21,7 @@ class Team extends Model
     {
         $tournament = Tournament::find($idPlayoff);
         $gamesIds = $tournament->games->pluck('id_team_1')->merge($tournament->games->pluck('id_team_2'));
-        $isPicked = isset($this->alias) && $tournament->is_playoff && $gamesIds->contains($this->id_team);
+        $isPicked = $tournament->is_playoff && $gamesIds->contains($this->id_team ?? $this->id);
         return $isPicked;
     }
 
