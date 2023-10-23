@@ -592,3 +592,27 @@ container img {
 .groupingTypeRadio table td label:before{
     top:0px;
 }
+
+/* стили табличного представления турнира */
+.tournament-table{
+    border-width: 1px;
+    border-color: #dfdfdf;
+    border-style: solid;
+}
+.tournament-table tr{
+    background-color: var(--modal-color) !important;
+}
+.tournament-table .x{
+    background-color: gray;
+}
+.tournament-table td{
+    padding: 0;
+}
+
+.tournament-table .count {
+    border-left: 1px solid #dfdfdf;
+    border-right: 1px solid #dfdfdf;
+}
+.tapped{
+    background-color: #adadad !important;
+}

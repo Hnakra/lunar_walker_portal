@@ -19,7 +19,7 @@
     <div class="inner">
         @foreach($tournaments as $tournament)
         <section class="tournament">
-            <h4>{{$tournament->name}}</h4>
+            <h4>@livewire('show-tournament', ['tournament' => $tournament], key("tournament-$tournament->id")){{--{{$tournament->name}}--}}</h4>
             <h5>{{$tournament->place_name}}</h5>
             <h5>{{$tournament->date_time}}</h5>
 {{--            {{print_r($tournament)}}--}}
