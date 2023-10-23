@@ -31,7 +31,7 @@
             <select required wire:model="id_team_1">
                 <option value="" selected>1 команда</option>
                 @foreach($this->getTeamsProperty() as $team)
-                    <option value="{{$team->id_team}}">
+                    <option value="{{$team->id_team}}" @if($team->isPickedInPlayoff($this->id_tournament)) disabled @endif >
                         @if(isset($team->alias))
                             {{$team->alias}}
                         @else
@@ -47,7 +47,7 @@
             <select required wire:model="id_team_2">
                 <option value="" selected>2 команда</option>
                 @foreach($this->getTeamsProperty() as $team)
-                    <option value="{{$team->id_team}}">
+                    <option value="{{$team->id_team}}" @if($team->isPickedInPlayoff($this->id_tournament)) disabled @endif >
                         @if(isset($team->alias))
                             {{$team->alias}}
                         @else
@@ -68,7 +68,8 @@
         </x-slot>
         <x-slot name="footer">
 
-            <x-jet-secondary-button class="button-secondary" wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
+            <x-jet-secondary-button class="button-secondary" wire:click="$toggle('modalFormVisible')"
+                                    wire:loading.attr="disabled">
                 {{ __('Отмена') }}
             </x-jet-secondary-button>
 
