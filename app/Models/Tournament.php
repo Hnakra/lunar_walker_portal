@@ -73,13 +73,13 @@ class Tournament extends Model
 
     public function isFilledPlayoff(): bool
     {
-        if(!$this->is_playoff){
+        if (!$this->is_playoff) {
             return false;
         }
 
         foreach ($this->teams as $team) {
 
-            if (!$team->isPickedInPlayoff($this->id)) {
+            if (!$team->isPickedInRoundPlayoff($this->id)) {
                 return false;
             }
         }
@@ -90,5 +90,37 @@ class Tournament extends Model
     public function isDonePlayoff(): bool
     {
         return $this->isFilledPlayoff() && $this->games->every(fn($game) => $game->id_state === 0);
+    }
+
+    public function isFinalRoundPlayoff(): bool
+    {
+/*        if($this->name === 'Тест плейофф на 16 команд') {
+            dd($this->currentRoundTeamsCount());
+        }*/
+        return $this->currentRoundTeamsCount() <= 4 && $this->games->count() > 0 && $this->games->every(fn($game) => $game->id_state === 0);
+    }
+
+    public function currentRoundTeams()
+    {
+        if ($this->num_round === 0) {
+            return $this->teams;
+        }
+
+        $games = $this->games->where('num_round', $this->num_round);
+        $teamsIds = [];
+        foreach ($games as $game) {
+            array_push($teamsIds, $game->id_team_1, $game->id_team_2);
+        }
+        return $teamsIds;
+    }
+
+    public function currentRoundTeamsCount(): int
+    {
+        return count($this->currentRoundTeams());
+    }
+
+    public function hasCreatablePlayoffGame(): bool
+    {
+        return $this->currentRoundTeamsCount() >= 4 && $this->num_round === 0 && !$this->isFilledPlayoff();
     }
 }

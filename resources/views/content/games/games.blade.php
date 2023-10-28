@@ -1,3 +1,10 @@
+@php
+/**
+ * @var $tournament \App\Models\Tournament
+*/
+
+@endphp
+
 <!-- Banner -->
 <section id="banner">
     <div class="inner">
@@ -95,7 +102,7 @@
                 </ul>
             @endif
 
-            @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator) && !$tournament->isFilledPlayoff())
+            @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator) && $tournament->hasCreatablePlayoffGame())
                 <ul class="actions special">
                     <li>
                         @livewire('forms.game-form', ['id_tournament' => $tournament->id, 'last_datetime' => $tournament->date_time])
@@ -103,10 +110,16 @@
                 </ul>
             @endif
 
+            @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator) && ($tournament->isDonePlayoff() || $tournament->isFinalRoundPlayoff()))
+                <ul class="actions special">
+                    <li>
+                        @livewire('forms.round-tournament-playoff-form', ['id_tournament' => $tournament->id])
+                    </li>
+                </ul>
+            @endif
+
 
             <div class="edit-wrapper">
-
-
                 {{--кнопка, при нажатии которой появляется модальное окно редактирования турнира--}}
                 @if(Auth::check() && Auth::user()->isOwnerOrAdmin($tournament->id_creator))
                         @livewire('removes.remove-tournament',["current_tournament" => $tournament->id])

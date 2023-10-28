@@ -66,19 +66,28 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function isAdmin(){
+    public function isAdmin()
+    {
         return $this->id_role == 1;
     }
-    public function isOrganizer(){
+
+    public function isOrganizer()
+    {
         return $this->id_role == 2;
     }
-    public function isUser(){
+
+    public function isUser()
+    {
         return $this->id_role == 3;
     }
-    public function isTrainer(){
+
+    public function isTrainer()
+    {
         return Team::where('id_trainer', Auth::user()->id)->get()->isNotEmpty();
     }
-    public function isOwnerOrAdmin($id_compare){
+
+    public function isOwnerOrAdmin($id_compare)
+    {
         return Auth::user()->isAdmin() || Auth::user()->id == $id_compare;
     }
 }

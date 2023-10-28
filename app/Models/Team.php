@@ -17,10 +17,11 @@ class Team extends Model
             null;
     }
 
-    public function isPickedInPlayoff($idPlayoff): bool
+    public function isPickedInRoundPlayoff($idPlayoff): bool
     {
         $tournament = Tournament::find($idPlayoff);
-        $gamesIds = $tournament->games->pluck('id_team_1')->merge($tournament->games->pluck('id_team_2'));
+        $games = $tournament->games;
+        $gamesIds = $games->pluck('id_team_1')->merge($games->pluck('id_team_2'));
         $isPicked = $tournament->is_playoff && $gamesIds->contains($this->id_team ?? $this->id);
         return $isPicked;
     }

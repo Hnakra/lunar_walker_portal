@@ -31,7 +31,7 @@
             <select required wire:model="id_team_1">
                 <option value="" selected>1 команда</option>
                 @foreach($this->getTeamsProperty() as $team)
-                    <option value="{{$team->id_team}}" @if($team->isPickedInPlayoff($this->id_tournament)) disabled @endif >
+                    <option value="{{$team->id_team}}" @if($team->isPickedInRoundPlayoff($this->id_tournament)) disabled @endif >
                         @if(isset($team->alias))
                             {{$team->alias}}
                         @else
@@ -47,7 +47,7 @@
             <select required wire:model="id_team_2">
                 <option value="" selected>2 команда</option>
                 @foreach($this->getTeamsProperty() as $team)
-                    <option value="{{$team->id_team}}" @if($team->isPickedInPlayoff($this->id_tournament)) disabled @endif >
+                    <option value="{{$team->id_team}}" @if($team->isPickedInRoundPlayoff($this->id_tournament)) disabled @endif >
                         @if(isset($team->alias))
                             {{$team->alias}}
                         @else
