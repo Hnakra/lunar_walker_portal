@@ -47,37 +47,39 @@ trait PlayOffTrait
                     ],
                 ];
 
+                if($tournament->currentRoundTeamsCount() !== 2) {
 
-                /** @var Game $gameThirdPlace */
-                $gameThirdPlace = $round->last();
+                    /** @var Game $gameThirdPlace */
+                    $gameThirdPlace = $round->last();
 
-                $getPlaceSecond = function ($comparsion) {
-                    switch ($comparsion) {
-                        case null:
-                            return '?';
-                        case 0:
-                            return 'Ничья';
-                        case 1:
-                            return '3 место';
-                        default:
-                            return '';
-                    }
-                };
+                    $getPlaceSecond = function ($comparsion) {
+                        switch ($comparsion) {
+                            case null:
+                                return '?';
+                            case 0:
+                                return 'Ничья';
+                            case 1:
+                                return '3 место';
+                            default:
+                                return '';
+                        }
+                    };
 
-                $games[] = [
-                    'team1' => [
-                        'name' => $gameThirdPlace->team_1->name,
-                        'place' => $getPlaceSecond($gameThirdPlace->comparsionTeamsCount()),
-                        'count' => $gameThirdPlace->count_team_1,
-                        'id' => $gameThirdPlace->id_team_1,
-                    ],
-                    'team2' => [
-                        'name' => $gameThirdPlace->team_2->name,
-                        'place' => $getPlaceSecond($gameThirdPlace->comparsionTeamsCount(true)),
-                        'count' => $gameThirdPlace->count_team_2,
-                        'id' => $gameThirdPlace->id_team_2,
-                    ],
-                ];
+                    $games[] = [
+                        'team1' => [
+                            'name' => $gameThirdPlace->team_1->name,
+                            'place' => $getPlaceSecond($gameThirdPlace->comparsionTeamsCount()),
+                            'count' => $gameThirdPlace->count_team_1,
+                            'id' => $gameThirdPlace->id_team_1,
+                        ],
+                        'team2' => [
+                            'name' => $gameThirdPlace->team_2->name,
+                            'place' => $getPlaceSecond($gameThirdPlace->comparsionTeamsCount(true)),
+                            'count' => $gameThirdPlace->count_team_2,
+                            'id' => $gameThirdPlace->id_team_2,
+                        ],
+                    ];
+                }
 
             } else {
                 $name = "1/" . $round->count() . " финала";

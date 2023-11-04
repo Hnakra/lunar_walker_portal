@@ -121,7 +121,7 @@ class Tournament extends Model
 
     public function hasCreatablePlayoffGame(): bool
     {
-        return $this->currentRoundTeamsCount() >= 4 && $this->num_round === 0 && !$this->isFilledPlayoff();
+        return /*$this->currentRoundTeamsCount() >= 4 && */$this->num_round === 0 && !$this->isFilledPlayoff();
     }
 
     public function getRounds() : array

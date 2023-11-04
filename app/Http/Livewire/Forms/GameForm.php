@@ -62,9 +62,18 @@ class GameForm extends Component
     {
         // валидация всех значений, указанных в $rules
         $this->validate();
+
+        // если турнир - плейофф и у него всего 1 игра (финальная), закрыть этот плейофф
+        $tournament = Tournament::find($this->id_tournament);
+        if ($tournament->is_playoff && $tournament->currentRoundTeamsCount() === 2) {
+
+            $tournament->is_generated_playoff = true;
+            $tournament->save();
+        }
+
         // добавляем новую запись в games
         // открываем базу данных и последовательно заполняем каждый элемент таблицы, кроме id
-        DB::table('games')->insert([
+        $idGame = DB::table('games')->insertGetId([
             'id_tournament' => $this->id_tournament,
             'id_team_1' => $this->id_team_1,
             'id_team_2' => $this->id_team_2,
@@ -77,6 +86,7 @@ class GameForm extends Component
             'datetime_state' => date("Y-m-d H:i:s", strtotime('now')),
             'max_seconds_match' => $this->max_seconds_match
         ]);
+
         $this->modalFormVisible = false;
         // редирект на страницу, чтобы перерисовать ее с новыми изменениями
         redirect("/games", [\App\Http\Controllers\Games\GamesController::class, 'index']);
