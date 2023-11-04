@@ -60,4 +60,13 @@ class Game extends Model
     {
         return (new DateTime($this->attributes['date_time']))->format('Y-m-d H:i');
     }
+
+    public function comparsionTeamsCount($reverse = false): ?int
+    {
+        if ($reverse) {
+            return $this->id_state === 0 ? ($this->count_team_2 <=> $this->count_team_1) : null;
+        } else {
+            return $this->id_state === 0 ? ($this->count_team_1 <=> $this->count_team_2) : null;
+        }
+    }
 }

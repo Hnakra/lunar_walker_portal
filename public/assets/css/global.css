@@ -1,38 +1,42 @@
 /*css переменные*/
-body{
+body {
     --main-color: #E4CA40;
     --white-color: #ffffff;
     --dark-color: #000000;
     --modal-color: #FFFBE9;
     --text-color: #2E3842;
     font-family: 'Open Sans', serif;
-    font-weight: 400 ;
-    font-size: 16px ;
+    font-weight: 400;
+    font-size: 16px;
     letter-spacing: 2.88px;
     line-height: 40px;
 }
-.bg-modal{
+
+.bg-modal {
     padding-top: 40px !important;
     background-color: var(--modal-color) !important;
     border-radius: 5px !important;
 }
-body h2{
+
+body h2 {
     font-weight: 400;
     font-size: 32px;
 }
-body h3{
+
+body h3 {
     font-weight: 400;
     font-size: 16px;
     color: var(--dark-color);
 }
 
 /*стили кнопки*/
-.button{
+.button {
     text-decoration: none !important;
     padding: 10px 30px 10px 30px;
     border-radius: 4px;
 }
-#banner .big-button{
+
+#banner .big-button {
     box-shadow: none;
     background-color: var(--main-color);
     color: var(--dark-color) !important;
@@ -41,8 +45,8 @@ body h3{
 
 }
 
-@media screen and (max-width: 480px){
-    #banner .big-button{
+@media screen and (max-width: 480px) {
+    #banner .big-button {
         padding: 5px 2px;
         font-size: 10px;
         letter-spacing: 1px;
@@ -54,28 +58,31 @@ body h3{
     color: var(--white-color) !important;
     background: var(--main-color) !important;
 }
-.big-button{
+
+.big-button {
     align-items: center;
     box-shadow: none;
-    background: rgba(228, 202, 64, 0.7)!important;
+    background: rgba(228, 202, 64, 0.7) !important;
     color: var(--dark-color) !important;
     opacity: 0.8;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border: 1px solid rgba(0, 0, 0, 0.51);
     border-radius: 3px;
 }
-.big-button:hover{
+
+.big-button:hover {
     opacity: 1;
     color: var(--white-color) !important;
     background: var(--main-color) !important;
 }
 
 /*стили шапки*/
-.menu{
+.menu {
     float: right;
     display: inline;
 }
-.navabar{
+
+.navabar {
     padding-left: 50px;
     padding-right: 50px;
     position: sticky;
@@ -84,59 +91,70 @@ body h3{
 }
 
 /*стили меню*/
-.menuToggle{
+.menuToggle {
     color: var(--dark-color);
     text-decoration: none;
 }
 
 @media screen and (min-width: 1150px) {
-    .menuToggle{
+    .menuToggle {
         visibility: hidden;
         display: none;
     }
 }
 
-#menu{
+#menu {
     background-color: var(--dark-color);
     opacity: 0.9;
 }
-#menu a{
+
+#menu a {
     font-family: 'Open Sans', serif;
     font-weight: 400;
     font-size: 14px;
 }
-.submenu li{
+
+.submenu li {
     margin-left: 10px;
 }
-.submenu a{
+
+.submenu a {
     color: var(--white-color);
     text-transform: uppercase;
     text-decoration: none;
 }
+
 @media screen and (max-width: 1150px) {
-    #navbar{
+    #navbar {
         visibility: hidden;
         display: none;
     }
 }
+
 @media screen and (min-width: 1150px) {
 
-    #navbar li:hover ul { display: block; }
-    #navbar, #navbar ul{
+    #navbar li:hover ul {
+        display: block;
+    }
+
+    #navbar, #navbar ul {
         margin: 0;
         padding: 0;
         list-style-type: none;
     }
+
     #navbar {
         display: inline;
         background-color: var(--main-color);
         min-width: 470px;
     }
+
     #navbar li {
         float: left;
         position: relative;
         height: 100%;
     }
+
     #navbar li a {
         letter-spacing: 3.5px;
         display: block;
@@ -147,13 +165,14 @@ body h3{
         text-decoration: none;
         text-align: center;
     }
+
     #navbar li:hover {
         background: rgba(0, 0, 0, 0.1);
     }
 
 
     /*стили выпадающего меню*/
-    li ul{
+    li ul {
         margin-right: auto;
         margin-left: auto;
         display: none;
@@ -163,6 +182,7 @@ body h3{
         left: -17%;
         border-radius: 10px;
     }
+
     li ul:before {
         width: 100%;
         content: "";
@@ -170,7 +190,8 @@ body h3{
         position: absolute;
         top: -40px;
     }
-    #navbar li:hover .submenu-wrapper:before{
+
+    #navbar li:hover .submenu-wrapper:before {
         left: 30%;
         top: 67%;
         position: absolute;
@@ -178,11 +199,19 @@ body h3{
         border: 20px solid transparent;
         border-bottom: 20px solid;
     }
-    #navbar ul li { float: none; }
-    #navbar ul li:hover { background-color: rgba(0, 0, 0, 0.1); }
-    submenu-wrapper li:hover{
+
+    #navbar ul li {
+        float: none;
+    }
+
+    #navbar ul li:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    submenu-wrapper li:hover {
         border-radius: 10px;
     }
+
     .submenu-wrapper a {
         line-height: 26px !important;
         margin-top: 10px;
@@ -196,62 +225,66 @@ body h3{
 }
 
 /*Стиль лого*/
-.navabar h3{
+.navabar h3 {
     display: inline;
 }
 
 /*Стиль картинки профиля*/
-.navabar img{
+.navabar img {
     margin-top: 6px;
     margin-bottom: 6px;
     width: 35px;
     height: 35px;
     border-radius: 50px;
 }
+
 @media screen and (min-width: 1150px) {
-    .mobile-profile{
+    .mobile-profile {
         visibility: hidden;
         display: none;
     }
 }
-.navabar button{
+
+.navabar button {
     background-color: transparent;
 }
 
 
-    /*расширение стиля для модальных окон*/
-div[x-show='show']{
+/*расширение стиля для модальных окон*/
+div[x-show='show'] {
     padding-top: 70px;
     color: var(--text-color);
 }
-.child-form{
+
+.child-form {
     width: 90%;
     display: inline;
 }
 
-.input-text, select, input[type="date"], input[type="time"]{
+.input-text, select, input[type="date"], input[type="time"] {
     padding-left: 30px !important;
     padding-bottom: 0px !important;
     margin-top: 30px !important;
     color: #4E485280;
 }
 
-input[type="date"], input[type="time"]{
-/*    width: 49%;
-    display: inline;*/
+input[type="date"], input[type="time"] {
+    /*    width: 49%;
+        display: inline;*/
 
 }
+
 input::-webkit-calendar-picker-indicator {
     color: red !important;
     opacity: 1 !important;
 }
 
 
-.center-text{
+.center-text {
     text-align: center;
 }
 
-.button-main{
+.button-main {
     background-color: rgba(228, 202, 64, 0.7) !important;
     border-radius: 3px !important;
     color: rgb(55 65 81 / var(--tw-text-opacity)) !important;
@@ -259,55 +292,65 @@ input::-webkit-calendar-picker-indicator {
     border-color: rgb(209 213 219 / var(--tw-border-opacity)) !important;
 }
 
-.button-secondary{
+.button-secondary {
     background: linear-gradient(180deg, #FFF8F8 99.99%, rgba(255, 255, 255, 0) 100%) !important;
     border-radius: 3px !important;
 
 }
 
-.text-on-form{
+.text-on-form {
     padding-left: 30px;
     padding-top: 15px !important;
 
 }
-.fa{
-    background-color: transparent;
-}
-.fa fa-check{
+
+.fa {
     background-color: transparent;
 }
 
-.edit-wrapper{
+.fa fa-check {
+    background-color: transparent;
+}
+
+.edit-wrapper {
     display: inline;
     float: right;
 }
-.delete-wrapper{
+
+.delete-wrapper {
     display: inline;
 }
-.button-edit i{
+
+.button-edit i {
     margin-left: 20px;
     font-weight: 400 !important;
 }
-.button-delete i{
+
+.button-delete i {
     color: var(--text-color);
 }
-.button-delete i:hover{
+
+.button-delete i:hover {
     color: var(--main-color);
 }
-.error{
+
+.error {
     color: orangered;
     margin-left: 30px;
 }
-.login{
+
+.login {
     text-decoration: none;
     text-transform: uppercase;
     color: var(--dark-color);
 }
-.manage-account{
+
+.manage-account {
     background-color: var(--modal-color) !important;
     text-align: center;
 }
-.user{
+
+.user {
     font-weight: 400;
     font-size: 16px;
     line-height: 26px;
@@ -318,7 +361,8 @@ input::-webkit-calendar-picker-indicator {
 
     color: #2E3842;
 }
-.round{
+
+.round {
     border-radius: 100px;
 }
 
@@ -329,28 +373,32 @@ div.square {
     background-position: center center;
 }
 
-.title-modal{
+.title-modal {
     font-size: 32px;
     letter-spacing: 20px;
     color: var(--text-color);
 }
-.title-modal-user{
+
+.title-modal-user {
     font-size: 28px;
     letter-spacing: 20px;
     color: var(--text-color);
     text-transform: uppercase;
     padding-bottom: 15px;
 }
-@media screen and (max-width: 400px){
+
+@media screen and (max-width: 400px) {
     .title-modal-user {
         font-size: 18px !important;
         letter-spacing: 10px !important;
     }
 }
-.block{
+
+.block {
     display: inline;
 }
-.block-show-user{
+
+.block-show-user {
     display: inline;
     padding-top: 35px;
 }
@@ -358,34 +406,42 @@ div.square {
 input[required]:valid {
     border: none;
 }
-input[required]{
+
+input[required] {
     border: 1px solid orangered;
 }
+
 select {
     border: 1px solid orangered;
 }
+
 select:valid {
     border: none;
 }
-.remove-button{
+
+.remove-button {
     display: inline;
 }
-.rm{
+
+.rm {
     background-color: transparent;
 }
-.remove{
+
+.remove {
     background-color: orangered !important;
     color: var(--white-color) !important;
 }
 
-.block div{
+.block div {
     vertical-align: top;
     display: inline-block;
 }
-.info{
+
+.info {
     margin-left: 10px;
 }
-.info p{
+
+.info p {
     font-weight: 400;
     font-size: 16px;
     line-height: 26px;
@@ -394,20 +450,24 @@ select:valid {
     text-align: justify;
     margin-bottom: 10px !important;
 }
-p span{
+
+p span {
     font-size: 16px;
     line-height: 19px;
     letter-spacing: 2.88px;
     text-transform: uppercase;
 }
+
 @media screen and (max-width: 736px) {
-    .block div{
+    .block div {
         width: 100%;
     }
-    .info{
+
+    .info {
         margin-top: 20px;
         margin-left: 20px;
     }
+
     div.square {
         width: 150px;
         height: 150px;
@@ -415,7 +475,8 @@ p span{
         background-position: center center;
         margin-left: 20px;
     }
-    .btn-edit{
+
+    .btn-edit {
         width: 25px;
         height: 25px;
         color: var(--text-color);
@@ -423,17 +484,20 @@ p span{
         padding-right: 10%;
     }
 }
-.btn-edit{
+
+.btn-edit {
     width: 25px;
     height: 25px;
     color: var(--text-color);
     background-color: transparent;
     float: right;
 }
-.btn-edit i{
-   font-size: 30px;
+
+.btn-edit i {
+    font-size: 30px;
 }
-.definition-title{
+
+.definition-title {
     font-size: 16px;
     line-height: 19px;
     letter-spacing: 2.88px;
@@ -441,44 +505,49 @@ p span{
     padding-top: 20px;
     padding-left: 20px;
 }
-.definition-text{
+
+.definition-text {
     padding-left: 20px;
     font-size: 16px;
     text-transform: none;
 }
 
-.button-edit{
+.button-edit {
     color: var(--text-color);
 
 }
 
-.button-edit:hover{
+.button-edit:hover {
     color: var(--main-color);
 }
 
-.round-image{
+.round-image {
     width: 200px;
     height: 200px;
     border-radius: 100px;
     background-size: cover;
     background-position: center center;
 }
+
 @media screen and (min-width: 1000px) {
-    .container{
+    .container {
         height: 350px !important;
     }
 }
-.container{
+
+.container {
     height: 200px;
     width: 40%;
     background-size: cover;
     background-position: center center;
 }
+
 container img {
     width: 100%; /* Ширина изображений */
     margin: -10% 0 0 0; /* Сдвигаем вверх */
 }
-.card{
+
+.card {
     width: 200px;
     color: black;
     text-align: center;
@@ -489,14 +558,15 @@ container img {
 
 }
 
-.cards{
+.cards {
     padding-top: 150px;
     text-align: center;
 }
 
-.card p{
+.card p {
     margin-bottom: 0;
 }
+
 /*кнопка отправки фото*/
 .input-file {
     margin-top: 30px;
@@ -504,6 +574,7 @@ container img {
     position: relative;
     display: inline-block;
 }
+
 .input-file-text {
     background: #0000000A !important;
     text-overflow: ellipsis;
@@ -521,6 +592,7 @@ container img {
     border-radius: 6px 0px 0 6px;
 
 }
+
 .input-file-btn {
     padding: 0 10px !important;
 
@@ -544,6 +616,7 @@ container img {
     margin: 0;
     transition: background-color 0.2s;*/
 }
+
 .input-file input[type=file] {
     position: absolute;
     z-index: -1;
@@ -555,13 +628,14 @@ container img {
 
 /* Focus */
 .input-file input[type=file]:focus + .input-file-btn {
-    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
 }
 
 /* Hover/active */
 .input-file:hover .input-file-btn {
     background-color: #59be6e;
 }
+
 .input-file:active .input-file-btn {
     background-color: #2E703A;
 }
@@ -570,42 +644,51 @@ container img {
 .input-file input[type=file]:disabled + .input-file-btn {
     background-color: #0000000A !important;
 }
-.wait-load-file{
+
+.wait-load-file {
     vertical-align: middle;
     padding-top: 0 !important;
     margin-top: 0 !important;
     color: black;
 }
-.show-modal{
+
+.show-modal {
     text-decoration-line: underline;
     cursor: pointer;
 }
-.groupingTypeRadio{
+
+.groupingTypeRadio {
     padding-top: 20px;
 }
-.groupingTypeRadio label{
+
+.groupingTypeRadio label {
     color: var(--text-color) !important;
 }
-.groupingTypeRadio table th{
+
+.groupingTypeRadio table th {
     padding-left: 18px;
 }
-.groupingTypeRadio table td label:before{
-    top:0px;
+
+.groupingTypeRadio table td label:before {
+    top: 0px;
 }
 
 /* стили табличного представления турнира */
-.tournament-table{
+.tournament-table {
     border-width: 1px;
     border-color: #dfdfdf;
     border-style: solid;
 }
-.tournament-table tr{
+
+.tournament-table tr {
     background-color: var(--modal-color) !important;
 }
-.tournament-table .x{
+
+.tournament-table .x {
     background-color: gray;
 }
-.tournament-table td{
+
+.tournament-table td {
     padding: 0;
 }
 
@@ -613,6 +696,11 @@ container img {
     border-left: 1px solid #dfdfdf;
     border-right: 1px solid #dfdfdf;
 }
-.tapped{
+
+.tapped {
     background-color: #adadad !important;
+}
+
+.tournament-playoff td {
+    padding-left: 10px;
 }

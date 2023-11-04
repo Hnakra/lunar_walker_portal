@@ -40,7 +40,9 @@ class RoundTournamentPlayoffForm extends Component
             $winnersIds = $this->games->map(fn($game) => $game->count_team_1 > $game->count_team_2 ? $game->id_team_1 : $game->id_team_2);
             $losersIds = $this->games->map(fn($game) => $game->count_team_1 > $game->count_team_2 ? $game->id_team_2 : $game->id_team_1);
 
-            $this->tournament->num_round = $this->tournament->num_round + 1;
+            if ($this->tournament->currentRoundTeams() === 0) {
+                $this->tournament->num_round = $this->tournament->num_round + 1;
+            }
             $this->tournament->is_generated_playoff = true;
 
             $game1 = Game::create([
@@ -74,7 +76,10 @@ class RoundTournamentPlayoffForm extends Component
         } else {
             $winnersIds = $this->games->map(fn($game) => $game->count_team_1 > $game->count_team_2 ? $game->id_team_1 : $game->id_team_2);
 
-            $this->tournament->num_round = $this->tournament->num_round + 1;
+            if ($this->tournament->currentRoundTeams() === 0) {
+                $this->tournament->num_round = $this->tournament->num_round + 1;
+            }
+
             for ($i = 0; $i < $this->games->count(); $i += 2) {
                 $game = Game::create([
                     'id_tournament' => $this->id_tournament,

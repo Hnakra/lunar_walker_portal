@@ -94,9 +94,9 @@ class Tournament extends Model
 
     public function isFinalRoundPlayoff(): bool
     {
-/*        if($this->name === 'Тест плейофф на 16 команд') {
-            dd($this->currentRoundTeamsCount());
-        }*/
+        /*        if($this->name === 'Тест плейофф на 16 команд') {
+                    dd($this->currentRoundTeamsCount());
+                }*/
         return $this->currentRoundTeamsCount() <= 4 && $this->games->count() > 0 && $this->games->every(fn($game) => $game->id_state === 0);
     }
 
@@ -122,5 +122,15 @@ class Tournament extends Model
     public function hasCreatablePlayoffGame(): bool
     {
         return $this->currentRoundTeamsCount() >= 4 && $this->num_round === 0 && !$this->isFilledPlayoff();
+    }
+
+    public function getRounds() : array
+    {
+        $rounds = [];
+        for ($i = 0; $i <= $this->num_round; $i++) {
+            $rounds[] = $this->games->where('num_round', $i);
+        }
+        krsort($rounds);
+        return $rounds;
     }
 }
