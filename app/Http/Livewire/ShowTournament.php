@@ -22,6 +22,8 @@ class ShowTournament extends Component
     /** @var Tournament модель турнира */
     public $tournament;
 
+    public $refreshTime;
+
     public function createShowModal()
     {
         $this->modalFormVisible = true;
@@ -34,6 +36,7 @@ class ShowTournament extends Component
 
     public function render()
     {
+        $this->refreshTime = date('H:i:s');
         if ($this->tournament->is_playoff) {
             $this->isExistsAlternativeVisible = true;
             return $this->alternativeVisible ?

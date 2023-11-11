@@ -16,6 +16,12 @@
                     {{ __('Табличное представление') }}
                 </x-jet-secondary-button>
             @endif
+            <br>
+            {{ __('Последнее обновление: '.$refreshTime) }}
+            <x-jet-secondary-button class="refresh-button" wire:click="render">
+                <i class="fas fa-sync"></i>{{ __('Обновить') }}
+            </x-jet-secondary-button>
+
             <section class="tournament">
                 <h5>Площадка: <a href="/places/{{$tournament->place->id}}"
                                  class="link-name1">{{$tournament->place->name}}</a></h5>
