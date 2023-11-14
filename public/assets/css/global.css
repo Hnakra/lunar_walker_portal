@@ -124,6 +124,11 @@ body h3 {
     text-decoration: none;
 }
 
+.lang-link{
+    text-align: left !important;
+    padding-left: 20px !important;
+}
+
 @media screen and (max-width: 1150px) {
     #navbar {
         visibility: hidden;
@@ -243,6 +248,10 @@ body h3 {
         visibility: hidden;
         display: none;
     }
+}
+
+.mobile-profile a{
+    padding: 0 0.75em;
 }
 
 .navabar button {

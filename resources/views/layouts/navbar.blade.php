@@ -44,10 +44,13 @@
                     </div>
                 </li>
                 <li><a href="/about_us">О нас</a></li>
+                <li>@livewire('select-language')</li>
                 <li>@include('layouts.user_icon.user_icon_bigscreen')</li>
             </ul>
-            <div class="mobile-profile">@include('layouts.user_icon.user_icon_bigscreen')</div>
-
+            <div class="mobile-profile">
+                @livewire('select-language')
+                @include('layouts.user_icon.user_icon_bigscreen')
+            </div>
 
         </div>
     </div>

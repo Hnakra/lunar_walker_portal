@@ -2,7 +2,7 @@
     <a class="login" href="../login" >Вход</a>
 @else
 
-    <div>
+    <span>
         <x-jet-dropdown align="right" width="48">
             <x-slot name="trigger">
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -52,6 +52,6 @@
                 </form>
             </x-slot>
         </x-jet-dropdown>
-    </div>
+    </span>
 
 @endif
