@@ -2,9 +2,9 @@
     <table>
         <thead>
         <tr>
-            <th>Дата @include("layouts.filter", ['type'=>'date']) </th>
-            <th>Турнир @include("layouts.filter", ['type'=>'tournamentName'])</th>
-            <th>Площадка @include("layouts.filter", ['type'=>'placeName'])</th>
+            <th>{{__('Дата')}} @include("layouts.filter", ['type'=>'date']) </th>
+            <th>{{__('Турнир')}} @include("layouts.filter", ['type'=>'tournamentName'])</th>
+            <th>{{__('Площадка')}} @include("layouts.filter", ['type'=>'placeName'])</th>
         </tr>
         </thead>
         <tbody>

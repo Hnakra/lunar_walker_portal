@@ -29,7 +29,7 @@
             @error('time') <span class="error">{{ $message }}</span> @enderror
 
             <select required wire:model="id_team_1">
-                <option value="" selected>1 команда</option>
+                <option value="" selected>{{__('1 команда')}}</option>
                 @foreach($this->getTeamsProperty() as $team)
                     <option value="{{$team->id_team}}" @if($team->isPickedInRoundPlayoff($this->id_tournament)) disabled @endif >
                         @if(isset($team->alias))
@@ -37,7 +37,7 @@
                         @else
                             {{$team->name}}
                             @if($is_grouped)
-                                (Группа {{$team->groupName()}})
+                                ({{__('Группа')}} {{$team->groupName()}})
                             @endif
                         @endif
                     </option>
@@ -45,7 +45,7 @@
             </select>
             @error('id_team_1') <span class="error">{{ $message }}</span> @enderror
             <select required wire:model="id_team_2">
-                <option value="" selected>2 команда</option>
+                <option value="" selected>{{__('2 команда')}}</option>
                 @foreach($this->getTeamsProperty() as $team)
                     <option value="{{$team->id_team}}" @if($team->isPickedInRoundPlayoff($this->id_tournament)) disabled @endif >
                         @if(isset($team->alias))
@@ -53,7 +53,7 @@
                         @else
                             {{$team->name}}
                             @if($is_grouped)
-                                (Группа {{$team->groupName()}})
+                                ({{__('Группа')}} {{$team->groupName()}})
                             @endif
                         @endif
                     </option>
@@ -61,9 +61,9 @@
             </select>
             @error('id_team_2') <span class="error">{{ $message }}</span> @enderror
             <select wire:model.defer="max_seconds_match">
-                <option value=300 selected>Длительность тайма: 5 минут</option>
-                <option value=240>Длительность тайма: 4 минуты</option>
-                <option value=180>Длительность тайма: 3 минуты</option>
+                <option value=300 selected>{{__('Длительность тайма: 5 минут')}}</option>
+                <option value=240>{{__('Длительность тайма: 4 минуты')}}</option>
+                <option value=180>{{__('Длительность тайма: 3 минуты')}}</option>
             </select>
         </x-slot>
         <x-slot name="footer">

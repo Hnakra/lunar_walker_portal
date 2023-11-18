@@ -16,7 +16,7 @@
         <ul>
             <li>
                 <input @if(!$this->isFiltered($type)) checked @endif type="checkbox" id="checkbox-all-{{$type}}" wire:change="update_checkbox_all('{{$type}}')">
-                <label for="checkbox-all-{{$type}}">(Выбрать все)</label>
+                <label for="checkbox-all-{{$type}}">({{__('Выбрать все')}})</label>
             </li>
             @foreach($filter[$type] as $k => $v)
                 <li @if(!$visibleFilters[$type][$k]) style="display: none" @endif>

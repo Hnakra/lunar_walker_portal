@@ -6,13 +6,13 @@
         <h5>{{$t->date_time}}</h5>
         <br/>
         @foreach($t->teams as $team)
-            <h5>Команда:{{$team->name}}</h5>
+            <h5>{{__('Команда')}}:{{$team->name}}</h5>
             <div>
                 <table>
                     <thead>
                     <tr>
-                        <th>Участник</th>
-                        <th>Подтвердил участие</th>
+                        <th>{{__('Участник')}}</th>
+                        <th>{{__('Подтвердил участие')}}</th>
                     </tr>
                     </thead>
                     <tbody>

@@ -9,7 +9,7 @@
         <x-slot name="content">
             @error('selectedTable') <span class="error">{{ $message }}</span> @enderror
             <select required wire:model="selectedTable">
-                <option value="" selected>Выберите турнирную таблицу</option>
+                <option value="" selected>{{__('Выберите турнирную таблицу')}}</option>
                 @foreach($listTables as $k => $v)
                     <option value="{{$k}}">{{$v}}</option>
                 @endforeach
@@ -17,13 +17,13 @@
 
             @if($selectedTable == 'all_vs_all')
                 <select wire:model.defer="interval">
-                    <option value=600 selected>Время между началами игр: 10 минут</option>
-                    <option value=900>Время между началами игр: 15 минут</option>
+                    <option value=600 selected>{{__('Время между началами игр: 10 минут')}}</option>
+                    <option value=900>{{__('Время между началами игр: 15 минут')}}</option>
                 </select>
                 <select wire:model.defer="max_seconds_match">
-                    <option value=300 selected>Длительность тайма: 5 минут</option>
-                    <option value=240>Длительность тайма: 4 минуты</option>
-                    <option value=180>Длительность тайма: 3 минуты</option>
+                    <option value=300 selected>{{__('Длительность тайма: 5 минут')}}</option>
+                    <option value=240>{{__('Длительность тайма: 4 минуты')}}</option>
+                    <option value=180>{{__('Длительность тайма: 3 минуты')}}</option>
                 </select>
             @endif
         </x-slot>

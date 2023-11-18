@@ -17,40 +17,40 @@
                 </x-jet-secondary-button>
             @endif
             <br>
-            {{ __('Последнее обновление: '.$refreshTime) }}
+            {{ __('Последнее обновление').': '.$refreshTime }}
             <x-jet-secondary-button class="refresh-button" wire:click="render">
                 <i class="fas fa-sync"></i>{{ __('Обновить') }}
             </x-jet-secondary-button>
 
             <section class="tournament">
-                <h5>Площадка: <a href="/places/{{$tournament->place->id}}"
-                                 class="link-name1">{{$tournament->place->name}}</a></h5>
-                <h5>Дата/время проведения:{{$tournament->date_time}}</h5>
+                <h5>{{__('Площадка')}}: <a href="/places/{{$tournament->place->id}}"
+                                           class="link-name1">{{$tournament->place->name}}</a></h5>
+                <h5>{{__('Дата/время проведения')}}:{{$tournament->date_time}}</h5>
 
-            @foreach($rounds as $round)
+                @foreach($rounds as $round)
                     <hr>
                     <p>{{$round['name']}}</p>
                     @foreach($round['games'] as $game)
                         <table class="tournament-table tournament-playoff">
                             <thead>
                             <tr>
-                                <th>Команда</th>
-                                <th>Счет</th>
-                                <th>Результат</th>
+                                <th>{{__('Команда')}}</th>
+                                <th>{{__('Счет')}}</th>
+                                <th>{{__('Результат')}}</th>
                             </tr>
                             </thead>
                             <tr id="show-playoff-team-{{$game['team1']['id']}}"
                                 @switch($game['team1']['place'])
-                                @case('Победа')
+                                @case(__('Победа'))
                                 style="background-color: #b3ffb3 !important;"
                                 @break
-                                @case('1 место')
+                                @case(__('1 место'))
                                 style="background-color: #14ff14 !important;"
                                 @break
-                                @case('2 место')
+                                @case(__('2 место'))
                                 style="background-color: #5cff5c !important;"
                                 @break
-                                @case('3 место')
+                                @case(__('3 место'))
                                 style="background-color: #8eff8e !important;"
                                 @break
                                 @endswitch
@@ -67,16 +67,16 @@
                             </tr>
                             <tr id="show-playoff-team-{{$game['team2']['id']}}"
                                 @switch($game['team2']['place'])
-                                @case('Победа')
+                                @case(__('Победа'))
                                 style="background-color: #b3ffb3 !important;"
                                 @break
-                                @case('1 место')
+                                @case(__('1 место'))
                                 style="background-color: #14ff14 !important;"
                                 @break
-                                @case('2 место')
+                                @case(__('2 место'))
                                 style="background-color: #5cff5c !important;"
                                 @break
-                                @case('3 место')
+                                @case(__('3 место'))
                                 style="background-color: #8eff8e !important;"
                                 @break
                                 @endswitch

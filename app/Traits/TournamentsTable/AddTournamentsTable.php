@@ -1,5 +1,6 @@
 <?php
 namespace App\Traits\TournamentsTable;
+use App;
 use App\Models\Game;
 use App\Models\Team;
 use App\Models\TeamsInTournament;
@@ -78,15 +79,15 @@ trait AddTournamentsTable
             $teamGroup = TeamsInTournament::getGroupNameByIdGroup($teamsInGroup->first()->group);
             $result[$i]['head'] = [];
             $result[$i]['head'][] = $teamGroup;
-            $result[$i]['head'][] = "Команда";
+            $result[$i]['head'][] = __('Команда');
 
             $result[$i]['headDescription'] = [];
-            $result[$i]['headDescription'][] = "Группа $teamGroup";
+            $result[$i]['headDescription'][] = __('Группа')." $teamGroup";
             $result[$i]['headDescription'][] = "";
 
             foreach ($teamsInGroup as $j => $team) {
                 $result[$i]['head'][] = $j + 1;
-                $result[$i]['headDescription'][] = "Команда $team->name";
+                $result[$i]['headDescription'][] = __('Команда')." $team->name";
                 $result[$i][$j] = [];
                 $result[$i][$j]['number'] = $j + 1;
                 $result[$i][$j]['teamName'] = $team->name;
@@ -111,21 +112,21 @@ trait AddTournamentsTable
 
                             if ($game->id_state === 1) {
                                 $result[$i][$j]['games'][$z] = '-';
-                                $result[$i][$j]['gameDescription'][$z] = 'Игра не началась';
+                                $result[$i][$j]['gameDescription'][$z] = __('Игра не началась');
                             } else {
                                 $result[$i][$j]['games'][$z] = "$game->count_team_1:$game->count_team_2";
                                 $count_win += $game->count_team_1;
                                 $count_lose += $game->count_team_2;
 
                                 if ($game->count_team_1 === $game->count_team_2) {
-                                    $result[$i][$j]['gameDescription'][$z] = "Ничья";
+                                    $result[$i][$j]['gameDescription'][$z] = __('Ничья');
                                     $num_draw++;
                                 } else {
                                     if ($game->count_team_1 > $game->count_team_2) {
-                                        $result[$i][$j]['gameDescription'][$z] = "$team->name выиграла";
+                                        $result[$i][$j]['gameDescription'][$z] = "$team->name ". __('выиграла');
                                         $num_win++;
                                     } else {
-                                        $result[$i][$j]['gameDescription'][$z] = "$team->name проиграла";
+                                        $result[$i][$j]['gameDescription'][$z] = "$team->name ". __('проиграла');
                                         $num_lose++;
                                     }
                                 }
@@ -139,21 +140,21 @@ trait AddTournamentsTable
 
                             if ($game->id_state === 1) {
                                 $result[$i][$j]['games'][$z] = '-';
-                                $result[$i][$j]['gameDescription'][$z] = 'Идет не началась';
+                                $result[$i][$j]['gameDescription'][$z] = __('Игра не началась');
                             } else {
                                 $result[$i][$j]['games'][$z] = "$game->count_team_2:$game->count_team_1";
                                 $count_win += $game->count_team_2;
                                 $count_lose += $game->count_team_1;
 
                                 if ($game->count_team_2 === $game->count_team_1) {
-                                    $result[$i][$j]['gameDescription'][$z] = "Ничья";
+                                    $result[$i][$j]['gameDescription'][$z] = __('Ничья');
                                     $num_draw++;
                                 } else {
                                     if ($game->count_team_2 > $game->count_team_1) {
-                                        $result[$i][$j]['gameDescription'][$z] = "$team->name выиграла";
+                                        $result[$i][$j]['gameDescription'][$z] = "$team->name ". __('выиграла');
                                         $num_win++;
                                     } else {
-                                        $result[$i][$j]['gameDescription'][$z] = "$team->name проиграла";
+                                        $result[$i][$j]['gameDescription'][$z] = "$team->name ". __('проиграла');
                                         $num_lose++;
                                     }
                                 }
@@ -164,14 +165,20 @@ trait AddTournamentsTable
                 }
 
                 $result[$i][$j]['points'] = $num_win * 2 + $num_draw;
-                $result[$i][$j]['pointsDescription'] = "Побед: $num_win (" . ($num_win * 2) . " очк)\nНичей: $num_draw ($num_draw очк)\nПоражений: $num_lose (0 очк)";
+                $result[$i][$j]['pointsDescription'] = __('Побед').": $num_win (" . ($num_win * 2) . " ".__('очк').")\n".
+                    __('Ничей').": $num_draw ($num_draw ".__('очк').")\n".
+                    __('Поражений').": $num_lose (0 ".__('очк').")";
                 $result[$i][$j]['different'] = $count_win - $count_lose;
-                $result[$i][$j]['differentDescription'] = "Суммарно забитых голов: $count_win\nСуммарно пропущенных голов: $count_lose";
+                $result[$i][$j]['differentDescription'] = __('Суммарно забитых голов').": $count_win\n".
+                    __('Суммарно пропущенных голов').": $count_lose";
             }
-            $result[$i]['head'][] = "О";
-            $result[$i]['headDescription'][] = "Очков добыто\nПобеда - 2 очка\nНичья - 1 очко\nПоражение - 0 очков";
-            $result[$i]['head'][] = "P";
-            $result[$i]['headDescription'][] = "Разница между забитыми \nи пропущенными голами";
+            $result[$i]['head'][] = App::isLocale('ru') ? "О" : 'P'; //points
+            $result[$i]['headDescription'][] = __('Очков добыто')."\n".
+                __('Победа')." - 2 ".__('очка')."\n".
+                __('Ничья')." - 1 ".__('очко')."\n".
+                __('Поражение').' - 0 '.__('очков');
+            $result[$i]['head'][] = App::isLocale('ru') ? "P": 'D'; // different
+            $result[$i]['headDescription'][] = __('Разница между забитыми')." \n".__('и пропущенными голами');
 
             $teams = array_filter(array_map(fn($item) => isset($item['number']) ? $item : null, $result[$i]));
             uasort($teams, fn($a, $b) => $b['points'] <=> $a['points'] ?: $b['different'] <=> $a['different']);
@@ -204,16 +211,16 @@ trait AddTournamentsTable
 
                 $numPlaces = explode('-', $result[$i][$j]['place']);
                 $message = match (count($numPlaces)) {
-                    1 => $result[$i][$j]['place'] . " место",
-                    2 => $team['teamName'] . " разделила с другой командой " . implode(', ', $numPlaces) . " место",
-                    default => $team['teamName'] . " разделила с другими командами " . implode(', ', $numPlaces) . " места",
+                    1 => $result[$i][$j]['place'] . " ". __('место'),
+                    2 => $team['teamName'] ." ". __('разделила с другой командой') ." ". implode(', ', $numPlaces) . " ". __('место'),
+                    default => $team['teamName'] ." ". __('разделила с другими командами') ." ". implode(', ', $numPlaces) . " ". __('места'),
                 };
 
                 $result[$i][$j]['placeDescription'] = $message;
             }
 
-            $result[$i]['head'][] = "М";
-            $result[$i]['headDescription'][] = "Место в группе";
+            $result[$i]['head'][] = App::isLocale('ru')? "М" : 'T'; //top
+            $result[$i]['headDescription'][] = __('Место в группе');
         }
         return $result;
     }

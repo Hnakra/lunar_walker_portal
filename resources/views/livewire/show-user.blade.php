@@ -16,16 +16,16 @@
                 <div class="round-image" style="background-image: url('{{$user->photo}}')"></div>
                 <div class="info">
 {{--                    <p><span>Имя пользователя: </span>{{$user->name}}</p>--}}
-                    <p><span>Дата регистрации: </span>{{$user->created_at}}</p>
+                    <p><span>{{__('Дата регистрации')}}: </span>{{$user->created_at}}</p>
                     @isset($teams)
-                        <p><span>Команды: </span><br/>
+                        <p><span>{{__('Команды')}}: </span><br/>
                         @foreach($teams as $team)
                         "{{$team->name}}" <br/>
                         @endforeach
                         </p>
                     @endisset
                     @isset($robots)
-                        <p><span>Роботы: </span><br/>
+                        <p><span>{{__('Роботы')}}: </span><br/>
                             @foreach($robots as $robot)
                                 {{$robot->name}} <br/>
                             @endforeach

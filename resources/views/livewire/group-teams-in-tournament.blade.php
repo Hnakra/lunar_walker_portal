@@ -10,22 +10,22 @@
 
             <select wire:model="numGroups">
                 @for($i=1; $i<=$MAX_NUM_GROUPS; $i++)
-                    <option value="{{$i}}">Кол-во групп (разбиений команд) = {{$i}}</option>
+                    <option value="{{$i}}">{{__('Кол-во групп (разбиений команд)')}} = {{$i}}</option>
                 @endfor
             </select>
 
             @if($numGroups > 1)
                 <div class="groupingTypeRadio">
                     <input type="radio" id="groupingTypeAuto" name="groupingType" value="auto" wire:model="groupingType">
-                    <label for="groupingTypeAuto">Автоматическая группировка</label>
+                    <label for="groupingTypeAuto">{{__('Автоматическая группировка')}}</label>
 
                     <input type="radio" id="groupingTypeManual" name="groupingType" value="manual" wire:model="groupingType">
-                    <label for="groupingTypeManual">Ручная группировка</label>
+                    <label for="groupingTypeManual">{{__('Ручная группировка')}}</label>
                     @if($groupingType == "manual")
-                        <p>Таблица группировок</p>
+                        <p>{{__('Таблица группировок')}}</p>
                         <table>
                             <tr>
-                                <th>Название команды</th>
+                                <th>{{__('Название команды')}}</th>
                                 @for($i=1; $i<=$numGroups; $i++)
                                     <th>{{range('A', 'Z')[$i-1]}}</th>
                                 @endfor

@@ -1,5 +1,5 @@
 @if(count($tournaments) == 0)
-    <div class="not-found">Турниров с вашим участием нет!</div>
+    <div class="not-found">{{__('Турниров с вашим участием нет!')}}</div>
 @endif
 @if(count($tournaments) > 0)
     @foreach($tournaments as $t)
@@ -8,13 +8,17 @@
             <h4>{{$t->tournamentName}}</h4>
             <h5>{{$t->placeName}}</h5>
             <h5>{{$t->date_time}}</h5>
-            <p>Ваша команда "{{$t->teamName}}" участвует в турнире {{$t->tournamentName}}, на площадке {{$t->placeName}}, дата-время: {{$t->date_time}}. Подтвердите свое участие.</p>
+            <p>{{
+            App::isLocale('ru') ?
+                "Ваша команда $t->teamName участвует в турнире $t->tournamentName, на площадке $t->placeName, дата-время: $t->date_time. Подтвердите свое участие." :
+                "Your $t->teamName team is participating in the $t->tournamentName tournament, on the $t->placeName place, date-time: $t->date_time. Confirm your participation."
+            }}</p>
             <div>
                 <table>
                     <thead>
                     <tr>
-                        <th>Участник</th>
-                        <th>Подтвердил участие</th>
+                        <th>{{__('Участник')}}</th>
+                        <th>{{__('Подтвердил участие')}}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -34,11 +38,11 @@
 
                 @if($t->is_submit)
                     <div class="footer-wrapper">
-                        УЧАСТИЕ ПОДТВЕРЖДЕНО!
+                        {{__('УЧАСТИЕ ПОДТВЕРЖДЕНО!')}}
                     </div>
                 @else
                     <div class="footer-wrapper">
-                        <a href="/tournaments/submit/{{$t->tournamentId}}/{{$t->teamId}}" class="button big-button">ПОДТВЕРДИТЬ УЧАСТИЕ</a>
+                        <a href="/tournaments/submit/{{$t->tournamentId}}/{{$t->teamId}}" class="button big-button">{{__('ПОДТВЕРДИТЬ УЧАСТИЕ')}}</a>
                     </div>
 
                 @endif

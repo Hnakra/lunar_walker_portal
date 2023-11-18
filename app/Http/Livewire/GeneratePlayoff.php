@@ -28,12 +28,15 @@ class GeneratePlayoff extends Component
 
     ];
     // Настройка правил сообщений для формы
-    protected $messages = [
-        'name.required' => "Поле не должно быть пустым!",
-        "name.min" => "Название должно содержать не менее 3 букв",
-        'date.required' => 'Введите дату', 'date.date_format' => "Введите дату в формате Y-m-d",
-        'time.required' => 'Введите время', 'time.date_format' => "Введите время в формате hh:mm",
-    ];
+    protected function getMessages()
+    {
+        return [
+            'name.required' => __("Поле не должно быть пустым!"),
+            "name.min" => __("Название должно содержать не менее 3 букв"),
+            'date.required' => __('Введите дату'), 'date.date_format' => __("Введите дату в формате Y-m-d"),
+            'time.required' => __('Введите время'), 'time.date_format' => __("Введите время в формате hh:mm"),
+        ];
+    }
 
     public function createShowModal()
     {
@@ -49,7 +52,7 @@ class GeneratePlayoff extends Component
                     array_push($this->teams, [
                         'id' => $value['teamId'],
                         'place' => $value['place'],
-                        'team' => $value['teamName'] . " (" . $value['place'] . " Место, Кол-во очков: " . $value['points'] . " , Группа: " . $group['head'][0] . ")",
+                        'team' => $value['teamName'] . " (" . $value['place'] . " ".__('Место').", ".__('Кол-во очков').": " . $value['points'] . " , ".__('Группа').": " . $group['head'][0] . ")",
                         'isChecked' => str_contains('1', $value['place'])
                     ]);
                 }
@@ -69,12 +72,12 @@ class GeneratePlayoff extends Component
                     $number += $v['isChecked'] ? 1 : 0;
                 }
                 if (!$this->_isPowerOfTwo($number)) {
-                    $fail("Кол-во выбранных команд - не степень двойки!");
+                    $fail(__("Кол-во выбранных команд - не степень двойки!"));
                 }
             }
         ]);
 
-        $this->validate($this->rules, $this->messages);
+        $this->validate($this->rules, $this->getMessages());
 
         $id_tournament = DB::table('tournaments')->insertGetId([
             'name' => $this->name,

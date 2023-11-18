@@ -44,7 +44,7 @@ class GroupTeamsInTournament extends Component
                             }
                         }*/
                 ],
-                    ['teamGroup.*.not_in' => 'Все команды должны состоять в группах!']);
+                    ['teamGroup.*.not_in' => __('Все команды должны состоять в группах!')]);
             } else {
                 $ids = new \Illuminate\Support\Collection($this->teams->pluck('id_team'));
                 $values = array_map(fn($item) => $item % $this->numGroups + 1, range(0, $ids->count() - 1));

@@ -2,11 +2,11 @@
 
     @if($current_place == 0)
         <ul class="actions special">
-            <li><a wire:click="createShowModal" href="#" class="button big-button">ДОБАВИТЬ ПЛОЩАДКУ</a></li>
-        </ul>
+            <li><a wire:click="createShowModal" href="#" class="button big-button">{{__('ДОБАВИТЬ ПЛОЩАДКУ')}}</a></li>
+        </ul>{{__('')}}
     @else
         <ul class="actions special">
-            <li><a wire:click="editShowModal" href="#" class="button big-button">ИЗМЕНИТЬ ПЛОЩАДКУ</a></li>
+            <li><a wire:click="editShowModal" href="#" class="button big-button">{{__('ИЗМЕНИТЬ ПЛОЩАДКУ')}}</a></li>
         </ul>
     @endif
 
@@ -36,7 +36,7 @@
                                  wire:keydown.enter="" />
                     @error('address') <span class="error">{{ $message }}</span> @enderror
                     <select required wire:model="id_organizator">
-                        <option value ="" selected>Выберите организатора</option>
+                        <option value ="" selected>{{__('Выберите организатора')}}</option>
                         @foreach($listUsers as $user)
                             <option value="{{$user->id}}">{{$user->name}}</option>
 
@@ -52,12 +52,12 @@
                         <div class = "wait-load-file" wire:loading wire:target="photo">Uploading...</div>
                         <div>
                             <input type="file" name="file" wire:model="photo">
-                            <span class="button big-button input-file-btn">Выберите фото</span>
+                            <span class="button big-button input-file-btn">{{__('Выберите фото')}}</span>
                             <span class="input-file-text" type="text">
                                 @if(isset($photo))
                                     {{$photo->getClientOriginalName()}}
                                 @else
-                                    <span class="error">Название фото</span>
+                                    <span class="error">{{__('Название фото')}}</span>
                                 @endif
                             </span>
                         </div>

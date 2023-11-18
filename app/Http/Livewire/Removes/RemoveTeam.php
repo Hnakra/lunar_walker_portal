@@ -30,7 +30,7 @@ class RemoveTeam extends Component
             redirect("/teams", [\App\Http\Controllers\Teams\TeamsController::class, 'index']);
         }
         else{
-            $this->errorMessage = "Есть турниры, на которых играет данная команда!";
+            $this->errorMessage = __('Есть турниры, на которых играет данная команда!');
         }
     }
 

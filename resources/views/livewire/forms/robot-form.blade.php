@@ -37,12 +37,12 @@
                 <div class = "wait-load-file" wire:loading wire:target="photo">Uploading...</div>
                 <div>
                     <input type="file" name="file" wire:model="photo">
-                    <span class="button big-button input-file-btn">Выберите фото</span>
+                    <span class="button big-button input-file-btn">{{__('Выберите фото')}}</span>
                     <span class="input-file-text" type="text">
                         @if(isset($photo))
                             {{$photo->getClientOriginalName()}}
                         @else
-                            <span class="error">Название фото</span>
+                            <span class="error">{{__('Название фото')}}</span>
                         @endif
                     </span>
                 </div>

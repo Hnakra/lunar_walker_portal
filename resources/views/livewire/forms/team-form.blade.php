@@ -1,9 +1,9 @@
 <div class="edit-wrapper">
 
     @if($current_team == 0)
-        <a href="#!" wire:click="createShowModal" class="button big-button">ДОБАВИТЬ КОМАНДУ</a>
+        <a href="#!" wire:click="createShowModal" class="button big-button">{{__('ДОБАВИТЬ КОМАНДУ')}}</a>
     @else
-        <a href="#!"  wire:click="editShowModal" class="button-edit" title="редактировать команду"><i class="fa fa-edit" style="font-size:30px"></i></a>
+        <a href="#!"  wire:click="editShowModal" class="button-edit" title="{{__('редактировать команду')}}"><i class="fa fa-edit" style="font-size:30px"></i></a>
     @endif
 
     <x-jet-dialog-modal wire:model="modalFormVisible">
@@ -30,7 +30,7 @@
             @if(Auth::user()->isAdmin())
             <span>{{__('Тренер')}}</span>
             <select class="child-form" wire:model="selected_trainer">
-                <option value ="0">Нет тренера</option>
+                <option value ="0">{{__('Нет тренера')}}</option>
                 @foreach($users as $user)
                     <option value="{{$user->id}}">{{$user->name}}</option>
                 @endforeach
@@ -44,7 +44,7 @@
 
             @foreach($selected_users_id as $index => $user_id)
                 <select required class="child-form" wire:model="selected_users_id.{{$index}}">
-                    <option value ="" selected>Выберите игрока</option>
+                    <option value ="" selected>{{__('Выберите игрока')}}</option>
                     @foreach($users as $user)
                         <option value="{{$user->id}}">{{$user->name}}</option>
                     @endforeach

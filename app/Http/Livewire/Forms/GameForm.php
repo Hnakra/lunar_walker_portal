@@ -34,13 +34,16 @@ class GameForm extends Component
         'id_team_2' => 'required|not_in:0|different:id_team_1'
     ];
     // Настройка правил сообщений для формы
-    protected $messages = [
-        'date.required' => 'Введите дату', 'date.date_format' => "Введите дату в формате Y-m-d",
-        'time.required' => 'Введите время', 'time.date_format' => "Введите время в формате Часы:Минуты",
-        'id_team_1.required' => 'Выберите команду 1', 'id_team_1.not_in' => 'Выберите команду 1',
-        'id_team_2.required' => 'Выберите команду 2', 'id_team_2.not_in' => 'Выберите команду 2',
-        'id_team_2.different' => 'Одна и та же команда не может играть против себя!'
-    ];
+    protected function getMessages()
+    {
+        return [
+            'date.required' => __('Введите дату'), 'date.date_format' => __('Введите дату в формате Y-m-d'),
+            'time.required' => __('Введите время'), 'time.date_format' => __('Введите время в формате Часы:Минуты'),
+            'id_team_1.required' => __('Выберите команду 1'), 'id_team_1.not_in' => __('Выберите команду 1'),
+            'id_team_2.required' => __('Выберите команду 2'), 'id_team_2.not_in' => __('Выберите команду 2'),
+            'id_team_2.different' => __('Одна и та же команда не может играть против себя!')
+        ];
+    }
 
     public function getTeamsProperty()
     {
@@ -61,7 +64,7 @@ class GameForm extends Component
     public function submitShowModal()
     {
         // валидация всех значений, указанных в $rules
-        $this->validate();
+        $this->validate($this->rules, $this->getMessages());
 
         // если турнир - плейофф и у него всего 1 игра (финальная), закрыть этот плейофф
         $tournament = Tournament::find($this->id_tournament);
@@ -112,7 +115,7 @@ class GameForm extends Component
     public function modifyShowModal()
     {
         // валидация всех значений, указанных в $rules
-        $this->validate();
+        $this->validate($this->rules, $this->getMessages());
         DB::table('games')->where('id', $this->current_game)->update([
             'id_tournament' => $this->id_tournament,
             'id_team_1' => $this->id_team_1,

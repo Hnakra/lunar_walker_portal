@@ -16,25 +16,25 @@
                 </x-jet-secondary-button>
             @endif
             <br>
-            {{ __('Последнее обновление: '.$refreshTime) }}
+            {{ __('Последнее обновление').': '.$refreshTime }}
             <x-jet-secondary-button class="refresh-button" wire:click="render">
                   <i class="fas fa-sync"></i>{{ __('Обновить') }}
             </x-jet-secondary-button>
 
             <section class="tournament">
-                <h5>Площадка: <a href="/places/{{$tournament->place->id}}" class="link-name1" >{{$tournament->place->name}}</a></h5>
-                <h5>Дата/время проведения:{{$tournament->date_time}}</h5>
+                <h5>{{__('Площадка')}}: <a href="/places/{{$tournament->place->id}}" class="link-name1" >{{$tournament->place->name}}</a></h5>
+                <h5>{{__('Дата/время проведения')}}:{{$tournament->date_time}}</h5>
 
                 <div class="table-wrapper">
                     <table>
                         <thead>
                         <tr>
                             @if($tournament->isGrouped())
-                                <th>Группа</th>
+                                <th>{{__('Группа')}}</th>
                             @endif
-                            <th>Время</th>
-                            <th>Команды</th>
-                            <th>Счет</th>
+                            <th>{{__('Время')}}</th>
+                            <th>{{__('Команды')}}</th>
+                            <th>{{__('Счет')}}</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -47,7 +47,7 @@
                                 <td>{{$game->getTime()}}</td>
                                 <td>{{$game->team_1->name}} VS {{$game->team_2->name}}</td>
                                 <td>{{$game->count_team_1}}:{{$game->count_team_2}}</td>
-                                <td><a href="/game/{{$game->id}}" title="информация об игре" class="points">...</a></td>
+                                <td><a href="/game/{{$game->id}}" title="{{__('информация об игре')}}" class="points">...</a></td>
                             </tr>
                         @endforeach
 

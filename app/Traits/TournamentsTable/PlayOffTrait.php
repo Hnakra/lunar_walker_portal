@@ -13,7 +13,7 @@ trait PlayOffTrait
         foreach ($tournament->getRounds() as $i => $round) {
             $games = [];
             if ($i === $tournament->num_round && $tournament->is_generated_playoff) {
-                $name = 'Финал';
+                $name = __('Финал');
                 /** @var Game $gameFirstSecondPlace */
                 $gameFirstSecondPlace = $round->first();
 
@@ -22,11 +22,11 @@ trait PlayOffTrait
                         case null:
                             return '?';
                         case 0:
-                            return 'Ничья';
+                            return __('Ничья');
                         case -1:
-                            return '2 место';
+                            return  __('2 место');
                         case 1:
-                            return '1 место';
+                            return  __('1 место');
                         default:
                             return '';
                     }
@@ -57,9 +57,9 @@ trait PlayOffTrait
                             case null:
                                 return '?';
                             case 0:
-                                return 'Ничья';
+                                return __('Ничья');
                             case 1:
-                                return '3 место';
+                                return  __('3 место');
                             default:
                                 return '';
                         }
@@ -82,16 +82,16 @@ trait PlayOffTrait
                 }
 
             } else {
-                $name = "1/" . $round->count() . " финала";
+                $name = "1/" . $round->count() .  __( 'финала');
 
                 $getPlace = function ($comparsion) {
                     switch ($comparsion) {
                         case null:
                             return '?';
                         case 0:
-                            return 'Ничья';
+                            return __('Ничья');
                         case 1:
-                            return 'Победа';
+                            return __('Победа');
                         default:
                             return '';
                     }

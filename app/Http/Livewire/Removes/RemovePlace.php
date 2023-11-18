@@ -28,7 +28,7 @@ class RemovePlace extends Component
             redirect("/places", [\App\Http\Controllers\Places\PlacesController::class, 'index']);
         }
         else{
-            $this->errorMessage = "Есть турниры, на которых завязаны площадка!";
+            $this->errorMessage = __('Есть турниры, на которых завязаны площадка!');
         }
     }
     public function render()

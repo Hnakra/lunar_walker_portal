@@ -1,7 +1,7 @@
 <!-- Banner -->
 <section id="banner">
     <div class="inner">
-        <h2>ПЛОЩАДКИ</h2>
+        <h2>{{__('ПЛОЩАДКИ')}}</h2>
         <!--<p>Another fine responsive<br />
             site template freebie<br />
             crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
@@ -9,7 +9,7 @@
             @livewire('forms.place-form')
         @endif
     </div>
-    <a href="#one" class="more scrolly">Читать далее</a>
+    <a href="#one" class="more scrolly">{{__('Читать далее')}}</a>
 </section>
 
 <!-- Places -->
@@ -21,7 +21,7 @@
                 <h2>{{$place->name}}</h2>
 {{--                <p>{{print_r($place)}}</p>--}}
                 <p>{{$place->address}}</p>
-                <p><a href="/places/{{$place->id}}" class="button big-button">ПОДРОБНЕЕ</a></p>
+                <p><a href="/places/{{$place->id}}" class="button big-button">{{__('ПОДРОБНЕЕ')}}</a></p>
             </div>
         </section>
 

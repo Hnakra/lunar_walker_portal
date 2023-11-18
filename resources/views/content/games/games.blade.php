@@ -8,7 +8,7 @@
 <!-- Banner -->
 <section id="banner">
     <div class="inner">
-        <h2>ИГРЫ</h2>
+        <h2>{{__('ИГРЫ')}}</h2>
         <!--<p>Another fine responsive<br />
             site template freebie<br />
             crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
@@ -19,7 +19,7 @@
 {{--            <li><a href="#" class="button big-button">СОЗДАТЬ ТУРНИР</a></li>--}}
         </ul>
     </div>
-    <a href="#one" class="more scrolly">Читать далее</a>
+    <a href="#one" class="more scrolly">{{__('Читать далее')}}</a>
 </section>
 
 <section id="one" class="wrapper style5">
@@ -34,13 +34,13 @@
                 <table>
                     <thead>
                     <tr>
-                        <th>Cтатус</th>
+                        <th>{{__('Cтатус')}}</th>
                         @if($tournament->isGrouped())
-                            <th>Группа</th>
+                            <th>{{__('Группа')}}</th>
                         @endif
-                        <th>Время</th>
-                        <th>Команды</th>
-                        <th>Счет</th>
+                        <th>{{__('Время')}}</th>
+                        <th>{{__('Команды')}}</th>
+                        <th>{{__('Счет')}}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -49,19 +49,37 @@
                             <td>
                                 @switch($game->id_state)
                                     @case(0)
-                                    <i class="fas fa-check" title="Игра завершена"></i>
+                                    <i class="fas fa-check" title="{{__('Игра завершена')}}"></i>
                                     @break
                                     @case(1)
-                                    <i class="fas fa-stop-circle" title="Игра не началась"></i>
+                                    <i class="fas fa-stop-circle" title="{{__('Игра не началась')}}"></i>
                                     @break
                                     @case(2)
-                                    <i class="fas fa-play" title="Идет {{$game->num_periods}} тайм"></i>
+                                    <i class="fas fa-play" title="
+                                        @if(App::isLocale('ru'))
+                                            {{__(" Идет $game->num_periods тайм")}}
+                                        @else
+                                            {{__('It\'s'.$game->num_periods.' half')}}
+                                        @endif
+                                    "></i>
                                     @break
                                     @case(3)
-                                    <i class="fas fa-pause" title="Пауза {{$game->num_periods}} тайма"></i>
+                                    <i class="fas fa-pause" title="
+                                        @if(App::isLocale('ru'))
+                                            {{__("Пауза $game->num_periods тайма")}}
+                                        @else
+                                            {{__($game->num_periods.' half is break')}}
+                                        @endif
+                                    "></i>
                                     @break
                                     @case(4)
-                                    <i class="fas fa-stopwatch" title="Завершен {{$game->num_periods}} тайм"></i>
+                                    <i class="fas fa-stopwatch" title="
+                                        @if(App::isLocale('ru'))
+                                            {{ __("Завершен $game->num_periods тайм")}}
+                                        @else
+                                            {{__($game->num_periods.' half is completed')}}
+                                        @endif
+                                    "></i>
                                     @break
                                 @endswitch
                             </td>
@@ -71,7 +89,7 @@
                             <td>{{$game->getTime()}}</td>
                             <td>{{$game->name_team_1}} VS {{$game->name_team_2}}</td>
                             <td>{{$game->count_team_1}}:{{$game->count_team_2}}</td>
-                            <td><a href="/game/{{$game->id}}" title="информация об игре" class="points">...</a></td>
+                            <td><a href="/game/{{$game->id}}" title="{{__('информация об игре')}}" class="points">...</a></td>
                         </tr>
                     @endforeach
 

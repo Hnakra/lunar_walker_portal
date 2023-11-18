@@ -31,10 +31,13 @@ class RobotForm extends Component
         'name' => 'required|min:2'
     ];
     // Настройка правил сообщений для формы
-    public $messages = [
-        'name.required' => "Введите имя робота!", 'name.min' => "Имя робота должно быть не меньше 2-х символов!",
-        'photo.image' => "Добавьте фото робота!", 'photo.max' => "Размер фото большой! Добавьте фото меньшего размера!"
-    ];
+    protected function getMessages()
+    {
+        return [
+            'name.required' => __('Введите имя робота!'), 'name.min' => __('Имя робота должно быть не меньше 2-х символов!'),
+            'photo.image' => __('Добавьте фото робота!'), 'photo.max' => __('Размер фото большой! Добавьте фото меньшего размера!')
+        ];
+    }
     // метод вызова модельного окна для создания сущности
 
     public function createShowModal(){
@@ -43,7 +46,8 @@ class RobotForm extends Component
     // метод сохранения новой сущности, редирект
 
     public function addingRobot(){
-        $this->validate();
+        $this->validate($this->rules, $this->getMessages());
+
         $photoName = $this->photo->getClientOriginalName();
         $is_working = false;
         $id_master = Auth::user()->id;
@@ -81,7 +85,8 @@ class RobotForm extends Component
     // метод изменения сущности, редирект
 
     public function modifyShowModal(){
-        $this->validate();
+        $this->validate($this->rules, $this->getMessages());
+
         $robot = Robot::find($this->current_robot);
         $photoName = $this->photo->getClientOriginalName();
         $is_working = $robot->is_working;

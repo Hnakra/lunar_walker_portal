@@ -12,11 +12,11 @@
             <div class="">
                 <div class="square round" style="background-image: url('{{$robot->photo}}');"></div>
                 <div class="info">
-                    <p><span>Название: </span>{{$robot->name}}</p>
+                    <p><span>{{__('Название')}}: </span>{{$robot->name}}</p>
                     @isset($user)
-                    <p><span>Владелец: </span>{{$user->name}}</p>
+                    <p><span>{{__('Владелец')}}: </span>{{$user->name}}</p>
                     @endisset()
-                    <p><span>Дата регистрации: </span>{{$robot->created_at}}</p>
+                    <p><span>{{__('Дата регистрации')}}: </span>{{$robot->created_at}}</p>
 
                     <div class="edit-wrapper">
                         @if(Auth::check() && Auth::user()->isOwnerOrAdmin($robot->id_master))
@@ -28,13 +28,13 @@
 
                 </div>
             </div>
-            <div class="definition-title">{{ __('ОПИСАНИЕ ') }}</div>
+            <div class="definition-title">{{ __('ОПИСАНИЕ') }}</div>
             <div class="definition-text">{{$robot->notation}}</div>
 {{--            {{$robot}}--}}
         </x-slot>
         <x-slot name="footer">
             <x-jet-secondary-button class="button-secondary" wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
-                {{ __('НАЗАД') }}
+                 {{__('НАЗАД')}}
             </x-jet-secondary-button>
 
         </x-slot>

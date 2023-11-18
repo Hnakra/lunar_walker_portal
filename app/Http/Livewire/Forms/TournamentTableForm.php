@@ -16,7 +16,7 @@ class TournamentTableForm extends Component
     // Переменная открытия-закрытия формы
     public $modalFormVisible = false;
     public $id_tournament;
-    public $listTables = ['all_vs_all'=>"Все со всеми"], $selectedTable;
+    public $listTables, $selectedTable;
     public $interval = 10, $max_seconds_match = 300;
 
     public Collection $teams;
@@ -24,15 +24,19 @@ class TournamentTableForm extends Component
     protected $rules = [
         'selectedTable' => 'required'
     ];
-    protected $messages = [
-        'selectedTable.required' => 'Выберите способ генерации игр'
-    ];
+    protected function getMessages()
+    {
+        return [
+            'selectedTable.required' => __('Выберите способ генерации игр')
+        ];
+    }
 
     public function createShowModal(){
         $this->modalFormVisible = true;
     }
     public function submitShowModal(){
-        $this->validate();
+        $this->validate($this->rules, $this->getMessages());
+
         $this->teams = Team::where('teams_in_tournaments.id_tournament', $this->id_tournament)
             ->leftJoin('teams_in_tournaments', 'teams_in_tournaments.id_team', '=', 'teams.id')
             ->get();
@@ -48,6 +52,7 @@ class TournamentTableForm extends Component
     }
     public function render()
     {
+        $this->listTables = ['all_vs_all'=>"Все со всеми"];
         $this->teams = Team::where('teams_in_tournaments.id_tournament', $this->id_tournament)
             ->leftJoin('teams_in_tournaments', 'teams_in_tournaments.id_team', '=', 'teams.id')
             ->get();

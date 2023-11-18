@@ -2,7 +2,7 @@
 <!-- Banner -->
 <section id="banner">
     <div class="inner">
-        <h2>Роботы</h2>
+        <h2>{{__('Роботы')}}</h2>
         <!--<p>Another fine responsive<br />
             site template freebie<br />
             crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
@@ -13,7 +13,7 @@
             @endif
         </ul>
     </div>
-    <a href="#one" class="more scrolly">Читать далее</a>
+    <a href="#one" class="more scrolly">{{__('Читать далее')}}</a>
 </section>
 
     <section class="cards wrapper style5" id = "one">
@@ -22,7 +22,7 @@
             <div class="round-image" style="background-image: url('{{$robot->photo}}')"></div>
             @livewire("show-robot", ['robot' => $robot])
             <p>{{$robot->user->name}}</p>
-            <p><small>Владелец</small></p>
+            <p><small>{{__('Владелец')}}</small></p>
         </div>
         @endforeach
     </section>

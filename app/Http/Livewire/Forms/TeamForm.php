@@ -33,10 +33,13 @@ class TeamForm extends Component
         'selected_users_id.*' => 'distinct|not_in:0',
 
     ];
-    protected $messages = [
-        'selected_users_id.*.distinct' => 'Нужно выбрать разных игроков',
-        'selected_users_id.*.not_in' => 'Нужно выбрать игроков!',
-    ];
+    protected function getMessages()
+    {
+        return [
+            'selected_users_id.*.distinct' => __('Нужно выбрать разных игроков'),
+            'selected_users_id.*.not_in' => __('Нужно выбрать игроков!'),
+        ];
+    }
     // метод вызова модельного окна для создания сущности
 
     public function createShowModal(){
@@ -63,7 +66,8 @@ class TeamForm extends Component
     // метод сохранения новой сущности, редирект
 
     public function adding(){
-        $this->validate();
+        $this->validate($this->rules, $this->getMessages());
+
         $id_team = DB::table('teams')->insertGetId([
             'name' => $this->name,
             'id_trainer' => $this->selected_trainer,
@@ -84,7 +88,7 @@ class TeamForm extends Component
     // метод изменения сущности, редирект
 
     public function modification(){
-        $this->validate();
+        $this->validate($this->rules, $this->getMessages());
 
         Team::where('id', $this->current_team)->update([
             'name' => $this->name,

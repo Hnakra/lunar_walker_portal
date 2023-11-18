@@ -17,15 +17,15 @@
                 </x-jet-secondary-button>
             @endif
             <br>
-            {{ __('Последнее обновление: '.$refreshTime) }}
+            {{ __('Последнее обновление'). ': '.$refreshTime }}
             <x-jet-secondary-button class="refresh-button" wire:click="render">
                 <i class="fas fa-sync"></i>{{ __('Обновить') }}
             </x-jet-secondary-button>
 
             <section class="tournament">
-                <h5>Площадка: <a href="/places/{{$tournament->place->id}}"
+                <h5>{{__('Площадка')}}: <a href="/places/{{$tournament->place->id}}"
                                  class="link-name1">{{$tournament->place->name}}</a></h5>
-                <h5>Дата/время проведения:{{$tournament->date_time}}</h5>
+                <h5>{{__('Дата/время проведения')}}:{{$tournament->date_time}}</h5>
 
                 @foreach($groups as $i => $group)
                     <div>

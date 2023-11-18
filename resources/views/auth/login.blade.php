@@ -15,7 +15,7 @@
             @endif
 
             <form method="POST" action="{{ route('login') }}">
-                <div class="title">Вход<br> <br></div>
+                <div class="title">{{ __('Вход') }}<br> <br></div>
                 @csrf
 
                 <div>
@@ -38,13 +38,13 @@
 
                 <div>
                     <a href="{{ route('google.login') }}" class="underline text-sm text-gray-600 hover:text-gray-900 link">
-                        <i class="fab fa-google fa-fw"></i> Войти при помощи Google
+                        <i class="fab fa-google fa-fw"></i> {{ __('Войти при помощи Google') }}
                     </a>
                 </div>
                 <br>
                 <div>
                     <a href="{{ route('yandex.login') }}" class="underline text-sm text-gray-600 hover:text-gray-900 link">
-                        <i class="fab fa-yandex fa-fw" style="color: red;"></i> Войти при помощи Yandex
+                        <i class="fab fa-yandex fa-fw" style="color: red;"></i> {{ __('Войти при помощи Yandex') }}
                     </a>
                 </div>
                 <br>
@@ -63,8 +63,8 @@
                     </x-jet-button>
                 </div>
             </form>
-            <div align="center"><br>Ещё нет аккаунта? <br><a class="underline text-sm text-gray-600 hover:text-gray-900"
-                                                             href="../register">Зарегистрируйтесь</a></div>
+            <div align="center"><br>{{ __('Ещё нет аккаунта?') }} <br><a class="underline text-sm text-gray-600 hover:text-gray-900"
+                                                             href="../register">{{ __('Зарегистрируйтесь') }}</a></div>
         </x-jet-authentication-card>
     </div>
 

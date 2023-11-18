@@ -41,16 +41,19 @@ class TournamentForm extends Component
         'users.*' => 'distinct',
     ];
     // Настройка правил сообщений для формы
-    protected $messages = [
-        'name.required' => "Поле не должно быть пустым!",
-        "name.min" => "Название должно содержать не менее 3 букв",
-        "id_place.required" => "Поле не должно быть пустым!",
-        'date.required' => 'Введите дату', 'date.date_format' => "Введите дату в формате Y-m-d",
-        'time.required' => 'Введите время', 'time.date_format' => "Введите время в формате hh:mm",
-        'selected_teams_id.*.distinct' => 'Нужно выбрать разные команды',
-        'selected_teams_id.*.not_in' => 'Нужно выбрать команды',
-        'users.*.distinct' => 'Пользователи в командах не должны повторяться!',
-    ];
+    protected function getMessages()
+    {
+        return [
+            'name.required' => __('Поле не должно быть пустым!'),
+            "name.min" => __('Название должно содержать не менее 3 букв'),
+            "id_place.required" => __('Поле не должно быть пустым!'),
+            'date.required' => __('Введите дату'), 'date.date_format' => __('Введите дату в формате Y-m-d'),
+            'time.required' => __('Введите время'), 'time.date_format' => __('Введите время в формате hh:mm'),
+            'selected_teams_id.*.distinct' => __('Нужно выбрать разные команды'),
+            'selected_teams_id.*.not_in' => __('Нужно выбрать команды'),
+            'users.*.distinct' => __('Пользователи в командах не должны повторяться!'),
+        ];
+    }
     // метод вызова модельного окна для создания сущности
     public function createShowModal(){
         $this->places = $this->getPlaces();
@@ -65,7 +68,7 @@ class TournamentForm extends Component
             $this->users = array_merge($this->users, $users);
         }
         // валидация всех значений, указанных в $rules
-        $this->validate();
+        $this->validate($this->rules, $this->getMessages());
         $id_tournament = DB::table('tournaments')->insertGetId([
             'name'=> $this->name,
             'description' => $this->description,
@@ -128,7 +131,7 @@ class TournamentForm extends Component
     // метод изменения сущности, редирект
 
     public function modifyShowModal(){
-        $this->validate();
+        $this->validate($this->rules, $this->getMessages());
         DB::table('tournaments')->where("id", $this->current_tournament)
             -> update([
                 'id_place' => $this->id_place,

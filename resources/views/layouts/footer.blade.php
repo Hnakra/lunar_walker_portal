@@ -1,7 +1,7 @@
 <!-- Footer (подвал) -->
 <footer id="footer">
     <ul class="copyright">
-        <li>Email для связи</li>
+        <li>{{__('Email для связи')}}</li>
         <!--            <ul class="icons">-->
         <!--                <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a><li class="copyright">VanekMRZ@yandex.ru</li></li>-->
         <!--            </ul>-->
@@ -10,9 +10,9 @@
         </ul>
     </ul>
     <ul class="copyright">
-        <li>2023 &copy; ПОРТАЛ ДЛЯ ПРОВЕДЕНИЯ СОРЕВНОВАНИЙ ПО РОБОФУТБОЛУ</li>
+        <li>2023 &copy; {{__('ПОРТАЛ ДЛЯ ПРОВЕДЕНИЯ СОРЕВНОВАНИЙ ПО РОБОФУТБОЛУ')}}</li>
         <ul>
-            <li>ВСЕ ПРАВА ЗАЩИЩЕНЫ</li>
+            <li>{{__('ВСЕ ПРАВА ЗАЩИЩЕНЫ')}}</li>
         </ul>
     </ul>
 </footer>

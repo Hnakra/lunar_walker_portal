@@ -34,8 +34,8 @@ class NotifyAboutCreateTournament extends Mailable
     public function build()
     {
         return $this->view('email.notify_about_create_tournament')
-            ->subject('Уведомление о начале турнира')
-            ->from('test349i49534594958@gmail.com', 'Посыльный Робофутбола')
+            ->subject(__('Уведомление о начале турнира'))
+            ->from('test349i49534594958@gmail.com', __('Посыльный Робофутбола'))
             ->with('data', $this->data);
     }
 }

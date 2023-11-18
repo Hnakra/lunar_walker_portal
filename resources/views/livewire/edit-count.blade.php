@@ -1,7 +1,7 @@
 <div class = "counter-content">
     @if($this->time_is_end())
         <div class = "time-is-end">@livewire('show-state-game', ['id_game' => $game->id])</div>
-        <span class = "time-is-end"> Время закончилось </span>
+        <span class = "time-is-end"> {{__('Время закончилось')}} </span>
     @else
         @livewire('show-state-game', ['id_game' => $game->id])
     @endif

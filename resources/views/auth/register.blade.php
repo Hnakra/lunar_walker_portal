@@ -6,7 +6,7 @@
                 <x-jet-authentication-card-logo />
     --}}
             </x-slot>
-            <div style="font-size: 20pt">Регистрация<br> <br> </div>
+            <div style="font-size: 20pt">{{__('Регистрация')}}<br> <br> </div>
             <x-jet-validation-errors class="mb-4" />
 
             <form method="POST" action="{{ route('register') }}">

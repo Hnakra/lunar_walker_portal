@@ -30,7 +30,7 @@ class RoundTournamentPlayoffForm extends Component
         $rules = [
             'id_tournament' => function ($attribute, $value, $fail) {
                 if (!$this->games->every(fn($game) => $game->count_team_1 !== $game->count_team_2)) {
-                    $fail("В турнире есть команды, в которых результат игр - ничья!");
+                    $fail(__('В турнире есть команды, в которых результат игр - ничья!'));
                 }
             }
         ];

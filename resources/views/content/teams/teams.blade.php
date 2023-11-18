@@ -1,9 +1,9 @@
 <div class="main">
-    <div class="title">Команды</div>
+    <div class="title">{{__('Команды')}}</div>
     <!-- Banner -->
     <section id="banner">
         <div class="inner">
-            <h2>команды</h2>
+            <h2>{{__('команды')}}</h2>
             <!--<p>Another fine responsive<br />
                 site template freebie<br />
                 crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
@@ -14,7 +14,7 @@
                 {{--                <li><a href="#" class="button big-button">ДОБАВИТЬ КОМАНДУ</a></li>--}}
             </ul>
         </div>
-        <a href="#one" class="more scrolly">Читать далее</a>
+        <a href="#one" class="more scrolly">{{__('Читать далее')}}</a>
     </section>
 
     <section id="one" class="wrapper style5">
@@ -22,10 +22,10 @@
         @foreach($teamsWithPlayers as $team)
             <section class="tournament">
 
-                <h4 class="title1">команда "{{$team['team']->name}}"</h4>
+                <h4 class="title1">{{__('команда')}} "{{$team['team']->name}}"</h4>
                 @if($team['trainer'])
                     <div class="trainer">
-                        Тренер:
+                        {{__('Тренер')}}:
                         <span class="text"> @livewire('show-user', ['user' => $team['trainer']])</span>
                     </div>
                 @endif
@@ -43,20 +43,20 @@
                     <div class="team-wrapper">
                         <div class="column">
                             <h5 class="title2">
-                                <div>Игроки</div>
+                                <div>{{__('Игроки')}}</div>
                             </h5>
                             @foreach($team["listUsers"] as $user)
-                                <div class="line"><img class="avatar" src="{{$user ->photo}}" alt="аватарка"/>
+                                <div class="line"><img class="avatar" src="{{$user ->photo}}" alt="{{__('аватарка')}}"/>
                                     <span class="text"> @livewire('show-user', ['user' => $user])</span>
                                 </div>
                             @endforeach
                         </div>
                         <div class="column right-column">
                             <div>
-                                <div><h5 class="title2">Роботы</h5></div>
+                                <div><h5 class="title2">{{__('Роботы')}}</h5></div>
                                 @foreach($team["listRobots"] as $robots)
                                     @foreach($robots as $robot)
-                                        <div class="line"><img class="avatar" src="{{$robot->photo}}" alt="аватарка"/>
+                                        <div class="line"><img class="avatar" src="{{$robot->photo}}" alt="{{__('аватарка')}}"/>
                                             <span class="text"> @livewire("show-robot", ['robot' => $robot]) </span>
                                         </div>
                                     @endforeach

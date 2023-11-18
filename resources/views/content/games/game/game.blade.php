@@ -1,14 +1,14 @@
 <!-- Banner -->
 <section id="banner">
     <div class="inner">
-        <h2>ИНФОРМАЦИЯ ОБ ИГРЕ<br>{{$team_1->name}} VS {{$team_2->name}}</h2>
+        <h2>{{__('ИНФОРМАЦИЯ ОБ ИГРЕ')}}<br>{{$team_1->name}} VS {{$team_2->name}}</h2>
         <h4>{{$game->date_time}}</h4>
         <!--<p>Another fine responsive<br />
             site template freebie<br />
             crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
         <ul class="actions special">
             @if(Auth::check() && Auth::user()->isOwnerOrAdmin($organizer->id))
-                <li><a href="/game/{{$game->id}}/counter" class="button big-button">ВЕСТИ СЧЁТ</a></li>
+                <li><a href="/game/{{$game->id}}/counter" class="button big-button">{{__('ВЕСТИ СЧЁТ')}}</a></li>
             @endif
         </ul>
     </div>
@@ -35,7 +35,7 @@
                 </div>
 
                 @if(Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isOrganizer() || Auth::user()->isTrainer()))
-                    <div class="subtitle">Состав команды</div>
+                    <div class="subtitle">{{__('Состав команды')}}</div>
                     @foreach($users_team1 as $user)
                         {{--                <div class="rectangle1 text-in-rectangle"><a href="#" class="link-name1">{{$user->name}}</a></div>--}}
                         <div class="rectangle1 text-in-rectangle link-name1">
@@ -43,7 +43,7 @@
                         </div>
                     @endforeach
 
-                    <div class="subtitle">Роботы</div>
+                    <div class="subtitle">{{__('Роботы')}}</div>
                     @foreach($list1Robots as $robots)
                         @foreach($robots as $robot)
                             {{--                    <div class="rectangle1-1 text-in-rectangle"><a href="#" class="link-name1"> {{($robot->name)}}</a></div>--}}
@@ -54,7 +54,7 @@
                     @endforeach
                 @endif
                 @if($trainer_1)
-                    <div class="subtitle">Тренер</div>
+                    <div class="subtitle">{{__('Тренер')}}</div>
 
                     <div class="rectangle1 text-in-rectangle link-name1">
                         @livewire('show-user', ['user' => $trainer_1])
@@ -69,7 +69,7 @@
                 </div>
                 @if(Auth::check() && (Auth::user()->isAdmin() || Auth::user()->isOrganizer() || Auth::user()->isTrainer()))
 
-                    <div class="subtitle">Состав команды</div>
+                    <div class="subtitle">{{__('Состав команды')}}</div>
                     @foreach($users_team2 as $user)
                         {{--                <div class="rectangle2 text-in-rectangle"><a href="#" class="link-name2">{{$user->name}}</a></div>--}}
                         <div class="rectangle2 text-in-rectangle link-name2">
@@ -77,7 +77,7 @@
                         </div>
                     @endforeach
 
-                    <div class="subtitle">Роботы</div>
+                    <div class="subtitle">{{__('Роботы')}}</div>
                     @foreach($list2Robots as $robots)
                         @foreach($robots as $robot)
                             {{--                    <div class="rectangle2-2 text-in-rectangle"><a href="#" class="link-name2">{{$robot->name}}</a></div>--}}
@@ -90,7 +90,7 @@
                 @endif
 
                 @if($trainer_2)
-                    <div class="subtitle">Тренер</div>
+                    <div class="subtitle">{{__('Тренер')}}</div>
                     <div class="rectangle2 text-in-rectangle link-name2">
                         @livewire('show-user', ['user' => $trainer_2])
                     </div>
@@ -106,29 +106,29 @@
 <div class="block-second">
     @if($tournament->isGrouped())
         <div class="state-game">
-            Группа {{$game->groupName()}}
+            {{__('Группа')}} {{$game->groupName()}}
         </div>
         <br>
     @endif
     <div class="table">
         <table>
             <tr>
-                <td class="subtitle">Турнир</td>
+                <td class="subtitle">{{__('Турнир')}}</td>
                 <td align="right"><a href="/games" class="link-name1">{{$tournament->name}}</a></td>
             </tr>
             <tr>
-                <td class="subtitle">Площадка</td>
+                <td class="subtitle">{{__('Площадка')}}</td>
                 <td align="right"><a href="/places/{{$place->id}}" class="link-name1">{{$place->name}}</a></td>
             </tr>
             <tr>
-                <td class="subtitle">Организатор</td>
+                <td class="subtitle">{{__('Организатор')}}</td>
                 <td align="right">
                     <div class="link-name1">@livewire('show-user', ['user' => $organizer])</div>
                 </td>
             </tr>
             <tr>
-                <td class="subtitle">Длительность 1 тайма</td>
-                <td align="right">{{$game->max_seconds_match}} секунд</td>
+                <td class="subtitle">{{__('Длительность тайма')}}</td>
+                <td align="right">{{$game->max_seconds_match}} {{__('секунд')}}</td>
             </tr>
 
         </table>

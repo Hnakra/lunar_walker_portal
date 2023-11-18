@@ -6,7 +6,7 @@
         </a>
     @else
         <div>
-            <a href="#!"  class="button-edit" title="редактировать турнир" wire:click="editShowModal"><i class="fa fa-edit" style="font-size:30px"></i></a>
+            <a href="#!"  class="button-edit" title="{{__('редактировать турнир')}}" wire:click="editShowModal"><i class="fa fa-edit" style="font-size:30px"></i></a>
         </div>
     @endif
 
@@ -32,7 +32,7 @@
 
 
             <select required wire:model="id_place">
-                <option value="">Выберите площадку</option>
+                <option value="">{{__('Выберите площадку')}}</option>
                     @foreach($places as $place)
                         <option value="{{$place->id}}">{{$place->name}}</option>
                     @endforeach
@@ -54,7 +54,7 @@
             <button wire:click.prevent="addTeam" class="fa fa-plus"></button></div>
             @foreach($selected_teams_id as $index => $team_id)
                 <select required class="child-form" wire:model="selected_teams_id.{{$index}}">
-                    <option value="">Выберите команду</option>
+                    <option value="">{{__('Выберите команду')}}</option>
                     @foreach($teams as $team)
                         <option value="{{$team->id}}">{{$team->name}}</option>
                     @endforeach

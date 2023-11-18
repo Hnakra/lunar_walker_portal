@@ -26,13 +26,13 @@
             @error('time') <span class="error">{{ $message }}</span> @enderror
 
             <select wire:model.defer="interval">
-                <option value=600 selected>Время между началами игр: 10 минут</option>
-                <option value=900>Время между началами игр: 15 минут</option>
+                <option value=600 selected>{{__('Время между началами игр: 10 минут')}}</option>
+                <option value=900>{{__('Время между началами игр: 15 минут')}}</option>
             </select>
             <select wire:model.defer="max_seconds_match">
-                <option value=300 selected>Длительность тайма: 5 минут</option>
-                <option value=240>Длительность тайма: 4 минуты</option>
-                <option value=180>Длительность тайма: 3 минуты</option>
+                <option value=300 selected>{{__('Длительность тайма: 5 минут')}}</option>
+                <option value=240>{{__('Длительность тайма: 4 минуты')}}</option>
+                <option value=180>{{__('Длительность тайма: 3 минуты')}}</option>
             </select>
             <br>
             @error('id_tournament') <span class="error" style="color: orangered">{{ $message }}</span> @enderror

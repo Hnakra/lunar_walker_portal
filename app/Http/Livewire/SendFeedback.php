@@ -22,14 +22,16 @@ class SendFeedback extends Component
         'question' => 'required'
     ];
     // Настройка правил сообщений для формы
-    protected $messages = [
-        'name.required' => "Заполните поле Имя", 'name.min' => "Ваше Имя не должно содержать менее 2 символов!",
-        'email.required' => "Заполните поле Электронной почты", 'email.email' => "Укажите существующий адрес электронной почты",
-        'question.required' => 'Текст обращения не должен быть пустым'
-    ];
+    protected function getMessages() {
+        return [
+            'name.required' => __("Заполните поле Имя"), 'name.min' => __("Ваше Имя не должно содержать менее 2 символов!"),
+            'email.required' => __("Заполните поле Электронной почты"), 'email.email' => __("Укажите существующий адрес электронной почты"),
+            'question.required' => __('Текст обращения не должен быть пустым')
+        ];
+    }
     // метод отправки письма администратору портала
     public function send(){
-        $this->validate();
+        $this->validate($this->rules, $this->getMessages());
         $data = [
             "name" => $this->name,
             "email" => $this->email,
@@ -37,7 +39,7 @@ class SendFeedback extends Component
         ];
         Mail::to('vania.moroz22@gmail.com')->send(new \App\Mail\SendFeedback($data));
         $this->question = "";
-        $this->message = "Заявка отправлена! В близжайшее время с Вами свяжутся.";
+        $this->message = __("Заявка отправлена! В близжайшее время с Вами свяжутся.");
     }
     public function render()
     {

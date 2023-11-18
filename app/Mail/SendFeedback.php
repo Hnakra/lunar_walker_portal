@@ -34,8 +34,8 @@ class SendFeedback extends Mailable
     public function build()
     {
         return $this->view('email.send_feedback')
-            ->subject('Новое сообщение с портала Робофутбол!')
-            ->from('test349i49534594958@gmail.com', 'Главный робот Робофутбола')
+            ->subject(__('Новое сообщение с портала Робофутбол!'))
+            ->from('test349i49534594958@gmail.com', __('Главный робот Робофутбола'))
             ->with('data', $this->data);
     }
 }

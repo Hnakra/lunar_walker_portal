@@ -3,14 +3,13 @@
     <div class="inner">
         <h2>Мои Турниры</h2>
         @if(Auth::user()->isAdmin()||Auth::user()->isOrganizer()||Auth::user()->isTrainer())
-            <p>Ознакомьтесь, кто подтвердил<br /> участие в турнирах</p>
+            <p>{{__('Ознакомьтесь, кто подтвердил участие в турнирах')}}</p>
         @else
-            <p>Подтвердите участие в<br />
-                грядущих турнирах</p>
-        @endif
+            <p>{{__('Подтвердите участие в грядущих турнирах')}}</p>
+        @endif{{__('')}}
 
     </div>
-    <a href="#one" class="more scrolly">Читать далее</a>
+    <a href="#one" class="more scrolly">{{__('Читать далее')}}</a>
 </section>
 {{--
 {{($tournaments[0]['team'])}}
