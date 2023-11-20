@@ -48,10 +48,10 @@
                 <li>@include('layouts.user_icon.user_icon_bigscreen')</li>
             </ul>
 
-            <span class="mobile-profile">
-                @livewire('select-language', ['urlRedirect' => Request::url()])
-                @include('layouts.user_icon.user_icon_bigscreen')
-            </span>
+            <ul class="mobile-profile">
+                <li>@livewire('select-language', ['urlRedirect' => Request::url()])</li>
+                <li>@include('layouts.user_icon.user_icon_bigscreen')</li>
+            </ul>
 
         </div>
     </div>

@@ -134,6 +134,43 @@ body h3 {
         visibility: hidden;
         display: none;
     }
+
+    .mobile-profile li:hover ul {
+        display: block;
+    }
+
+    .mobile-profile, .mobile-profile ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .mobile-profile {
+        display: inline;
+        background-color: var(--main-color);
+        min-width: 470px;
+    }
+
+    .mobile-profile li {
+        float: left;
+        position: relative;
+        height: 100%;
+    }
+
+    .mobile-profile li a {
+        letter-spacing: 3.5px;
+        display: block;
+        padding: 0px 10px 0px 10px;
+        color: var(--dark-color);
+        text-transform: uppercase;
+
+        text-decoration: none;
+        text-align: center;
+    }
+
+    .mobile-profile li:hover {
+        background: rgba(0, 0, 0, 0.1);
+    }
 }
 
 @media screen and (min-width: 1150px) {
