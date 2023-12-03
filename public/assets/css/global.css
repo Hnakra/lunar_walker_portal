@@ -171,6 +171,11 @@ body h3 {
     .mobile-profile li:hover {
         background: rgba(0, 0, 0, 0.1);
     }
+
+    .navabar{
+        padding-left: 10px;
+        padding-right: 0;
+    }
 }
 
 @media screen and (min-width: 1150px) {

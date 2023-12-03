@@ -1,7 +1,7 @@
 <!-- Banner -->
 <section id="banner">
     <div class="inner">
-        <h2>Мои Турниры</h2>
+        <h2>{{__('Мои Турниры')}}</h2>
         @if(Auth::user()->isAdmin()||Auth::user()->isOrganizer()||Auth::user()->isTrainer())
             <p>{{__('Ознакомьтесь, кто подтвердил участие в турнирах')}}</p>
         @else
