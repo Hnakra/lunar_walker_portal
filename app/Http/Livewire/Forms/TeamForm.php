@@ -21,7 +21,7 @@ class TeamForm extends Component
     //    Переменные формы
     public $name, $selected_users_id = [], $selected_trainer = 0;
     //    Переменные отображения
-    public $users = [], $MAX_SELECTED_USERS = 5;
+    public $users = [], $usersForTrainer = [], $MAX_SELECTED_USERS = 5;
     // Переменная состояния, редактируется ли сущность (а также id сущности)
     public $current_team = 0;
     // Переменные отображения
@@ -44,6 +44,7 @@ class TeamForm extends Component
 
     public function createShowModal(){
         $this->users = $this->getUsers();
+        $this->usersForTrainer = User::where('id_role', 3)->get();
         $this->modalFormVisible = true;
     }
     // метод вызова модельного окна для изменения сущности
@@ -53,6 +54,7 @@ class TeamForm extends Component
         $this->name = $team->name;
         $this->selected_trainer = $team->id_trainer;
         $this->users = $this->getUsers();
+        $this->usersForTrainer = User::where('id_role', 3)->get();
         $this->modalFormVisible = true;
     }
     // метод добавления пользователя на форму
