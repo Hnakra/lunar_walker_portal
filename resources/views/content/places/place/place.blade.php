@@ -5,11 +5,20 @@
         <!--<p>Another fine responsive<br />
             site template freebie<br />
             crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>-->
-        @if( Auth::check() && Auth::user()->isOwnerOrAdmin($organizator->id))
-            {{--<p>тут будет кнопка редактирования площадки...</p>--}}
+        @if(isset($organizator))
+            @if( Auth::check() && Auth::user()->isOwnerOrAdmin($organizator->id))
+                {{--<p>тут будет кнопка редактирования площадки...</p>--}}
 
-            @livewire('forms.place-form', ['current_place' => $place->id])
+                @livewire('forms.place-form', ['current_place' => $place->id])
+            @endif
+        @else
+            @if( Auth::check() && Auth::user()->isAdmin())
+                {{--<p>тут будет кнопка редактирования площадки...</p>--}}
+
+                @livewire('forms.place-form', ['current_place' => $place->id])
+            @endif
         @endif
+
     </div>
     <a href="#one" class="more scrolly">{{__('Читать далее')}}</a>
 </section>
@@ -31,7 +40,11 @@
     <div class="info">
         <p><span>{{__('Адрес')}}: </span>{{$place->address}}</p>
         <p><span>{{__('Организатор')}}: </span>
-            @livewire('show-user', ['user' => $organizator])
+            @if(isset($organizator))
+                @livewire('show-user', ['user' => $organizator])
+            @else
+                Нет
+            @endif
         </p>
         <p><span>{{__('Адрес организации')}}: </span>{{$place->addr_org}}</p>
         <p><span>{{__('Наименование юридического лица организатора')}}: </span>{{$place->name_urid_org}}</p>

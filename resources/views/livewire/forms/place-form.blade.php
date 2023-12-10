@@ -36,9 +36,10 @@
                                  wire:keydown.enter="" />
                     @error('address') <span class="error">{{ $message }}</span> @enderror
                     <select wire:model="id_organizator">
-                        <option value ="" selected>{{__('Выберите организатора')}}</option>
+                        <option value ="0" selected>{{__('Выберите организатора')}}</option>
+
                         @foreach($listUsers as $user)
-                            <option value="{{$user->id}}">{{$user->name}}</option>
+                            <option value="{{$user['id']}}">{{$user['name']}}</option>
                         @endforeach
                     </select>
                     </br>

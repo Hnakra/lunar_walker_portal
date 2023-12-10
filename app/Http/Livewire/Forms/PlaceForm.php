@@ -63,7 +63,7 @@ class PlaceForm extends Component
 
     public function createShowModal()
     {
-        $this->listUsers = User::where("id_role", 3)->get();
+        $this->listUsers = User::where("id_role", 3)->orWhere('id', $this->id_organizator)->get();
 
         $this->modalFormVisible = true;
     }
@@ -73,6 +73,7 @@ class PlaceForm extends Component
     public function addingPlace()
     {
         $this->validate($this->rules, $this->getMessages());
+        $this->id_organizator = $this->id_organizator ?? 0;
         $name = $this->photo->getClientOriginalName();
         $id = DB::table('places')->insertGetId([
             'name' => $this->name,
@@ -102,7 +103,7 @@ class PlaceForm extends Component
 
     public function editShowModal()
     {
-        $this->listUsers = User::where("id_role", 3)->get();
+
         $place = Place::find($this->current_place);
         $this->name = $place->name;
         $this->address = $place->address;
@@ -117,6 +118,8 @@ class PlaceForm extends Component
         $this->phone_urid_org = $place->phone_urid_org;
         $this->INN_urid_org = $place->INN_urid_org;
 
+        $this->listUsers = User::where("id_role", 3)->orWhere('id', $this->id_organizator)->get();
+
         $this->modalFormVisible = true;
     }
 
@@ -126,6 +129,7 @@ class PlaceForm extends Component
     {
 
         $this->validate($this->rules, $this->getMessages());
+        $this->id_organizator = $this->id_organizator ?? 0;
 
         $old_id_organizator = Place::find($this->current_place)->id_organizator;
         User::where('id', $old_id_organizator)->update([
