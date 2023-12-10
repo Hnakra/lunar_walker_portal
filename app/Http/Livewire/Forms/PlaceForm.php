@@ -35,7 +35,6 @@ class PlaceForm extends Component
     public $rules = [
         'name' => 'required|min:2',
         'address' => 'required',
-       // 'id_organizator' => 'required',
         'description' => 'nullable',
         'photo' => 'image|max:1024',
         'addr_org' => 'required',
@@ -52,7 +51,6 @@ class PlaceForm extends Component
         return [
             'name.required' => __('Введите название площадки'), 'name.min' => __('Название слишком маленькое'),
             'address.required' => __('Введите адрес'),
-          // 'id_organizator.required' => __('Нужно выбрать организатора'),
             'addr_org.required' => __('Введите адрес организации'),
             'name_urid_org.required' => __('Введите наименование юридического лица'),
             'site_urid_org.required' => __('Введите сайт площадки'),

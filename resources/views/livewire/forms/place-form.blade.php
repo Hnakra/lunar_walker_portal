@@ -35,14 +35,13 @@
                                  wire:model.defer="address"
                                  wire:keydown.enter="" />
                     @error('address') <span class="error">{{ $message }}</span> @enderror
-                    <select required wire:model="id_organizator">
+                    <select wire:model="id_organizator">
                         <option value ="" selected>{{__('Выберите организатора')}}</option>
                         @foreach($listUsers as $user)
                             <option value="{{$user->id}}">{{$user->name}}</option>
-
                         @endforeach
-                    </select></br>
-                    @error('id_organizator') <span class="error">{{ $message }}</span> @enderror
+                    </select>
+                    </br>
 {{--                    <x-jet-input type="email" class="mt-1 block w-3/4"
                                  placeholder="{{ __('ID организатора (Пока так)') }}"
                                  x-ref="id_organizator"
