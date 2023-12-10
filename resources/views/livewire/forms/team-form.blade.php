@@ -31,7 +31,7 @@
             <span>{{__('Тренер')}}</span>
             <select class="child-form" wire:model="selected_trainer">
                 <option value ="0">{{__('Нет тренера')}}</option>
-                @foreach($users as $user)
+                @foreach(User::where('id_role', 3)->get() as $user)
                     <option value="{{$user->id}}">{{$user->name}}</option>
                 @endforeach
             </select>
